@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 project(microbench)
 
-FILE(GLOB MyCSources *.c)
+FILE(GLOB MyCSources src/*.c)
 add_compile_options(
   -O3 -Wall -Wextra -Wpedantic -march=native -funroll-loops -ftree-vectorize
   -g

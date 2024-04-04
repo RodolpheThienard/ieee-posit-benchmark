@@ -1,6 +1,6 @@
-#include "driver.h"
-#include "kernels.h"
-#include "utils.h"
+#include "../include/driver.h"
+#include "../include/kernels.h"
+#include "../include/utils.h"
 #include <stdio.h>
 
 int
@@ -48,6 +48,8 @@ main (int argc, char *argv[])
                _matrix_size);
   driver_fp32 ("IEEE 32bits mul", ieee_32bits_mul, data, a_32, b_32, c_32,
                _matrix_size);
+  driver_fp32 ("IEEE 32bits sqrt", ieee_32bits_sqrt, data, a_32, b_32, c_32,
+               _matrix_size);
   driver_fp32 ("IEEE 32bits dp", ieee_32bits_dp, data, a_32, b_32, c_32,
                _matrix_size_2);
   driver_fp32 ("IEEE 32bits gemm", ieee_32bits_gemm, data, a_32, b_32, c_32,
@@ -57,6 +59,8 @@ main (int argc, char *argv[])
   driver_fp64 ("IEEE 64bits add", ieee_64bits_add, data, a_64, b_64, c_64,
                _matrix_size);
   driver_fp64 ("IEEE 64bits mul", ieee_64bits_mul, data, a_64, b_64, c_64,
+               _matrix_size);
+  driver_fp64 ("IEEE 64bits sqrt", ieee_64bits_sqrt, data, a_64, b_64, c_64,
                _matrix_size);
   driver_fp64 ("IEEE 64bits dp", ieee_64bits_dp, data, a_64, b_64, c_64,
                _matrix_size_2);

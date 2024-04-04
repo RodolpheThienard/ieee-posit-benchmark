@@ -1,4 +1,4 @@
-#include "driver.h"
+#include "../include/driver.h"
 
 /// Utility macro defining the body of a driver function that benchmarks a
 /// given routine.

@@ -1,4 +1,4 @@
-#include "kernels.h"
+#include "../include/kernels.h"
 #include <stdint.h>
 
 void
@@ -15,6 +15,22 @@ ieee_32bits_mul (float *a, float *b, float *c, uint64_t n)
   for (uint64_t i = 0; i < n; i++)
     for (uint64_t j = 0; j < n; j++)
       c[i * n + j] = a[i * n + j] * b[i * n + j];
+}
+
+void
+ieee_32bits_div (float *a, float *b, float *c, uint64_t n)
+{
+  for (uint64_t i = 0; i < n; i++)
+    for (uint64_t j = 0; j < n; j++)
+      c[i * n + j] = a[i * n + j] / b[i * n + j];
+}
+
+void
+ieee_32bits_sqrt (float *a, float *b, float *c, uint64_t n)
+{
+  for (uint64_t i = 0; i < n; i++)
+    for (uint64_t j = 0; j < n; j++)
+      c[i * n + j] = sqrt (a[i * n + j]);
 }
 
 void
@@ -57,6 +73,21 @@ ieee_64bits_mul (double *a, double *b, double *c, uint64_t n)
       c[i * n + j] = a[i * n + j] * b[i * n + j];
 }
 
+void
+ieee_64bits_div (double *a, double *b, double *c, uint64_t n)
+{
+  for (uint64_t i = 0; i < n; i++)
+    for (uint64_t j = 0; j < n; j++)
+      c[i * n + j] = a[i * n + j] / b[i * n + j];
+}
+
+void
+ieee_64bits_sqrt (double *a, double *b, double *c, uint64_t n)
+{
+  for (uint64_t i = 0; i < n; i++)
+    for (uint64_t j = 0; j < n; j++)
+      c[i * n + j] = sqrt (a[i * n + j]);
+}
 void
 ieee_64bits_dp (double *restrict a, double *restrict b, double *restrict c,
                 uint64_t n)

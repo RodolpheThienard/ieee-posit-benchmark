@@ -1,5 +1,5 @@
-#include "kernels.h"
-#include "utils.h"
+#include "../include/kernels.h"
+#include "../include/utils.h"
 #include <stdint.h>
 
 #define gettime(t) clock_gettime (CLOCK_MONOTONIC_RAW, t)
