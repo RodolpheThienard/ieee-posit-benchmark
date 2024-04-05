@@ -15,14 +15,12 @@ init (float *A, float *B, float *C, int size)
 {
   int i = 0, j = 0;
 
-  srand (2019);
-
   for (i = 0; i < size; i++)
     {
       for (j = 0; j < size; j++)
         {
-          A[i * size + j] = (float)(rand () % 10) + 0.01 * (rand () % 5);
-          B[i * size + j] = (float)(rand () % 10) + 0.01 * (rand () % 5);
+          A[i * size + j] = (float)(drand48 ());
+          B[i * size + j] = (float)(drand48 ());
           C[i * size + j] = 0.0;
         }
     }
@@ -77,6 +75,7 @@ sgemm_bloc(float *A, float *B, float *C, int N)
     }
     C[j * N + i] = sum;
 }
+
 float
 get_elapsedtime (void)
 {
