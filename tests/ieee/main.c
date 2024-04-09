@@ -1,6 +1,6 @@
-#include "../include/driver.h"
-#include "../include/kernels.h"
-#include "../include/utils.h"
+#include "../../include/driver.h"
+#include "../../include/kernels.h"
+#include "../../include/utils.h"
 #include <stdio.h>
 
 int
