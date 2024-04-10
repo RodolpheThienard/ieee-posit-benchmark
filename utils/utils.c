@@ -1,9 +1,4 @@
-#include "../include/kernels.h"
 #include "../include/utils.h"
-#include <stdint.h>
-
-#define gettime(t) clock_gettime (CLOCK_MONOTONIC_RAW, t)
-#define get_sub_seconde(t) (1e-9 * (double)t.tv_nsec)
 
 /* Register counter */
 uint64_t
@@ -27,10 +22,11 @@ get_elapsedtime (void)
 
 //
 void
-sort_double (double *restrict a)
+sort_double (double *a)
 {
-  for (uint64_t i = 0; i < 33; i++)
-    for (uint64_t j = i + 1; j < 33; j++)
+  int i, j;
+  for (i = 0; i < 33; i++)
+    for (j = i + 1; j < 33; j++)
       if (a[i] > a[j])
         {
           double tmp = a[i];
@@ -42,10 +38,11 @@ sort_double (double *restrict a)
 
 //
 void
-sort_uint64 (uint64_t *restrict a)
+sort_uint64 (uint64_t *a)
 {
-  for (uint64_t i = 0; i < 33; i++)
-    for (uint64_t j = i + 1; j < 33; j++)
+  int i, j;
+  for (i = 0; i < 33; i++)
+    for (j = i + 1; j < 33; j++)
       if (a[i] > a[j])
         {
           uint64_t tmp = a[i];
@@ -57,11 +54,11 @@ sort_uint64 (uint64_t *restrict a)
 
 //
 double
-mean (double *restrict a)
+mean (double *a)
 {
   double m = 0.0;
-
-  for (uint64_t i = 0; i < 33; i++)
+  int i;
+  for (i = 0; i < 33; i++)
     m += a[i];
 
   return m / 33.;
@@ -69,16 +66,25 @@ mean (double *restrict a)
 
 //
 double
-stddev (double *restrict a, double mean)
+stddev (double *a, double mean)
 {
   double d = 0.0;
-
-  for (uint64_t i = 0; i < 33; i++)
+  int i;
+  for (i = 0; i < 33; i++)
     d += (a[i] - mean) * (a[i] - mean);
 
   d /= 32.;
 
   return sqrt (d);
+}
+
+void
+print_header (long _matrix_size)
+{
+  printf ("%20s;  %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s\n",
+          "title", (_matrix_size > (1 << 20)) ? "MiB" : "KiB", "min (s)",
+          "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s", "Cycles",
+          "Cycles/element");
 }
 
 //

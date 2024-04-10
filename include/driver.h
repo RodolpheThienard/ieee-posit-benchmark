@@ -10,5 +10,7 @@ extern void driver_fp32_vector (char *, void (*) (), struct data *, float *,
 extern void driver_fp64 (char *, void (*) (), struct data *, double *,
                          double *, double *, uint64_t);
 
-extern void driver_cuda_fp64 (char *, void (*) (), struct data *, double *,
-                              double *, double *, uint64_t);
+extern void driver_cuda_fp64 (char *,
+                              void (*) (double *, double *, double *, int),
+                              struct data *, double *, double *, double *,
+                              int);

@@ -7,6 +7,10 @@
 #include <string.h>
 #include <time.h>
 
+#define max(a, b) ((a) < (b) ? (b) : (a))
+#define gettime(t) clock_gettime (CLOCK_MONOTONIC_RAW, t)
+#define get_sub_seconde(t) (1e-9 * (float)t.tv_nsec)
+
 #define ALLOC(X, n)                                                           \
   do                                                                          \
     {                                                                         \
@@ -20,14 +24,9 @@
     }                                                                         \
   while (0)
 
-#define INIT(matrix, n, seed)                                                 \
-  for (uint32_t i = 0; i < n; i++)                                            \
-    {                                                                         \
-      for (uint32_t j = 0; j < n; j++)                                        \
-        {                                                                     \
-          matrix[i * n + j] = drand48 ();                                     \
-        }                                                                     \
-    }
+#define INIT(a, size)                                                         \
+  for (int i = 0; i < size; i++)                                              \
+    a[i] = (drand48 ());
 
 struct data
 {
@@ -43,3 +42,4 @@ extern double mean (double *restrict);
 extern double stddev (double *restrict, double);
 extern void print_data (char *, struct data *);
 extern uint64_t rdtsc ();
+extern void print_header (long);

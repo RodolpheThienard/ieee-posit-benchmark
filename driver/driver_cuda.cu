@@ -1,31 +1,39 @@
-#include <cublas_v2.h>
-#include <cuda_runtime.h>
-#include "../include/driver.h"
+extern "C" {
+  #include "../include/driver.h"
+}
+  #include "../include/cuda.h"
 
 #define DRIVER_BODY_CUDA(kernel, ...)                                         \
-  cudaEvent_t start_event[33], end_event[33];                                 \
+  dim3 threadsPerBlock (32, 32);                                              \
+  dim3 numBlocks (matrix_size / threadsPerBlock.x,                            \
+                  matrix_size / threadsPerBlock.y);                           \
+  cudaEvent_t start_event, end_event;                                         \
+  float elapsed;                                                              \
   for (uint32_t stability = 0; stability < 33; stability++)                   \
     {                                                                         \
-      cudaEventCreate (&start_event[stability]);                              \
-      cudaEventCreate (&end_event[stability]);                                \
-      cudaEventRecord (start_event[stability], 0);                            \
+      cudaEventCreate (&start_event);                                         \
+      cudaEventCreate (&end_event);                                           \
+      cudaEventRecord (start_event, 0);                                       \
       for (uint32_t rep = 0; rep < data->repetition; rep++)                   \
         {                                                                     \
-          kernel<<<64,64>>> (__VA_ARGS__);                                    \
+          kernel<<<numBlocks, threadsPerBlock>>> (__VA_ARGS__);               \
         }                                                                     \
-      cudaEventRecord (end_event[stability], 0);                              \
-      cudaEventSynchronize (end_event[stability]);                            \
-      data->samples[stability] = end_event - start_event;                     \
+      cudaEventRecord (end_event, 0);                                         \
+      cudaEventSynchronize (end_event);                                       \
+      cudaEventElapsedTime (&elapsed, start_event, end_event);                \
+      elapsed *= 1e-3;                                                        \
+      data->samples[stability] = (double)elapsed;                             \
     }                                                                         \
   sort_double (data->samples);                                                \
   data->mean = mean (data->samples);                                          \
   data->stddev = stddev (data->samples, data->mean);                          \
   print_data (title, data);
 
+  
 void
-driver_cuda_fp64 (char *title, void (*kernel) (), struct data *data,
-                  double *restrict a, double *restrict b, double *restrict c,
-                  uint64_t matrix_size)
+driver_cuda_fp64 (char *title, void (*kernel) (double*, double*, double*, int), struct data *data,
+                  double * a, double *b, double *c,
+                  int matrix_size)
 {
   DRIVER_BODY_CUDA (kernel, a, b, c, matrix_size);
 }
