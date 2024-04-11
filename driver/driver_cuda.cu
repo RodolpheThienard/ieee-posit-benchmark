@@ -22,7 +22,7 @@ extern "C" {
       cudaEventSynchronize (end_event);                                       \
       cudaEventElapsedTime (&elapsed, start_event, end_event);                \
       elapsed *= 1e-3;                                                        \
-      data->samples[stability] = (double)elapsed;                             \
+      data->samples[stability] = (double)elapsed / data->repetition;          \
     }                                                                         \
   sort_double (data->samples);                                                \
   data->mean = mean (data->samples);                                          \

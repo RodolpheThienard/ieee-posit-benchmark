@@ -15,8 +15,9 @@
         }                                                                     \
       end_register = rdtsc ();                                                \
       end_time = get_elapsedtime ();                                          \
-      data->RC[stability] = end_register - begin_register;                    \
-      data->samples[stability] = end_time - init_time;                        \
+      data->RC[stability]                                                     \
+          = (end_register - begin_register) / data->repetition;               \
+      data->samples[stability] = (end_time - init_time) / data->repetition;   \
     }                                                                         \
   sort_double (data->samples);                                                \
   sort_uint64 (data->RC);                                                     \
