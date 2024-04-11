@@ -93,6 +93,15 @@ print_header (long _matrix_size)
           "Rc/m-element");
 }
 
+void
+formatting_data (struct data *data)
+{
+  sort_double (data->samples);
+  sort_uint64 (data->RC);
+  data->mean = mean (data->samples);
+  data->stddev = stddev (data->samples, data->mean);
+}
+
 double
 convertion (double number)
 {

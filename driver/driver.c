@@ -18,12 +18,7 @@
       data->RC[stability]                                                     \
           = (end_register - begin_register) / data->repetition;               \
       data->samples[stability] = (end_time - init_time) / data->repetition;   \
-    }                                                                         \
-  sort_double (data->samples);                                                \
-  sort_uint64 (data->RC);                                                     \
-  data->mean = mean (data->samples);                                          \
-  data->stddev = stddev (data->samples, data->mean);                          \
-  print_data (title, data);
+    }
 
 //
 void
@@ -32,6 +27,8 @@ driver_fp32 (char *title, void (*kernel) (), struct data *data,
              uint64_t matrix_size)
 {
   DRIVER_BODY (kernel, a_32, b_32, c_32, matrix_size);
+  formatting_data (data);
+  print_data (title, data);
 }
 
 //
@@ -41,6 +38,8 @@ driver_fp32_vector (char *title, void (*kernel) (), struct data *data,
                     uint64_t matrix_size)
 {
   DRIVER_BODY (kernel, a_32, b_32, matrix_size);
+  formatting_data (data);
+  print_data (title, data);
 }
 
 //
@@ -50,4 +49,6 @@ driver_fp64 (char *title, void (*kernel) (), struct data *data,
              double *restrict c_64, uint64_t matrix_size)
 {
   DRIVER_BODY (kernel, a_64, b_64, c_64, matrix_size);
+  formatting_data (data);
+  print_data (title, data);
 }

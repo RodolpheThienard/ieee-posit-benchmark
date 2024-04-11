@@ -24,10 +24,6 @@ extern "C" {
       elapsed *= 1e-3;                                                        \
       data->samples[stability] = (double)elapsed / data->repetition;          \
     }                                                                         \
-  sort_double (data->samples);                                                \
-  data->mean = mean (data->samples);                                          \
-  data->stddev = stddev (data->samples, data->mean);                          \
-  print_data (title, data);
 
   
 void
@@ -36,4 +32,6 @@ driver_cuda_fp64 (char *title, void (*kernel) (double*, double*, double*, int), 
                   int matrix_size)
 {
   DRIVER_BODY_CUDA (kernel, a, b, c, matrix_size);
+  formatting_data(data);
+  print_data(title, data);
 }

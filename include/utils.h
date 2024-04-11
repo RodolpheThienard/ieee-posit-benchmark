@@ -43,3 +43,4 @@ extern double stddev (double *restrict, double);
 extern void print_data (char *, struct data *);
 extern uint64_t rdtsc ();
 extern void print_header (long);
+extern void formatting_data (struct data *);
