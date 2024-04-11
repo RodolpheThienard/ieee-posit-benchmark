@@ -78,13 +78,25 @@ stddev (double *a, double mean)
   return sqrt (d);
 }
 
+double
+med_min (double med, double min)
+{
+  return (med - min) / min;
+}
+
 void
 print_header (long _matrix_size)
 {
-  printf ("%20s;  %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s\n",
+  printf ("%20s; %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s\n",
           "title", (_matrix_size > (1 << 20)) ? "MiB" : "KiB", "min (s)",
           "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s", "Cycles",
-          "Cycles/element");
+          "Rc/m-element");
+}
+
+double
+convertion (double number)
+{
+  return (number > (1 << 20)) ? number / 1024.0 * 1024.0 : number / 1024.0;
 }
 
 //
@@ -94,24 +106,22 @@ print_data (char *title, struct data *data)
 
   double _min = data->samples[0];
   double _max = data->samples[32];
-  double _median = data->samples[(34) >> 1];
+  double _median = data->samples[16];
   double _mean = data->mean;
   double _stddev = data->stddev;
-  double _stddevp = (_stddev * 100.0) / _mean;
   double _matrix_size = data->matrice_size;
   double _data_size = data->type;
-  uint64_t _rc = data->RC[(34) >> 1] / data->repetition;
+  double _repetition = data->repetition;
+  uint64_t _rc = data->RC[16];
+
+  double _stddevp = (_stddev * 100.0) / _mean;
   double _rc_elem = _rc / _matrix_size;
-  double _bw
-      = ((double)_matrix_size / (1024.0 * 1024)) / _mean * data->repetition;
+  double _bw = ((double)_matrix_size / (1024.0 * 1024)) / _mean;
 
   printf ("%20s; %13.3lf; %13.3e; %13.3e; %13.3e; %13.3e; %13.3lf; "
-          "%13.3lf; %13.3lu; %13.3lf\n",
-          title,
-          (_matrix_size > (1 << 20))
-              ? _matrix_size * _data_size / (1024.0 * 1024.0)
-              : _matrix_size * _data_size / 1024.0,
-          _min, _max, _median, _mean, _stddevp, _bw, _rc, _rc_elem);
+          "%13.3lf; %13.3lu; %13.3lf \n",
+          title, convertion (_matrix_size), _min, _max, _median, _mean,
+          _stddevp, _bw, _rc, _rc_elem);
 
   return;
 }
