@@ -65,7 +65,7 @@ main (int argc, char *argv[])
   driver_fp64 ("IEEE 64bits gemm", output_buffer, ieee_64bits_gemm, data, a_64,
                b_64, c_64, _matrix_size);
 
-  save_data ("test.csv", output_buffer);
+  save_data (NULL, output_buffer);
 
   free (a_32);
   free (b_32);

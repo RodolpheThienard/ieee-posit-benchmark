@@ -44,7 +44,8 @@ main (int argc, char *argv[])
   data->repetition = _repetition;
 
   // ≃ 200 per kernel
-  char *output_buffer = malloc (sizeof (char) * 200 * 11);
+  char *output_buffer;
+  output_buffer = (char*)malloc (sizeof (char) * 200 * 11);
   print_header (output_buffer, _matrix_size_2 * 2);
 
   data->type = sizeof(double);

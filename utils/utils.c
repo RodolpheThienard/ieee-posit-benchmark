@@ -119,7 +119,7 @@ save_data (char *filename, char *buffer)
 double
 convertion (double number)
 {
-  return (number > (1 << 20)) ? number / 1024.0 * 1024.0 : number / 1024.0;
+  return (number > (1 << 20)) ? number / 1024.0 / 1024.0 : number / 1024.0;
 }
 
 //
