@@ -27,11 +27,11 @@ extern "C" {
 
   
 void
-driver_cuda_fp64 (char *title, void (*kernel) (double*, double*, double*, int), struct data *data,
+driver_cuda_fp64 (char *title, char *buffer, void (*kernel) (double*, double*, double*, int), struct data *data,
                   double * a, double *b, double *c,
                   int matrix_size)
 {
   DRIVER_BODY_CUDA (kernel, a, b, c, matrix_size);
   formatting_data(data);
-  print_data(title, data);
+  print_data(title, data, buffer);
 }

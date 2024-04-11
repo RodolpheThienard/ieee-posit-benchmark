@@ -22,33 +22,33 @@
 
 //
 void
-driver_fp32 (char *title, void (*kernel) (), struct data *data,
+driver_fp32 (char *title, char *buffer, void (*kernel) (), struct data *data,
              float *restrict a_32, float *restrict b_32, float *restrict c_32,
              uint64_t matrix_size)
 {
   DRIVER_BODY (kernel, a_32, b_32, c_32, matrix_size);
   formatting_data (data);
-  print_data (title, data);
+  print_data (title, data, buffer);
 }
 
 //
 void
-driver_fp32_vector (char *title, void (*kernel) (), struct data *data,
-                    float *restrict a_32, float *restrict b_32,
-                    uint64_t matrix_size)
+driver_fp32_vector (char *title, char *buffer, void (*kernel) (),
+                    struct data *data, float *restrict a_32,
+                    float *restrict b_32, uint64_t matrix_size)
 {
   DRIVER_BODY (kernel, a_32, b_32, matrix_size);
   formatting_data (data);
-  print_data (title, data);
+  print_data (title, data, buffer);
 }
 
 //
 void
-driver_fp64 (char *title, void (*kernel) (), struct data *data,
+driver_fp64 (char *title, char *buffer, void (*kernel) (), struct data *data,
              double *restrict a_64, double *restrict b_64,
              double *restrict c_64, uint64_t matrix_size)
 {
   DRIVER_BODY (kernel, a_64, b_64, c_64, matrix_size);
   formatting_data (data);
-  print_data (title, data);
+  print_data (title, data, buffer);
 }

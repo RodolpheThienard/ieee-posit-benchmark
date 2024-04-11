@@ -85,12 +85,13 @@ med_min (double med, double min)
 }
 
 void
-print_header (long _matrix_size)
+print_header (char *buffer, long _matrix_size)
 {
-  printf ("%20s; %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s; %13s\n",
-          "title", (_matrix_size > (1 << 20)) ? "MiB" : "KiB", "min (s)",
-          "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s", "Cycles",
-          "Rc/m-element");
+  sprintf (
+      buffer, "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; %16s\n",
+      buffer, "title", (_matrix_size > (1 << 20)) ? "buf (MiB)" : "buf (KiB)",
+      "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
+      "Cycles", "Cycles/m-element");
 }
 
 void
@@ -102,6 +103,19 @@ formatting_data (struct data *data)
   data->stddev = stddev (data->samples, data->mean);
 }
 
+void
+save_data (char *filename, char *buffer)
+{
+  if (filename == NULL)
+    fprintf (stdout, "%s", buffer);
+  else
+    {
+      FILE *file = fopen (filename, "w");
+      fprintf (file, "%s", buffer);
+      fclose (file);
+    }
+}
+
 double
 convertion (double number)
 {
@@ -110,7 +124,7 @@ convertion (double number)
 
 //
 void
-print_data (char *title, struct data *data)
+print_data (char *title, struct data *data, char *buffer)
 {
 
   double _min = data->samples[0];
@@ -127,10 +141,10 @@ print_data (char *title, struct data *data)
   double _rc_elem = _rc / _matrix_size;
   double _bw = ((double)_matrix_size / (1024.0 * 1024)) / _mean;
 
-  printf ("%20s; %13.3lf; %13.3e; %13.3e; %13.3e; %13.3e; %13.3lf; "
-          "%13.3lf; %13.3lu; %13.3lf \n",
-          title, convertion (_matrix_size), _min, _max, _median, _mean,
-          _stddevp, _bw, _rc, _rc_elem);
-
+  sprintf (buffer,
+           "%s %20s; %13.3lf; %13.3e; %13.3e; %13.3e; %13.3e; %9.3lf; "
+           "%13.3lf; %13.3lu; %16.3lf \n",
+           buffer, title, convertion (_matrix_size * _data_size), _min, _max,
+           _median, _mean, _stddevp, _bw, _rc, _rc_elem);
   return;
 }

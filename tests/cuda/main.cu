@@ -43,15 +43,20 @@ main (int argc, char *argv[])
   data->matrice_size = _matrix_size_2;
   data->repetition = _repetition;
 
-  print_header(_matrix_size_2);
+  // ≃ 200 per kernel
+  char *output_buffer = malloc (sizeof (char) * 200 * 11);
+  print_header (output_buffer, _matrix_size_2 * 2);
 
-  data->type = 8;
-  driver_cuda_fp64 ("cuda gemm ijk", cuda_64bits_gemm_ijk, data, d_A, d_B, d_C,
+  data->type = sizeof(double);
+  driver_cuda_fp64 ("cuda gemm ijk", output_buffer, cuda_64bits_gemm_ijk, data, d_A, d_B, d_C,
                     N);
-  driver_cuda_fp64 ("cuda gemm jik", cuda_64bits_gemm_jik, data, d_A, d_B, d_C,
+  driver_cuda_fp64 ("cuda gemm jik", output_buffer, cuda_64bits_gemm_jik, data, d_A, d_B, d_C,
                     N);
-  driver_cuda_fp64 ("cuda gemm bloc", cuda_64bits_gemm_bloc, data, d_A, d_B, d_C,
+  driver_cuda_fp64 ("cuda gemm bloc", output_buffer, cuda_64bits_gemm_bloc, data, d_A, d_B, d_C,
                     N);
+
+  save_data ("test.csv", output_buffer);
+                  
 
   cudaFree (d_A);
   cudaFree (d_B);

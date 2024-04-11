@@ -1,7 +1,6 @@
 #include "../../include/driver.h"
 #include "../../include/kernels.h"
 #include "../../include/utils.h"
-#include <stdio.h>
 
 int
 main (int argc, char *argv[])
@@ -38,31 +37,35 @@ main (int argc, char *argv[])
   data->matrice_size = _matrix_size_2;
   data->repetition = _repetition;
 
-  print_header (_matrix_size_2);
+  // ≃ 200 per kernel
+  char *output_buffer = malloc (sizeof (char) * 200 * 11);
+  print_header (output_buffer, _matrix_size_2 * 2);
 
   data->type = sizeof (float);
-  driver_fp32 ("IEEE 32bits add", ieee_32bits_add, data, a_32, b_32, c_32,
-               _matrix_size);
-  driver_fp32 ("IEEE 32bits mul", ieee_32bits_mul, data, a_32, b_32, c_32,
-               _matrix_size);
-  driver_fp32 ("IEEE 32bits sqrt", ieee_32bits_sqrt, data, a_32, b_32, c_32,
-               _matrix_size);
-  driver_fp32 ("IEEE 32bits dp", ieee_32bits_dp, data, a_32, b_32, c_32,
-               _matrix_size_2);
-  driver_fp32 ("IEEE 32bits gemm", ieee_32bits_gemm, data, a_32, b_32, c_32,
-               _matrix_size);
+  driver_fp32 ("IEEE 32bits add", output_buffer, ieee_32bits_add, data, a_32,
+               b_32, c_32, _matrix_size);
+  driver_fp32 ("IEEE 32bits mul", output_buffer, ieee_32bits_mul, data, a_32,
+               b_32, c_32, _matrix_size);
+  driver_fp32 ("IEEE 32bits sqrt", output_buffer, ieee_32bits_sqrt, data, a_32,
+               b_32, c_32, _matrix_size);
+  driver_fp32 ("IEEE 32bits dp", output_buffer, ieee_32bits_dp, data, a_32,
+               b_32, c_32, _matrix_size_2);
+  driver_fp32 ("IEEE 32bits gemm", output_buffer, ieee_32bits_gemm, data, a_32,
+               b_32, c_32, _matrix_size);
 
   data->type = sizeof (double);
-  driver_fp64 ("IEEE 64bits add", ieee_64bits_add, data, a_64, b_64, c_64,
-               _matrix_size);
-  driver_fp64 ("IEEE 64bits mul", ieee_64bits_mul, data, a_64, b_64, c_64,
-               _matrix_size);
-  driver_fp64 ("IEEE 64bits sqrt", ieee_64bits_sqrt, data, a_64, b_64, c_64,
-               _matrix_size);
-  driver_fp64 ("IEEE 64bits dp", ieee_64bits_dp, data, a_64, b_64, c_64,
-               _matrix_size_2);
-  driver_fp64 ("IEEE 64bits gemm", ieee_64bits_gemm, data, a_64, b_64, c_64,
-               _matrix_size);
+  driver_fp64 ("IEEE 64bits add", output_buffer, ieee_64bits_add, data, a_64,
+               b_64, c_64, _matrix_size);
+  driver_fp64 ("IEEE 64bits mul", output_buffer, ieee_64bits_mul, data, a_64,
+               b_64, c_64, _matrix_size);
+  driver_fp64 ("IEEE 64bits sqrt", output_buffer, ieee_64bits_sqrt, data, a_64,
+               b_64, c_64, _matrix_size);
+  driver_fp64 ("IEEE 64bits dp", output_buffer, ieee_64bits_dp, data, a_64,
+               b_64, c_64, _matrix_size_2);
+  driver_fp64 ("IEEE 64bits gemm", output_buffer, ieee_64bits_gemm, data, a_64,
+               b_64, c_64, _matrix_size);
+
+  save_data ("test.csv", output_buffer);
 
   free (a_32);
   free (b_32);
