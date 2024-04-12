@@ -5,14 +5,24 @@
 #define DRIVER_BODY_ACCURACY(fn, ...) kernel (__VA_ARGS__);
 
 // generic error calculation function
-#define compute_err_accuracy(a, b, N, err)                                    \
-  int i = 0;                                                                  \
+#define compute_err_accuracy(a, b, n, err)                                    \
+  i = 0;                                                                      \
   err = 0.0;                                                                  \
-  for (i = 0; i < N; i++)                                                     \
+  for (i = 0; i < n; i++)                                                     \
     {                                                                         \
       err += a[i] - b[i];                                                     \
     }                                                                         \
-  err /= N;
+  err /= n;
+
+#define RMS(a, b, n, err)                                                     \
+  i = 0;                                                                      \
+  err = 0.0;                                                                  \
+  for (i = 0; i < n; i++)                                                     \
+    {                                                                         \
+      err += (a[i] - b[i]) * (a[i] - b[i]);                                   \
+    }                                                                         \
+  err /= n;                                                                   \
+  err = sqrt (err);
 
 /* driver for inv matrix computation
    Alloc and init matrix
@@ -24,6 +34,7 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
                             struct accuracy *accuracy, uint64_t matrix_size)
 {
   // initialisation matrix
+  int i;
   long _matrix_size_2 = matrix_size * matrix_size;
   double *a_64, *b_64, *c_64, *d_64;
   ALLOC (a_64, _matrix_size_2);
@@ -38,6 +49,7 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
   ieee_64bits_gemm (a_64, b_64, c_64, matrix_size);
   set_identity_matrix (d_64, matrix_size, matrix_size);
   compute_err_accuracy (c_64, d_64, _matrix_size_2, accuracy->accuracy);
+  RMS (c_64, d_64, _matrix_size_2, accuracy->RMS);
 
   print_data_accuracy (title, buffer, accuracy);
 

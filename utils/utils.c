@@ -85,23 +85,6 @@ med_min (double med, double min)
   return (med - min) / min;
 }
 
-/* save header of benchmark measure in buffer */
-void
-print_header_benchmark (char *buffer, long _matrix_size)
-{
-  sprintf (
-      buffer, "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; %16s\n",
-      buffer, "title", (_matrix_size > (1 << 20)) ? "buf (MiB)" : "buf (KiB)",
-      "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
-      "Cycles", "Cycles/m-element");
-}
-/* save header of accuracy measure in buffer */
-void
-print_header_accuracy (char *buffer)
-{
-  sprintf (buffer, "%s %20s; %13s\n", buffer, "title", "accuracy");
-}
-
 /* process data stored in struct data
    compute mean, stddev, and sort samples, RC */
 void
@@ -168,6 +151,17 @@ convertion (double number)
   return (number > (1 << 20)) ? number / 1024.0 / 1024.0 : number / 1024.0;
 }
 
+/* save header of benchmark measure in buffer */
+void
+print_header_benchmark (char *buffer, long _matrix_size)
+{
+  sprintf (
+      buffer, "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; %16s\n",
+      buffer, "title", (_matrix_size > (1 << 20)) ? "buf (MiB)" : "buf (KiB)",
+      "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
+      "Cycles", "Cycles/m-element");
+}
+
 /* add formated data into buffer */
 void
 print_data_benchmark (char *title, struct data *data, char *buffer)
@@ -194,10 +188,20 @@ print_data_benchmark (char *title, struct data *data, char *buffer)
            _median, _mean, _stddevp, _bw, _rc, _rc_elem);
 }
 
+/* save header of accuracy measure in buffer */
+void
+print_header_accuracy (char *buffer)
+{
+  sprintf (buffer, "%s %25s; %13s; %13s\n", buffer, "title", "accuracy mean",
+           "accuracy RMS");
+}
+
 /* add formated data into buffer */
 void
 print_data_accuracy (char *title, char *buffer, struct accuracy *accuracy)
 {
   double _accuracy = accuracy->accuracy;
-  sprintf (buffer, "%s %20s; %le;\n", buffer, title, _accuracy);
+  double _rms = accuracy->RMS;
+
+  sprintf (buffer, "%s %25s; %13le; %13le\n", buffer, title, _accuracy, _rms);
 }

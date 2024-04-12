@@ -54,12 +54,14 @@ main (int argc, char *argv[])
 
   save_data (NULL, benchmark_buffer);
 
+  puts ("\n");
+
   struct accuracy *accuracy;
   ALLOC (accuracy, 1);
 
   print_header_accuracy (accuracy_buffer);
 
-  driver_inv_matrix_accuracy ("Matrix inversion", accuracy_buffer,
+  driver_inv_matrix_accuracy ("Inversion Gauss-Jordan", accuracy_buffer,
                               inve_matrix_gauss_jordan, accuracy,
                               _matrix_size);
 

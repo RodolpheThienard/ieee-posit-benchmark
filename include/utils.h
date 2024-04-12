@@ -37,7 +37,9 @@ struct data
 
 struct accuracy
 {
-  double accuracy;
+  double accuracy, RMS;
+};
+
 };
 
 extern double get_elapsedtime (void);
