@@ -33,5 +33,5 @@ driver_cuda_fp64_benchmark (char *title, char *buffer, void (*kernel) (double*, 
 {
   DRIVER_BODY_CUDA (kernel, a, b, c, matrix_size);
   formatting_data(data);
-  print_data(title, data, buffer);
+  print_data_benchmark(title, data, buffer);
 }

@@ -37,7 +37,7 @@ driver_fp32_benchmark (char *title, char *buffer, void (*kernel) (),
 
   DRIVER_BODY_BENCHMARK (kernel, a_32, b_32, c_32, matrix_size);
   formatting_data (data);
-  print_data (title, data, buffer);
+  print_data_benchmark (title, data, buffer);
 
   free (a_32);
   free (b_32);
@@ -59,7 +59,7 @@ driver_fp32_vector_benchmark (char *title, char *buffer, void (*kernel) (),
 
   DRIVER_BODY_BENCHMARK (kernel, a_32, b_32, matrix_size);
   formatting_data (data);
-  print_data (title, data, buffer);
+  print_data_benchmark (title, data, buffer);
 
   free (a_32);
   free (b_32);
@@ -81,7 +81,7 @@ driver_fp64_benchmark (char *title, char *buffer, void (*kernel) (),
 
   DRIVER_BODY_BENCHMARK (kernel, a_64, b_64, c_64, matrix_size);
   formatting_data (data);
-  print_data (title, data, buffer);
+  print_data_benchmark (title, data, buffer);
 
   free (a_64);
   free (b_64);

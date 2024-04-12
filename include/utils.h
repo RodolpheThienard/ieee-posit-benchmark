@@ -35,15 +35,22 @@ struct data
   uint64_t RC[33];
 };
 
+struct accuracy
+{
+  double accuracy;
+};
+
 extern double get_elapsedtime (void);
 extern void sort_double (double *restrict);
 extern void sort_uint64 (uint64_t *restrict);
 extern double mean (double *restrict);
 extern double stddev (double *restrict, double);
-extern void print_data (char *, struct data *, char *);
+extern void print_data_benchmark (char *, struct data *, char *);
 extern void save_data (char *, char *);
 extern uint64_t rdtsc ();
-extern void print_header (char *, long);
+extern void print_header_benchmark (char *, long);
 extern void formatting_data (struct data *);
 extern void print_matrix (double *, int, int);
 extern void set_identity_matrix (double *, int, int);
+extern void print_header_accuracy (char *);
+extern void print_data_accuracy (char *, char *, struct accuracy *);

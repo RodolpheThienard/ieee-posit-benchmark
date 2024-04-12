@@ -26,7 +26,7 @@ main (int argc, char *argv[])
   char *accuracy_buffer;
   ALLOC (benchmark_buffer, 200 * 11);
   ALLOC (accuracy_buffer, 200 * 1);
-  print_header (benchmark_buffer, _matrix_size_2 * 2);
+  print_header_benchmark (benchmark_buffer, _matrix_size_2 * 2);
 
   data->type = sizeof (float);
   driver_fp32_benchmark ("IEEE 32bits add", benchmark_buffer, ieee_32bits_add,
@@ -54,8 +54,16 @@ main (int argc, char *argv[])
 
   save_data (NULL, benchmark_buffer);
 
+  struct accuracy *accuracy;
+  ALLOC (accuracy, 1);
+
+  print_header_accuracy (accuracy_buffer);
+
   driver_inv_matrix_accuracy ("Matrix inversion", accuracy_buffer,
-                              inve_matrix_gauss_jordan, data, _matrix_size);
+                              inve_matrix_gauss_jordan, accuracy,
+                              _matrix_size);
+
+  save_data (NULL, accuracy_buffer);
 
   free (data);
 

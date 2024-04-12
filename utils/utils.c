@@ -87,13 +87,19 @@ med_min (double med, double min)
 
 /* save header of benchmark measure in buffer */
 void
-print_header (char *buffer, long _matrix_size)
+print_header_benchmark (char *buffer, long _matrix_size)
 {
   sprintf (
       buffer, "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; %16s\n",
       buffer, "title", (_matrix_size > (1 << 20)) ? "buf (MiB)" : "buf (KiB)",
       "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
       "Cycles", "Cycles/m-element");
+}
+/* save header of accuracy measure in buffer */
+void
+print_header_accuracy (char *buffer)
+{
+  sprintf (buffer, "%s %20s; %13s\n", buffer, "title", "accuracy");
 }
 
 /* process data stored in struct data
@@ -164,7 +170,7 @@ convertion (double number)
 
 /* add formated data into buffer */
 void
-print_data (char *title, struct data *data, char *buffer)
+print_data_benchmark (char *title, struct data *data, char *buffer)
 {
 
   double _min = data->samples[0];
@@ -186,5 +192,12 @@ print_data (char *title, struct data *data, char *buffer)
            "%13.3lf; %13.3lu; %16.3lf \n",
            buffer, title, convertion (_matrix_size * _data_size), _min, _max,
            _median, _mean, _stddevp, _bw, _rc, _rc_elem);
-  return;
+}
+
+/* add formated data into buffer */
+void
+print_data_accuracy (char *title, char *buffer, struct accuracy *accuracy)
+{
+  double _accuracy = accuracy->accuracy;
+  sprintf (buffer, "%s %20s; %le;\n", buffer, title, _accuracy);
 }

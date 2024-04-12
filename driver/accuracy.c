@@ -5,7 +5,7 @@
 #define DRIVER_BODY_ACCURACY(fn, ...) kernel (__VA_ARGS__);
 
 // generic error calculation function
-#define compute_err(a, b, N)                                                  \
+#define compute_err_accuracy(a, b, N, err)                                    \
   int i = 0;                                                                  \
   err = 0.0;                                                                  \
   for (i = 0; i < N; i++)                                                     \
@@ -21,11 +21,11 @@
    check error between computed identity matrix and real identity matrix */
 void
 driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
-                            struct data *data, uint64_t matrix_size)
+                            struct accuracy *accuracy, uint64_t matrix_size)
 {
   // initialisation matrix
   long _matrix_size_2 = matrix_size * matrix_size;
-  double *a_64, *b_64, *c_64, *d_64, err;
+  double *a_64, *b_64, *c_64, *d_64;
   ALLOC (a_64, _matrix_size_2);
   ALLOC (b_64, _matrix_size_2);
   ALLOC (c_64, _matrix_size_2);
@@ -37,10 +37,9 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
 
   ieee_64bits_gemm (a_64, b_64, c_64, matrix_size);
   set_identity_matrix (d_64, matrix_size, matrix_size);
-  compute_err (c_64, d_64, _matrix_size_2);
+  compute_err_accuracy (c_64, d_64, _matrix_size_2, accuracy->accuracy);
 
-  fprintf (stdout, "resultat : %3.20lf \nref : %3.20lf \n ERROR %le\n",
-           c_64[0], a_64[0], err);
+  print_data_accuracy (title, buffer, accuracy);
 
   free (a_64);
   free (b_64);
