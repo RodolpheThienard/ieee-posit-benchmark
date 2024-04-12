@@ -5,24 +5,48 @@
 #define DRIVER_BODY_ACCURACY(fn, ...) kernel (__VA_ARGS__);
 
 // generic error calculation function
-#define compute_err_accuracy(a, b, n, err)                                    \
-  i = 0;                                                                      \
-  err = 0.0;                                                                  \
-  for (i = 0; i < n; i++)                                                     \
-    {                                                                         \
-      err += a[i] - b[i];                                                     \
-    }                                                                         \
-  err /= n;
+double
+compute_err_accuracy (double *a, double *b, int n)
+{
+  int i = 0;
+  double err = 0.0;
+  for (i = 0; i < n; i++)
+    {
+      err += a[i] - b[i];
+    }
+  return (err / n);
+}
 
-#define RMS(a, b, n, err)                                                     \
-  i = 0;                                                                      \
-  err = 0.0;                                                                  \
-  for (i = 0; i < n; i++)                                                     \
-    {                                                                         \
-      err += (a[i] - b[i]) * (a[i] - b[i]);                                   \
-    }                                                                         \
-  err /= n;                                                                   \
-  err = sqrt (err);
+double
+RMS (double *a, double *b, int n)
+{
+  int i = 0;
+  double err = 0.0;
+  for (i = 0; i < n; i++)
+    {
+      err += (a[i] - b[i]) * (a[i] - b[i]);
+    }
+  err /= n;
+  return sqrt (err);
+}
+
+double
+forward_error (double *a, double *b, int n)
+{
+  int i = 0;
+  double err = 0.0;
+  for (i = 0; i < n; i++)
+    {
+      err += (a[i] - b[i]) / b[i];
+    }
+  return (err);
+}
+
+double
+backward_error (double *a, double *b, double *c, int n)
+{
+  return 0;
+}
 
 /* driver for inv matrix computation
    Alloc and init matrix
@@ -34,7 +58,6 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
                             struct accuracy *accuracy, uint64_t matrix_size)
 {
   // initialisation matrix
-  int i;
   long _matrix_size_2 = matrix_size * matrix_size;
   double *a_64, *b_64, *c_64, *d_64;
   ALLOC (a_64, _matrix_size_2);
@@ -45,11 +68,21 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
   INIT (b_64, _matrix_size_2);
 
   DRIVER_BODY_ACCURACY (kernel, a_64, b_64, matrix_size);
+  fprintf (stdout, "%3.13lf; %3.13lf; %3.13lf; %3.13lf\n", a_64[0], b_64[0],
+           c_64[0], d_64[0]);
 
-  ieee_64bits_gemm (a_64, b_64, c_64, matrix_size);
-  set_identity_matrix (d_64, matrix_size, matrix_size);
-  compute_err_accuracy (c_64, d_64, _matrix_size_2, accuracy->accuracy);
-  RMS (c_64, d_64, _matrix_size_2, accuracy->RMS);
+  set_identity_matrix (c_64, matrix_size, matrix_size);
+  ieee_64bits_gemm (c_64, b_64, d_64, matrix_size);
+  DRIVER_BODY_ACCURACY (kernel, d_64, b_64, matrix_size);
+
+  accuracy->accuracy = compute_err_accuracy (a_64, b_64, _matrix_size_2);
+  accuracy->RMS = RMS (a_64, b_64, _matrix_size_2);
+
+  accuracy->forward_error = forward_error (a_64, b_64, _matrix_size_2);
+  accuracy->backward_error = backward_error (a_64, b_64, c_64, _matrix_size_2);
+
+  fprintf (stdout, "%3.13lf; %3.13lf; %3.13lf; %3.13lf\n", a_64[0], b_64[0],
+           c_64[0], d_64[0]);
 
   print_data_accuracy (title, buffer, accuracy);
 

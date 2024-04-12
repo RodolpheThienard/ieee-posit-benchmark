@@ -110,7 +110,6 @@ save_data (char *filename, char *buffer)
     }
 }
 
-
 /* debug function print matrix n*m */
 void
 print_matrix (double *a, int n, int m)
@@ -192,8 +191,8 @@ print_data_benchmark (char *title, struct data *data, char *buffer)
 void
 print_header_accuracy (char *buffer)
 {
-  sprintf (buffer, "%s %25s; %13s; %13s\n", buffer, "title", "accuracy mean",
-           "accuracy RMS");
+  sprintf (buffer, "%s %25s; %13s; %13s; %13s; %13s\n", buffer, "title",
+           "accuracy mean", "accuracy RMS", "forward error", "backward error");
 }
 
 /* add formated data into buffer */
@@ -202,6 +201,9 @@ print_data_accuracy (char *title, char *buffer, struct accuracy *accuracy)
 {
   double _accuracy = accuracy->accuracy;
   double _rms = accuracy->RMS;
+  double _forward_err = accuracy->forward_error;
+  double _backward_err = accuracy->backward_error;
 
-  sprintf (buffer, "%s %25s; %13le; %13le\n", buffer, title, _accuracy, _rms);
+  sprintf (buffer, "%s %25s; %13le; %13le; %13le; %13le\n", buffer, title,
+           _accuracy, _rms, _forward_err, _backward_err);
 }
