@@ -6,10 +6,13 @@ add_compile_options(
   -g
 )
 
+# Global utils needed
 FILE(GLOB utils utils/*.c)
-FILE(GLOB ieee kernels/ieee/*.c)
 FILE(GLOB driver driver/*.c)
+
+# IEEE compilation
 FILE(GLOB ieee_test tests/ieee/main.c)
+FILE(GLOB ieee kernels/ieee/*.c)
 
 ADD_EXECUTABLE(ieee_main 
   ${ieee_test}
@@ -18,7 +21,28 @@ ADD_EXECUTABLE(ieee_main
   ${ieee}
 )
 
-FILE(GLOB racer kernels/racer/*.c)
-FILE(GLOB cuda kernels/cuda/*.cu)
+target_link_libraries(ieee_main -lm)
 
-target_link_libraries(ieee_main m)
+# CUDA compilation 
+FILE(GLOB cuda kernels/cuda/*.cu)
+FILE(GLOB cuda_test tests/cuda/main.cu)
+
+set(CMAKE_CUDA_HOST_COMPILER nvcc)
+set(CMAKE_CUDA_COMPILER nvcc)
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lm -gencode arch=compute_52,code=sm_52 )
+
+find_package(CUDA QUIET REQUIRED)
+cuda_add_executable(cuda_main
+  ${cuda_test}
+  ${utils}
+  ${driver}
+  ${cuda}
+  
+)
+
+
+# RACER compilation
+
+FILE(GLOB racer kernels/racer/*.c)
+
+
