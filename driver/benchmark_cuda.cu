@@ -27,7 +27,7 @@ extern "C" {
 
   
 void
-driver_cuda_fp64 (char *title, char *buffer, void (*kernel) (double*, double*, double*, int), struct data *data,
+driver_cuda_fp64_benchmark (char *title, char *buffer, void (*kernel) (double*, double*, double*, int), struct data *data,
                   double * a, double *b, double *c,
                   int matrix_size)
 {

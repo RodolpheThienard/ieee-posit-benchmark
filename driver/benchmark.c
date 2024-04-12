@@ -2,7 +2,7 @@
 
 /// Utility macro defining the body of a driver function that benchmarks a
 /// given routine.
-#define DRIVER_BODY(fn, ...)                                                  \
+#define DRIVER_BODY_BENCHMARK(fn, ...)                                        \
   double init_time, end_time;                                                 \
   uint64_t begin_register, end_register;                                      \
   for (uint32_t stability = 0; stability < 33; stability++)                   \
@@ -22,33 +22,68 @@
 
 //
 void
-driver_fp32 (char *title, char *buffer, void (*kernel) (), struct data *data,
-             float *restrict a_32, float *restrict b_32, float *restrict c_32,
-             uint64_t matrix_size)
+driver_fp32_benchmark (char *title, char *buffer, void (*kernel) (),
+                       struct data *data, uint64_t matrix_size)
 {
-  DRIVER_BODY (kernel, a_32, b_32, c_32, matrix_size);
+
+  // initialisation matrix
+  long _matrix_size_2 = matrix_size * matrix_size;
+  float *a_32, *b_32, *c_32;
+  ALLOC (a_32, _matrix_size_2);
+  ALLOC (b_32, _matrix_size_2);
+  ALLOC (c_32, _matrix_size_2);
+  INIT (a_32, matrix_size);
+  INIT (b_32, matrix_size);
+
+  DRIVER_BODY_BENCHMARK (kernel, a_32, b_32, c_32, matrix_size);
   formatting_data (data);
   print_data (title, data, buffer);
+
+  free (a_32);
+  free (b_32);
+  free (c_32);
 }
 
 //
 void
-driver_fp32_vector (char *title, char *buffer, void (*kernel) (),
-                    struct data *data, float *restrict a_32,
-                    float *restrict b_32, uint64_t matrix_size)
+driver_fp32_vector_benchmark (char *title, char *buffer, void (*kernel) (),
+                              struct data *data, uint64_t matrix_size)
 {
-  DRIVER_BODY (kernel, a_32, b_32, matrix_size);
+  // initialisation matrix
+  long _matrix_size_2 = matrix_size * matrix_size;
+  float *a_32, *b_32;
+  ALLOC (a_32, _matrix_size_2);
+  ALLOC (b_32, _matrix_size_2);
+  INIT (a_32, matrix_size);
+  INIT (b_32, matrix_size);
+
+  DRIVER_BODY_BENCHMARK (kernel, a_32, b_32, matrix_size);
   formatting_data (data);
   print_data (title, data, buffer);
+
+  free (a_32);
+  free (b_32);
 }
 
 //
 void
-driver_fp64 (char *title, char *buffer, void (*kernel) (), struct data *data,
-             double *restrict a_64, double *restrict b_64,
-             double *restrict c_64, uint64_t matrix_size)
+driver_fp64_benchmark (char *title, char *buffer, void (*kernel) (),
+                       struct data *data, uint64_t matrix_size)
 {
-  DRIVER_BODY (kernel, a_64, b_64, c_64, matrix_size);
+  // initialisation matrix
+  long _matrix_size_2 = matrix_size * matrix_size;
+  double *a_64, *b_64, *c_64;
+  ALLOC (a_64, _matrix_size_2);
+  ALLOC (b_64, _matrix_size_2);
+  ALLOC (c_64, _matrix_size_2);
+  INIT (a_64, matrix_size);
+  INIT (b_64, matrix_size);
+
+  DRIVER_BODY_BENCHMARK (kernel, a_64, b_64, c_64, matrix_size);
   formatting_data (data);
   print_data (title, data, buffer);
+
+  free (a_64);
+  free (b_64);
+  free (c_64);
 }

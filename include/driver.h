@@ -1,16 +1,19 @@
 #pragma once
 #include "utils.h"
 
-extern void driver_fp32 (char *, char *, void (*) (), struct data *, float *,
-                         float *, float *, uint64_t);
+/// BENCHMARK
+// ieee
+extern void driver_fp32_benchmark (char *, char *, void (*) (), struct data *,
+                                   uint64_t);
 
-extern void driver_fp32_vector (char *, char *, void (*) (), struct data *,
-                                float *, float *, uint64_t);
+extern void driver_fp32_vector_benchmark (char *, char *, void (*) (),
+                                          struct data *, uint64_t);
 
-extern void driver_fp64 (char *, char *, void (*) (), struct data *, double *,
-                         double *, double *, uint64_t);
+extern void driver_fp64_benchmark (char *, char *, void (*) (), struct data *,
+                                   uint64_t);
 
-extern void driver_cuda_fp64 (char *, char *,
-                              void (*) (double *, double *, double *, int),
-                              struct data *, double *, double *, double *,
-                              int);
+// Cuda
+extern void driver_cuda_fp64_benchmark (char *, char *,
+                                        void (*) (double *, double *, double *,
+                                                  int),
+                                        struct data *, int);

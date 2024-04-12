@@ -1,6 +1,7 @@
 #pragma once
 #include "utils.h"
 
+/// BENCHMARK
 // IEEE
 void ieee_32bits_add (float *a, float *b, float *c, uint64_t n);
 void ieee_32bits_mul (float *a, float *b, float *c, uint64_t n);
