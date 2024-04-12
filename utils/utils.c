@@ -116,6 +116,39 @@ save_data (char *filename, char *buffer)
     }
 }
 
+
+// debug function
+void
+print_matrix (double *a, int n, int m)
+{
+  int i, j;
+  for (i = 0; i < n; i++)
+    {
+      for (j = 0; j < m; j++)
+        printf ("%lf ", a[i * n + j]);
+      printf ("\n");
+    }
+}
+
+void
+set_identity_matrix (double *identity, int n, int m)
+{
+  for (int i = 0; i < n; i++)
+    {
+      for (int j = 0; j < m; j++)
+        {
+          if (i == j)
+            {
+              identity[i * n + j] = 1.0;
+            }
+          else
+            {
+              identity[i * n + j] = 0.0;
+            }
+        }
+    }
+}
+
 double
 convertion (double number)
 {

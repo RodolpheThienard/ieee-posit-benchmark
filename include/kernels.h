@@ -21,3 +21,6 @@ void ieee_64bits_gemm (double *a, double *b, double *c, uint64_t n);
 void cuda_64bits_gemm_ijk (double *a, double *b, double *c, int n);
 void cuda_64bits_gemm_jik (double *A, double *B, double *C, int N);
 void cuda_64bits_gemm_bloc (double *A, double *B, double *C, int N);
+
+/// ACCURACY
+void inve_matrix_gauss_jordan (double *, double *, int);

@@ -54,6 +54,9 @@ main (int argc, char *argv[])
 
   save_data (NULL, benchmark_buffer);
 
+  driver_inv_matrix_accuracy ("Matrix inversion", accuracy_buffer,
+                              inve_matrix_gauss_jordan, data, _matrix_size);
+
   free (data);
 
   return 0;

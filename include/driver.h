@@ -17,3 +17,7 @@ extern void driver_cuda_fp64_benchmark (char *, char *,
                                         void (*) (double *, double *, double *,
                                                   int),
                                         struct data *, int);
+
+/// ACCURACY
+extern void driver_inv_matrix_accuracy (char *, char *, void (*) (),
+                                        struct data *, int);

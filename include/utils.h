@@ -45,3 +45,5 @@ extern void save_data (char *, char *);
 extern uint64_t rdtsc ();
 extern void print_header (char *, long);
 extern void formatting_data (struct data *);
+extern void print_matrix (double *, int, int);
+extern void set_identity_matrix (double *, int, int);
