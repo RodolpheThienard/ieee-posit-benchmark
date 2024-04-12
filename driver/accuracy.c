@@ -14,6 +14,11 @@
     }                                                                         \
   err /= N;
 
+/* driver for inv matrix computation
+   Alloc and init matrix
+   compute with given kernel
+   compute identity matrix from A * A⁻¹
+   check error between computed identity matrix and real identity matrix */
 void
 driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
                             struct data *data, uint64_t matrix_size)
@@ -29,6 +34,7 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
   INIT (b_64, _matrix_size_2);
 
   DRIVER_BODY_ACCURACY (kernel, a_64, b_64, matrix_size);
+
   ieee_64bits_gemm (a_64, b_64, c_64, matrix_size);
   set_identity_matrix (d_64, matrix_size, matrix_size);
   compute_err (c_64, d_64, _matrix_size_2);

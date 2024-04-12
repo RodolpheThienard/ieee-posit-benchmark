@@ -20,6 +20,7 @@ Implementation of a benchmark strategy to be able to measure different metrics o
 - Dot product
 - Sqrt
 - Sum of sqrt
+- Inverse matrix 
 
 Posit was implemented on a RacEr architecture
 No library yet

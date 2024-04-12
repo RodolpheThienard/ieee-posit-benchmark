@@ -20,7 +20,7 @@ get_elapsedtime (void)
   return (double)st.tv_sec + get_sub_seconde (st);
 }
 
-//
+/* sort function */
 void
 sort_double (double *a)
 {
@@ -36,7 +36,7 @@ sort_double (double *a)
         }
 }
 
-//
+/* sort function */
 void
 sort_uint64 (uint64_t *a)
 {
@@ -52,7 +52,7 @@ sort_uint64 (uint64_t *a)
         }
 }
 
-//
+/* computed the mean of samples */
 double
 mean (double *a)
 {
@@ -64,7 +64,7 @@ mean (double *a)
   return m / 33.;
 }
 
-//
+/* return the standard deviation of computed samples */
 double
 stddev (double *a, double mean)
 {
@@ -78,12 +78,14 @@ stddev (double *a, double mean)
   return sqrt (d);
 }
 
+/* not used, alternative of stddev */
 double
 med_min (double med, double min)
 {
   return (med - min) / min;
 }
 
+/* save header of benchmark measure in buffer */
 void
 print_header (char *buffer, long _matrix_size)
 {
@@ -94,6 +96,8 @@ print_header (char *buffer, long _matrix_size)
       "Cycles", "Cycles/m-element");
 }
 
+/* process data stored in struct data
+   compute mean, stddev, and sort samples, RC */
 void
 formatting_data (struct data *data)
 {
@@ -103,6 +107,7 @@ formatting_data (struct data *data)
   data->stddev = stddev (data->samples, data->mean);
 }
 
+/* save buffer into file */
 void
 save_data (char *filename, char *buffer)
 {
@@ -117,7 +122,7 @@ save_data (char *filename, char *buffer)
 }
 
 
-// debug function
+/* debug function print matrix n*m */
 void
 print_matrix (double *a, int n, int m)
 {
@@ -130,6 +135,7 @@ print_matrix (double *a, int n, int m)
     }
 }
 
+/* debug function set identity matrix n*m */
 void
 set_identity_matrix (double *identity, int n, int m)
 {
@@ -149,13 +155,14 @@ set_identity_matrix (double *identity, int n, int m)
     }
 }
 
+/* convert number into Kio or Mio */
 double
 convertion (double number)
 {
   return (number > (1 << 20)) ? number / 1024.0 / 1024.0 : number / 1024.0;
 }
 
-//
+/* add formated data into buffer */
 void
 print_data (char *title, struct data *data, char *buffer)
 {
