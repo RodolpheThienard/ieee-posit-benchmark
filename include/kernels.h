@@ -3,26 +3,41 @@
 
 /// BENCHMARK
 // IEEE
-void ieee_32bits_add (float *a, float *b, float *c, uint64_t n);
-void ieee_32bits_mul (float *a, float *b, float *c, uint64_t n);
-void ieee_32bits_div (float *a, float *b, float *c, uint64_t n);
-void ieee_32bits_sqrt (float *a, float *b, float *c, uint64_t n);
-void ieee_32bits_dp (float *a, float *b, float *c, uint64_t n);
-void ieee_32bits_gemm (float *a, float *b, float *c, uint64_t n);
+void ieee_32bits_add (float *matrix1, float *matrix2, float *matrix3,
+                      uint64_t size);
+void ieee_32bits_mul (float *matrix1, float *matrix2, float *matrix3,
+                      uint64_t size);
+void ieee_32bits_div (float *matrix1, float *matrix2, float *matrix3,
+                      uint64_t size);
+void ieee_32bits_sqrt (float *matrix1, float *matrix2, float *matrix3,
+                       uint64_t size);
+void ieee_32bits_dp (float *matrix1, float *matrix2, float *matrix3,
+                     uint64_t size);
+void ieee_32bits_gemm (float *matrix1, float *matrix2, float *matrix3,
+                       uint64_t size);
 
-void ieee_64bits_add (double *a, double *b, double *c, uint64_t n);
-void ieee_64bits_mul (double *a, double *b, double *c, uint64_t n);
-void ieee_64bits_div (double *a, double *b, double *c, uint64_t n);
-void ieee_64bits_sqrt (double *a, double *b, double *c, uint64_t n);
-void ieee_64bits_dp (double *a, double *b, double *c, uint64_t n);
-void ieee_64bits_gemm (double *a, double *b, double *c, uint64_t n);
+void ieee_64bits_add (double *matrix1, double *matrix2, double *matrix3,
+                      uint64_t size);
+void ieee_64bits_mul (double *matrix1, double *matrix2, double *matrix3,
+                      uint64_t size);
+void ieee_64bits_div (double *matrix1, double *matrix2, double *matrix3,
+                      uint64_t size);
+void ieee_64bits_sqrt (double *matrix1, double *matrix2, double *matrix3,
+                       uint64_t size);
+void ieee_64bits_dp (double *matrix1, double *matrix2, double *matrix3,
+                     uint64_t size);
+void ieee_64bits_gemm (double *matrix1, double *matrix2, double *matrix3,
+                       uint64_t size);
 
 // CUDA
-void cuda_64bits_gemm_ijk (double *a, double *b, double *c, int n);
-void cuda_64bits_gemm_jik (double *A, double *B, double *C, int N);
-void cuda_64bits_gemm_bloc (double *A, double *B, double *C, int N);
+void cuda_64bits_gemm_ijk (double *matrix1, double *matrix2, double *matrix3,
+                           uint64_t size);
+void cuda_64bits_gemm_jik (double *matrix1, double *matrix2, double *matrix3,
+                           uint64_t size);
+void cuda_64bits_gemm_bloc (double *matrix1, double *matrix2, double *matrix3,
+                            uint64_t size);
 
 /// ACCURACY
-void inve_matrix_gauss_jordan (double *, double *, int);
-void logarithm_taylor (double *, int);
-void log_libmath (double *, int);
+void inve_matrix_gauss_jordan (double *matrix1, double *matrix2, int size);
+void logarithm_taylor (double *vector, int size);
+void log_libmath (double *vector, int size);

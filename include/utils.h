@@ -41,19 +41,22 @@ struct accuracy
 };
 
 extern double get_elapsedtime (void);
-extern void sort_double (double *restrict);
-extern void sort_uint64 (uint64_t *restrict);
-extern double mean (double *restrict);
-extern double stddev (double *restrict, double);
-extern void print_data_benchmark (char *, struct data *, char *);
-extern void save_data (char *, char *);
-extern uint64_t rdtsc ();
-extern void print_header_benchmark (char *, long);
-extern void formatting_data (struct data *);
-extern void print_matrix (double *, int, int);
-extern void set_identity_matrix (double *, int, int);
-extern void print_header_accuracy (char *);
-extern void print_data_accuracy (char *, char *, struct accuracy *);
-extern double compute_err_accuracy (double *a, double *b, int n);
-extern double RMS (double *a, double *b, int n);
-extern double forward_error (double *a, double *b, int n);
+extern void sort_double (double *samples);
+extern void sort_uint64 (uint64_t *samples);
+extern double mean (double *samples);
+extern double stddev (double *samples, double mean);
+extern void print_data_benchmark (char *title, struct data *data,
+                                  char *buffer);
+extern void save_data (char *title, char *buffer);
+extern uint64_t rdtsc (void);
+extern void print_header_benchmark (char *buffer, long matrix_size);
+extern void formatting_data (struct data *data);
+extern void print_matrix (double *matrix, int row, int column);
+extern void set_identity_matrix (double *matrix, int row, int column);
+extern void print_header_accuracy (char *buffer);
+extern void print_data_accuracy (char *title, char *buffer,
+                                 struct accuracy *accuracy);
+extern double compute_err_accuracy (double *vector1, double *vector2,
+                                    int size);
+extern double RMS (double *vector1, double *vector2, int size);
+extern double forward_error (double *vector1, double *vector2, int size);

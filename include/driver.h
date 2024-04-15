@@ -3,24 +3,31 @@
 
 /// BENCHMARK
 // ieee
-extern void driver_fp32_benchmark (char *, char *, void (*) (), struct data *,
-                                   uint64_t);
+extern void driver_fp32_benchmark (char *title, char *buffer,
+                                   void (*kernel) (), struct data *data,
+                                   uint64_t matrix_size);
 
-extern void driver_fp32_vector_benchmark (char *, char *, void (*) (),
-                                          struct data *, uint64_t);
+extern void driver_fp32_vector_benchmark (char *title, char *buffer,
+                                          void (*kernel) (), struct data *data,
+                                          uint64_t matrix_size);
 
-extern void driver_fp64_benchmark (char *, char *, void (*) (), struct data *,
-                                   uint64_t);
+extern void driver_fp64_benchmark (char *title, char *buffer,
+                                   void (*kernel) (), struct data *data,
+                                   uint64_t matrix_size);
 
 // Cuda
-extern void driver_cuda_fp64_benchmark (char *, char *,
-                                        void (*) (double *, double *, double *,
-                                                  int),
-                                        struct data *, int);
+extern void
+driver_cuda_fp64_benchmark (char *title, char *buffer,
+                            void (*kernel) (double *, double *, double *, int),
+                            struct data *data, uint64_t matrix_size);
 
 /// ACCURACY
-extern void driver_inv_matrix_accuracy (char *, char *, void (*) (),
-                                        struct accuracy *, int);
+extern void driver_inv_matrix_accuracy (char *title, char *buffer,
+                                        void (*kernel) (),
+                                        struct accuracy *accuracy,
+                                        uint64_t matrix_size);
 
-extern void driver_compare_accuracy (char *, char *, void (*) (), void (*) (),
-                                     struct accuracy *, uint64_t);
+extern void driver_compare_accuracy (char *title, char *buffer,
+                                     void (*kernel1) (), void (*kernel2) (),
+                                     struct accuracy *accuracy,
+                                     uint64_t matrix_size);

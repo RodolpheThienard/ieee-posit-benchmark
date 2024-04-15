@@ -11,7 +11,7 @@
       begin_register = rdtsc ();                                              \
       for (uint32_t rep = 0; rep < data->repetition; rep++)                   \
         {                                                                     \
-          kernel (__VA_ARGS__);                                               \
+          fn (__VA_ARGS__);                                                   \
         }                                                                     \
       end_register = rdtsc ();                                                \
       end_time = get_elapsedtime ();                                          \
