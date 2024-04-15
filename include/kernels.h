@@ -24,3 +24,5 @@ void cuda_64bits_gemm_bloc (double *A, double *B, double *C, int N);
 
 /// ACCURACY
 void inve_matrix_gauss_jordan (double *, double *, int);
+void logarithm_taylor (double *, int);
+void log_libmath (double *, int);

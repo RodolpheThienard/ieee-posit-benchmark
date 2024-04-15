@@ -2,51 +2,21 @@
 #include "../include/utils.h"
 
 // TODO
-#define DRIVER_BODY_ACCURACY(fn, ...) kernel (__VA_ARGS__);
-
-// generic error calculation function
-double
-compute_err_accuracy (double *a, double *b, int n)
-{
-  int i = 0;
-  double err = 0.0;
-  for (i = 0; i < n; i++)
-    {
-      err += a[i] - b[i];
-    }
-  return (err / n);
-}
-
-double
-RMS (double *a, double *b, int n)
-{
-  int i = 0;
-  double err = 0.0;
-  for (i = 0; i < n; i++)
-    {
-      err += (a[i] - b[i]) * (a[i] - b[i]);
-    }
-  err /= n;
-  return sqrt (err);
-}
-
-double
-forward_error (double *a, double *b, int n)
-{
-  int i = 0;
-  double err = 0.0;
-  for (i = 0; i < n; i++)
-    {
-      err += (a[i] - b[i]) / b[i];
-    }
-  return (err);
-}
-
-double
-backward_error (double *a, double *b, double *c, int n)
-{
-  return 0;
-}
+#define DRIVER_BODY_ACCURACY(fn, ...)                                         \
+  {                                                                           \
+    fn (__VA_ARGS__);                                                         \
+    accuracy->accuracy = compute_err_accuracy (a_64, b_64, _matrix_size_2);   \
+    accuracy->RMS = RMS (a_64, b_64, _matrix_size_2);                         \
+    accuracy->forward_error = forward_error (a_64, b_64, _matrix_size_2);     \
+  }
+#define DRIVER_BODY_COMPARE_ACCURACY(fn, fn2, a, b, size)                     \
+  {                                                                           \
+    fn (a, size);                                                             \
+    fn2 (b, size);                                                            \
+    accuracy->accuracy = compute_err_accuracy (a_64, b_64, size);             \
+    accuracy->RMS = RMS (a_64, b_64, size);                                   \
+    accuracy->forward_error = forward_error (a_64, b_64, size);               \
+  }
 
 /* driver for inv matrix computation
    Alloc and init matrix
@@ -68,21 +38,10 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
   INIT (b_64, _matrix_size_2);
 
   DRIVER_BODY_ACCURACY (kernel, a_64, b_64, matrix_size);
-  fprintf (stdout, "%3.13lf; %3.13lf; %3.13lf; %3.13lf\n", a_64[0], b_64[0],
-           c_64[0], d_64[0]);
 
   set_identity_matrix (c_64, matrix_size, matrix_size);
   ieee_64bits_gemm (c_64, b_64, d_64, matrix_size);
   DRIVER_BODY_ACCURACY (kernel, d_64, b_64, matrix_size);
-
-  accuracy->accuracy = compute_err_accuracy (a_64, b_64, _matrix_size_2);
-  accuracy->RMS = RMS (a_64, b_64, _matrix_size_2);
-
-  accuracy->forward_error = forward_error (a_64, b_64, _matrix_size_2);
-  accuracy->backward_error = backward_error (a_64, b_64, c_64, _matrix_size_2);
-
-  fprintf (stdout, "%3.13lf; %3.13lf; %3.13lf; %3.13lf\n", a_64[0], b_64[0],
-           c_64[0], d_64[0]);
 
   print_data_accuracy (title, buffer, accuracy);
 
@@ -90,4 +49,33 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
   free (b_64);
   free (c_64);
   free (d_64);
+}
+
+/* driver to compare 2 vectors/matrix
+   Alloc and init vector/matrix
+   compute with given kernels
+   check error between the two kernels  */
+void
+driver_compare_accuracy (char *title, char *buffer, void (*kernel) (),
+                         void (*kernel_2) (), struct accuracy *accuracy,
+                         uint64_t matrix_size)
+{
+  double *a_64, *b_64;
+  ALLOC (a_64, matrix_size);
+  ALLOC (b_64, matrix_size);
+  INIT (a_64, matrix_size);
+
+  // copying init values
+  for (int i = 0; i < matrix_size; i++)
+    {
+      a_64[i] += drand48 ();
+      b_64[i] = a_64[i];
+    }
+
+  DRIVER_BODY_COMPARE_ACCURACY (kernel, kernel_2, a_64, b_64, matrix_size);
+
+  print_data_accuracy (title, buffer, accuracy);
+
+  free (a_64);
+  free (b_64);
 }

@@ -54,3 +54,6 @@ extern void print_matrix (double *, int, int);
 extern void set_identity_matrix (double *, int, int);
 extern void print_header_accuracy (char *);
 extern void print_data_accuracy (char *, char *, struct accuracy *);
+extern double compute_err_accuracy (double *a, double *b, int n);
+extern double RMS (double *a, double *b, int n);
+extern double forward_error (double *a, double *b, int n);

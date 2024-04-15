@@ -65,6 +65,10 @@ main (int argc, char *argv[])
                               inve_matrix_gauss_jordan, accuracy,
                               _matrix_size);
 
+  driver_compare_accuracy ("Compare LOG & Taylor", accuracy_buffer,
+                           logarithm_taylor, log_libmath, accuracy,
+                           _matrix_size);
+
   save_data (NULL, accuracy_buffer);
 
   free (data);

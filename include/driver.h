@@ -21,3 +21,6 @@ extern void driver_cuda_fp64_benchmark (char *, char *,
 /// ACCURACY
 extern void driver_inv_matrix_accuracy (char *, char *, void (*) (),
                                         struct accuracy *, int);
+
+extern void driver_compare_accuracy (char *, char *, void (*) (), void (*) (),
+                                     struct accuracy *, uint64_t);
