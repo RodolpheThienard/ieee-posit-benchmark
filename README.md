@@ -39,7 +39,8 @@ make ieee_main
 ```bash
 mkdir build
 cd build
-nvcc ../tests/cuda/main.cu ../kernels/Cuda/sgemm.cu ../driver/driver_cuda.cu ../utils/utils.c -lm -lcublas -o cuda_main
+cmake ..
+make cuda_main
 ./cuda_main <matrix-size> <meta-repetition>
 ```
 

@@ -102,9 +102,10 @@ print_matrix (double *a, int n, int m)
 void
 set_identity_matrix (double *identity, int n, int m)
 {
-  for (int i = 0; i < n; i++)
+  int i, j;
+  for (i = 0; i < n; i++)
     {
-      for (int j = 0; j < m; j++)
+      for (j = 0; j < m; j++)
         {
           if (i == j)
             {

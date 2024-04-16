@@ -45,7 +45,7 @@ init (struct system system, int N)
 
 
 int
-main (int argc, char *argv[])
+ma (int argc, char *argv[])
 {
   int N = 42;
   double *d_x, *d_y, *d_acceleration, *d_velocity;

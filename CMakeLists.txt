@@ -3,7 +3,7 @@ project(microbench)
 
 add_compile_options(
   -O3 -Wall -Wextra -Wpedantic -march=native 
-  -g
+  -gdwarf-5
 )
 
 # Global utils needed
@@ -24,22 +24,21 @@ ADD_EXECUTABLE(ieee_main
 target_link_libraries(ieee_main -lm)
 
 # CUDA compilation 
-FILE(GLOB cuda kernels/cuda/*.cu)
+FILE(GLOB driver_cuda driver/benchmark_cuda.c)
+FILE(GLOB cuda kernels/Cuda/gemm.cu)
 FILE(GLOB cuda_test tests/cuda/main.cu)
 
-set(CMAKE_CUDA_HOST_COMPILER nvcc)
-set(CMAKE_CUDA_COMPILER nvcc)
-set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lm -gencode arch=compute_52,code=sm_52 )
+# set(CMAKE_CUDA_HOST_COMPILER nvcc)
+# set(CMAKE_CUDA_COMPILER nvcc)
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm -gencode arch=compute_52,code=sm_52 )
 
-find_package(CUDA QUIET REQUIRED)
+find_package(CUDA REQUIRED)
 cuda_add_executable(cuda_main
   ${cuda_test}
   ${utils}
-  ${driver}
+  ${driver_cuda}
   ${cuda}
-  
 )
-
 
 # RACER compilation
 

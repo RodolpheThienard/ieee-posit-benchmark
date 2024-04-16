@@ -73,7 +73,7 @@ reduce (int *g_odata, int *g_idata, int n)
 }
 
 int
-main (int argc, char *argv[])
+ma (int argc, char *argv[])
 {
   cudaError_t err = cudaGetLastError ();
   int N = 2 << 10;

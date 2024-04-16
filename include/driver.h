@@ -16,10 +16,10 @@ extern void driver_fp64_benchmark (char *title, char *buffer,
                                    uint64_t matrix_size);
 
 // Cuda
-extern void
-driver_cuda_fp64_benchmark (char *title, char *buffer,
-                            void (*kernel) (double *, double *, double *, int),
-                            struct data *data, uint64_t matrix_size);
+void driver_cuda_fp64_benchmark (char *title, char *buffer,
+                                 void (*kernel) (double *, double *, double *,
+                                                 int),
+                                 struct data *data, uint64_t matrix_size);
 
 /// ACCURACY
 extern void driver_inv_matrix_accuracy (char *title, char *buffer,
