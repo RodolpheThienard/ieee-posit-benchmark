@@ -25,7 +25,7 @@
    check error between computed identity matrix and real identity matrix */
 void
 driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
-                            struct accuracy *accuracy, uint64_t matrix_size)
+                            struct accuracy *accuracy, int matrix_size)
 {
   // initialisation matrix
   long _matrix_size_2 = matrix_size * matrix_size;
@@ -58,7 +58,7 @@ driver_inv_matrix_accuracy (char *title, char *buffer, void (*kernel) (),
 void
 driver_compare_accuracy (char *title, char *buffer, void (*kernel) (),
                          void (*kernel_2) (), struct accuracy *accuracy,
-                         uint64_t matrix_size)
+                         int matrix_size)
 {
   double *a_64, *b_64;
   ALLOC (a_64, matrix_size);

@@ -56,7 +56,7 @@ print_data_benchmark (char *title, struct data *data, char *buffer)
   double _matrix_size = data->matrice_size;
   double _data_size = data->type;
   double _repetition = data->repetition;
-  uint64_t _rc = data->RC[16];
+  long _rc = data->RC[16];
 
   double _stddevp = (_stddev * 100.0) / _mean;
   double _rc_elem = _rc / _matrix_size;
