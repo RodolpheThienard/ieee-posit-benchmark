@@ -55,7 +55,7 @@ void driver_cuda_inv_matrix_accuracy(char *title, char *buffer,
   set_identity_matrix(C, matrix_size, matrix_size);
 
   cudaMemcpy(d_C, C, _matrix_size_2 * sizeof(double), cudaMemcpyHostToDevice);
-  cuda_64bits_gemm_jik(C, B, D, matrix_size);
+  ieee_64bits_gemm_bloc(C, B, D, matrix_size);
 
   DRIVER_BODY_ACCURACY_CUDA(kernel, d_D, d_B, matrix_size);
   cudaMemcpy(A, d_A, _matrix_size_2 * sizeof(double), cudaMemcpyDeviceToHost);

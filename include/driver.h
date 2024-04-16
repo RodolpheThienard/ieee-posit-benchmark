@@ -1,14 +1,17 @@
 #pragma once
 #include "utils.h"
+
 /// BENCHMARK
-void driver_fp32_benchmark (char *title, char *buffer, void (*kernel) (),
+void driver_fp32_benchmark (char *title, char *buffer,
+                            void (*kernel) (float *, float *, float *, int),
                             struct data *data, int matrix_size);
 
 void driver_fp32_vector_benchmark (char *title, char *buffer,
-                                   void (*kernel) (), struct data *data,
-                                   int matrix_size);
+                                   void (*kernel) (float *, float *, int),
+                                   struct data *data, int matrix_size);
 
-void driver_fp64_benchmark (char *title, char *buffer, void (*kernel) (),
+void driver_fp64_benchmark (char *title, char *buffer,
+                            void (*kernel) (double *, double *, double *, int),
                             struct data *data, int matrix_size);
 
 /// ACCURACY

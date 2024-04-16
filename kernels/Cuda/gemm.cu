@@ -1,5 +1,5 @@
 __global__ void
-cuda_64bits_gemm_jik (double *A, double *B, double *C, int N)
+ieee_64bits_gemm_jik (double *A, double *B, double *C, int N)
 {
   int j = blockIdx.x * blockDim.x + threadIdx.x;
   // Col
@@ -13,7 +13,7 @@ cuda_64bits_gemm_jik (double *A, double *B, double *C, int N)
 }
 
 __global__ void
-cuda_64bits_gemm_ijk (double *A, double *B, double *C, int N)
+ieee_64bits_gemm_ijk (double *A, double *B, double *C, int N)
 {
   int i = blockIdx.x * blockDim.x + threadIdx.x;
   // Col
@@ -27,7 +27,7 @@ cuda_64bits_gemm_ijk (double *A, double *B, double *C, int N)
 }
 
 __global__ void
-cuda_64bits_gemm_bloc (double *A, double *B, double *C, int N)
+ieee_64bits_gemm_bloc (double *A, double *B, double *C, int N)
 {
   int i = blockIdx.x * blockDim.x + threadIdx.x;
   int j = blockIdx.y * blockDim.y + threadIdx.y;
@@ -52,7 +52,7 @@ cuda_64bits_gemm_bloc (double *A, double *B, double *C, int N)
 }
 
 __global__ void
-cuda_inve_matrix_gauss_jordan (double *mat, double *inv, int n)
+inve_matrix_gauss_jordan (double *mat, double *inv, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   if (tid < n)

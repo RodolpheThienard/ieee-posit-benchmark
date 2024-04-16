@@ -50,7 +50,7 @@ main (int argc, char *argv[])
   driver_fp64_benchmark ("IEEE 64bits dp", benchmark_buffer, ieee_64bits_dp,
                          data, _matrix_size);
   driver_fp64_benchmark ("IEEE 64bits gemm", benchmark_buffer,
-                         ieee_64bits_gemm, data, _matrix_size);
+                         ieee_64bits_gemm_jik, data, _matrix_size);
 
   save_data (NULL, benchmark_buffer);
 
