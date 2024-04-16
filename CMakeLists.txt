@@ -30,7 +30,7 @@ FILE(GLOB cuda_test tests/cuda/main.cu)
 
 # set(CMAKE_CUDA_HOST_COMPILER nvcc)
 # set(CMAKE_CUDA_COMPILER nvcc)
-set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm -gencode arch=compute_52,code=sm_52 )
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm  )
 
 find_package(CUDA REQUIRED)
 cuda_add_executable(cuda_main
@@ -39,6 +39,7 @@ cuda_add_executable(cuda_main
   ${driver_cuda}
   ${cuda}
 )
+target_link_libraries(cuda_main ${CUDA_NVCC_FLAGS})
 
 # RACER compilation
 

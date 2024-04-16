@@ -43,6 +43,13 @@ cmake ..
 make cuda_main
 ./cuda_main <matrix-size> <meta-repetition>
 ```
+/!\ If error : "cannot find -lcublas" or "cannot find -lcudart" 
+check if LD_LIBRARY_PATH AND LIBRARY_PATH have "/path/to/your/cuda/lib64"
+if not, 
+```sh
+export LIBRARY_PATH="/path/to/your/cuda/lib64:${LIBRARY_PATH}"
+export LD_LIBRARY_PATH="/path/to/your/cuda/lib64:${LD_LIBRARY_PATH}"
+```
 
 ## RacEr compilation command :
 ```bash
