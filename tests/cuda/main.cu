@@ -1,10 +1,48 @@
 extern "C" {
   #include "../../include/utils.h"
-  #include "../../include/driver.h"
+  // #include "../../include/driver.h"
 }
   #include "../../include/cuda.h"
   #include "../../include/kernels.h"
 
+#define DRIVER_BODY_BENCHMARK_CUDA(kernel, ...) kernel (__VA_ARGS__)                                       
+void
+driver_cuda_fp64_benchmark (char *title, char *buffer,
+                            void (*kernel) (double *, double *, double *, int),
+                            struct data *data, int matrix_size)
+{
+  double *A, *B, *C, *d_A, *d_B, *d_C;
+  long _matrix_size_2 = matrix_size * matrix_size;
+  A = (double *)malloc (sizeof (double) * _matrix_size_2);
+  B = (double *)malloc (sizeof (double) * _matrix_size_2);
+  C = (double *)malloc (sizeof (double) * _matrix_size_2);
+
+  INIT (A, _matrix_size_2);
+  INIT (B, _matrix_size_2);
+  INIT (C, _matrix_size_2);
+
+  cublasHandle_t handle;
+  cublasCreate (&handle);
+  cudaMalloc (&d_A, _matrix_size_2 * sizeof (double));
+  cudaMalloc (&d_B, _matrix_size_2 * sizeof (double));
+  cudaMalloc (&d_C, _matrix_size_2 * sizeof (double));
+
+  cudaMemcpy (d_A, A, _matrix_size_2 * sizeof (double),
+              cudaMemcpyHostToDevice);
+  cudaMemcpy (d_B, B, _matrix_size_2 * sizeof (double),
+              cudaMemcpyHostToDevice);
+
+  DRIVER_BODY_BENCHMARK_CUDA (kernel, d_A, d_B, d_C, matrix_size);
+  formatting_data (data);
+  print_data_benchmark (title, data, buffer);
+
+  cudaFree (d_A);
+  cudaFree (d_B);
+  cudaFree (d_C);
+  free (A);
+  free (B);
+  free (C);
+}
 int
 main (int argc, char *argv[])
 {
@@ -24,8 +62,9 @@ main (int argc, char *argv[])
   output_buffer = (char *)malloc (sizeof (char) * 200 * 11);
   print_header_benchmark (output_buffer, _matrix_size_2 * 2);
   data->type = sizeof (double);
+  char test[] = "cuda gemm ijk";
 
-  driver_cuda_fp64_benchmark ("cuda gemm ijk", output_buffer, cuda_64bits_gemm_ijk, data,
+  driver_cuda_fp64_benchmark (test, output_buffer, cuda_64bits_gemm_ijk, data,
                               _matrix_size);
   // driver_cuda_fp64_benchmark ("cuda gemm jik", output_buffer, cuda_64bits_gemm_jik, data, 
   //                // N);
