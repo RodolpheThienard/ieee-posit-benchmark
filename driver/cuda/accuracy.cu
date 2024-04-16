@@ -1,9 +1,9 @@
 #include <cstdio>
 extern "C" {
-#include "../include/utils.h"
+#include "../../include/utils.h"
 }
-#include "../include/cuda.h"
-#include "../include/kernels.h"
+#include "../../include/cuda.h"
+#include "../../include/kernels.h"
 
 #define DRIVER_BODY_ACCURACY_CUDA(kernel, ...)                                 \
   {                                                                            \

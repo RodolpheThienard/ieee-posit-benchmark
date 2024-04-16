@@ -36,7 +36,7 @@ main (int argc, char *argv[])
   driver_fp32_benchmark ("IEEE 32bits sqrt", benchmark_buffer,
                          ieee_32bits_sqrt, data, _matrix_size);
   driver_fp32_benchmark ("IEEE 32bits dp", benchmark_buffer, ieee_32bits_dp,
-                         data, _matrix_size);
+                         data, _matrix_size_2);
   driver_fp32_benchmark ("IEEE 32bits gemm", benchmark_buffer,
                          ieee_32bits_gemm, data, _matrix_size);
 
@@ -48,7 +48,7 @@ main (int argc, char *argv[])
   driver_fp64_benchmark ("IEEE 64bits sqrt", benchmark_buffer,
                          ieee_64bits_sqrt, data, _matrix_size);
   driver_fp64_benchmark ("IEEE 64bits dp", benchmark_buffer, ieee_64bits_dp,
-                         data, _matrix_size);
+                         data, _matrix_size_2);
   driver_fp64_benchmark ("IEEE 64bits gemm", benchmark_buffer,
                          ieee_64bits_gemm_jik, data, _matrix_size);
 

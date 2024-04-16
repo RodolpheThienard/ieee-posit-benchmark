@@ -1,7 +1,7 @@
 extern "C" {
-  #include "../include/utils.h"
+  #include "../../include/utils.h"
 }
-  #include "../include/cuda.h"
+  #include "../../include/cuda.h"
 
 #define DRIVER_BODY_BENCHMARK_CUDA(kernel, ...)                                         \
   dim3 threadsPerBlock (32, 32);                                              \

@@ -1,5 +1,5 @@
-#include "../include/kernels.h"
-#include "../include/utils.h"
+#include "../../include/kernels.h"
+#include "../../include/utils.h"
 
 // TODO
 #define DRIVER_BODY_ACCURACY(fn, ...)                                         \

@@ -8,25 +8,25 @@ add_compile_options(
 
 # Global utils needed
 FILE(GLOB utils utils/*.c)
-FILE(GLOB driver driver/*.c)
 
 # IEEE compilation
-FILE(GLOB ieee_test tests/ieee/main.c)
-FILE(GLOB ieee kernels/ieee/*.c)
+FILE(GLOB x86_test tests/x86/*.c)
+FILE(GLOB x86_kernels kernels/x86/*.c)
+FILE(GLOB x86_driver driver/x86/*.c)
 
-ADD_EXECUTABLE(ieee_main 
-  ${ieee_test}
+ADD_EXECUTABLE(x86_main 
+  ${x86_test}
   ${utils} 
-  ${driver} 
-  ${ieee}
+  ${x86_driver} 
+  ${x86_kernels}
 )
 
-target_link_libraries(ieee_main -lm)
+target_link_libraries(x86_main -lm)
 
 # CUDA compilation 
-FILE(GLOB driver_cuda driver/*.cu)
-FILE(GLOB cuda kernels/Cuda/*.cu)
-FILE(GLOB cuda_test tests/cuda/main.cu)
+FILE(GLOB cuda_driver driver/cuda/*.cu)
+FILE(GLOB cuda_kernels kernels/cuda/*.cu)
+FILE(GLOB cuda_test tests/cuda/*.cu)
 
 # set(CMAKE_CUDA_HOST_COMPILER nvcc)
 # set(CMAKE_CUDA_COMPILER nvcc)
@@ -36,8 +36,8 @@ find_package(CUDA REQUIRED)
 cuda_add_executable(cuda_main
   ${cuda_test}
   ${utils}
-  ${driver_cuda}
-  ${cuda}
+  ${cuda_driver}
+  ${cuda_kernels}
 )
 target_link_libraries(cuda_main ${CUDA_NVCC_FLAGS})
 
