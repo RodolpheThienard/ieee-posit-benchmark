@@ -28,14 +28,14 @@ main (int argc, char *argv[])
 
   driver_fp64_benchmark ("ieee gemm ijk", output_buffer, ieee_64bits_gemm_ijk, data,
                               _matrix_size);
-  // driver_cuda_fp64_benchmark ("cuda gemm jik", output_buffer, cuda_64bits_gemm_jik, data, 
-  //                _matrix_size);
-  // driver_cuda_fp64_benchmark ("cuda gemm bloc", output_buffer, cuda_64bits_gemm_bloc, data, 
-  //                _matrix_size);
+  driver_fp64_benchmark ("ieee gemm jik", output_buffer, ieee_64bits_gemm_jik, data, 
+                 _matrix_size);
+  driver_fp64_benchmark ("ieee gemm bloc", output_buffer, ieee_64bits_gemm_bloc, data, 
+                 _matrix_size);
 
   print_header_accuracy(output_buffer);
 
-  // driver_cuda_inv_matrix_accuracy("Inversion Gauss Jordan", output_buffer , cuda_inve_matrix_gauss_jordan, accuracy, _matrix_size);
+  driver_inv_matrix_accuracy("Inversion Gauss Jordan", output_buffer , inve_matrix_gauss_jordan, accuracy, _matrix_size);
   driver_compare_accuracy("Log vs log Taylor", output_buffer , logarithm_taylor, log_libmath, accuracy, _matrix_size);
 
   save_data (NULL, output_buffer);

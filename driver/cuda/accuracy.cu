@@ -27,7 +27,7 @@ extern "C" {
    compute with given kernel
    compute identity matrix from A * A⁻¹
    check error between computed identity matrix and real identity matrix */
-void driver_cuda_inv_matrix_accuracy(char *title, char *buffer,
+void driver_inv_matrix_accuracy(char *title, char *buffer,
                                      void (*kernel)(double *, double *, int),
                                      struct accuracy *accuracy,
                                      int matrix_size) {
@@ -49,7 +49,6 @@ void driver_cuda_inv_matrix_accuracy(char *title, char *buffer,
 
   cudaMemcpy(d_A, A, _matrix_size_2 * sizeof(double), cudaMemcpyHostToDevice);
   cudaMemcpy(d_B, B, _matrix_size_2 * sizeof(double), cudaMemcpyHostToDevice);
-  fprintf(stdout, "ICI\n");
   DRIVER_BODY_ACCURACY_CUDA(kernel, d_A, d_B, matrix_size);
 
   set_identity_matrix(C, matrix_size, matrix_size);
