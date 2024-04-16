@@ -3,7 +3,7 @@ project(microbench)
 
 add_compile_options(
   -O3 -Wall -Wextra -Wpedantic -march=native 
-  -gdwarf-5
+  -gdwarf-4
 )
 
 # Global utils needed
@@ -24,13 +24,13 @@ ADD_EXECUTABLE(ieee_main
 target_link_libraries(ieee_main -lm)
 
 # CUDA compilation 
-FILE(GLOB driver_cuda driver/benchmark_cuda.c)
+FILE(GLOB driver_cuda driver/benchmark_cuda.cu)
 FILE(GLOB cuda kernels/Cuda/gemm.cu)
 FILE(GLOB cuda_test tests/cuda/main.cu)
 
 # set(CMAKE_CUDA_HOST_COMPILER nvcc)
 # set(CMAKE_CUDA_COMPILER nvcc)
-set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm  )
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm )
 
 find_package(CUDA REQUIRED)
 cuda_add_executable(cuda_main
