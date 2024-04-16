@@ -31,11 +31,11 @@ void ieee_64bits_gemm (double *matrix1, double *matrix2, double *matrix3,
 
 // CUDA
 void cuda_64bits_gemm_ijk (double *matrix1, double *matrix2, double *matrix3,
-                           uint64_t size);
+                           int size);
 void cuda_64bits_gemm_jik (double *matrix1, double *matrix2, double *matrix3,
-                           uint64_t size);
+                           int size);
 void cuda_64bits_gemm_bloc (double *matrix1, double *matrix2, double *matrix3,
-                            uint64_t size);
+                            int size);
 
 /// ACCURACY
 void inve_matrix_gauss_jordan (double *matrix1, double *matrix2, int size);
