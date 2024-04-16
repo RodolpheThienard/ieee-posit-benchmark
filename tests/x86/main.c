@@ -13,10 +13,10 @@ main (int argc, char *argv[])
 
   struct data *data;
   ALLOC (data, 1);
-  uint64_t _matrix_size = atoll (argv[1]);
-  uint64_t _repetition = atoll (argv[2]);
+  long _matrix_size = atoll (argv[1]);
+  long _repetition = atoll (argv[2]);
 
-  uint64_t _matrix_size_2 = _matrix_size * _matrix_size;
+  long _matrix_size_2 = _matrix_size * _matrix_size;
 
   data->matrice_size = _matrix_size_2;
   data->repetition = _repetition;
@@ -36,7 +36,7 @@ main (int argc, char *argv[])
   driver_fp32_benchmark ("IEEE 32bits sqrt", benchmark_buffer,
                          ieee_32bits_sqrt, data, _matrix_size);
   driver_fp32_benchmark ("IEEE 32bits dp", benchmark_buffer, ieee_32bits_dp,
-                         data, _matrix_size);
+                         data, _matrix_size_2);
   driver_fp32_benchmark ("IEEE 32bits gemm", benchmark_buffer,
                          ieee_32bits_gemm, data, _matrix_size);
 
@@ -48,9 +48,9 @@ main (int argc, char *argv[])
   driver_fp64_benchmark ("IEEE 64bits sqrt", benchmark_buffer,
                          ieee_64bits_sqrt, data, _matrix_size);
   driver_fp64_benchmark ("IEEE 64bits dp", benchmark_buffer, ieee_64bits_dp,
-                         data, _matrix_size);
+                         data, _matrix_size_2);
   driver_fp64_benchmark ("IEEE 64bits gemm", benchmark_buffer,
-                         ieee_64bits_gemm, data, _matrix_size);
+                         ieee_64bits_gemm_jik, data, _matrix_size);
 
   save_data (NULL, benchmark_buffer);
 

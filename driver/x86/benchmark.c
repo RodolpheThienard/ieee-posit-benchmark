@@ -1,15 +1,15 @@
-#include "../include/driver.h"
+#include "../../include/driver.h"
 
 /// Utility macro defining the body of a driver function that benchmarks a
 /// given routine.
 #define DRIVER_BODY_BENCHMARK(fn, ...)                                        \
   double init_time, end_time;                                                 \
-  uint64_t begin_register, end_register;                                      \
-  for (uint32_t stability = 0; stability < 33; stability++)                   \
+  long begin_register, end_register;                                          \
+  for (int stability = 0; stability < 33; stability++)                        \
     {                                                                         \
       init_time = get_elapsedtime ();                                         \
       begin_register = rdtsc ();                                              \
-      for (uint32_t rep = 0; rep < data->repetition; rep++)                   \
+      for (int rep = 0; rep < data->repetition; rep++)                        \
         {                                                                     \
           fn (__VA_ARGS__);                                                   \
         }                                                                     \
@@ -23,7 +23,7 @@
 //
 void
 driver_fp32_benchmark (char *title, char *buffer, void (*kernel) (),
-                       struct data *data, uint64_t matrix_size)
+                       struct data *data, int matrix_size)
 {
 
   // initialisation matrix
@@ -47,7 +47,7 @@ driver_fp32_benchmark (char *title, char *buffer, void (*kernel) (),
 //
 void
 driver_fp32_vector_benchmark (char *title, char *buffer, void (*kernel) (),
-                              struct data *data, uint64_t matrix_size)
+                              struct data *data, int matrix_size)
 {
   // initialisation matrix
   long _matrix_size_2 = matrix_size * matrix_size;
@@ -68,7 +68,7 @@ driver_fp32_vector_benchmark (char *title, char *buffer, void (*kernel) (),
 //
 void
 driver_fp64_benchmark (char *title, char *buffer, void (*kernel) (),
-                       struct data *data, uint64_t matrix_size)
+                       struct data *data, int matrix_size)
 {
   // initialisation matrix
   long _matrix_size_2 = matrix_size * matrix_size;

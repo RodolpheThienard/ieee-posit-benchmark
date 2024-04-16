@@ -1,10 +1,10 @@
 #include "../include/utils.h"
 
 /* Register counter */
-uint64_t
+long
 rdtsc ()
 {
-  uint64_t a, d;
+  long a, d;
   __asm__ volatile("rdtsc" : "=a"(a), "=d"(d));
   return (d << 32) | a;
 }
@@ -38,14 +38,14 @@ sort_double (double *a)
 
 /* sort function */
 void
-sort_uint64 (uint64_t *a)
+sort_uint64 (long *a)
 {
   int i, j;
   for (i = 0; i < 33; i++)
     for (j = i + 1; j < 33; j++)
       if (a[i] > a[j])
         {
-          uint64_t tmp = a[i];
+          long tmp = a[i];
 
           a[i] = a[j];
           a[j] = tmp;

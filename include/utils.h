@@ -1,7 +1,6 @@
 #pragma once
 
 #include <math.h>
-#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,9 +29,9 @@
 
 struct data
 {
-  uint32_t repetition, matrice_size, type;
+  int repetition, matrice_size, type;
   double samples[33], mean, stddev;
-  uint64_t RC[33];
+  long RC[33];
 };
 
 struct accuracy
@@ -42,13 +41,13 @@ struct accuracy
 
 extern double get_elapsedtime (void);
 extern void sort_double (double *samples);
-extern void sort_uint64 (uint64_t *samples);
+extern void sort_uint64 (long *samples);
 extern double mean (double *samples);
 extern double stddev (double *samples, double mean);
 extern void print_data_benchmark (char *title, struct data *data,
                                   char *buffer);
 extern void save_data (char *title, char *buffer);
-extern uint64_t rdtsc (void);
+extern long rdtsc (void);
 extern void print_header_benchmark (char *buffer, long matrix_size);
 extern void formatting_data (struct data *data);
 extern void print_matrix (double *matrix, int row, int column);

@@ -1,7 +1,7 @@
 extern "C" {
-  #include "../include/driver.h"
+  #include "../../include/utils.h"
 }
-  #include "../include/cuda.h"
+  #include "../../include/cuda.h"
 
 #define DRIVER_BODY_BENCHMARK_CUDA(kernel, ...)                                         \
   dim3 threadsPerBlock (32, 32);                                              \
@@ -9,12 +9,12 @@ extern "C" {
                   matrix_size / threadsPerBlock.y);                           \
   cudaEvent_t start_event, end_event;                                         \
   float elapsed;                                                              \
-  for (uint32_t stability = 0; stability < 33; stability++)                   \
+  for (int stability = 0; stability < 33; stability++)                   \
     {                                                                         \
       cudaEventCreate (&start_event);                                         \
       cudaEventCreate (&end_event);                                           \
       cudaEventRecord (start_event, 0);                                       \
-      for (uint32_t rep = 0; rep < data->repetition; rep++)                   \
+      for (int rep = 0; rep < data->repetition; rep++)                   \
         {                                                                     \
           kernel<<<numBlocks, threadsPerBlock>>> (__VA_ARGS__);               \
         }                                                                     \
@@ -26,7 +26,7 @@ extern "C" {
     }                                                                         
 
 void
-driver_cuda_fp64_benchmark (char *title, char *buffer,
+driver_fp64_benchmark (char *title, char *buffer,
                             void (*kernel) (double *, double *, double *, int),
                             struct data *data, int matrix_size)
 {
