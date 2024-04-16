@@ -24,8 +24,8 @@ ADD_EXECUTABLE(ieee_main
 target_link_libraries(ieee_main -lm)
 
 # CUDA compilation 
-FILE(GLOB driver_cuda driver/benchmark_cuda.cu)
-FILE(GLOB cuda kernels/Cuda/gemm.cu)
+FILE(GLOB driver_cuda driver/*.cu)
+FILE(GLOB cuda kernels/Cuda/*.cu)
 FILE(GLOB cuda_test tests/cuda/main.cu)
 
 # set(CMAKE_CUDA_HOST_COMPILER nvcc)

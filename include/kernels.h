@@ -38,6 +38,13 @@ void cuda_64bits_gemm_bloc (double *matrix1, double *matrix2, double *matrix3,
                             int size);
 
 /// ACCURACY
+// IEEE
 void inve_matrix_gauss_jordan (double *matrix1, double *matrix2, int size);
 void logarithm_taylor (double *vector, int size);
 void log_libmath (double *vector, int size);
+
+// CUDA
+// void cuda_inve_matrix_gauss_jordan (double *matrix1, double *matrix2,
+// int size);
+// void log_libmath_cuda (double *x, int n);
+// void logarithm_taylor_cuda (double *x, int n);
