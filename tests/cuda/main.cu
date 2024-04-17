@@ -37,6 +37,12 @@ main (int argc, char *argv[])
 
   driver_inv_matrix_accuracy("Inversion Gauss Jordan", output_buffer , inve_matrix_gauss_jordan, accuracy, _matrix_size);
   driver_compare_accuracy("Log vs log Taylor", output_buffer , logarithm_taylor, log_libmath, accuracy, _matrix_size);
+  driver_compare_accuracy ("Conversion FP32 & FP64", output_buffer,
+                           useless_function, conversion_double_float, accuracy,
+                           _matrix_size);
+  driver_compare_accuracy ("Compare SQRT & newton", output_buffer,
+                           square_root_newton_raphson, sqrt_libmath, accuracy,
+                           _matrix_size);
 
   save_data (NULL, output_buffer);
 

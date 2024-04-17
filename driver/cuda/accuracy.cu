@@ -83,7 +83,7 @@ void driver_compare_accuracy(char *title, char *buffer, void (*kernel)(double *,
                                   void (*kernel_2)(double *, int), struct accuracy *accuracy,
                                   int matrix_size) {
   double *A, *B, *d_A, *d_B;
-  int _matrix_size_2 = matrix_size * matrix_size;
+  int _matrix_size_2 = matrix_size * matrix_size ;
   A = (double *)malloc(sizeof(double) * _matrix_size_2);
   B = (double *)malloc(sizeof(double) * _matrix_size_2);
   // INIT(A, matrix_size);
@@ -92,7 +92,7 @@ void driver_compare_accuracy(char *title, char *buffer, void (*kernel)(double *,
   cudaMalloc(&d_B, _matrix_size_2 * sizeof(double));
   // copying init values
   for (int i = 0; i < _matrix_size_2; i++) {
-    A[i] += drand48();
+    A[i] = drand48();
     B[i] = A[i];
   }
 

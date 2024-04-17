@@ -1,5 +1,4 @@
 #include "../../include/utils.h"
-#include <stdio.h>
 
 void
 square_root_newton_raphson (double *vector, int n)

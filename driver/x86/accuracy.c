@@ -9,6 +9,7 @@
     accuracy->RMS = RMS (a_64, b_64, _matrix_size_2);                         \
     accuracy->forward_error = forward_error (a_64, b_64, _matrix_size_2);     \
   }
+
 #define DRIVER_BODY_COMPARE_ACCURACY(fn, fn2, a, b, size)                     \
   {                                                                           \
     fn (a, size);                                                             \
