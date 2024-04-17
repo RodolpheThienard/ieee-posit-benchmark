@@ -12,8 +12,11 @@ Implementation of a benchmark strategy to be able to measure different metrics o
 - Bandwidth
 
 ## Accuracy
-- Error accumulation 
+- Error accumulation mean
+- Root Mean Square
+- Forward Error
 
+[comment]: # (TODO)
 ## Algorithms used
 - Reduction 
 - Gemm
@@ -22,17 +25,26 @@ Implementation of a benchmark strategy to be able to measure different metrics o
 - Sum of sqrt
 - Inverse matrix 
 
-Posit was implemented on a RacEr architecture
+Posit was implemented on a RacEr architecture  
 No library yet
 
 # Compilation & Run
-## IEEE compilation command :
+## x86 compilation command :
 ```bash
 mkdir build
 cd build
 cmake ..
-make ieee_main
-./ieee_main <matrix-size> <meta-repetition> 
+make x86_main
+./omp_main <matrix-size> <meta-repetition> 
+```
+
+## OMP compilation command :
+```bash
+mkdir build
+cd build
+cmake ..
+make omp_main
+./omp_main <matrix-size> <meta-repetition> 
 ```
 
 ## CUDA compilation command :
