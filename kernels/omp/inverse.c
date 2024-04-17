@@ -27,6 +27,7 @@ inve_matrix_gauss_jordan (double *restrict mat, double *restrict inv, int n)
             }
         }
     }
+#pragma omp barrier
 
 #pragma omp single
   {
