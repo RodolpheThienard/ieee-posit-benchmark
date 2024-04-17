@@ -40,3 +40,5 @@ void conversion_double_float (double *vector, int size);
 void useless_function (double *vector, int size);
 void square_root_newton_raphson (double *vector, int size);
 void sqrt_libmath (double *vector, int size);
+void sinus_maclaurin (double *vector, int size);
+void sinus_libmath (double *vector, int size);

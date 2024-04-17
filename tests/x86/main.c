@@ -76,6 +76,9 @@ main (int argc, char *argv[])
   driver_compare_accuracy ("Compare SQRT & newton", accuracy_buffer,
                            square_root_newton_raphson, sqrt_libmath, accuracy,
                            _matrix_size);
+  driver_compare_accuracy ("Compare Sin & Sin Maclaurin", accuracy_buffer,
+                           sinus_maclaurin, sinus_libmath, accuracy,
+                           _matrix_size);
 
   save_data (NULL, accuracy_buffer);
 
