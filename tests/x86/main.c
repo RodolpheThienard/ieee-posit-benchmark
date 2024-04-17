@@ -73,6 +73,10 @@ main (int argc, char *argv[])
                            useless_function, conversion_double_float, accuracy,
                            _matrix_size);
 
+  driver_compare_accuracy ("Compare SQRT & newton", accuracy_buffer,
+                           square_root_newton_raphson, sqrt_libmath, accuracy,
+                           _matrix_size);
+
   save_data (NULL, accuracy_buffer);
 
   free (data);
