@@ -41,6 +41,25 @@ cuda_add_executable(cuda_main
 )
 target_link_libraries(cuda_main ${CUDA_NVCC_FLAGS})
 
+
+# OMP compilation
+FILE(GLOB omp_test tests/omp/*.c)
+FILE(GLOB omp_kernels kernels/omp/*.c)
+FILE(GLOB omp_driver driver/omp/*.c)
+
+find_package(OpenMP REQUIRED)
+ADD_EXECUTABLE(omp_main 
+  ${omp_test}
+  ${utils} 
+  ${omp_driver} 
+  ${omp_kernels}
+)
+
+if(OpenMP_C_FOUND)
+    target_link_libraries(omp_main PUBLIC OpenMP::OpenMP_C -lm)
+endif()
+
+
 # RACER compilation
 
 FILE(GLOB racer kernels/racer/*.c)

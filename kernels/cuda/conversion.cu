@@ -10,7 +10,7 @@ conversion_double_float (double *a, int n)
 }
 
 __global__ void
-useless_function (double *a, int i)
+useless_function (double *a, int n)
 {
 }
 

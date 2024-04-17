@@ -4,6 +4,7 @@ void
 conversion_double_float (double *a, int n)
 {
   float tmp[n];
+#pragma omp for
   for (int i = 0; i < n; i++)
     {
       tmp[i] = (float)a[i];

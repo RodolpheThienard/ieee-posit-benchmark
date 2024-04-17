@@ -23,7 +23,7 @@ main (int argc, char *argv[])
   // ≃ 200 per kernel
   char *output_buffer;
   output_buffer = (char *)malloc (sizeof (char) * 200 * 11);
-  print_header_benchmark (output_buffer, _matrix_size_2 * 2);
+  print_header_benchmark (output_buffer, _matrix_size_2 * 4);
   data->type = sizeof (double);
 
   driver_fp64_benchmark ("ieee gemm ijk", output_buffer, ieee_64bits_gemm_ijk, data,
