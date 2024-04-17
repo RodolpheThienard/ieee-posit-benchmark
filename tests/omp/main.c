@@ -25,7 +25,7 @@ main (int argc, char *argv[])
   char *benchmark_buffer;
   char *accuracy_buffer;
   ALLOC (benchmark_buffer, 200 * 11);
-  ALLOC (accuracy_buffer, 200 * 1);
+  ALLOC (accuracy_buffer, 200 * 4);
 
   print_header_benchmark (benchmark_buffer, _matrix_size_2 * 2);
 
@@ -66,13 +66,13 @@ main (int argc, char *argv[])
   //                             inve_matrix_gauss_jordan, accuracy,
   //                             _matrix_size);
 
-  // driver_compare_accuracy ("Compare LOG & Taylor", accuracy_buffer,
-  //                          logarithm_taylor, log_libmath, accuracy,
-  //                          _matrix_size);
+  driver_compare_accuracy ("Compare LOG & Taylor", accuracy_buffer,
+                           logarithm_taylor, log_libmath, accuracy,
+                           _matrix_size);
 
-  // driver_compare_accuracy ("Conversion FP32 & FP64", accuracy_buffer,
-  //                          useless_function, conversion_double_float,
-  //                          accuracy, _matrix_size);
+  driver_compare_accuracy ("Conversion FP32 & FP64", accuracy_buffer,
+                           useless_function, conversion_double_float, accuracy,
+                           _matrix_size);
 
   driver_compare_accuracy ("Compare SQRT & newton", accuracy_buffer,
                            square_root_newton_raphson, sqrt_libmath, accuracy,

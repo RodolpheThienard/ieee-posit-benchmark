@@ -13,6 +13,6 @@ conversion_double_float (double *a, int n)
 }
 
 void
-useless_function (double *a, int i)
+useless_function (double *a, int n)
 {
 }

@@ -25,7 +25,7 @@ main (int argc, char *argv[])
   char *benchmark_buffer;
   char *accuracy_buffer;
   ALLOC (benchmark_buffer, 200 * 11);
-  ALLOC (accuracy_buffer, 200 * 1);
+  ALLOC (accuracy_buffer, 200 * 4);
   print_header_benchmark (benchmark_buffer, _matrix_size_2 * 2);
 
   data->type = sizeof (float);
