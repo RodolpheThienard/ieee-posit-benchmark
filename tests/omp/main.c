@@ -1,7 +1,7 @@
 #include "../../include/driver.h"
 #include "../../include/kernels.h"
 #include "../../include/utils.h"
-#include <omp.h>
+
 int
 main (int argc, char *argv[])
 {
@@ -57,10 +57,10 @@ main (int argc, char *argv[])
 
   puts ("\n");
 
-  // struct accuracy *accuracy;
-  // ALLOC (accuracy, 1);
+  struct accuracy *accuracy;
+  ALLOC (accuracy, 1);
 
-  // print_header_accuracy (accuracy_buffer);
+  print_header_accuracy (accuracy_buffer);
 
   // driver_inv_matrix_accuracy ("Inversion Gauss-Jordan", accuracy_buffer,
   //                             inve_matrix_gauss_jordan, accuracy,
@@ -74,11 +74,11 @@ main (int argc, char *argv[])
   //                          useless_function, conversion_double_float,
   //                          accuracy, _matrix_size);
 
-  // driver_compare_accuracy ("Compare SQRT & newton", accuracy_buffer,
-  //                          square_root_newton_raphson, sqrt_libmath,
-  //                          accuracy, _matrix_size);
+  driver_compare_accuracy ("Compare SQRT & newton", accuracy_buffer,
+                           square_root_newton_raphson, sqrt_libmath, accuracy,
+                           _matrix_size);
 
-  // save_data (NULL, accuracy_buffer);
+  save_data (NULL, accuracy_buffer);
 
   free (data);
 
