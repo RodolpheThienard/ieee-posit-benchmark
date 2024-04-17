@@ -69,6 +69,10 @@ main (int argc, char *argv[])
                            logarithm_taylor, log_libmath, accuracy,
                            _matrix_size);
 
+  driver_compare_accuracy ("Conversion FP32 & FP64", accuracy_buffer,
+                           useless_function, conversion_double_float, accuracy,
+                           _matrix_size);
+
   save_data (NULL, accuracy_buffer);
 
   free (data);
