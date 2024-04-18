@@ -79,13 +79,15 @@ main (int argc, char *argv[])
   driver_compare_accuracy ("Sin libmath & Maclaurin", accuracy_buffer,
                            sinus_maclaurin, sinus_libmath, accuracy,
                            _matrix_size);
-
   driver_compare_accuracy_fp64_fp32 (
       "monte carlo finance", accuracy_buffer, monte_carlo_option_pricing_fp64,
       monte_carlo_option_pricing_fp32, accuracy, _matrix_size);
-  driver_compare_accuracy_fp64_fp32 (
-      "Pi approximation", accuracy_buffer, pi_approximation_fp64,
-      pi_approximation_fp32, accuracy, _matrix_size);
+  driver_compare_accuracy ("Monte carlo PI FP64", accuracy_buffer, real_pi,
+                           pi_approximation_fp64, accuracy, _matrix_size);
+
+  driver_compare_accuracy_fp64_fp32 ("Monte carlo PI FP32", accuracy_buffer,
+                                     real_pi, pi_approximation_fp32, accuracy,
+                                     _matrix_size);
 
   save_data (NULL, accuracy_buffer);
 

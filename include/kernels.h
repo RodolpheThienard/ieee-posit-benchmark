@@ -46,3 +46,4 @@ void monte_carlo_option_pricing_fp64 (double *vector, int n);
 void monte_carlo_option_pricing_fp32 (float *vector, int n);
 void pi_approximation_fp64 (double *vector, int n);
 void pi_approximation_fp32 (float *vector, int n);
+void real_pi (double *vector, int n);
