@@ -24,7 +24,7 @@ void driver_compare_accuracy (char *title, char *buffer,
                               void (*kernel2) (double *, int),
                               struct accuracy *accuracy, int matrix_size);
 
-void driver_compare_accuracy_fp32_fp64 (char *title, char *buffer,
+void driver_compare_accuracy_fp64_fp32 (char *title, char *buffer,
                                         void (*kernel1) (double *, int),
                                         void (*kernel2) (float *, int),
                                         struct accuracy *accuracy,

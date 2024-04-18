@@ -80,7 +80,7 @@ main (int argc, char *argv[])
                            sinus_maclaurin, sinus_libmath, accuracy,
                            _matrix_size);
 
-  driver_compare_accuracy_fp32_fp64 (
+  driver_compare_accuracy_fp64_fp32 (
       "monte carlo finance", accuracy_buffer, monte_carlo_option_pricing_fp64,
       monte_carlo_option_pricing_fp32, accuracy, _matrix_size);
 

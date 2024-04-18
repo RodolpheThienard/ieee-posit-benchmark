@@ -14,9 +14,9 @@
   {                                                                           \
     fn (a, size);                                                             \
     fn2 (b, size);                                                            \
-    accuracy->accuracy = compute_err_accuracy (a, b, size);                   \
-    accuracy->RMS = RMS (a, b, size);                                         \
-    accuracy->forward_error = forward_error (a, b, size);                     \
+    accuracy->accuracy = compute_err_accuracy (a, b, matrix_size);            \
+    accuracy->RMS = RMS (a, b, matrix_size);                                  \
+    accuracy->forward_error = forward_error (a, b, matrix_size);              \
   }
 
 /* driver for inv matrix computation
@@ -82,13 +82,14 @@ driver_compare_accuracy (char *title, char *buffer, void (*kernel) (),
 }
 
 void
-driver_compare_accuracy_fp32_fp64 (char *title, char *buffer,
+driver_compare_accuracy_fp64_fp32 (char *title, char *buffer,
                                    void (*kernel) (), void (*kernel_2) (),
                                    struct accuracy *accuracy, int matrix_size)
 {
-  double *a_64;
+  double *a_64, *b_64;
   float *b_32;
   ALLOC (a_64, matrix_size);
+  ALLOC (b_64, matrix_size);
   ALLOC (b_32, matrix_size);
   INIT (a_64, matrix_size);
 
@@ -101,8 +102,18 @@ driver_compare_accuracy_fp32_fp64 (char *title, char *buffer,
 
   DRIVER_BODY_COMPARE_ACCURACY (kernel, kernel_2, a_64, b_32, matrix_size);
 
+  for (int i = 0; i < matrix_size; i++)
+    {
+      b_64[i] = b_32[i];
+    }
+
+  accuracy->accuracy = compute_err_accuracy (a_64, b_64, matrix_size);
+  accuracy->RMS = RMS (a_64, b_64, matrix_size);
+  accuracy->forward_error = forward_error (a_64, b_64, matrix_size);
+
   print_data_accuracy (title, buffer, accuracy);
 
   free (a_64);
+  free (b_64);
   free (b_32);
 }
