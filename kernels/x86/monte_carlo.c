@@ -22,12 +22,12 @@ monte_carlo_option_pricing_fp64 (double *vector, int n)
   for (int k = 0; k < n; k++)
     {
       double option_price_sum = 0;
-      double S0 = 100;    // Prix initial de l'actif sous-jacent
-      double K = 110;     // Prix d'exercice de l'option
-      double r = 0.05;    // Taux d'intérêt sans risque
-      double sigma = 0.2; // Volatilité de l'actif sous-jacent
-      double T = 1.0;     // Durée jusqu'à l'échéance de l'option
-      int num_simulations = 10000000; // Nombre de simulations Monte Carlo
+      double S0 = 100;              // Prix initial de l'actif sous-jacent
+      double K = 110;               // Prix d'exercice de l'option
+      double r = 0.05;              // Taux d'intérêt sans risque
+      double sigma = 0.2;           // Volatilité de l'actif sous-jacent
+      double T = 1.0;               // Durée jusqu'à l'échéance de l'option
+      int num_simulations = 100000; // Nombre de simulations Monte Carlo
       for (int i = 0; i < num_simulations; i++)
         {
           double S_T = simulate_asset_price (S0, r, sigma, T);
@@ -54,8 +54,8 @@ monte_carlo_option_pricing_fp32 (float *vector, int n)
       int num_simulations = 100000; // Nombre de simulations Monte Carlo
       for (int i = 0; i < num_simulations; i++)
         {
-          float S_T = simulate_asset_price (S0, r, sigma, T);
-          float payoff = fmax (0, S_T - K);
+          float S_T = (float)simulate_asset_price (S0, r, sigma, T);
+          float payoff = fmaxf (0, S_T - K);
           option_price_sum += payoff;
         }
 
