@@ -25,7 +25,7 @@ main (int argc, char *argv[])
   char *benchmark_buffer;
   char *accuracy_buffer;
   ALLOC (benchmark_buffer, 200 * 11);
-  ALLOC (accuracy_buffer, 200 * 4);
+  ALLOC (accuracy_buffer, 200 * 10);
   print_header_benchmark (benchmark_buffer, _matrix_size_2 * 2);
 
   data->type = sizeof (float);
@@ -65,7 +65,7 @@ main (int argc, char *argv[])
                               inve_matrix_gauss_jordan, accuracy,
                               _matrix_size);
 
-  driver_compare_accuracy ("Compare LOG & Taylor", accuracy_buffer,
+  driver_compare_accuracy ("LOG libmath & Taylor", accuracy_buffer,
                            logarithm_taylor, log_libmath, accuracy,
                            _matrix_size);
 
@@ -73,12 +73,16 @@ main (int argc, char *argv[])
                            useless_function, conversion_double_float, accuracy,
                            _matrix_size);
 
-  driver_compare_accuracy ("Compare SQRT & newton", accuracy_buffer,
+  driver_compare_accuracy ("SQRT libmath & newton", accuracy_buffer,
                            square_root_newton_raphson, sqrt_libmath, accuracy,
                            _matrix_size);
-  driver_compare_accuracy ("Compare Sin & Sin Maclaurin", accuracy_buffer,
+  driver_compare_accuracy ("Sin libmath & Maclaurin", accuracy_buffer,
                            sinus_maclaurin, sinus_libmath, accuracy,
                            _matrix_size);
+
+  driver_compare_accuracy_fp32_fp64 (
+      "monte carlo finance", accuracy_buffer, monte_carlo_option_pricing_fp64,
+      monte_carlo_option_pricing_fp32, accuracy, _matrix_size);
 
   save_data (NULL, accuracy_buffer);
 

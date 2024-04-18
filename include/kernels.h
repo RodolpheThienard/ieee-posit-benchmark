@@ -42,3 +42,5 @@ void square_root_newton_raphson (double *vector, int size);
 void sqrt_libmath (double *vector, int size);
 void sinus_maclaurin (double *vector, int size);
 void sinus_libmath (double *vector, int size);
+void monte_carlo_option_pricing_fp64 (double *vector, int n);
+void monte_carlo_option_pricing_fp32 (float *vector, int n);
