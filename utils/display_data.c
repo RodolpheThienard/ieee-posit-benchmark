@@ -36,11 +36,12 @@ convertion (double number)
 void
 print_header_benchmark (char *buffer, long _matrix_size)
 {
-  sprintf (
-      buffer, "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; %16s\n",
-      buffer, "title", (_matrix_size > (1 << 20)) ? "buf (MiB)" : "buf (KiB)",
-      "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
-      "Cycles", "Cycles/m-element");
+  sprintf (buffer,
+           "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; %13s\n",
+           buffer, "title",
+           (_matrix_size > (1 << 20)) ? "buffer (MiB)" : "buffer (KiB)",
+           "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
+           "+- MiB/s", "Cycles");
 }
 
 /* add formated data into buffer */
@@ -61,12 +62,13 @@ print_data_benchmark (char *title, struct data *data, char *buffer)
   double _stddevp = (_stddev * 100.0) / _mean;
   double _rc_elem = _rc / _matrix_size;
   double _bw = ((double)_matrix_size / (1024.0 * 1024)) / _mean;
+  double _dev_bw = _stddevp * _bw / 100;
 
   sprintf (buffer,
            "%s %20s; %13.3lf; %13.3e; %13.3e; %13.3e; %13.3e; %9.3lf; "
-           "%13.3lf; %13.3lu; %16.3lf \n",
+           "%13.3lf; %13.3lf; %13.3lu\n",
            buffer, title, convertion (_matrix_size * _data_size), _min, _max,
-           _median, _mean, _stddevp, _bw, _rc, _rc_elem);
+           _median, _mean, _stddevp, _bw, _dev_bw, _rc);
 }
 
 /* save header of accuracy measure in buffer */
@@ -86,6 +88,53 @@ print_data_accuracy (char *title, char *buffer, struct accuracy *accuracy)
   double _forward_err = accuracy->forward_error;
   double _backward_err = accuracy->backward_error;
 
-  sprintf (buffer, "%s %25s; %13le; %13le; %13le; %13le\n", buffer, title,
+  sprintf (buffer, "%s %20s; %13le; %13le; %13le; %13le\n\n", buffer, title,
            _accuracy, _rms, _forward_err, _backward_err);
+}
+
+void
+print_header_diff (char *buffer, long _matrix_size)
+{
+  sprintf (buffer,
+           "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; "
+           "%13s; %13s; %13s; %13s\n",
+           buffer, "title",
+           (_matrix_size > (1 << 20)) ? "buffer (MiB)" : "buffer (KiB)",
+           "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
+           "+- MiB/s", "Cycles", "accuracy mean", "accuracy RMS",
+           "forward error");
+}
+
+#define PERCENT(a, b) (((b - a) / a) * 100)
+
+void
+print_diff_accuracy (char *title, char *buffer, struct bench *bench,
+                     struct data *data)
+{
+
+  double _min = PERCENT (data->samples[0], bench->data->samples[0]);
+  double _max = PERCENT (data->samples[32], bench->data->samples[32]);
+  double _median = PERCENT (data->samples[16], bench->data->samples[16]);
+  double _mean = PERCENT (data->mean, bench->data->mean);
+  double _stddev = PERCENT (data->stddev, bench->data->stddev);
+  double _matrix_size = data->matrice_size;
+  double _data_size = data->type;
+  double _repetition = data->repetition;
+  long _rc = data->RC[16] - bench->data->RC[16];
+
+  double _stddevp = (_stddev * 100.0) / _mean;
+  double _bw_data = ((double)_matrix_size / (1024.0 * 1024)) / data->mean;
+  double _bw_bench
+      = ((double)_matrix_size / (1024.0 * 1024)) / bench->data->mean;
+  double _bw = PERCENT (_bw_data, _bw_bench);
+
+  double _accuracy = bench->accuracy->accuracy;
+  double _rms = bench->accuracy->RMS;
+  double _forward_err = bench->accuracy->forward_error;
+
+  sprintf (buffer,
+           "%s %20s; %13.3s; %12.3lf%; %12.3lf%; %12.3lf%; %12.3lf%; %9.3s; "
+           "%12.3lf%; %13.3s; %13ld; %13le; %13le; %13le\n\n",
+           buffer, title, "", _min, _max, _median, _mean, "", _bw, "", _rc,
+           _accuracy, _rms, _forward_err);
 }
