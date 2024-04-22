@@ -95,7 +95,6 @@ inversion (char *name_kernel, void (*kernel) (), char *filename,
            struct bench *bench, int matrix_size)
 {
   char buffer[1000];
-  print_header_benchmark (buffer, matrix_size);
   for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
       long matrix_size_2 = i * i;
@@ -109,14 +108,15 @@ inversion (char *name_kernel, void (*kernel) (), char *filename,
       INIT (a, matrix_size_2);
       INIT (b, matrix_size_2);
 
+      print_header_benchmark (buffer, i);
       DRIVER_BODY (kernel, a, b, i);
-
+      bench->data->matrice_size = i;
       set_identity_matrix (c, i, i);
       ieee_64bits_gemm_jik (c, b, d, i);
       DRIVER_BODY (kernel, d, b, i);
       formatting_data (bench->data);
       print_data_benchmark (name_kernel, bench->data, buffer);
-      // print_header_accuracy (buffer);
+      print_header_accuracy (buffer);
 
       bench->accuracy->accuracy = compute_err_accuracy (a, b, i);
       bench->accuracy->RMS = RMS (a, b, i);

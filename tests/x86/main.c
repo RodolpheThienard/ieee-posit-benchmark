@@ -50,7 +50,7 @@ main (int argc, char *argv[])
   ALLOC (bench, 1);
   bench->accuracy = accuracy;
   bench->data = data;
-
+  data->type = sizeof (double);
   bench->end_size = 1000;
   bench->pitch_size = 100;
   bench->start_size = 100;
