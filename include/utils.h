@@ -44,6 +44,7 @@ struct bench
 {
   struct data *data;
   struct accuracy *accuracy;
+  int pitch_size, end_size, start_size;
 };
 
 enum benchmark_type

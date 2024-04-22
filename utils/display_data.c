@@ -8,10 +8,12 @@ save_data (char *filename, char *buffer)
     fprintf (stdout, "%s", buffer);
   else
     {
-      FILE *file = fopen (filename, "w");
+      FILE *file = fopen (filename, "wa");
       fprintf (file, "%s", buffer);
       fclose (file);
     }
+  // clear buffer
+  memset (buffer, 0, 1000);
 }
 
 /* process data stored in struct data

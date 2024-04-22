@@ -1,6 +1,7 @@
 #include "../../include/kernels.h"
 #include "../../include/utils.h"
 #include <stdio.h>
+#include <string.h>
 
 #define DRIVER_BODY(fn, ...)                                                  \
   {                                                                           \
@@ -41,22 +42,21 @@ kernel2 (char *name_kernel, char *name_kernel_2, void (*kernel) (),
       a[i] += drand48 ();
       c[i] = a[i];
     }
-  print_header_diff (buffer, matrix_size);
-
+  print_header_benchmark (buffer, matrix_size);
   DRIVER_BODY (kernel, a, b, matrix_size);
   formatting_data (bench->data);
-  print_data_benchmark (name_kernel, bench->data, buffer);
-  struct data kernel1 = *bench->data;
 
+  print_data_benchmark (name_kernel, bench->data, buffer);
   DRIVER_BODY (kernel_2, c, d, matrix_size);
   formatting_data (bench->data);
   print_data_benchmark (name_kernel_2, bench->data, buffer);
+  print_header_accuracy (buffer);
 
   bench->accuracy->accuracy = compute_err_accuracy (d, b, matrix_size);
   bench->accuracy->RMS = RMS (d, b, matrix_size);
   bench->accuracy->forward_error = forward_error (d, b, matrix_size);
 
-  print_diff_accuracy ("Comparaison", buffer, bench, &kernel1);
+  print_data_accuracy ("test", buffer, bench->accuracy);
 
   free (a);
   free (b);
@@ -65,77 +65,88 @@ kernel2 (char *name_kernel, char *name_kernel_2, void (*kernel) (),
 }
 
 void
-kernel1 (char *name_kernel, void (*kernel) (), char *buffer,
+kernel1 (char *name_kernel, void (*kernel) (), char *filename,
          struct bench *bench, int matrix_size)
 {
-  long matrix_size_2 = matrix_size * matrix_size;
-  double *a, *b;
-  ALLOC (a, matrix_size_2);
-  ALLOC (b, matrix_size_2);
-
-  // copying init values
-  for (int i = 0; i < matrix_size; i++)
+  for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
-      a[i] += drand48 ();
-      b[i] = a[i];
+      char buffer[1000];
+      long matrix_size_2 = matrix_size * matrix_size;
+      double *a, *b;
+      ALLOC (a, matrix_size_2);
+      ALLOC (b, matrix_size_2);
+
+      // copying init values
+      for (int i = 0; i < matrix_size; i++)
+        {
+          a[i] += drand48 ();
+          b[i] = a[i];
+        }
+      print_header_benchmark (buffer, matrix_size);
+      DRIVER_BODY (kernel, a, b, matrix_size);
+      formatting_data (bench->data);
+      print_data_benchmark (name_kernel, bench->data, buffer);
+      save_data (filename, buffer);
     }
-  print_header_benchmark (buffer, matrix_size);
-  DRIVER_BODY (kernel, a, b, matrix_size);
-  formatting_data (bench->data);
-  print_data_benchmark (name_kernel, bench->data, buffer);
 }
 
 void
-inversion (char *name_kernel, void (*kernel) (), char *buffer,
+inversion (char *name_kernel, void (*kernel) (), char *filename,
            struct bench *bench, int matrix_size)
 {
-  long matrix_size_2 = matrix_size * matrix_size;
-  double *a, *b, *c, *d;
-  ALLOC (a, matrix_size_2);
-  ALLOC (b, matrix_size_2);
-  ALLOC (c, matrix_size_2);
-  ALLOC (d, matrix_size_2);
-
-  INIT (a, matrix_size_2);
-  INIT (b, matrix_size_2);
-
+  char buffer[1000];
   print_header_benchmark (buffer, matrix_size);
-  DRIVER_BODY (kernel, a, b, matrix_size);
+  for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
+    {
+      long matrix_size_2 = i * i;
 
-  set_identity_matrix (c, matrix_size, matrix_size);
-  ieee_64bits_gemm_jik (c, b, d, matrix_size);
-  DRIVER_BODY (kernel, d, b, matrix_size);
-  formatting_data (bench->data);
-  print_data_benchmark (name_kernel, bench->data, buffer);
-  print_header_accuracy (buffer);
+      double *a, *b, *c, *d;
+      ALLOC (a, matrix_size_2);
+      ALLOC (b, matrix_size_2);
+      ALLOC (c, matrix_size_2);
+      ALLOC (d, matrix_size_2);
 
-  bench->accuracy->accuracy = compute_err_accuracy (a, b, matrix_size);
-  bench->accuracy->RMS = RMS (a, b, matrix_size);
-  bench->accuracy->forward_error = forward_error (a, b, matrix_size);
+      INIT (a, matrix_size_2);
+      INIT (b, matrix_size_2);
 
-  print_data_accuracy ("Accuracy measure", buffer, bench->accuracy);
-  free (a);
-  free (b);
-  free (c);
-  free (d);
+      DRIVER_BODY (kernel, a, b, i);
+
+      set_identity_matrix (c, i, i);
+      ieee_64bits_gemm_jik (c, b, d, i);
+      DRIVER_BODY (kernel, d, b, i);
+      formatting_data (bench->data);
+      print_data_benchmark (name_kernel, bench->data, buffer);
+      // print_header_accuracy (buffer);
+
+      bench->accuracy->accuracy = compute_err_accuracy (a, b, i);
+      bench->accuracy->RMS = RMS (a, b, i);
+      bench->accuracy->forward_error = forward_error (a, b, i);
+
+      print_data_accuracy ("Accuracy measure", buffer, bench->accuracy);
+      free (a);
+      free (b);
+      free (c);
+      free (d);
+      save_data (filename, buffer);
+    }
 }
 /* API to run benchmark
    need to choose the accuracy driver */
 void
-benchmark (char *name_kernel, char *name_kernel_2, char *buffer,
+benchmark (char *name_kernel, char *name_kernel_2, char *filename,
            void (*kernel) (), void (*kernel_2) (), struct bench *bench,
            enum benchmark_type type, int matrix_size)
 {
   switch (type)
     {
     case INVERSION:
-      inversion (name_kernel, kernel, buffer, bench, matrix_size);
+      inversion (name_kernel, kernel, filename, bench, matrix_size);
       break;
     case KERNEL1:
-      kernel1 (name_kernel, kernel, buffer, bench, matrix_size);
+      kernel1 (name_kernel, kernel, filename, bench, matrix_size);
       break;
     case KERNEL2:
-      kernel2 (name_kernel, name_kernel_2, kernel, kernel_2, buffer, bench,
+      kernel2 (name_kernel, name_kernel_2, kernel, kernel_2, filename, bench,
                matrix_size);
       break;
     }
