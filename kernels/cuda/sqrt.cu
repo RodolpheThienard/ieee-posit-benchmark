@@ -1,28 +1,28 @@
 #include "../../include/utils.h"
 
 __global__ void
-square_root_newton_raphson (double *vector, int n)
+square_root_newton_raphson (double *input, double *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
-  double approx = vector[tid] * .5;
-  if (vector[tid] < 0)
+  double approx = input[tid] * .5;
+  if (input[tid] < 0)
     {
       return;
     }
-  if (vector[tid] > 0)
+  if (input[tid] > 0)
     {
       do
         {
-          approx = (approx + (vector[tid] / approx)) / 2;
+          approx = (approx + (input[tid] / approx)) / 2;
         }
-      while (((approx * approx) - vector[tid]) > 1e-8);
+      while (((approx * approx) - input[tid]) > 1e-8);
     }
-  vector[tid] = approx;
+  output[tid] = approx;
 }
 
 __global__ void
-sqrt_libmath (double *x, int n)
+sqrt_libmath (double *input, double *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
-    x[tid] = sqrt (x[tid]);
+    output[tid] = sqrt (input[tid]);
 }

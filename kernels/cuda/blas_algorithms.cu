@@ -51,35 +51,4 @@ ieee_64bits_gemm_bloc (double *A, double *B, double *C, int N)
   C[j * N + i] = sum;
 }
 
-__global__ void
-inve_matrix_gauss_jordan (double *mat, double *inv, int n)
-{
-  int tid = threadIdx.x + blockIdx.x * blockDim.x;
-  if (tid < n)
-    {
-      for (int i = 0; i < n; i++)
-        {
-          // get pivot
-          double pivot = mat[i * n + i];
 
-          // Dividing by pivot
-          mat[i * n + tid] /= pivot;
-          inv[i * n + tid] /= pivot;
-
-          __syncthreads ();
-
-          // remove other elements
-          if (tid != i)
-            {
-              double coeff = mat[tid * n + i];
-              for (int j = 0; j < n; j++)
-                {
-                  mat[tid * n + j] -= coeff * mat[i * n + j];
-                  inv[tid * n + j] -= coeff * inv[i * n + j];
-                }
-            }
-
-          __syncthreads ();
-        }
-    }
-}

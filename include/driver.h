@@ -31,7 +31,7 @@ void driver_compare_accuracy_fp64_fp32 (char *title, char *buffer,
                                         int matrix_size);
 
 /// API
-void benchmark (char *name_kernel, char *name_kernel_2, char *buffer,
+void benchmark (char *name_kernel, char *name_kernel_2, char *filename,
                 void (*kernel) (double *, double *, int),
                 void (*kernel_2) (double *, double *, int),
                 struct bench *bench, enum benchmark_type type,
