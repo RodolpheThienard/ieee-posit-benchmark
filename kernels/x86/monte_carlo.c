@@ -16,7 +16,7 @@ simulate_asset_price (double S0, double r, double sigma, double T)
 }
 
 void
-monte_carlo_option_pricing_fp64 (double *vector, int n)
+monte_carlo_option_pricing_fp64 (double *input, double *output, int n)
 {
 
   for (int k = 0; k < n; k++)
@@ -35,12 +35,12 @@ monte_carlo_option_pricing_fp64 (double *vector, int n)
           option_price_sum += payoff;
         }
 
-      vector[k] = (option_price_sum / num_simulations) * exp (-r * T);
+      output[k] = (option_price_sum / num_simulations) * exp (-r * T);
     }
 }
 
 void
-monte_carlo_option_pricing_fp32 (float *vector, int n)
+monte_carlo_option_pricing_fp32 (float *input, double *output, int n)
 {
 
   for (int k = 0; k < n; k++)
@@ -59,6 +59,6 @@ monte_carlo_option_pricing_fp32 (float *vector, int n)
           option_price_sum += payoff;
         }
 
-      vector[k] = (option_price_sum / num_simulations) * exp (-r * T);
+      output[k] = (option_price_sum / num_simulations) * exp (-r * T);
     }
 }

@@ -29,7 +29,7 @@ kernel2 (char *name_kernel, char *name_kernel_2, void (*kernel) (),
 {
   char buffer[1000];
   print_header_diff (buffer);
-  for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
+  for (int i = bench->start_size; i < bench->end_size; i += bench->step_size)
     {
       int _matrix_size = i;
       bench->data->matrice_size = _matrix_size;
@@ -46,6 +46,7 @@ kernel2 (char *name_kernel, char *name_kernel_2, void (*kernel) (),
           a[j] += drand48 ();
           c[j] = a[j];
         }
+
       DRIVER_BODY (kernel, a, b, _matrix_size);
       formatting_data (bench->data);
 
@@ -75,7 +76,7 @@ kernel1 (char *name_kernel, void (*kernel) (), char *filename,
 {
   char buffer[1000];
   print_header_benchmark (buffer);
-  for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
+  for (int i = bench->start_size; i < bench->end_size; i += bench->step_size)
     {
       int _matrix_size = i;
       bench->data->matrice_size = _matrix_size;
@@ -103,7 +104,7 @@ inversion (char *name_kernel, void (*kernel) (), char *filename,
 {
   char buffer[1000];
   print_header_diff (buffer);
-  for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
+  for (int i = bench->start_size; i < bench->end_size; i += bench->step_size)
     {
       int _matrix_size = i;
       bench->data->matrice_size = _matrix_size;

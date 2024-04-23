@@ -26,42 +26,36 @@ main (int argc, char *argv[])
   struct accuracy *accuracy;
   ALLOC (accuracy, 1);
 
-  // driver_compare_accuracy ("LOG libmath & Taylor", accuracy_buffer,
-  //                          logarithm_taylor, log_libmath, accuracy,
-  //                          _matrix_size);
-
-  // driver_compare_accuracy ("Conversion FP32 & FP64", accuracy_buffer,
-  //                          useless_function, conversion_double_float,
-  //                          accuracy, _matrix_size);
-
-  // driver_compare_accuracy_fp64_fp32 (
-  //     "monte carlo finance", accuracy_buffer,
-  //     monte_carlo_option_pricing_fp64, monte_carlo_option_pricing_fp32,
-  //     accuracy, _matrix_size);
-
-  // driver_compare_accuracy ("Monte carlo PI FP64", accuracy_buffer, real_pi,
-  //                          pi_approximation_fp64, accuracy, _matrix_size);
-
-  // driver_compare_accuracy_fp64_fp32 ("Monte carlo PI FP32", accuracy_buffer,
-  //                                    real_pi, pi_approximation_fp32,
-  //                                    accuracy, _matrix_size);
-
   data->type = sizeof (double);
-  struct bench bench = { data, accuracy, 100, 300, 100 };
+  struct bench bench = { data, accuracy, 100, 200, 100 };
 
   // KERNEL 2
   benchmark ("sinus_libmath", "sinus_macclaurin", NULL, sinus_libmath,
              sinus_maclaurin, &bench, KERNEL2, _matrix_size);
   benchmark ("SQRT libmath", "SQRT newton", NULL, sqrt_libmath,
              square_root_newton_raphson, &bench, KERNEL2, _matrix_size);
+  benchmark ("Log libmath", "Log Taylor", NULL, log_libmath, logarithm_taylor,
+             &bench, KERNEL2, _matrix_size);
+
+  benchmark ("FP32", "FP64", NULL, conversion_double_float, useless_function,
+             &bench, KERNEL2, _matrix_size);
+  // benchmark ("Monte-carlo-FP32", "Monte-carlo-FP64", NULL,
+  //            monte_carlo_option_pricing_fp32,
+  //            monte_carlo_option_pricing_fp64, &bench, KERNEL2,
+  //            _matrix_size);
+  benchmark ("PI FP64", "PI FP32", NULL, pi_approximation_fp64,
+             pi_approximation_fp32, &bench, KERNEL2, _matrix_size);
+  benchmark ("PI FP64", "Real PI", NULL, pi_approximation_fp64, real_pi,
+             &bench, KERNEL2, _matrix_size);
 
   // INVERSE MATRIX
-  benchmark ("gauss jordan", NULL, NULL, inve_matrix_gauss_jordan, NULL,
-             &bench, INVERSION, _matrix_size);
+  // benchmark ("gauss jordan", NULL, "gauss.dat", inve_matrix_gauss_jordan,
+  // NULL, &bench, INVERSION, _matrix_size);
 
   // KERNEL 1
-  benchmark ("SQRT BLAS", NULL, NULL, ieee_64bits_sqrt, NULL, &bench, KERNEL1,
-             _matrix_size);
+  // benchmark ("SQRT BLAS", NULL, NULL, ieee_64bits_sqrt, NULL, &bench,
+  // KERNEL1,
+  //            _matrix_size);
 
   free (data);
 
