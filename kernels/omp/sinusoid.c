@@ -13,7 +13,7 @@ factorial (int n)
 }
 
 void
-sinus_maclaurin (double *vector, int n)
+sinus_maclaurin (double *input, double *output, int n)
 {
   int i, j;
 #pragma omp for
@@ -24,21 +24,20 @@ sinus_maclaurin (double *vector, int n)
         {
           int sign = (j % 2 == 0) ? 1 : -1;
           int exponent = 2 * j + 1;
-          double term
-              = sign * pow (vector[i], exponent) / factorial (exponent);
+          double term = sign * pow (input[i], exponent) / factorial (exponent);
           result += term;
         }
-      vector[i] = result;
+      output[i] = result;
     }
 }
 
 void
-sinus_libmath (double *vector, int n)
+sinus_libmath (double *input, double *output, int n)
 {
   int i;
 #pragma omp for
   for (i = 0; i < n; i++)
     {
-      vector[i] = sin (vector[i]);
+      output[i] = sin (input[i]);
     }
 }
