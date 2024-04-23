@@ -40,11 +40,16 @@ add_library(cuda_bench SHARED
   ${cuda_driver}
   ${cuda_kernels}
 )
+target_link_libraries(cuda_bench ${CUDA_NVCC_FLAGS} -lm)
+
 cuda_add_executable(cuda_main
   ${cuda_test}
+  ${utils}
+  ${cuda_driver}
+  ${cuda_kernels}
 )
 
-target_link_libraries(cuda_main ${CUDA_NVCC_FLAGS} cuda_bench)
+target_link_libraries(cuda_main ${CUDA_NVCC_FLAGS} cuda_bench -lm)
 
 
 # OMP compilation

@@ -1,23 +1,23 @@
 
 __global__ void
-log_libmath (double *x, int n)
+log_libmath (double *input, double *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   if (tid < n)
     {
-      x[tid] = log (x[tid]);
+      output[tid] = log (input[tid]);
     }
 }
 
 __global__ void
-logarithm_taylor (double *x, int n)
+logarithm_taylor (double *input, double *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   if (tid < n)
     {
       int iter = 100;
       double result = 0.0;
-      double term = x[tid] - 1.0;
+      double term = input[tid] - 1.0;
 
       for (int i = 1; i <= iter; i++)
         {
@@ -29,9 +29,9 @@ logarithm_taylor (double *x, int n)
             {
               result += term / i;
             }
-          term *= (x[tid] - 1.0);
+          term *= (input[tid] - 1.0);
         }
 
-      x[tid] = result;
+      output[tid] = result;
     }
 }

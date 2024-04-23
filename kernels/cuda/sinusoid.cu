@@ -11,7 +11,7 @@ factorial(int n) {
 }
 
 __global__ void
-sinus_maclaurin (double *vector, int n)
+sinus_maclaurin (double *input, double *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   int  j;
@@ -21,16 +21,16 @@ sinus_maclaurin (double *vector, int n)
           int sign = (j % 2 == 0) ? 1 : -1;
           int exponent = 2 * j + 1;
           double term
-              = sign * pow (vector[tid], exponent) / factorial(exponent);
+              = sign * pow (input[tid], exponent) / factorial(exponent);
           result += term;
         }
-      vector[tid] = result;
+      output[tid] = result;
     
 }
 
 __global__ void
-sinus_libmath (double *vector, int n)
+sinus_libmath (double *input, double *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
-      vector[tid] = sin (vector[tid]);
+      output[tid] = sin (input[tid]);
 }
