@@ -26,42 +26,49 @@
 
 void
 kernel2 (char *name_kernel, char *name_kernel_2, void (*kernel) (),
-         void (*kernel_2) (), char *buffer, struct bench *bench,
+         void (*kernel_2) (), char *filename, struct bench *bench,
          int matrix_size)
 {
-  long matrix_size_2 = matrix_size * matrix_size;
-  double *a, *b, *c, *d;
-  ALLOC (a, matrix_size_2);
-  ALLOC (b, matrix_size_2);
-  ALLOC (c, matrix_size_2);
-  ALLOC (d, matrix_size_2);
-
-  // copying init values
-  for (int i = 0; i < matrix_size; i++)
+  for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
-      a[i] += drand48 ();
-      c[i] = a[i];
+      int _matrix_size = i;
+      char buffer[1000];
+      bench->data->matrice_size = _matrix_size;
+      long _matrix_size_2 = _matrix_size * _matrix_size;
+      double *a, *b, *c, *d;
+      ALLOC (a, _matrix_size_2);
+      ALLOC (b, _matrix_size_2);
+      ALLOC (c, _matrix_size_2);
+      ALLOC (d, _matrix_size_2);
+
+      // copying init values
+      for (int j = 0; j < _matrix_size; j++)
+        {
+          a[j] += drand48 ();
+          c[j] = a[j];
+        }
+      print_header_benchmark (buffer, _matrix_size);
+      DRIVER_BODY (kernel, a, b, _matrix_size);
+      formatting_data (bench->data);
+
+      print_data_benchmark (name_kernel, bench->data, buffer);
+      DRIVER_BODY (kernel_2, c, d, _matrix_size);
+      formatting_data (bench->data);
+      print_data_benchmark (name_kernel_2, bench->data, buffer);
+      print_header_accuracy (buffer);
+
+      bench->accuracy->accuracy = compute_err_accuracy (d, b, _matrix_size);
+      bench->accuracy->RMS = RMS (d, b, _matrix_size);
+      bench->accuracy->forward_error = forward_error (d, b, _matrix_size);
+
+      print_data_accuracy ("test", buffer, bench->accuracy);
+
+      free (a);
+      free (b);
+      free (c);
+      free (d);
+      save_data (filename, buffer);
     }
-  print_header_benchmark (buffer, matrix_size);
-  DRIVER_BODY (kernel, a, b, matrix_size);
-  formatting_data (bench->data);
-
-  print_data_benchmark (name_kernel, bench->data, buffer);
-  DRIVER_BODY (kernel_2, c, d, matrix_size);
-  formatting_data (bench->data);
-  print_data_benchmark (name_kernel_2, bench->data, buffer);
-  print_header_accuracy (buffer);
-
-  bench->accuracy->accuracy = compute_err_accuracy (d, b, matrix_size);
-  bench->accuracy->RMS = RMS (d, b, matrix_size);
-  bench->accuracy->forward_error = forward_error (d, b, matrix_size);
-
-  print_data_accuracy ("test", buffer, bench->accuracy);
-
-  free (a);
-  free (b);
-  free (c);
-  free (d);
 }
 
 void
@@ -70,20 +77,22 @@ kernel1 (char *name_kernel, void (*kernel) (), char *filename,
 {
   for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
+      int _matrix_size = i;
+      bench->data->matrice_size = _matrix_size;
       char buffer[1000];
-      long matrix_size_2 = matrix_size * matrix_size;
+      long _matrix_size_2 = _matrix_size * _matrix_size;
       double *a, *b;
-      ALLOC (a, matrix_size_2);
-      ALLOC (b, matrix_size_2);
+      ALLOC (a, _matrix_size_2);
+      ALLOC (b, _matrix_size_2);
 
       // copying init values
-      for (int i = 0; i < matrix_size; i++)
+      for (int i = 0; i < _matrix_size; i++)
         {
           a[i] += drand48 ();
           b[i] = a[i];
         }
-      print_header_benchmark (buffer, matrix_size);
-      DRIVER_BODY (kernel, a, b, matrix_size);
+      print_header_benchmark (buffer, _matrix_size);
+      DRIVER_BODY (kernel, a, b, _matrix_size);
       formatting_data (bench->data);
       print_data_benchmark (name_kernel, bench->data, buffer);
       save_data (filename, buffer);
@@ -97,20 +106,21 @@ inversion (char *name_kernel, void (*kernel) (), char *filename,
   char buffer[1000];
   for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
-      long matrix_size_2 = i * i;
+      int _matrix_size = i;
+      bench->data->matrice_size = _matrix_size;
+      long _matrix_size_2 = _matrix_size * _matrix_size;
 
       double *a, *b, *c, *d;
-      ALLOC (a, matrix_size_2);
-      ALLOC (b, matrix_size_2);
-      ALLOC (c, matrix_size_2);
-      ALLOC (d, matrix_size_2);
+      ALLOC (a, _matrix_size_2);
+      ALLOC (b, _matrix_size_2);
+      ALLOC (c, _matrix_size_2);
+      ALLOC (d, _matrix_size_2);
 
-      INIT (a, matrix_size_2);
-      INIT (b, matrix_size_2);
+      INIT (a, _matrix_size_2);
+      INIT (b, _matrix_size_2);
 
       print_header_benchmark (buffer, i);
       DRIVER_BODY (kernel, a, b, i);
-      bench->data->matrice_size = i;
       set_identity_matrix (c, i, i);
       ieee_64bits_gemm_jik (c, b, d, i);
       DRIVER_BODY (kernel, d, b, i);
