@@ -44,7 +44,7 @@ struct bench
 {
   struct data *data;
   struct accuracy *accuracy;
-  int pitch_size, end_size, start_size;
+  int start_size, end_size, pitch_size;
 };
 
 enum benchmark_type
@@ -63,8 +63,8 @@ extern void print_data_benchmark (char *title, struct data *data,
                                   char *buffer);
 extern void save_data (char *title, char *buffer);
 extern long rdtsc (void);
-extern void print_header_benchmark (char *buffer, long matrix_size);
-extern void print_header_diff (char *buffer, long matrix_size);
+extern void print_header_benchmark (char *buffer);
+extern void print_header_diff (char *buffer);
 extern void formatting_data (struct data *data);
 extern void print_matrix (double *matrix, int row, int column);
 extern void set_identity_matrix (double *matrix, int row, int column);

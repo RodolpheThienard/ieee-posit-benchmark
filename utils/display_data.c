@@ -27,23 +27,14 @@ formatting_data (struct data *data)
   data->stddev = stddev (data->samples, data->mean);
 }
 
-/* convert number into Kio or Mio */
-double
-convertion (double number)
-{
-  return (number > (1 << 20)) ? number / 1024.0 / 1024.0 : number / 1024.0;
-}
-
 /* save header of benchmark measure in buffer */
 void
-print_header_benchmark (char *buffer, long _matrix_size)
+print_header_benchmark (char *buffer)
 {
   sprintf (buffer,
            "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; %13s\n",
-           buffer, "title",
-           (_matrix_size > (1 << 20)) ? "buffer (MiB)" : "buffer (KiB)",
-           "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
-           "+- MiB/s", "Cycles");
+           buffer, "title", "buffer (KiB)", "min (s)", "max (s)", "median (s)",
+           "mean (s)", "dev %", "MiB/s", "+- MiB/s", "Cycles");
 }
 
 /* add formated data into buffer */
@@ -56,8 +47,7 @@ print_data_benchmark (char *title, struct data *data, char *buffer)
   double _median = data->samples[16];
   double _mean = data->mean;
   double _stddev = data->stddev;
-  double _matrix_size = data->matrice_size;
-  double _data_size = data->type;
+  double _matrix_size = data->matrice_size * data->type;
   double _repetition = data->repetition;
   long _rc = data->RC[16];
 
@@ -69,8 +59,8 @@ print_data_benchmark (char *title, struct data *data, char *buffer)
   sprintf (buffer,
            "%s %20s; %13.3lf; %13.3e; %13.3e; %13.3e; %13.3e; %9.3lf; "
            "%13.3lf; %13.3lf; %13.3lu\n",
-           buffer, title, convertion (_matrix_size * _data_size), _min, _max,
-           _median, _mean, _stddevp, _bw, _dev_bw, _rc);
+           buffer, title, _matrix_size / 1024.0, _min, _max, _median, _mean,
+           _stddevp, _bw, _dev_bw, _rc);
 }
 
 /* save header of accuracy measure in buffer */
@@ -90,24 +80,22 @@ print_data_accuracy (char *title, char *buffer, struct accuracy *accuracy)
   double _forward_err = accuracy->forward_error;
   double _backward_err = accuracy->backward_error;
 
-  sprintf (buffer, "%s %20s; %13le; %13le; %13le; %13le\n\n", buffer, title,
+  sprintf (buffer, "%s %20s; %13le; %13le; %13le; %13le\n", buffer, title,
            _accuracy, _rms, _forward_err, _backward_err);
 }
 
 void
-print_header_diff (char *buffer, long _matrix_size)
+print_header_diff (char *buffer)
 {
   sprintf (buffer,
            "%s %20s; %13s; %13s; %13s; %13s; %13s; %9s; %13s; %13s; "
            "%13s; %13s; %13s; %13s\n",
-           buffer, "title",
-           (_matrix_size > (1 << 20)) ? "buffer (MiB)" : "buffer (KiB)",
-           "min (s)", "max (s)", "median (s)", "mean (s)", "dev %", "MiB/s",
-           "+- MiB/s", "Cycles", "accuracy mean", "accuracy RMS",
-           "forward error");
+           buffer, "title", "buffer (KiB)", "min (s)", "max (s)", "median (s)",
+           "mean (s)", "dev %", "MiB/s", "+- MiB/s", "Cycles", "accuracy mean",
+           "accuracy RMS", "forward error");
 }
 
-#define PERCENT(a, b) (((b - a) / a) * 100)
+#define PERCENT(a, b) (((a) / b))
 
 void
 print_diff_accuracy (char *title, char *buffer, struct bench *bench,
@@ -135,8 +123,8 @@ print_diff_accuracy (char *title, char *buffer, struct bench *bench,
   double _forward_err = bench->accuracy->forward_error;
 
   sprintf (buffer,
-           "%s %20s; %13.3s; %12.3lf%; %12.3lf%; %12.3lf%; %12.3lf%; %9.3s; "
-           "%12.3lf%; %13.3s; %13ld; %13le; %13le; %13le\n\n",
+           "%s %20s; %13.3s; %12.3lfx; %12.3lfx; %12.3lfx; %12.3lfx; %9.3s; "
+           "%12.3lfx; %13.3s; %13ld; %13le; %13le; %13le\n\n",
            buffer, title, "", _min, _max, _median, _mean, "", _bw, "", _rc,
            _accuracy, _rms, _forward_err);
 }

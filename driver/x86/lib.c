@@ -1,7 +1,5 @@
 #include "../../include/kernels.h"
 #include "../../include/utils.h"
-#include <stdio.h>
-#include <string.h>
 
 #define DRIVER_BODY(fn, ...)                                                  \
   {                                                                           \
@@ -29,10 +27,11 @@ kernel2 (char *name_kernel, char *name_kernel_2, void (*kernel) (),
          void (*kernel_2) (), char *filename, struct bench *bench,
          int matrix_size)
 {
+  char buffer[1000];
+  print_header_diff (buffer);
   for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
       int _matrix_size = i;
-      char buffer[1000];
       bench->data->matrice_size = _matrix_size;
       long _matrix_size_2 = _matrix_size * _matrix_size;
       double *a, *b, *c, *d;
@@ -47,21 +46,20 @@ kernel2 (char *name_kernel, char *name_kernel_2, void (*kernel) (),
           a[j] += drand48 ();
           c[j] = a[j];
         }
-      print_header_benchmark (buffer, _matrix_size);
       DRIVER_BODY (kernel, a, b, _matrix_size);
       formatting_data (bench->data);
 
       print_data_benchmark (name_kernel, bench->data, buffer);
       DRIVER_BODY (kernel_2, c, d, _matrix_size);
+      struct data data_2 = *bench->data;
       formatting_data (bench->data);
       print_data_benchmark (name_kernel_2, bench->data, buffer);
-      print_header_accuracy (buffer);
 
       bench->accuracy->accuracy = compute_err_accuracy (d, b, _matrix_size);
       bench->accuracy->RMS = RMS (d, b, _matrix_size);
       bench->accuracy->forward_error = forward_error (d, b, _matrix_size);
 
-      print_data_accuracy ("test", buffer, bench->accuracy);
+      print_diff_accuracy ("Comparaison", buffer, bench, &data_2);
 
       free (a);
       free (b);
@@ -75,11 +73,12 @@ void
 kernel1 (char *name_kernel, void (*kernel) (), char *filename,
          struct bench *bench, int matrix_size)
 {
+  char buffer[1000];
+  print_header_benchmark (buffer);
   for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
       int _matrix_size = i;
       bench->data->matrice_size = _matrix_size;
-      char buffer[1000];
       long _matrix_size_2 = _matrix_size * _matrix_size;
       double *a, *b;
       ALLOC (a, _matrix_size_2);
@@ -91,7 +90,6 @@ kernel1 (char *name_kernel, void (*kernel) (), char *filename,
           a[i] += drand48 ();
           b[i] = a[i];
         }
-      print_header_benchmark (buffer, _matrix_size);
       DRIVER_BODY (kernel, a, b, _matrix_size);
       formatting_data (bench->data);
       print_data_benchmark (name_kernel, bench->data, buffer);
@@ -104,6 +102,7 @@ inversion (char *name_kernel, void (*kernel) (), char *filename,
            struct bench *bench, int matrix_size)
 {
   char buffer[1000];
+  print_header_diff (buffer);
   for (int i = bench->start_size; i < bench->end_size; i += bench->pitch_size)
     {
       int _matrix_size = i;
@@ -119,20 +118,18 @@ inversion (char *name_kernel, void (*kernel) (), char *filename,
       INIT (a, _matrix_size_2);
       INIT (b, _matrix_size_2);
 
-      print_header_benchmark (buffer, i);
       DRIVER_BODY (kernel, a, b, i);
       set_identity_matrix (c, i, i);
       ieee_64bits_gemm_jik (c, b, d, i);
       DRIVER_BODY (kernel, d, b, i);
       formatting_data (bench->data);
       print_data_benchmark (name_kernel, bench->data, buffer);
-      print_header_accuracy (buffer);
 
       bench->accuracy->accuracy = compute_err_accuracy (a, b, i);
       bench->accuracy->RMS = RMS (a, b, i);
       bench->accuracy->forward_error = forward_error (a, b, i);
 
-      print_data_accuracy ("Accuracy measure", buffer, bench->accuracy);
+      print_diff_accuracy ("Comparaison", buffer, bench, bench->data);
       free (a);
       free (b);
       free (c);

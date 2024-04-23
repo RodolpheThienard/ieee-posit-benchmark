@@ -46,27 +46,21 @@ main (int argc, char *argv[])
   //                                    real_pi, pi_approximation_fp32,
   //                                    accuracy, _matrix_size);
 
-  struct bench *bench;
-  ALLOC (bench, 1);
-  bench->accuracy = accuracy;
-  bench->data = data;
   data->type = sizeof (double);
-  bench->end_size = 200;
-  bench->pitch_size = 100;
-  bench->start_size = 100;
+  struct bench bench = { data, accuracy, 100, 300, 100 };
 
   // KERNEL 2
   benchmark ("sinus_libmath", "sinus_macclaurin", NULL, sinus_libmath,
-             sinus_maclaurin, bench, KERNEL2, _matrix_size);
+             sinus_maclaurin, &bench, KERNEL2, _matrix_size);
   benchmark ("SQRT libmath", "SQRT newton", NULL, sqrt_libmath,
-             square_root_newton_raphson, bench, KERNEL2, _matrix_size);
+             square_root_newton_raphson, &bench, KERNEL2, _matrix_size);
 
   // INVERSE MATRIX
-  benchmark ("gauss jordan", NULL, NULL, inve_matrix_gauss_jordan, NULL, bench,
-             INVERSION, _matrix_size);
+  benchmark ("gauss jordan", NULL, NULL, inve_matrix_gauss_jordan, NULL,
+             &bench, INVERSION, _matrix_size);
 
   // KERNEL 1
-  benchmark ("SQRT BLAS", NULL, NULL, ieee_64bits_sqrt, NULL, bench, KERNEL1,
+  benchmark ("SQRT BLAS", NULL, NULL, ieee_64bits_sqrt, NULL, &bench, KERNEL1,
              _matrix_size);
 
   free (data);
