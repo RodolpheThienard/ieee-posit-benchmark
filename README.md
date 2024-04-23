@@ -29,25 +29,29 @@ Posit was implemented on a RacEr architecture
 No library yet
 
 # Compilation & Run
-## x86 compilation command :
+All `main` compilation command will create a shared object lib which will be used for each test  
+Then you can run test or use the lib in your own file.
+
+## Lib 
 ```bash
 mkdir build
 cd build
 cmake ..
-make x86_main
-./omp_main <matrix-size> <meta-repetition> 
+make <version>_bench
 ```
+all version available : {x86, omp, cuda}
 
-## OMP compilation command :
+## Test compilation & run command :
 ```bash
 mkdir build
 cd build
 cmake ..
-make omp_main
-./omp_main <matrix-size> <meta-repetition> 
+make <version>_main
+./<version>_main <matrix-size> <meta-repetition> 
 ```
+all version available : {x86, omp, cuda}
 
-## CUDA compilation command :
+#### Example : 
 ```bash
 mkdir build
 cd build
@@ -55,6 +59,9 @@ cmake ..
 make cuda_main
 ./cuda_main <matrix-size> <meta-repetition>
 ```
+
+## Troubleshoot
+
 > [!WARNING]
 > If error : "cannot find -lcublas" or "cannot find -lcudart"  
 > check if LD_LIBRARY_PATH AND LIBRARY_PATH have "/path/to/your/cuda/lib64"  
@@ -64,7 +71,7 @@ export LIBRARY_PATH="/path/to/your/cuda/lib64:${LIBRARY_PATH}"
 export LD_LIBRARY_PATH="/path/to/your/cuda/lib64:${LD_LIBRARY_PATH}"
 ```
 
-## RacEr compilation command :
-```bash
-UNIMPLEMENTED
-```
+
+## API
+> [!WARNING]
+> Todo  

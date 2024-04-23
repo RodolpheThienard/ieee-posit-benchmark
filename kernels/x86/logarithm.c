@@ -1,19 +1,19 @@
 #include "../../include/kernels.h"
 
 void
-log_libmath (double *x, int n)
+log_libmath (double *input, double *output, int n)
 {
   for (int i = 0; i < n; i++)
-    x[i] = log (x[i]);
+    output[i] = log (input[i]);
 }
 
 void
-logarithm_taylor (double *x, int n)
+logarithm_taylor (double *input, double *output, int n)
 {
   int iter = 100;
   for (int j = 0; j < n; j++)
     {
-      if (x[j] <= 0)
+      if (input[j] <= 0)
         {
           printf ("Erreur : Le logarithme ne peut être calculé pour des "
                   "valeurs négatives ou nulles.\n");
@@ -21,7 +21,7 @@ logarithm_taylor (double *x, int n)
         }
 
       double result = 0.0;
-      double term = x[j] - 1.0; // Premier terme de la série de Taylor
+      double term = input[j] - 1.0; // Premier terme de la série de Taylor
 
       for (int i = 1; i <= iter; i++)
         {
@@ -33,8 +33,8 @@ logarithm_taylor (double *x, int n)
             {
               result += term / i;
             }
-          term *= (x[j] - 1.0);
+          term *= (input[j] - 1.0);
         }
-      x[j] = result;
+      output[j] = result;
     }
 }

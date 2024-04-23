@@ -21,8 +21,7 @@ void ieee_64bits_mul (double *matrix1, double *matrix2, double *matrix3,
                       int size);
 void ieee_64bits_div (double *matrix1, double *matrix2, double *matrix3,
                       int size);
-void ieee_64bits_sqrt (double *matrix1, double *matrix2, double *matrix3,
-                       int size);
+void ieee_64bits_sqrt (double *matrix1, double *matrix2, int size);
 void ieee_64bits_dp (double *matrix1, double *matrix2, double *matrix3,
                      int size);
 void ieee_64bits_gemm_ijk (double *matrix1, double *matrix2, double *matrix3,
@@ -34,16 +33,16 @@ void ieee_64bits_gemm_bloc (double *matrix1, double *matrix2, double *matrix3,
 
 /// ACCURACY
 void inve_matrix_gauss_jordan (double *matrix1, double *matrix2, int size);
-void logarithm_taylor (double *vector, int size);
-void log_libmath (double *vector, int size);
-void conversion_double_float (double *vector, int size);
-void useless_function (double *vector, int size);
-void square_root_newton_raphson (double *vector, int size);
-void sqrt_libmath (double *vector, int size);
-void sinus_maclaurin (double *vector, int size);
-void sinus_libmath (double *vector, int size);
-void monte_carlo_option_pricing_fp64 (double *vector, int n);
-void monte_carlo_option_pricing_fp32 (float *vector, int n);
-void pi_approximation_fp64 (double *vector, int n);
-void pi_approximation_fp32 (float *vector, int n);
-void real_pi (double *vector, int n);
+void logarithm_taylor (double *input, double *output, int size);
+void log_libmath (double *input, double *output, int size);
+void conversion_double_float (double *input, double *output, int size);
+void useless_function (double *input, double *output, int size);
+void square_root_newton_raphson (double *input, double *output, int size);
+void sqrt_libmath (double *input, double *output, int size);
+void sinus_maclaurin (double *input, double *output, int size);
+void sinus_libmath (double *input, double *output, int size);
+void monte_carlo_option_pricing_fp64 (double *input, double *output, int size);
+void monte_carlo_option_pricing_fp32 (float *input, float *output, int n);
+void pi_approximation_fp64 (double *input, double *output, int size);
+void pi_approximation_fp32 (float *input, float *output, int n);
+void real_pi (double *input, double *output, int size);

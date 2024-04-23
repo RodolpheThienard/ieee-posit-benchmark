@@ -80,11 +80,11 @@ ieee_64bits_div (double *a, double *b, double *c, int n)
 }
 
 void
-ieee_64bits_sqrt (double *a, double *b, double *c, int n)
+ieee_64bits_sqrt (double *a, double *b, int n)
 {
   for (int i = 0; i < n; i++)
     for (int j = 0; j < n; j++)
-      c[i * n + j] = sqrt (a[i * n + j]);
+      b[i * n + j] = sqrt (a[i * n + j]);
 }
 void
 ieee_64bits_dp (double *restrict a, double *restrict b, double *restrict c,

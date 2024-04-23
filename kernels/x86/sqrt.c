@@ -1,31 +1,31 @@
 #include "../../include/utils.h"
 
 void
-square_root_newton_raphson (double *vector, int n)
+square_root_newton_raphson (double *input, double *output, int n)
 {
   for (int i = 0; i < n; i++)
     {
-      double approx = vector[i] * .5;
-      if (vector[i] < 0)
+      double approx = input[i] * .5;
+      if (input[i] < 0)
         {
           perror ("Negative sqare root");
           exit (1);
         }
-      if (vector[i] > 0)
+      if (input[i] > 0)
         {
           do
             {
-              approx = (approx + (vector[i] / approx)) / 2;
+              approx = (approx + (input[i] / approx)) / 2;
             }
-          while (((approx * approx) - vector[i]) > 1e-8);
+          while (((approx * approx) - input[i]) > 1e-8);
         }
-      vector[i] = approx;
+      output[i] = approx;
     }
 }
 
 void
-sqrt_libmath (double *x, int n)
+sqrt_libmath (double *input, double *output, int n)
 {
   for (int i = 0; i < n; i++)
-    x[i] = sqrt (x[i]);
+    output[i] = sqrt (input[i]);
 }
