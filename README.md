@@ -1,4 +1,4 @@
-# Ieee posit benchmark for RacEr Asics
+# Ieee posit benchmark for RacEr Architecture 
 
 Implementation of a benchmark strategy to be able to measure different metrics on the IEEE-754 floating-point standard and the UNUM 3 Posit standard. Benchmark are carried out on AMD FPGAs provided by AWS. To compare these two representations, we used 3 types of implementation :
 - CPU (sequential & parralel with IEEE)
