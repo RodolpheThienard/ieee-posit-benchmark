@@ -1,8 +1,10 @@
 #include "../../include/kernels.h"
 #include "../../include/utils.h"
 
-#define DRIVER_BODY(fn, ...)                                                  \
+#define DRIVER_BODY(kernel, kernel_name)                                      \
   {                                                                           \
+    RacEr_mc_device_init (&device, kernel_name, 0);                           \
+    RacEr_mc_device_program_init (&device, kernel, "default_allocator", 0);   \
     double init_time, end_time;                                               \
     long begin_register, end_register;                                        \
     for (int stability = 0; stability < 33; stability++)                      \
@@ -11,8 +13,8 @@
         begin_register = rdtsc ();                                            \
         for (int rep = 0; rep < bench->data->repetition; rep++)               \
           {                                                                   \
-            RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim, fn, 3,        \
-                                     kernel_args);                            \
+            RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim, kernel_name,  \
+                                     3, kernel_args);                         \
             RacEr_mc_device_tile_groups_execute (&device);                    \
           }                                                                   \
         end_register = rdtsc ();                                              \
@@ -71,7 +73,7 @@ kernel2 (char *name_kernel, char *name_kernel_2,
                               HB_MC_MEMCPY_TO_DEVICE);
 
       int kernel_args[] = { d_a, d_b, _matrix_size };
-      DRIVER_BODY (name_kernel);
+      DRIVER_BODY (kernel, name_kernel);
 
       RacEr_mc_device_memcpy (&device, b, d_b,
                               _matrix_size_2 * sizeof (double),
@@ -83,7 +85,7 @@ kernel2 (char *name_kernel, char *name_kernel_2,
 
       int kernel_args[] = { d_c, d_d, _matrix_size };
 
-      DRIVER_BODY (name_kernel_2);
+      DRIVER_BODY (kernel_2, name_kernel_2);
 
       RacEr_mc_device_memcpy (&device, d, d_d,
                               _matrix_size_2 * sizeof (double),
