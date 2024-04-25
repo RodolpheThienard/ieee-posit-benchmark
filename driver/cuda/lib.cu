@@ -71,7 +71,7 @@ kernel2 (char *name_kernel, char *name_kernel_2,
 
       print_data_benchmark (name_kernel, bench->data, buffer);
       DRIVER_BODY (kernel_2, d_c, d_d, _matrix_size);
-      cudaMemcpy (d, d_c, _matrix_size_2 * sizeof (double),
+      cudaMemcpy (d, d_d, _matrix_size_2 * sizeof (double),
                   cudaMemcpyDeviceToHost);
 
       struct data data_2 = *bench->data;
