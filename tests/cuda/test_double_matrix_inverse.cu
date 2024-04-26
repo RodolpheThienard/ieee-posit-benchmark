@@ -64,6 +64,19 @@ inve_matrix_gauss_jordan2 (double *mat, double *inv, int n)
     }
 }
 
+__global__ void
+dgemm2(double *A, double *B, double *C, int N)
+{
+  int j = blockIdx.x * blockDim.x + threadIdx.x;
+  // Col
+  int i = blockIdx.y * blockDim.y + threadIdx.y;
+  double sum = 0.;
+  for (int k = 0; k < N; k++)
+    {
+      sum += A[i * N + k] * B[k * N + j];
+    }
+  C[i * N + j] = sum;
+}
 int
 main (int argc, char *argv[])
 {
@@ -81,7 +94,7 @@ main (int argc, char *argv[])
 
   // ≃ 200 per kernel
   data->type = sizeof (double);
-  struct bench bench = { data, accuracy, 100, 3000, 100 };
+  struct bench bench = { data, accuracy, 100, 200, 100 };
 
   char buffer[1000];
   print_header_diff (buffer);
@@ -103,24 +116,41 @@ main (int argc, char *argv[])
       INIT (a, _matrix_size_2);
       INIT (b, _matrix_size_2);
 
+      for (int i = 0; i < _matrix_size_2; i++)
+      {
+        a[i]=  drand48();
+      }
+      
+      fprintf(stdout, "b device : %20.13lf\n", b[0]);
+      fprintf(stdout, "a device : %20.13lf\n", a[0]);
+
       cudaMemcpy (d_a, a, _matrix_size_2 * sizeof (double),
                   cudaMemcpyHostToDevice);
 
-      DRIVER_BODY (inve_matrix_gauss_jordan2, d_a, d_b, i);
 
-      set_identity_matrix (c, i, i);
-      cudaMemcpy (d_a, a, _matrix_size_2 * sizeof (double),
-                  cudaMemcpyHostToDevice);
-      cudaMemcpy (d_c, c, _matrix_size_2 * sizeof (double),
-                  cudaMemcpyHostToDevice);
-      ieee_64bits_gemm_jik (d_c, d_b, d_d, i);
-
-      DRIVER_BODY (inve_matrix_gauss_jordan2, d_d, d_b, i);
+      inve_matrix_gauss_jordan2<<<32,32>>>(d_a, d_b, i);
 
       cudaMemcpy (b, d_b, _matrix_size_2 * sizeof (double),
                   cudaMemcpyDeviceToHost);
       cudaMemcpy (a, d_a, _matrix_size_2 * sizeof (double),
                   cudaMemcpyDeviceToHost);
+
+      fprintf(stdout, "b device : %20.13lf\n", b[0]);
+      fprintf(stdout, "a device : %20.13lf\n", a[0]);
+      set_identity_matrix (c, i, i);
+      cudaMemcpy (d_c, c, _matrix_size_2 * sizeof (double),
+                  cudaMemcpyHostToDevice);
+      dgemm2<<<32,32>>>(d_c, d_b, d_d, i);
+
+      inve_matrix_gauss_jordan2<<<32,32>>>(d_d, d_b, i);
+
+      cudaMemcpy (b, d_b, _matrix_size_2 * sizeof (double),
+                  cudaMemcpyDeviceToHost);
+      cudaMemcpy (a, d_a, _matrix_size_2 * sizeof (double),
+                  cudaMemcpyDeviceToHost);
+
+      fprintf(stdout, "b device : %20.13lf\n", b[0]);
+      fprintf(stdout, "a device : %20.13lf\n", a[0]);
       formatting_data (bench.data);
       print_data_benchmark ("inversion gauss jordan", bench.data, buffer);
 

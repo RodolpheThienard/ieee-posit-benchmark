@@ -24,6 +24,8 @@ void ieee_64bits_div (double *matrix1, double *matrix2, double *matrix3,
 void ieee_64bits_sqrt (double *matrix1, double *matrix2, int size);
 void ieee_64bits_dp (double *matrix1, double *matrix2, double *matrix3,
                      int size);
+void ieee_64bits_gemm (double *matrix1, double *matrix2, double *matrix3,
+                       int size);
 void ieee_64bits_gemm_ijk (double *matrix1, double *matrix2, double *matrix3,
                            int size);
 void ieee_64bits_gemm_jik (double *matrix1, double *matrix2, double *matrix3,
