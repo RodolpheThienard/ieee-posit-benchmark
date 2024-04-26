@@ -50,7 +50,6 @@ if(ENABLE_CUDA_COMPILE)
   FILE(GLOB cuda_test tests/cuda/*.cu)
   FILE(GLOB cuda_kernels kernels/cuda/*.cu)
   FILE(GLOB cuda_driver driver/cuda/*.cu)
-  # cmake_policy(SET CMP0146 NEW)
 
   set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm )
 
