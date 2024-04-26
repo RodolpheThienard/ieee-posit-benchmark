@@ -16,9 +16,6 @@ FILE(GLOB utils utils/*.c)
 
 # x86 compilation
 if(ENABLE_X86_COMPILE)
-  # x86 bin directory path
-  set(CMAKE_BINARY_DIR x86_bin)
-  set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
   # x86 kernel,test files
   FILE(GLOB x86_test tests/x86/*.c)
@@ -43,21 +40,20 @@ if(ENABLE_X86_COMPILE)
       ${test}
       )
     target_link_libraries(${test_name} x86_bench -lm)
+    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/x86_bin")
   endforeach()
 endif()
 
 # cuda compilation
 if(ENABLE_CUDA_COMPILE)
-  # cuda bin directory path
-  set(CMAKE_BINARY_DIR cuda_bin)
-  set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-
   # cuda kernel,test files
-  FILE(GLOB cuda_test tests/cuda/*.c)
-  FILE(GLOB cuda_kernels kernels/cuda/*.c)
-  FILE(GLOB cuda_driver driver/cuda/*.c)
-  
+  FILE(GLOB cuda_test tests/cuda/*.cu)
+  FILE(GLOB cuda_kernels kernels/cuda/*.cu)
+  FILE(GLOB cuda_driver driver/cuda/*.cu)
+  # cmake_policy(SET CMP0146 NEW)
+
   set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm )
+
   find_package(CUDA REQUIRED)
 
   # cuda library compilation
@@ -76,10 +72,14 @@ if(ENABLE_CUDA_COMPILE)
   # compilation of each cuda test file
   foreach(test ${TESTS})
     get_filename_component(test_name ${test} NAME_WE)
-    ADD_EXECUTABLE(${test_name} 
+    cuda_add_executable(${test_name} 
       ${test}
-      )
+      ${utils} 
+      ${cuda_driver} 
+      ${cuda_kernels} 
+    )
     target_link_libraries(${test_name} ${CUDA_NVCC_FLAGS} cuda_bench -lm)
+    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/cuda_bin")
   endforeach()
 endif()
 
@@ -122,7 +122,7 @@ if(ENABLE_OMP_COMPILE)
     if(OpenMP_C_FOUND)
         target_link_libraries(${test_name} PUBLIC OpenMP::OpenMP_C omp_bench -lm )
     endif()
-      set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/omp_bin")
+    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/omp_bin")
   endforeach()
 endif()
 
