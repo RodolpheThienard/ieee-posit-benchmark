@@ -38,16 +38,19 @@ extern "C"
    macro permettant de faire la mesure de précision
    verification de la sorti du calcul de Bandwidth avec la fonction CPU
    Checker si OMP et x86 sont équivalent */
-#define DRIVER_ACCURACY_32(size, host, device, bench)                         \
-  bench->accuracy->accuracy                                                   \
-      = compute_err_accuracy_float (host, device, size);                      \
-  bench->accuracy->RMS = RMS_float (host, device, size);                      \
-  bench->accuracy->forward_error = forward_error_float (host, device, size);
 
-#define DRIVER_ACCURACY_64(size, host, device, bench)                         \
+#define DRIVER_ACCURACY(size, host, device, bench)                         \
   bench->accuracy->accuracy = compute_err_accuracy (host, device, size);      \
   bench->accuracy->RMS = RMS (host, device, size);                            \
   bench->accuracy->forward_error = forward_error (host, device, size);
+
+
+void
+driver_accuracy (int size, double *c_host, double *c_device,
+                        struct bench_s bench[])
+{
+  DRIVER_ACCURACY ( size, c_host, c_device, bench);
+}
 
 /* Foo example of API utilisation
    compare 2 function for dgemm */
@@ -60,23 +63,9 @@ driver_sgemm (void (*function) (float *, float *, float *, int), int size,
 }
 
 void
-driver_dgemm (void (*function) (double *, double *, double *, int), int size,
-              double *a, double *b, double *c, struct bench_s bench[])
+driver_inverse_gauss_jordan (void (*function) (float *, float *, int), int size,
+              float *a, float *b, struct bench_s bench[])
 {
-  DRIVER_BANDWIDTH (function, a, b, c, size);
+  DRIVER_BANDWIDTH(function, a,b,size);
   formatting_data (bench->data);
-}
-
-void
-driver_accuracy_32bits (int size, float *c_host, float *c_device,
-                        struct bench_s bench[])
-{
-  DRIVER_ACCURACY_32 ( size, c_host, c_device, bench);
-}
-
-void
-driver_accuracy_64bits (int size, double *c_host, double *c_device,
-                        struct bench_s bench[])
-{
-  DRIVER_ACCURACY_64 ( size, c_host, c_device, bench);
 }

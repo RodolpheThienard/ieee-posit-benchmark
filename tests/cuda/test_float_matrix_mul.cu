@@ -72,7 +72,7 @@ main (int argc, char *argv[])
 
       conversion_into_double(c, c_device, _matrix_size_2);
 
-      driver_accuracy_64bits (_matrix_size_2, cc, c_device, &bench);
+      driver_accuracy (_matrix_size_2, cc, c_device, &bench);
       print_data_accuracy ("tt", buffer, bench.accuracy);
 
       free (a);
