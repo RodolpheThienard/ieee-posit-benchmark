@@ -11,7 +11,7 @@ extern "C"
    */
 #define DRIVER_BANDWIDTH(fn, ...)                              \
   {                                                                           \
-    dim3 threadsPerBlock (32, 32);                                            \
+    dim3 threadsPerBlock (64, 64);                                            \
     dim3 numBlocks (size / threadsPerBlock.x,                          \
                     size / threadsPerBlock.y);                         \
     cudaEvent_t start_event, end_event;                                       \
@@ -23,7 +23,7 @@ extern "C"
         cudaEventRecord (start_event, 0);                                     \
         for (int rep = 0; rep < bench->data->repetition; rep++)               \
           {                                                                   \
-            fn<<<32,32>>> (__VA_ARGS__);                 \
+            fn<<<threadsPerBlock, numBlocks>>> (__VA_ARGS__);                 \
           }                                                                   \
         cudaEventRecord (end_event, 0);                                       \
         cudaEventSynchronize (end_event);                                     \
@@ -38,10 +38,10 @@ extern "C"
    macro permettant de faire la mesure de précision
    verification de la sorti du calcul de Bandwidth avec la fonction CPU
    Checker si OMP et x86 sont équivalent */
-#define DRIVER_ACCURACY(host, device, size)                                   \
-  bench->accuracy->accuracy = compute_err_accuracy (host, device, size);      \
-  bench->accuracy->RMS = RMS (host, device, size);                            \
-  bench->accuracy->forward_error = forward_error (host, device, size);
+#define DRIVER_ACCURACY(size, host, device, bench)                            \
+  bench->accuracy->accuracy = compute_err_accuracy_float (host, device, size);      \
+  bench->accuracy->RMS = RMS_float (host, device, size);                            \
+  bench->accuracy->forward_error = forward_error_float (host, device, size);
 
 /* Foo example of API utilisation
    compare 2 function for dgemm */
@@ -57,5 +57,5 @@ void
 driver_accuracy_32bits (int size, float *c_host, float *c_device,
                         struct bench_s bench[])
 {
-  DRIVER_ACCURACY ((double *)c_host, (double *)c_device, size);
+  DRIVER_ACCURACY ( size, c_host, c_device, bench);
 }

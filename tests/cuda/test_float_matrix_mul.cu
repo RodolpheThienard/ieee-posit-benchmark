@@ -6,31 +6,6 @@ extern "C"
 #include "../../include/cuda.h"
 #include "../../include/driver.h"
 
-float
-compute_err_accuracy_float (float *a, float *b, int n)
-{
-  int i = 0;
-  float err = 0.0;
-  for (i = 0; i < n; i++)
-    {
-      err += (a[i] - b[i])*(a[i] - b[i]);
-    }
-   err /= n;
-  return sqrt (err);
-}
-
-float
-RMS_float (float *a, float *b, int n)
-{
-  int i = 0;
-  float err = 0.0;
-  for (i = 0; i < n; i++)
-    {
-      err += (a[i] - b[i]) * (a[i] - b[i]);
-    }
-  err /= n;
-  return sqrt (err);
-}
 int
 main (int argc, char *argv[])
 {
@@ -47,14 +22,15 @@ main (int argc, char *argv[])
   data->repetition = _repetition;
 
   // ≃ 200 per kernel
+  char buffer[1000];
   data->type = sizeof (double);
-  struct bench_s bench = { data, accuracy, 100, 1000, 100 };
+  struct bench_s bench = { data, accuracy, 1024, 2048, 128 };
 
   for (int i = bench.start_size; i < bench.end_size; i += bench.step_size)
     {
       _matrix_size = i;
-      bench.data->matrice_size = _matrix_size;
-      int _matrix_size_2 = _matrix_size * _matrix_size;
+      int _matrix_size_2 = i * i;
+      bench.data->matrice_size = _matrix_size_2;
 
       float *a, *b, *c, *c_host, *d_a, *d_b, *d_c;
       a = (float *)malloc (sizeof (float) * _matrix_size_2);
@@ -73,28 +49,28 @@ main (int argc, char *argv[])
       cudaMemcpy (d_b, b, _matrix_size_2 * sizeof (float),
                   cudaMemcpyHostToDevice);
 
-      driver_sgemm(sgemm, _matrix_size, d_a,d_b,d_c,&bench);
+      driver_sgemm (sgemm, _matrix_size, d_a, d_b, d_c, &bench);
 
       cudaMemcpy (c, d_c, _matrix_size_2 * sizeof (float),
                   cudaMemcpyDeviceToHost);
 
-      ieee_32bits_gemm(a, b, c_host, i);
+      ieee_32bits_gemm (a, b, c_host, _matrix_size);
 
-      // driver_accuracy_32bits(_matrix_size_2, c_host, d_c, &bench);
+      driver_accuracy_32bits (_matrix_size_2, c_host, c, &bench);
 
-      float err = compute_err_accuracy_float(c, c_host, i);
-      float rms = RMS_float(c, c_host, i);
+      print_data_accuracy ("tt", buffer, bench.accuracy);
 
-      fprintf(stdout, "float matrix mul err : %le; rms : %le\n", err, rms);
       free (a);
       free (b);
       free (c);
       free (c_host);
-      cudaFree(d_a);
-      cudaFree(d_b);
-      cudaFree(d_c);
+      cudaFree (d_a);
+      cudaFree (d_b);
+      cudaFree (d_c);
     }
 
+  save_data (NULL, buffer);
   free (data);
+  free (accuracy);
   return 0;
 }
