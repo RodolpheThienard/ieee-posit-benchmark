@@ -1,6 +1,12 @@
 #pragma once
 #include "utils.h"
 
+void driver_sgemm (void (*function) (float *, float *, float *, int), int size,
+                   float *a, float *b, float *c, struct bench_s bench[]);
+
+void driver_accuracy_32bits (int size, float *c_host, float *c_device,
+                             struct bench_s bench[]);
+
 /// BENCHMARK
 void driver_fp32_benchmark (char *title, char *buffer,
                             void (*kernel) (float *, float *, float *, int),

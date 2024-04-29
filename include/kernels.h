@@ -14,6 +14,7 @@ void ieee_32bits_sqrt (float *matrix1, float *matrix2, float *matrix3,
 void ieee_32bits_dp (float *matrix1, float *matrix2, float *matrix3, int size);
 void ieee_32bits_gemm (float *matrix1, float *matrix2, float *matrix3,
                        int size);
+void sgemm (float *matrix1, float *matrix2, float *matrix3, int size);
 
 void ieee_64bits_add (double *matrix1, double *matrix2, double *matrix3,
                       int size);

@@ -37,10 +37,10 @@ struct data
 
 struct accuracy
 {
-  double accuracy, RMS, forward_error, backward_error;
+  double accuracy, RMS, forward_error;
 };
 
-struct bench
+struct bench_s
 {
   struct data *data;
   struct accuracy *accuracy;
@@ -72,7 +72,7 @@ extern void print_header_accuracy (char *buffer);
 extern void print_data_accuracy (char *title, char *buffer,
                                  struct accuracy *accuracy);
 extern void print_diff_accuracy (char *title, char *buffer,
-                                 struct bench *bench, struct data *data);
+                                 struct bench_s *bench, struct data *data);
 extern double compute_err_accuracy (double *vector1, double *vector2,
                                     int size);
 extern double RMS (double *vector1, double *vector2, int size);
