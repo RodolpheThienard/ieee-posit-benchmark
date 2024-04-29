@@ -79,8 +79,10 @@ forward_error_float (float *a, float *b, int n)
   return (err);
 }
 
-double
-backward_error (double *a, double *b, double *c, int n)
+void
+conversion_into_double (float *src, double *dst, int n)
 {
-  return 0;
+  int i = 0;
+  for (i = 0; i < n; i++)
+    dst[i] = (double)src[i];
 }

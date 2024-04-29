@@ -41,8 +41,21 @@ main (int argc, char *argv[])
       cudaMalloc (&d_b, _matrix_size_2 * sizeof (float));
       cudaMalloc (&d_c, _matrix_size_2 * sizeof (float));
 
-      INIT (a, _matrix_size_2);
-      INIT (b, _matrix_size_2);
+      // INIT (a, _matrix_size_2);
+      // INIT (b, _matrix_size_2);
+
+      double *aa,*bb,*cc, *c_device;
+      aa = (double *)malloc (sizeof (double) * _matrix_size_2);
+      bb = (double *)malloc (sizeof (double) * _matrix_size_2);
+      cc = (double *)malloc (sizeof (double) * _matrix_size_2);
+      c_device = (double *)malloc (sizeof (double) * _matrix_size_2);
+      INIT (aa, _matrix_size_2);
+      INIT (bb, _matrix_size_2);
+      for (int ll = 0; ll < _matrix_size_2; ll++)
+      {
+        a[ll] = aa[ll];
+        b[ll] = bb[ll];
+      }
 
       cudaMemcpy (d_a, a, _matrix_size_2 * sizeof (float),
                   cudaMemcpyHostToDevice);
@@ -54,10 +67,12 @@ main (int argc, char *argv[])
       cudaMemcpy (c, d_c, _matrix_size_2 * sizeof (float),
                   cudaMemcpyDeviceToHost);
 
-      ieee_32bits_gemm (a, b, c_host, _matrix_size);
+      ieee_64bits_gemm (aa, bb, cc, _matrix_size);
 
-      driver_accuracy_32bits (_matrix_size_2, c_host, c, &bench);
 
+      conversion_into_double(c, c_device, _matrix_size_2);
+
+      driver_accuracy_64bits (_matrix_size_2, cc, c_device, &bench);
       print_data_accuracy ("tt", buffer, bench.accuracy);
 
       free (a);

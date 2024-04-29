@@ -77,3 +77,8 @@ extern double compute_err_accuracy (double *vector1, double *vector2,
                                     int size);
 extern double RMS (double *vector1, double *vector2, int size);
 extern double forward_error (double *vector1, double *vector2, int size);
+extern float compute_err_accuracy_float (float *vector1, float *vector2,
+                                         int size);
+extern float RMS_float (float *vector1, float *vector2, int size);
+extern float forward_error_float (float *vector1, float *vector2, int size);
+void conversion_into_double (float *src, double *dst, int n);
