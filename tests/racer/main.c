@@ -1,4 +1,5 @@
 /// Tiles
+#include "../../include/RacEr_manycore_cuda.h"
 #include "../../include/RacEr_set_tile_x_y.h"
 
 /// Main function

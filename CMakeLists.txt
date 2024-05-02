@@ -29,4 +29,4 @@ target_link_libraries(racer_bench PUBLIC -lm )
 ADD_EXECUTABLE(racer_main 
   ${racer_test}
 )
-target_link_libraries(racer_main PUBLIC racer_bench -lm )
+target_link_libraries(racer_main PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
