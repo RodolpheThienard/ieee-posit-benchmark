@@ -14,7 +14,7 @@ void driver_fp64_benchmark (char *title, char *buffer,
                             struct data *data, int matrix_size);
 
 void driver_sgemm_racer (char *function, int size, float *a, float *b,
-                         float *c, struct bench bench[], int block_size_x,
+                         float *c, struct bench_s bench[], int block_size_x,
                          int block_size_y);
 
 /// ACCURACY
@@ -34,10 +34,3 @@ void driver_compare_accuracy_fp64_fp32 (char *title, char *buffer,
                                         int matrix_size);
 void driver_accuracy (int size, double *c_host, double *c_device,
                       struct bench_s bench[]);
-
-/// API
-void benchmark (char *name_kernel, char *name_kernel_2, char *filename,
-                void (*kernel) (double *, double *, int),
-                void (*kernel_2) (double *, double *, int),
-                struct bench *bench, enum benchmark_type type,
-                int matrix_size);

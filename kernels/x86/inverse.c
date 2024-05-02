@@ -2,7 +2,8 @@
 #include "../../include/utils.h"
 
 void
-inve_matrix_gauss_jordan (double *restrict mat, double *restrict inv, int n)
+inve_matrix_gauss_jordan_double (double *restrict mat, double *restrict inv,
+                                 int n)
 {
   double *temp = malloc (n * n * sizeof (double));
   for (int i = 0; i < n * n; i++)

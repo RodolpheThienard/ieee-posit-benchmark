@@ -116,8 +116,8 @@ ieee_64bits_dp (double *restrict a, double *restrict b, double *restrict c,
 }
 
 void
-ieee_64bits_gemm_jik (double *restrict a, double *restrict b,
-                      double *restrict c, int n)
+ieee_64bits_gemm (double *restrict a, double *restrict b, double *restrict c,
+                  int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)

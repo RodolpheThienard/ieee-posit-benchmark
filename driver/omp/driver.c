@@ -46,8 +46,8 @@ driver_sgemm (void (*function) (float *, float *, float *, int), int size,
 }
 
 void
-driver_accuracy_32bits (int size, float *c_host, float *c_device,
-                        struct bench_s bench[static 1])
+driver_accuracy (int size, double *c_host, double *c_device,
+                 struct bench_s bench[static 1])
 {
-  DRIVER_ACCURACY ((double *)c_host, (double *)c_device, size);
+  DRIVER_ACCURACY (c_host, c_device, size);
 }

@@ -9,41 +9,6 @@ add_compile_options(
 # Global utils needed
 FILE(GLOB utils utils/*.c)
 
-# set(ENABLE_X86_COMPILE OFF)
-# set(ENABLE_CUDA_COMPILE OFF)
-# set(ENABLE_OMP_COMPILE OFF)
-# set(ENABLE_RACER_COMPILE OFF)
-
-# x86 compilation
-if(ENABLE_X86_COMPILE)
-
-  # x86 kernel,test files
-  FILE(GLOB x86_test tests/x86/*.c)
-  FILE(GLOB x86_kernels kernels/x86/*.c)
-  FILE(GLOB x86_driver driver/x86/*.c)
-
-  # x86 library compilation
-  add_library(x86_bench SHARED 
-    ${utils} 
-    ${x86_driver} 
-    ${x86_kernels}
-  )
-  # x86 test file getter
-  set(TESTS
-    ${x86_test}
-  )
-
-  # compilation of each x86 test file
-  foreach(test ${TESTS})
-    get_filename_component(test_name ${test} NAME_WE)
-    ADD_EXECUTABLE(${test_name} 
-      ${test}
-      )
-    target_link_libraries(${test_name} x86_bench -lm)
-    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/x86_bin")
-  endforeach()
-endif()
-
 # cuda compilation
 if(ENABLE_CUDA_COMPILE)
   # cuda kernel,test files
