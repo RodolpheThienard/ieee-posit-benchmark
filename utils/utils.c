@@ -100,7 +100,7 @@ print_matrix (double *a, int n, int m)
 
 /* debug function set identity matrix n*m */
 void
-set_identity_matrix (double *identity, int n, int m)
+set_identity_matrix (float *identity, int n, int m)
 {
   int i, j;
   for (i = 0; i < n; i++)

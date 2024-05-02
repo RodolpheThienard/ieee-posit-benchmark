@@ -33,8 +33,7 @@ ieee_64bits_gemm (double * a, double * b, double * c,
 __global__ void 
 sgemm (float *A, float *B, float *C, int N)
 {
-  int j = blockIdx.x * blockDim.x + threadIdx.x;
-  // Col
+  int j= blockIdx.x * blockDim.x + threadIdx.x;
   int i = blockIdx.y * blockDim.y + threadIdx.y;
   float sum = 0.;
   for (int k = 0; k < N; k++)
@@ -43,6 +42,7 @@ sgemm (float *A, float *B, float *C, int N)
     }
   C[i * N + j] = sum;
 }
+
 __global__ void
 dgemm (double *A, double *B, double *C, int N)
 {

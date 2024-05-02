@@ -37,6 +37,8 @@ void ieee_64bits_gemm_bloc (double *matrix1, double *matrix2, double *matrix3,
 
 /// ACCURACY
 void inve_matrix_gauss_jordan (float *matrix1, float *matrix2, int size);
+void inve_matrix_gauss_jordan_2 (float *matrix1, float *matrix2, int size,
+                                 int i);
 void inve_matrix_gauss_jordan_double (double *matrix1, double *matrix2,
                                       int size);
 void logarithm_taylor (double *input, double *output, int size);

@@ -129,9 +129,6 @@ endif()
 
 # racer compilation
 if(ENABLE_RACER_COMPILE)
-  # racer bin directory path
-  set(CMAKE_BINARY_DIR racer_bin)
-  set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
   # racer kernel,test files
 # RACER compilation
@@ -162,7 +159,7 @@ add_definitions(-DRacEr_tiles_Y=3)
     ADD_EXECUTABLE(${test_name} 
       ${test}
       )
-    target_link_libraries(${test_name} racer_bench -lm)
-target_link_libraries(${test_name} PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
+    target_link_libraries(${test_name} PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
+    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/racer_bin")
   endforeach()
 endif()

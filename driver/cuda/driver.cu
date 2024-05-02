@@ -4,6 +4,7 @@ extern "C"
 {
 #include "../../include/utils.h"
 }
+
 /* TODO Driver macro bandwidth
    macro permettant de faire la mesure du temps / débit
    paramettre variable
@@ -63,9 +64,9 @@ driver_sgemm (void (*function) (float *, float *, float *, int), int size,
 }
 
 void
-driver_inverse_gauss_jordan (void (*function) (float *, float *, int), int size,
-              float *a, float *b, struct bench_s bench[])
+driver_inverse_gauss_jordan (void (*function) (float *, float *, int, int), int size,
+              float *a, float *b, int i, struct bench_s bench[])
 {
-  DRIVER_BANDWIDTH(function, a,b,size);
+  DRIVER_BANDWIDTH(function, a,b,size, i);
   formatting_data (bench->data);
 }

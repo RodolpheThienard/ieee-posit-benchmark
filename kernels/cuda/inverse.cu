@@ -1,3 +1,4 @@
+#include <cstdio>
 void
 inve_matrix_gauss_jordan_double (double * mat, double * inv, int n)
 {
@@ -91,38 +92,39 @@ inve_matrix_gauss_jordan (float *mat, float *inv, int n)
 }
 
 __global__ void
-inve_matrix_gauss_jordan_2 (float *a, float *b, int size)
+inve_matrix_gauss_jordan_2 (float *a, float *b, int size, int i)
 {
-#define element(_x, _y) (*(sdata + ((_y) * (size + 1) + (_x))))
-  unsigned int xx, yy, rr;
+  int x = blockIdx.x * blockDim.x + threadIdx.x;
+  int y = blockIdx.y * blockDim.y + threadIdx.y;
 
-  // With a limit of 512 threads per block, and only one block, this results
-  // in a maximum of a matrix size 22, which requires (22 + 1) x 22 values
-  __shared__ float sdata[(22 + 1) * 22];
-
-  xx = threadIdx.x;
-  rr = threadIdx.y;
-
-  int tid = rr * (size + 1) + xx;
-
-  // The matrix will be modified in place, so first make a copy of matrix a
-  sdata[tid] = a[tid];
-
-  for (yy = 0; yy < size; yy++)
+  if (x < size && y < size)
     {
+      float pivot = a[i * size + i];
+      if (x == i && x != y)
+        {
+          b[x * size + y] /= pivot;
+          a[x * size + y] /= pivot;
+        }
 
-      __syncthreads ();
+      if (x == y && x == i)
+        {
+          b[x * size + y] /= pivot;
+          a[x * size + y] /= pivot;
+        }
 
-      // Make the pivot be 1
-      element (xx, yy) /= element (yy, yy);
+      if (x != i)
+        {
+          float multiplier = a[x * size + i];
+          b[x * size + y] -= b[i * size + y] * multiplier;
+          if (y != i)
+            {
+              a[x * size + y] -= a[i * size + y] * multiplier;
+            }
+        }
 
-      __syncthreads ();
-
-      // Make all other values in the pivot column be zero
-      if (rr != yy)
-        element (xx, rr) -= element (yy, rr) * element (xx, yy);
+      if (x != i && y == i)
+        {
+          a[x * size + y] = 0;
+        }
     }
-
-  b[tid] = sdata[tid];
-#undef element
 }

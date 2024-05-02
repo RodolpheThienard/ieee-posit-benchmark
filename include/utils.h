@@ -67,7 +67,7 @@ extern void print_header_benchmark (char *buffer);
 extern void print_header_diff (char *buffer);
 extern void formatting_data (struct data *data);
 extern void print_matrix (double *matrix, int row, int column);
-extern void set_identity_matrix (double *matrix, int row, int column);
+extern void set_identity_matrix (float *matrix, int row, int column);
 extern void print_header_accuracy (char *buffer);
 extern void print_data_accuracy (char *title, char *buffer,
                                  struct accuracy *accuracy);
