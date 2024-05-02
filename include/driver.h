@@ -14,6 +14,9 @@ void driver_fp64_benchmark (char *title, char *buffer,
                             void (*kernel) (double *, double *, double *, int),
                             struct data *data, int matrix_size);
 
+void driver_sgemm (char *function, int size, float *a, float *b, float *c,
+                   struct bench bench[], int block_size_x, int block_size_y);
+
 /// ACCURACY
 void driver_inv_matrix_accuracy (char *title, char *buffer,
                                  void (*kernel) (double *, double *, int),
