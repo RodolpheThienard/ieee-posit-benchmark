@@ -88,8 +88,8 @@ run_kernel_racer (int argc, char *argv[])
 
   // execute enqueue kernel
   // RacEr_mc_device_tile_groups_execute (&device);
-  driver_sgemm ("sgemm", size, a_device, b_device, c_device, &bench,
-                block_size_x, block_size_y);
+  driver_sgemm_racer ("sgemm", size, a_device, b_device, c_device, &bench,
+                      block_size_x, block_size_y);
 
   // memcopy device to host
   RacEr_mc_device_memcpy (&device, c, &c_device, HB_MC_MEMCPY_TO_HOST);

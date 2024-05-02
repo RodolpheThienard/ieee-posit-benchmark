@@ -1,4 +1,3 @@
-#include "../../include/RacEr_manycore.h"
 #include "../../include/utils.h"
 /* TODO Driver macro bandwidth
    macro permettant de faire la mesure du temps / débit
@@ -6,9 +5,6 @@
    Meta répétition de 31 pour stabilité avec 31 fois le meme calcul exact
    */
 
-/* kernel_args args :
-   int kernel_args[6]
-      = { a_device, b_device, c_device, n, block_size_x, block_size_y }; */
 #define DRIVER_BANDWIDTH(fn, ...)                                             \
   {                                                                           \
     double init_time, end_time;                                               \
@@ -19,10 +15,7 @@
         begin_register = rdtsc ();                                            \
         for (int rep = 0; rep < bench->data->repetition; rep++)               \
           {                                                                   \
-            int kernel_args[] = { __VA_ARGS__ };                              \
-            RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim, fn,           \
-                                     sizeof (kernel_args), kernel_args);      \
-            RacEr_mc_device_tile_groups_execute (&device);                    \
+            _Pragma ("omp parallel") { fn (__VA_ARGS__); }                    \
           }                                                                   \
         end_register = rdtsc ();                                              \
         end_time = get_elapsedtime ();                                        \
@@ -45,17 +38,16 @@
 /* Foo example of API utilisation
    compare 2 function for dgemm */
 void
-driver_sgemm_racer (char *function, int size, float *a, float *b, float *c,
-                    struct bench bench[static 1], int block_size_x,
-                    int block_size_y)
+driver_sgemm (void (*function) (float *, float *, float *, int), int size,
+              float *a, float *b, float *c, struct bench_s bench[static 1])
 {
-  DRIVER_BANDWIDTH (function, a, b, c, size, block_size_x, block_size_y);
+  DRIVER_BANDWIDTH (function, a, b, c, size);
   formatting_data (bench->data);
 }
 
 void
 driver_accuracy_32bits (int size, float *c_host, float *c_device,
-                        struct bench bench[static 1])
+                        struct bench_s bench[static 1])
 {
   DRIVER_ACCURACY ((double *)c_host, (double *)c_device, size);
 }

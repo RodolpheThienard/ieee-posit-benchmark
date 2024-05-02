@@ -14,6 +14,8 @@ void ieee_32bits_sqrt (float *matrix1, float *matrix2, float *matrix3,
 void ieee_32bits_dp (float *matrix1, float *matrix2, float *matrix3, int size);
 void ieee_32bits_gemm (float *matrix1, float *matrix2, float *matrix3,
                        int size);
+void sgemm (float *matrix1, float *matrix2, float *matrix3, int size);
+void dgemm (double *matrix1, double *matrix2, double *matrix3, int size);
 
 void ieee_64bits_add (double *matrix1, double *matrix2, double *matrix3,
                       int size);
@@ -24,6 +26,8 @@ void ieee_64bits_div (double *matrix1, double *matrix2, double *matrix3,
 void ieee_64bits_sqrt (double *matrix1, double *matrix2, int size);
 void ieee_64bits_dp (double *matrix1, double *matrix2, double *matrix3,
                      int size);
+void ieee_64bits_gemm (double *matrix1, double *matrix2, double *matrix3,
+                       int size);
 void ieee_64bits_gemm_ijk (double *matrix1, double *matrix2, double *matrix3,
                            int size);
 void ieee_64bits_gemm_jik (double *matrix1, double *matrix2, double *matrix3,
@@ -32,7 +36,9 @@ void ieee_64bits_gemm_bloc (double *matrix1, double *matrix2, double *matrix3,
                             int size);
 
 /// ACCURACY
-void inve_matrix_gauss_jordan (double *matrix1, double *matrix2, int size);
+void inve_matrix_gauss_jordan (float *matrix1, float *matrix2, int size);
+void inve_matrix_gauss_jordan_double (double *matrix1, double *matrix2,
+                                      int size);
 void logarithm_taylor (double *input, double *output, int size);
 void log_libmath (double *input, double *output, int size);
 void conversion_double_float (double *input, double *output, int size);

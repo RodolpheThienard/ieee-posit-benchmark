@@ -6,6 +6,134 @@ add_compile_options(
   -gdwarf-4
 )
 
+# Global utils needed
+FILE(GLOB utils utils/*.c)
+
+# set(ENABLE_X86_COMPILE OFF)
+# set(ENABLE_CUDA_COMPILE OFF)
+# set(ENABLE_OMP_COMPILE OFF)
+# set(ENABLE_RACER_COMPILE OFF)
+
+# x86 compilation
+if(ENABLE_X86_COMPILE)
+
+  # x86 kernel,test files
+  FILE(GLOB x86_test tests/x86/*.c)
+  FILE(GLOB x86_kernels kernels/x86/*.c)
+  FILE(GLOB x86_driver driver/x86/*.c)
+
+  # x86 library compilation
+  add_library(x86_bench SHARED 
+    ${utils} 
+    ${x86_driver} 
+    ${x86_kernels}
+  )
+  # x86 test file getter
+  set(TESTS
+    ${x86_test}
+  )
+
+  # compilation of each x86 test file
+  foreach(test ${TESTS})
+    get_filename_component(test_name ${test} NAME_WE)
+    ADD_EXECUTABLE(${test_name} 
+      ${test}
+      )
+    target_link_libraries(${test_name} x86_bench -lm)
+    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/x86_bin")
+  endforeach()
+endif()
+
+# cuda compilation
+if(ENABLE_CUDA_COMPILE)
+  # cuda kernel,test files
+  FILE(GLOB cuda_test tests/cuda/*.cu)
+  FILE(GLOB cuda_kernels kernels/cuda/*.cu)
+  FILE(GLOB cuda_driver driver/cuda/*.cu)
+
+  set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -lcublas -lcuda -lcudart -lm )
+
+  find_package(CUDA REQUIRED)
+
+  # cuda library compilation
+  add_library(cuda_bench SHARED 
+    ${utils} 
+    ${cuda_driver} 
+    ${cuda_kernels}
+  )
+  target_link_libraries(cuda_bench ${CUDA_NVCC_FLAGS} -lm)
+
+  # cuda test file getter
+  set(TESTS
+    ${cuda_test}
+  )
+
+  # compilation of each cuda test file
+  foreach(test ${TESTS})
+    get_filename_component(test_name ${test} NAME_WE)
+    cuda_add_executable(${test_name} 
+      ${test}
+      ${utils} 
+      ${cuda_driver} 
+      ${cuda_kernels} 
+    )
+    target_link_libraries(${test_name} ${CUDA_NVCC_FLAGS} cuda_bench -lm)
+    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/cuda_bin")
+  endforeach()
+endif()
+
+
+# omp compilation
+if(ENABLE_OMP_COMPILE)
+  # omp bin directory path
+  # set(CMAKE_BINARY_DIR omp_bin)
+  # set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+set(CMAKE_C_STANDARD 99)
+
+  # omp kernel,test files
+  FILE(GLOB omp_test tests/omp/*.c)
+  FILE(GLOB omp_kernels kernels/omp/*.c)
+  FILE(GLOB omp_driver driver/omp/*.c)
+
+  find_package(OpenMP REQUIRED)
+
+  # omp library compilation
+  add_library(omp_bench SHARED 
+    ${utils} 
+    ${omp_driver} 
+    ${omp_kernels}
+  )
+  # omp test file getter
+  set(TESTS
+    ${omp_test}
+  )
+
+  if(OpenMP_C_FOUND)
+      target_link_libraries(omp_bench PUBLIC OpenMP::OpenMP_C -lm )
+  endif()
+
+  # compilation of each omp test file
+  foreach(test ${TESTS})
+    get_filename_component(test_name ${test} NAME_WE)
+    ADD_EXECUTABLE(${test_name}
+      ${test}
+      )
+    if(OpenMP_C_FOUND)
+        target_link_libraries(${test_name} PUBLIC OpenMP::OpenMP_C omp_bench -lm )
+    endif()
+    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/omp_bin")
+  endforeach()
+endif()
+
+
+
+# racer compilation
+if(ENABLE_RACER_COMPILE)
+  # racer bin directory path
+  set(CMAKE_BINARY_DIR racer_bin)
+  set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+
+  # racer kernel,test files
 # RACER compilation
 FILE(GLOB utils utils/*.c)
 FILE(GLOB racer_test tests/racer/*.c)
@@ -17,16 +145,24 @@ add_definitions(-DRacEr_global_Y=4)
 add_definitions(-DRacEr_tiles_X=4)
 add_definitions(-DRacEr_tiles_Y=3)
 
-set(CMAKE_C_STANDARD 99)
+  # racer library compilation
+  add_library(racer_bench SHARED 
+    ${utils} 
+    ${racer_driver} 
+    ${racer_kernels}
+  )
+  # racer test file getter
+  set(TESTS
+    ${racer_test}
+  )
 
-add_library(racer_bench SHARED 
-  ${utils} 
-  ${racer_driver} 
-  ${racer_kernels}
-)
-target_link_libraries(racer_bench PUBLIC -lm )
-
-ADD_EXECUTABLE(racer_main 
-  ${racer_test}
-)
-target_link_libraries(racer_main PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
+  # compilation of each racer test file
+  foreach(test ${TESTS})
+    get_filename_component(test_name ${test} NAME_WE)
+    ADD_EXECUTABLE(${test_name} 
+      ${test}
+      )
+    target_link_libraries(${test_name} racer_bench -lm)
+target_link_libraries(${test_name} PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
+  endforeach()
+endif()
