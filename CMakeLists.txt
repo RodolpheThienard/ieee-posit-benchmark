@@ -88,7 +88,7 @@ if(ENABLE_OMP_COMPILE)
   # omp bin directory path
   # set(CMAKE_BINARY_DIR omp_bin)
   # set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-
+set(CMAKE_C_STANDARD 99)
 
   # omp kernel,test files
   FILE(GLOB omp_test tests/omp/*.c)
@@ -134,9 +134,16 @@ if(ENABLE_RACER_COMPILE)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
   # racer kernel,test files
-  FILE(GLOB racer_test tests/racer/*.c)
-  FILE(GLOB racer_kernels kernels/racer/*.c)
-  FILE(GLOB racer_driver driver/racer/*.c)
+# RACER compilation
+FILE(GLOB utils utils/*.c)
+FILE(GLOB racer_test tests/racer/*.c)
+FILE(GLOB racer_kernels kernels/racer/*.c)
+FILE(GLOB racer_driver driver/racer/driver.c)
+
+add_definitions(-DRacEr_global_X=4)
+add_definitions(-DRacEr_global_Y=4)
+add_definitions(-DRacEr_tiles_X=4)
+add_definitions(-DRacEr_tiles_Y=3)
 
   # racer library compilation
   add_library(racer_bench SHARED 
@@ -156,5 +163,6 @@ if(ENABLE_RACER_COMPILE)
       ${test}
       )
     target_link_libraries(${test_name} racer_bench -lm)
+target_link_libraries(${test_name} PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
   endforeach()
 endif()
