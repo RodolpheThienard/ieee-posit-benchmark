@@ -1,8 +1,8 @@
 /// Tiles
-#include "RacEr_set_tile_x_y.h"
+#include "../../include/RacEr_set_tile_x_y.h"
 
 /// Main function
-#include "RacEr_manycore.h"
+#include "../../include/RacEr_manycore.h"
 
 #include "stdlib.h"
 
@@ -77,7 +77,7 @@ run_kernel_racer (int argc, char *argv[])
 
   // init kernel args struct
   int kernel_args[6]
-      = { a_device, b_device, c_device, n, bloc_size_x, block_size_y };
+      = { a_device, b_device, c_device, n, block_size_x, block_size_y };
 
   // add kernel in queue on the device
   RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim, "sgemm", 6, kernel_args);
@@ -91,5 +91,5 @@ run_kernel_racer (int argc, char *argv[])
   free (a);
   free (b);
   free (c);
-  return HB_MC_SUCCESS;
+  return 0;
 }
