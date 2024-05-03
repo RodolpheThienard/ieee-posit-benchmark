@@ -1,9 +1,9 @@
-#include "RacEr_manycore.h"
-#include "RacEr_set_tile_x_y.h"
+#include "../../include/RacEr_manycore.h"
+#include "../../include/RacEr_set_tile_x_y.h"
 
 #define RacEr_TILE_GROUP_X_DIM RacEr_tiles_X
 #define RacEr_TILE_GROUP_Y_DIM RacEr_tiles_Y
-#include "RacEr_tile_group_barrier.h"
+#include "../../include/RacEr_tile_group_barrier.h"
 INIT_TILE_GROUP_BARRIER (r_barrier, c_barrier, 0, RacEr_tiles_X - 1, 0,
                          RacEr_tiles_Y - 1);
 

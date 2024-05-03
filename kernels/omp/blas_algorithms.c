@@ -2,47 +2,40 @@
 #include "../../include/kernels.h"
 
 void
-ieee_32bits_add (float *a, float *b, float *c, int n)
+vector_add (float *a, float *b, float *c, int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      c[i * n + j] = a[i * n + j] + b[i * n + j];
+    c[i] = a[i] + b[i];
 }
 
 void
-ieee_32bits_mul (float *a, float *b, float *c, int n)
+vector_mul (float *a, float *b, float *c, int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      c[i * n + j] = a[i * n + j] * b[i * n + j];
+    c[i] = a[i] * b[i];
 }
 
 void
-ieee_32bits_div (float *a, float *b, float *c, int n)
+vector_div (float *a, float *b, float *c, int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      c[i * n + j] = a[i * n + j] / b[i * n + j];
+    c[i] = a[i] / b[i];
 }
 
 void
-ieee_32bits_sqrt (float *a, float *b, float *c, int n)
+vector_sqrt (float *a, float *b, int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      c[i * n + j] = sqrt (a[i * n + j]);
+    b[i] = sqrt (a[i]);
 }
 
 void
-ieee_32bits_dp (float *restrict a, float *restrict b, float *restrict c, int n)
+vector_reduction (float *restrict a, float *restrict b, float *restrict c,
+                  int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)
@@ -50,8 +43,7 @@ ieee_32bits_dp (float *restrict a, float *restrict b, float *restrict c, int n)
 }
 
 void
-ieee_32bits_gemm (float *restrict a, float *restrict b, float *restrict c,
-                  int n)
+sgemm (float *restrict a, float *restrict b, float *restrict c, int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)
@@ -60,71 +52,6 @@ ieee_32bits_gemm (float *restrict a, float *restrict b, float *restrict c,
         {
           const float _a_ = a[i * n + k];
 
-#pragma omp simd
-          for (int j = 0; j < n; j++)
-            c[i * n + j] += _a_ * b[k * n + j];
-        }
-    }
-}
-
-void
-ieee_64bits_add (double *a, double *b, double *c, int n)
-{
-#pragma omp for
-  for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      c[i * n + j] = a[i * n + j] + b[i * n + j];
-}
-
-void
-ieee_64bits_mul (double *a, double *b, double *c, int n)
-{
-#pragma omp for
-  for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      c[i * n + j] = a[i * n + j] * b[i * n + j];
-}
-
-void
-ieee_64bits_div (double *a, double *b, double *c, int n)
-{
-#pragma omp for
-  for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      c[i * n + j] = a[i * n + j] / b[i * n + j];
-}
-
-void
-ieee_64bits_sqrt (double *a, double *b, int n)
-{
-#pragma omp for
-  for (int i = 0; i < n; i++)
-#pragma omp simd
-    for (int j = 0; j < n; j++)
-      b[i * n + j] = sqrt (a[i * n + j]);
-}
-void
-ieee_64bits_dp (double *restrict a, double *restrict b, double *restrict c,
-                int n)
-{
-#pragma omp for
-  for (int i = 0; i < n; i++)
-    c[i] += a[i] * b[i];
-}
-
-void
-ieee_64bits_gemm_jik (double *restrict a, double *restrict b,
-                      double *restrict c, int n)
-{
-#pragma omp for
-  for (int i = 0; i < n; i++)
-    {
-      for (int k = 0; k < n; k++)
-        {
-          const double _a_ = a[i * n + k];
 #pragma omp simd
           for (int j = 0; j < n; j++)
             c[i * n + j] += _a_ * b[k * n + j];

@@ -1,9 +1,11 @@
 /// Tiles
-#include "RacEr_set_tile_x_y.h"
+#include "../../include/RacEr_manycore_cuda.h"
+#include "../../include/RacEr_set_tile_x_y.h"
 
 /// Main function
-#include "RacEr_manycore.h"
-
+#include "../../include/RacEr_manycore.h"
+#include "../../include/driver.h"
+#include "../../include/utils.h"
 #include "stdlib.h"
 
 #define ALLOC_NAME "default_allocator"
@@ -21,6 +23,7 @@ main (int argc, char *argv[])
 int
 run_kernel_racer (int argc, char *argv[])
 {
+  struct bench bench;
   char *bin_path, *test_name;
   struct arguments_path args = { NULL, NULL };
 
@@ -39,7 +42,7 @@ run_kernel_racer (int argc, char *argv[])
 
   // size matrix
   int n = 100;
-  long size = sizeof (float) * n * n;
+  int size = sizeof (float) * n * n;
 
   // host allocation
   a = malloc (size);
@@ -62,8 +65,8 @@ run_kernel_racer (int argc, char *argv[])
   RacEr_mc_device_malloc (&device, size, &c_device);
 
   // memcopy host to device
-  RacEr_mc_device_memcpy (&device, &a_device, a, HB_MC_MEMCPY_TO_DEVICE);
-  RacEr_mc_device_memcpy (&device, &b_device, b, HB_MC_MEMCPY_TO_DEVICE);
+  RacEr_mc_device_memcpy (&device, &a_device, a, size, HB_MC_MEMCPY_TO_DEVICE);
+  RacEr_mc_device_memcpy (&device, &b_device, b, size, HB_MC_MEMCPY_TO_DEVICE);
 
   // define bloc params
   uint32_t block_size_x = 4;
@@ -76,14 +79,17 @@ run_kernel_racer (int argc, char *argv[])
       = { .x = n / block_size_x, .y = n / block_size_y };
 
   // init kernel args struct
-  int kernel_args[6]
-      = { a_device, b_device, c_device, n, bloc_size_x, block_size_y };
+  // int kernel_args[6]
+  // = { a_device, b_device, c_device, n, block_size_x, block_size_y };
 
   // add kernel in queue on the device
-  RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim, "sgemm", 6, kernel_args);
+  // RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim, "sgemm", 6,
+  // kernel_args);
 
   // execute enqueue kernel
-  RacEr_mc_device_tile_groups_execute (&device);
+  // RacEr_mc_device_tile_groups_execute (&device);
+  driver_sgemm_racer ("sgemm", size, a_device, b_device, c_device, &bench,
+                      block_size_x, block_size_y);
 
   // memcopy device to host
   RacEr_mc_device_memcpy (&device, c, &c_device, HB_MC_MEMCPY_TO_HOST);
@@ -91,5 +97,5 @@ run_kernel_racer (int argc, char *argv[])
   free (a);
   free (b);
   free (c);
-  return HB_MC_SUCCESS;
+  return 0;
 }

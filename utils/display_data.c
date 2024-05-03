@@ -78,10 +78,9 @@ print_data_accuracy (char *title, char *buffer, struct accuracy *accuracy)
   double _accuracy = accuracy->accuracy;
   double _rms = accuracy->RMS;
   double _forward_err = accuracy->forward_error;
-  double _backward_err = accuracy->backward_error;
 
-  sprintf (buffer, "%s %20s; %13le; %13le; %13le; %13le\n", buffer, title,
-           _accuracy, _rms, _forward_err, _backward_err);
+  sprintf (buffer, "%s %20s; %13le; %13le; %13le\n", buffer, title, _accuracy,
+           _rms, _forward_err);
 }
 
 void
@@ -98,7 +97,7 @@ print_header_diff (char *buffer)
 #define PERCENT(a, b) (((a) / b))
 
 void
-print_diff_accuracy (char *title, char *buffer, struct bench *bench,
+print_diff_accuracy (char *title, char *buffer, struct bench_s *bench,
                      struct data *data)
 {
 

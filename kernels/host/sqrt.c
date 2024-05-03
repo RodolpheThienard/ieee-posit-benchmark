@@ -1,7 +1,7 @@
 #include "../../include/utils.h"
 
 void
-square_root_newton_raphson (double *input, double *output, int n)
+host_square_root_newton_raphson (double *input, double *output, int n)
 {
   for (int i = 0; i < n; i++)
     {
@@ -24,7 +24,7 @@ square_root_newton_raphson (double *input, double *output, int n)
 }
 
 void
-sqrt_libmath (double *input, double *output, int n)
+host_sqrt_libmath (double *input, double *output, int n)
 {
   for (int i = 0; i < n; i++)
     output[i] = sqrt (input[i]);

@@ -1,8 +1,8 @@
 #include "../../include/utils.h"
 
-__device__ double 
+__device__ float 
 factorial(int n) {
-    double result = 1.0;
+    float result = 1.0;
     int i;
     for (i = 2; i <= n; i++) {
         result *= i;
@@ -11,16 +11,16 @@ factorial(int n) {
 }
 
 __global__ void
-sinus_maclaurin (double *input, double *output, int n)
+sinus_maclaurin (float *input, float *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   int  j;
-      double result = 0.0;
+      float result = 0.0;
       for (j = 0; j < 10; j++)
         {
           int sign = (j % 2 == 0) ? 1 : -1;
           int exponent = 2 * j + 1;
-          double term
+          float term
               = sign * pow (input[tid], exponent) / factorial(exponent);
           result += term;
         }
@@ -29,7 +29,7 @@ sinus_maclaurin (double *input, double *output, int n)
 }
 
 __global__ void
-sinus_libmath (double *input, double *output, int n)
+sinus_libmath (float *input, float *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
       output[tid] = sin (input[tid]);

@@ -6,7 +6,7 @@
 #define is_inside(x, y) (x * x + y * y) <= 1 ? 1 : 0
 
 void
-pi_approximation_fp64 (double *input, double *output, int n)
+host_pi_approximation (double *input, double *output, int n)
 {
   for (int k = 0; k < n; k++)
     {
@@ -23,24 +23,7 @@ pi_approximation_fp64 (double *input, double *output, int n)
 }
 
 void
-pi_approximation_fp32 (float *input, float *output, int n)
-{
-  for (int k = 0; k < n; k++)
-    {
-      int inside = 0;
-      float x, y;
-      for (int i = 0; i < TOT_DART; i++)
-        {
-          x = (float)drand48 ();
-          y = (float)drand48 ();
-          inside += is_inside (x, y);
-        }
-      output[k] = (4. * inside / TOT_DART);
-    }
-}
-
-void
-real_pi (double *input, double *output, int n)
+host_real_pi (double *input, double *output, int n)
 {
   for (int k = 0; k < n; k++)
     output[k] = (double)PI;

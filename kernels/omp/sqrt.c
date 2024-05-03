@@ -1,12 +1,12 @@
 #include "../../include/utils.h"
 
 void
-square_root_newton_raphson (double *input, double *output, int n)
+square_root_newton_raphson (float *input, float *output, int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)
     {
-      double approx = input[i] * .5;
+      float approx = input[i] * .5;
       if (input[i] < 0)
         {
           perror ("Negative sqare root");
@@ -25,7 +25,7 @@ square_root_newton_raphson (double *input, double *output, int n)
 }
 
 void
-sqrt_libmath (double *input, double *output, int n)
+sqrt_libmath (float *input, float *output, int n)
 {
 #pragma omp for
   for (int i = 0; i < n; i++)

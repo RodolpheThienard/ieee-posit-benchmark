@@ -1,7 +1,7 @@
 #include "../../include/utils.h"
 
 double
-factorial (int n)
+host_factorial (int n)
 {
   double result = 1.0;
   int i;
@@ -13,7 +13,7 @@ factorial (int n)
 }
 
 void
-sinus_maclaurin (double *input, double *output, int size)
+host_sinus_maclaurin (double *input, double *output, int size)
 {
   int i, j;
   for (i = 0; i < size; i++)
@@ -23,7 +23,8 @@ sinus_maclaurin (double *input, double *output, int size)
         {
           int sign = (j % 2 == 0) ? 1 : -1;
           int exponent = 2 * j + 1;
-          double term = sign * pow (input[i], exponent) / factorial (exponent);
+          double term
+              = sign * pow (input[i], exponent) / host_factorial (exponent);
           result += term;
         }
       output[i] = result;
@@ -31,7 +32,7 @@ sinus_maclaurin (double *input, double *output, int size)
 }
 
 void
-sinus_libmath (double *input, double *output, int size)
+host_sinus_libmath (double *input, double *output, int size)
 {
   int i;
   for (i = 0; i < size; i++)
