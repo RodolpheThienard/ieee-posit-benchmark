@@ -1,6 +1,8 @@
 extern "C"
 {
   #include "../../include/utils.h"
+  #include "../../include/host_kernels.h"
+
 }
 #include "../../include/driver.h"
 #include "../../include/cuda.h"
@@ -55,7 +57,7 @@ main (int argc, char *argv[])
 
       for (int kk = 0; kk < i; kk++)
         {
-          driver_inverse_gauss_jordan (inve_matrix_gauss_jordan_2, i, d_a, d_b,
+          driver_inverse_gauss_jordan (inve_matrix_gauss_jordan_cuda, i, d_a, d_b,
                                        kk, &bench);
         }
 
@@ -64,7 +66,7 @@ main (int argc, char *argv[])
       cudaMemcpy (a, d_a, _matrix_size_2 * sizeof (float),
                   cudaMemcpyDeviceToHost);
 
-      inve_matrix_gauss_jordan_double (aa, bb, i);
+      host_inve_matrix_gauss_jordan (aa, bb, i);
 
       fprintf (stdout, "b device : %20.13lf;%20.13lf;\n", (double)b[10],
                bb[10]);

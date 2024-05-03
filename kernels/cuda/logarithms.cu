@@ -1,6 +1,6 @@
 
 __global__ void
-log_libmath (double *input, double *output, int n)
+log_libmath (float *input, float *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   if (tid < n)
@@ -10,14 +10,14 @@ log_libmath (double *input, double *output, int n)
 }
 
 __global__ void
-logarithm_taylor (double *input, double *output, int n)
+logarithm_taylor (float *input, float *output, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   if (tid < n)
     {
       int iter = 100;
-      double result = 0.0;
-      double term = input[tid] - 1.0;
+      float result = 0.0;
+      float term = input[tid] - 1.0;
 
       for (int i = 1; i <= iter; i++)
         {

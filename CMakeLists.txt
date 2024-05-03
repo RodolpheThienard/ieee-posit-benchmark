@@ -26,6 +26,7 @@ if(ENABLE_CUDA_COMPILE)
     ${utils} 
     ${cuda_driver} 
     ${cuda_kernels}
+    ${host_kernels}
   )
   target_link_libraries(cuda_bench ${CUDA_NVCC_FLAGS} -lm)
 

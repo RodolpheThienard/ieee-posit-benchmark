@@ -1,5 +1,3 @@
-  
-
 extern "C"
 {
 #include "../../include/utils.h"
@@ -78,5 +76,7 @@ driver_inverse_gauss_jordan (void (*function) (float *, float *, int, int), int 
               float *a, float *b, int i, struct bench_s bench[])
 {
   DRIVER_BANDWIDTH(function, a,b,size, i);
+  cudaMemset(b,0,size*size*sizeof(float));
+  DRIVER_ACCURACY(function, a,b,size, i);
   formatting_data (bench->data);
 }

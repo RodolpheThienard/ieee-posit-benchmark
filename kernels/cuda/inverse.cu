@@ -1,63 +1,5 @@
-#include <cstdio>
-void
-inve_matrix_gauss_jordan_double (double * mat, double * inv, int n)
-{
-  double *temp = (double*)malloc (n * n * sizeof (double));
-  for (int i = 0; i < n * n; i++)
-    {
-      temp[i] = mat[i];
-    }
-
-  // init identity matrix
-  for (int i = 0; i < n; i++)
-    {
-      for (int j = 0; j < n; j++)
-        {
-          if (i == j)
-            {
-              inv[i * n + j] = 1.0;
-            }
-          else
-            {
-              inv[i * n + j] = 0.0;
-            }
-        }
-    }
-
-  // Gauss-Jordan elimination
-  for (int i = 0; i < n; i++)
-    {
-      // get pivot
-      double pivot = temp[i * n + i];
-
-      // Dividing by pivot
-      for (int j = 0; j < n; j++)
-        {
-          temp[i * n + j] /= pivot;
-          inv[i * n + j] /= pivot;
-        }
-
-      // remove other elements
-      for (int k = 0; k < n; k++)
-        {
-          if (k != i)
-            {
-              double coeff = temp[k * n + i];
-              for (int j = 0; j < n; j++)
-                {
-                  temp[k * n + j] -= coeff * temp[i * n + j];
-                  inv[k * n + j] -= coeff * inv[i * n + j];
-                }
-            }
-        }
-    }
-
-  // free memory
-  free (temp);
-}
-
 __global__ void
-inve_matrix_gauss_jordan (float *mat, float *inv, int n)
+inve_matrix_gauss_jordan_2 (float *mat, float *inv, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   if (tid < n)
@@ -92,7 +34,7 @@ inve_matrix_gauss_jordan (float *mat, float *inv, int n)
 }
 
 __global__ void
-inve_matrix_gauss_jordan_2 (float *a, float *b, int size, int i)
+inve_matrix_gauss_jordan_cuda(float *a, float *b, int size, int i)
 {
   int x = blockIdx.x * blockDim.x + threadIdx.x;
   int y = blockIdx.y * blockDim.y + threadIdx.y;

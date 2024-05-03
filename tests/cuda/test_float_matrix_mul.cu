@@ -1,6 +1,7 @@
 extern "C"
 {
 #include "../../include/utils.h"
+#include "../../include/host_kernels.h"
 }
 #include "../../include/kernels.h"
 #include "../../include/cuda.h"
@@ -67,7 +68,7 @@ main (int argc, char *argv[])
       cudaMemcpy (c, d_c, _matrix_size_2 * sizeof (float),
                   cudaMemcpyDeviceToHost);
 
-      ieee_64bits_gemm (aa, bb, cc, _matrix_size);
+      host_dgemm (aa, bb, cc, _matrix_size);
 
 
       conversion_into_double(c, c_device, _matrix_size_2);
