@@ -1,56 +1,34 @@
 #pragma once
 #include "utils.h"
 
-/// BENCHMARK
-// IEEE
-void ieee_32bits_add (float *matrix1, float *matrix2, float *matrix3,
+// Default kernel
+void host_dgemm (double *matrix1, double *matrix2, double *matrix3, int size);
+void host_vector_add (double *matrix1, double *matrix2, double *matrix3,
                       int size);
-void ieee_32bits_mul (float *matrix1, float *matrix2, float *matrix3,
+void host_vector_mul (double *matrix1, double *matrix2, double *matrix3,
                       int size);
-void ieee_32bits_div (float *matrix1, float *matrix2, float *matrix3,
+void host_vector_div (double *matrix1, double *matrix2, double *matrix3,
                       int size);
-void ieee_32bits_sqrt (float *matrix1, float *matrix2, float *matrix3,
-                       int size);
-void ieee_32bits_dp (float *matrix1, float *matrix2, float *matrix3, int size);
-void ieee_32bits_gemm (float *matrix1, float *matrix2, float *matrix3,
-                       int size);
-void sgemm (float *matrix1, float *matrix2, float *matrix3, int size);
-void dgemm (double *matrix1, double *matrix2, double *matrix3, int size);
-
-void ieee_64bits_add (double *matrix1, double *matrix2, double *matrix3,
-                      int size);
-void ieee_64bits_mul (double *matrix1, double *matrix2, double *matrix3,
-                      int size);
-void ieee_64bits_div (double *matrix1, double *matrix2, double *matrix3,
-                      int size);
-void ieee_64bits_sqrt (double *matrix1, double *matrix2, int size);
-void ieee_64bits_dp (double *matrix1, double *matrix2, double *matrix3,
-                     int size);
-void ieee_64bits_gemm (double *matrix1, double *matrix2, double *matrix3,
-                       int size);
-void ieee_64bits_gemm_ijk (double *matrix1, double *matrix2, double *matrix3,
-                           int size);
-void ieee_64bits_gemm_jik (double *matrix1, double *matrix2, double *matrix3,
-                           int size);
-void ieee_64bits_gemm_bloc (double *matrix1, double *matrix2, double *matrix3,
+void host_vector_sqrt (double *matrix1, double *matrix2, int size);
+void host_vector_reduction (double *matrix1, double *matrix2, double *matrix3,
                             int size);
+void host_inve_matrix_gauss_jordan (double *matrix1, double *matrix2,
+                                    int size);
+void host_logarithm_taylor (double *input, double *output, int size);
+void host_log_libmath (double *input, double *output, int size);
+void host_conversion_double_float (double *input, double *output, int size);
+void host_useless_function (double *input, double *output, int size);
+void host_square_root_newton_raphson (double *input, double *output, int size);
+void host_sqrt_libmath (double *input, double *output, int size);
+void host_sinus_maclaurin (double *input, double *output, int size);
+void host_sinus_libmath (double *input, double *output, int size);
+void host_monte_carlo_option_pricing (double *input, double *output, int size);
+void host_pi_approximation (double *input, double *output, int size);
+void host_real_pi (double *input, double *output, int size);
 
-/// ACCURACY
+/// Kernels API
+void sgemm (float *matrix1, float *matrix2, float *matrix3, int size);
+
 void inve_matrix_gauss_jordan (float *matrix1, float *matrix2, int size);
 void inve_matrix_gauss_jordan_2 (float *matrix1, float *matrix2, int size,
                                  int i);
-void inve_matrix_gauss_jordan_double (double *matrix1, double *matrix2,
-                                      int size);
-void logarithm_taylor (double *input, double *output, int size);
-void log_libmath (double *input, double *output, int size);
-void conversion_double_float (double *input, double *output, int size);
-void useless_function (double *input, double *output, int size);
-void square_root_newton_raphson (double *input, double *output, int size);
-void sqrt_libmath (double *input, double *output, int size);
-void sinus_maclaurin (double *input, double *output, int size);
-void sinus_libmath (double *input, double *output, int size);
-void monte_carlo_option_pricing_fp64 (double *input, double *output, int size);
-void monte_carlo_option_pricing_fp32 (float *input, float *output, int n);
-void pi_approximation_fp64 (double *input, double *output, int size);
-void pi_approximation_fp32 (float *input, float *output, int n);
-void real_pi (double *input, double *output, int size);

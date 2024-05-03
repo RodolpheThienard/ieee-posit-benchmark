@@ -13,7 +13,7 @@ factorial (int n)
 }
 
 void
-sinus_maclaurin (double *input, double *output, int size)
+host_sinus_maclaurin (double *input, double *output, int size)
 {
   int i, j;
   for (i = 0; i < size; i++)
@@ -31,7 +31,7 @@ sinus_maclaurin (double *input, double *output, int size)
 }
 
 void
-sinus_libmath (double *input, double *output, int size)
+host_sinus_libmath (double *input, double *output, int size)
 {
   int i;
   for (i = 0; i < size; i++)

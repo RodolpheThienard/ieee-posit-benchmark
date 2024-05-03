@@ -1,14 +1,14 @@
 #include "../../include/kernels.h"
 
 void
-log_libmath (double *input, double *output, int n)
+host_log_libmath (double *input, double *output, int n)
 {
   for (int i = 0; i < n; i++)
     output[i] = log (input[i]);
 }
 
 void
-logarithm_taylor (double *input, double *output, int n)
+host_logarithm_taylor (double *input, double *output, int n)
 {
   int iter = 100;
   for (int j = 0; j < n; j++)
