@@ -33,11 +33,18 @@
       }                                                                       \
   }
 
+#define DRIVER_ACCURACY(fn, ...)                                              \
+  {                                                                           \
+    int kernel_args[] = { __VA_ARGS__ };                                      \
+    RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim, fn,                   \
+                             sizeof (kernel_args), kernel_args);              \
+    RacEr_mc_device_tile_groups_execute (&device);                            \
+  }
 /* TODO driver macro accuracy
    macro permettant de faire la mesure de précision
    verification de la sorti du calcul de Bandwidth avec la fonction CPU
    Checker si OMP et x86 sont équivalent */
-#define DRIVER_ACCURACY(host, device, size)                                   \
+#define DRIVER_ACCURACY_COMPARE(host, device, size)                           \
   bench->accuracy->accuracy = compute_err_accuracy (host, device, size);      \
   bench->accuracy->RMS = RMS (host, device, size);                            \
   bench->accuracy->forward_error = forward_error (host, device, size);
@@ -46,16 +53,17 @@
    compare 2 function for dgemm */
 void
 driver_sgemm_racer (char *function, int size, float *a, float *b, float *c,
-                    struct bench bench[static 1], int block_size_x,
+                    struct bench_s bench[static 1], int block_size_x,
                     int block_size_y)
 {
   DRIVER_BANDWIDTH (function, a, b, c, size, block_size_x, block_size_y);
+  DRIVER_ACCURACY (function, a, b, c, size, block_size_x, block_size_y);
   formatting_data (bench->data);
 }
 
 void
-driver_accuracy_32bits (int size, float *c_host, float *c_device,
-                        struct bench bench[static 1])
+driver_accuracy (int size, float *c_host, float *c_device,
+                 struct bench_s bench[static 1])
 {
-  DRIVER_ACCURACY ((double *)c_host, (double *)c_device, size);
+  DRIVER_ACCURACY_COMPARE ((double *)c_host, (double *)c_device, size);
 }
