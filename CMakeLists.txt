@@ -8,6 +8,7 @@ add_compile_options(
 
 # Global utils needed
 FILE(GLOB utils utils/*.c)
+FILE(GLOB host_kernels kernels/host/*.c)
 
 # cuda compilation
 if(ENABLE_CUDA_COMPILE)
@@ -67,6 +68,7 @@ set(CMAKE_C_STANDARD 99)
     ${utils} 
     ${omp_driver} 
     ${omp_kernels}
+    ${host_kernels}
   )
   # omp test file getter
   set(TESTS
