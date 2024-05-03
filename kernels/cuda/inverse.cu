@@ -1,5 +1,5 @@
 __global__ void
-inve_matrix_gauss_jordan_2 (float *mat, float *inv, int n)
+inve_matrix_gauss_jordan_cuda (float *mat, float *inv, int n)
 {
   int tid = threadIdx.x + blockIdx.x * blockDim.x;
   if (tid < n)
@@ -34,7 +34,7 @@ inve_matrix_gauss_jordan_2 (float *mat, float *inv, int n)
 }
 
 __global__ void
-inve_matrix_gauss_jordan_cuda(float *a, float *b, int size, int i)
+inve_matrix_gauss_jordan_cuda2(float *a, float *b, int size, int i)
 {
   int x = blockIdx.x * blockDim.x + threadIdx.x;
   int y = blockIdx.y * blockDim.y + threadIdx.y;
