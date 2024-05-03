@@ -73,14 +73,14 @@ print_header_accuracy (char *buffer)
 
 /* add formated data into buffer */
 void
-print_data_accuracy (char *title, char *buffer, struct accuracy *accuracy)
+print_data_accuracy (char *buffer, struct accuracy *accuracy)
 {
   double _accuracy = accuracy->accuracy;
   double _rms = accuracy->RMS;
   double _forward_err = accuracy->forward_error;
 
-  sprintf (buffer, "%s %20s; %13le; %13le; %13le\n", buffer, title, _accuracy,
-           _rms, _forward_err);
+  sprintf (buffer, "%20s; %13le; %13le; %13le\n", buffer, _accuracy, _rms,
+           _forward_err);
 }
 
 void

@@ -3,28 +3,28 @@
 void
 host_vector_add (double *a, double *b, double *c, int n)
 {
-  for (int i = 0; i < n * n; i++)
+  for (int i = 0; i < n; i++)
     c[i] = a[i] + b[i];
 }
 
 void
 host_vector_mul (double *a, double *b, double *c, int n)
 {
-  for (int i = 0; i < n * n; i++)
+  for (int i = 0; i < n; i++)
     c[i] = a[i] * b[i];
 }
 
 void
 host_vector_div (double *a, double *b, double *c, int n)
 {
-  for (int i = 0; i < n * n; i++)
+  for (int i = 0; i < n; i++)
     c[i] = a[i] / b[i];
 }
 
 void
 host_vector_sqrt (double *a, double *b, int n)
 {
-  for (int i = 0; i < n * n; i++)
+  for (int i = 0; i < n; i++)
     b[i] = sqrt (a[i]);
 }
 

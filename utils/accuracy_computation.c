@@ -86,3 +86,10 @@ conversion_into_double (float *src, double *dst, int n)
   for (i = 0; i < n; i++)
     dst[i] = (double)src[i];
 }
+
+int
+error_accuracy (struct bench_s *bench)
+{
+  double err = bench->accuracy->accuracy;
+  return (err > 1E-6 || err < -1E-6) ? 1 : 0;
+}

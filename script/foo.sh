@@ -21,19 +21,19 @@ printf '\n'
 }
 
 check_binaries(){
-  if [ ! -d "x86_bin" ]
+  if [ ! -d "omp_bin" ]
   then
   echo -e "Compilation x86 tests"
-  cmake -DENABLE_X86_COMPILE=ON ..
+  cmake -DENABLE_OMP_COMPILE=ON ..
   make
-  echo -e "Compilation ${GREEN}terminated\n"
+  echo -e "Compilation ${GREEN}Successfull${NC}\n"
   fi
 }
 
 name(){
     name_file=$(echo "$name" | cut -f 2 -d "/")
     # printable_name=$(echo "${name_file}" |cut -c -10)
-    printf "%17s\t" $name_file
+    printf "%25s\t" $name_file
     # echo -e -n "$printable_name \t"
 }
 
@@ -49,13 +49,21 @@ escaper(){
 
 
 check_binaries
-for file in x86_bin/*
+for file in omp_bin/*
 do
         if [ -f $file ]
         then
         name=${file%.*}
         name
-          ./$file 1 1 > /tmp/err
+          ./$file 100 1 > /tmp/err
+          if [ $? == 0 ]
+          then
+            ok
+          else
+            error
+            printf "\n ${RED}ERROR ACCURACY :\n ${NC}" 
+            cat /tmp/err
+          fi
         else
           echo -e "${RED}INVALID"
         fi

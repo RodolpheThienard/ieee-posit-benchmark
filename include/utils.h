@@ -24,9 +24,15 @@
     }                                                                         \
   while (0)
 
-#define INIT(a, size)                                                         \
-  for (int i = 0; i < size; i++)                                              \
-    a[i] = (drand48 ());
+#define INIT(value, size)                                                     \
+  do                                                                          \
+    {                                                                         \
+      for (int indice = 0; indice < size; indice++)                           \
+        {                                                                     \
+          value[indice] = drand48 ();                                         \
+        }                                                                     \
+    }                                                                         \
+  while (0)
 
 struct data
 {
@@ -69,8 +75,7 @@ extern void formatting_data (struct data *data);
 extern void print_matrix (double *matrix, int row, int column);
 extern void set_identity_matrix (float *matrix, int row, int column);
 extern void print_header_accuracy (char *buffer);
-extern void print_data_accuracy (char *title, char *buffer,
-                                 struct accuracy *accuracy);
+extern void print_data_accuracy (char *buffer, struct accuracy *accuracy);
 extern void print_diff_accuracy (char *title, char *buffer,
                                  struct bench_s *bench, struct data *data);
 extern double compute_err_accuracy (double *vector1, double *vector2,
@@ -82,3 +87,4 @@ extern float compute_err_accuracy_float (float *vector1, float *vector2,
 extern float RMS_float (float *vector1, float *vector2, int size);
 extern float forward_error_float (float *vector1, float *vector2, int size);
 void conversion_into_double (float *src, double *dst, int n);
+int error_accuracy (struct bench_s *bench);

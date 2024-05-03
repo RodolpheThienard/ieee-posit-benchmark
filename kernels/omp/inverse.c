@@ -2,7 +2,7 @@
 #include "../../include/utils.h"
 
 void
-inve_matrix_gauss_jordan (float *restrict mat, float *restrict inv, int n)
+inve_matrix_gauss_jordan (float *mat, float *inv, int n)
 {
   float *temp;
   temp = malloc (n * n * sizeof (float));
