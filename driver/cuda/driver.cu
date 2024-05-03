@@ -35,12 +35,20 @@ extern "C"
       }                                                                       \
   }
 
+#define DRIVER_ACCURACY(fn, ...)                                              \
+  {                                                                           \
+    dim3 threadsPerBlock (64, 64);                                            \
+    dim3 numBlocks (size / threadsPerBlock.x,                          \
+                    size / threadsPerBlock.y);                         \
+    fn<<<threadsPerBlock, numBlocks>>> (__VA_ARGS__);                         \
+  }
+  
 /* TODO driver macro accuracy
    macro permettant de faire la mesure de précision
    verification de la sorti du calcul de Bandwidth avec la fonction CPU
    Checker si OMP et x86 sont équivalent */
 
-#define DRIVER_ACCURACY(size, host, device, bench)                         \
+#define DRIVER_ACCURACY_COMPARE(size, host, device, bench)                         \
   bench->accuracy->accuracy = compute_err_accuracy (host, device, size);      \
   bench->accuracy->RMS = RMS (host, device, size);                            \
   bench->accuracy->forward_error = forward_error (host, device, size);
@@ -50,7 +58,7 @@ void
 driver_accuracy (int size, double *c_host, double *c_device,
                         struct bench_s bench[])
 {
-  DRIVER_ACCURACY ( size, c_host, c_device, bench);
+  DRIVER_ACCURACY_COMPARE ( size, c_host, c_device, bench);
 }
 
 /* Foo example of API utilisation
@@ -60,6 +68,8 @@ driver_sgemm (void (*function) (float *, float *, float *, int), int size,
               float *a, float *b, float *c, struct bench_s bench[])
 {
   DRIVER_BANDWIDTH (function, a, b, c, size);
+  cudaMemset(c,0,size*size*sizeof(float));
+  DRIVER_ACCURACY(function, a,b,c,size);
   formatting_data (bench->data);
 }
 
