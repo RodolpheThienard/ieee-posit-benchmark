@@ -2,11 +2,10 @@
 #include "../../include/utils.h"
 
 void
-inve_matrix_gauss_jordan_double (double *restrict mat, double *restrict inv,
-                                 int n)
+inve_matrix_gauss_jordan (float *restrict mat, float *restrict inv, int n)
 {
-  double *temp;
-  temp = malloc (n * n * sizeof (double));
+  float *temp;
+  temp = malloc (n * n * sizeof (float));
 
   for (int i = 0; i < n * n; i++)
     {
@@ -36,7 +35,7 @@ inve_matrix_gauss_jordan_double (double *restrict mat, double *restrict inv,
     for (int i = 0; i < n; i++)
       {
         // get pivot
-        double pivot = temp[i * n + i];
+        float pivot = temp[i * n + i];
 
         // Dividing by pivot
         for (int j = 0; j < n; j++)
@@ -50,7 +49,7 @@ inve_matrix_gauss_jordan_double (double *restrict mat, double *restrict inv,
           {
             if (k != i)
               {
-                double coeff = temp[k * n + i];
+                float coeff = temp[k * n + i];
                 for (int j = 0; j < n; j++)
                   {
                     temp[k * n + j] -= coeff * temp[i * n + j];

@@ -1,7 +1,7 @@
 #include "../../include/utils.h"
 
 double
-simulate_asset_price (double S0, double r, double sigma, double T)
+host_simulate_asset_price (double S0, double r, double sigma, double T)
 {
   // Générer un nombre aléatoire selon une distribution normale
   double Z = ((double)rand () / RAND_MAX);
@@ -30,7 +30,7 @@ host_monte_carlo_option_pricing (double *input, double *output, int n)
       int num_simulations = 100000; // Nombre de simulations Monte Carlo
       for (int i = 0; i < num_simulations; i++)
         {
-          double S_T = simulate_asset_price (S0, r, sigma, T);
+          double S_T = host_simulate_asset_price (S0, r, sigma, T);
           double payoff = fmax (0, S_T - K);
           option_price_sum += payoff;
         }

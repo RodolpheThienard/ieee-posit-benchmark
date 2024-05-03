@@ -1,9 +1,9 @@
 #include "../../include/utils.h"
 
-double
+float
 factorial (int n)
 {
-  double result = 1.0;
+  float result = 1.0;
   int i;
   for (i = 2; i <= n; i++)
     {
@@ -13,18 +13,18 @@ factorial (int n)
 }
 
 void
-sinus_maclaurin (double *input, double *output, int n)
+sinus_maclaurin (float *input, float *output, int n)
 {
   int i, j;
 #pragma omp for
   for (i = 0; i < n; i++)
     {
-      double result = 0.0;
+      float result = 0.0;
       for (j = 0; j < 10; j++)
         {
           int sign = (j % 2 == 0) ? 1 : -1;
           int exponent = 2 * j + 1;
-          double term = sign * pow (input[i], exponent) / factorial (exponent);
+          float term = sign * pow (input[i], exponent) / factorial (exponent);
           result += term;
         }
       output[i] = result;
@@ -32,7 +32,7 @@ sinus_maclaurin (double *input, double *output, int n)
 }
 
 void
-sinus_libmath (double *input, double *output, int n)
+sinus_libmath (float *input, float *output, int n)
 {
   int i;
 #pragma omp for
