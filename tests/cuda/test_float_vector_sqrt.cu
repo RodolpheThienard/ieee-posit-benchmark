@@ -37,12 +37,11 @@ main (int argc, char *argv[])
       float *a, *b, *c, *c_host, *d_a, *d_b, *d_c;
       a = (float *)malloc (sizeof (float) * _matrix_size_2);
       b = (float *)malloc (sizeof (float) * _matrix_size_2);
-      c_host = (float *)malloc (sizeof (float) * _matrix_size_2);
       cudaMalloc (&d_a, _matrix_size_2 * sizeof (float));
       cudaMalloc (&d_b, _matrix_size_2 * sizeof (float));
 
 
-      double *aa,*bb,*cc, *c_device;
+      double *aa,*bb, *c_device;
       aa = (double *)malloc (sizeof (double) * _matrix_size_2);
       bb = (double *)malloc (sizeof (double) * _matrix_size_2);
       c_device = (double *)malloc (sizeof (double) * _matrix_size_2);
@@ -65,22 +64,19 @@ main (int argc, char *argv[])
 
       conversion_into_double(b, c_device, _matrix_size_2);
 
-      driver_accuracy (_matrix_size_2, cc, c_device, &bench);
+      driver_accuracy (_matrix_size_2, bb, c_device, &bench);
       print_data_accuracy (buffer, bench.accuracy);
 
       free (a);
       free (b);
-      free (c);
-      free (c_host);
       cudaFree (d_a);
       cudaFree (d_b);
-      cudaFree (d_c);
     }
 
   save_data (NULL, buffer);
   free (data);
   free (accuracy);
-  return 0;
+  return error_accuracy(&bench);
 }
 
 

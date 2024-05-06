@@ -36,7 +36,7 @@ main (int argc, char *argv[])
       bench.data->matrice_size = _matrix_size;
       long _matrix_size_2 = _matrix_size * _matrix_size;
       float *a, *b;
-      double *aa, *bb, *b_host, *b_device;
+      double *aa, *b_host, *b_device;
       ALLOC (a, _matrix_size_2);
       ALLOC (b, _matrix_size_2);
       ALLOC (aa, _matrix_size_2);

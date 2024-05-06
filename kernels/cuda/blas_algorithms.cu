@@ -28,7 +28,7 @@ vector_div (float *A, float *B, float *C, int N)
 }
 
 __global__ void
-vector_div (float *A, float *B, int N)
+vector_sqrt (float *A, float *B, int N)
 {
   int j = blockIdx.x * blockDim.x + threadIdx.x;
   int i = blockIdx.y * blockDim.y + threadIdx.y;

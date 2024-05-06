@@ -75,5 +75,5 @@ main (int argc, char *argv[])
     }
 
   free (data);
-  return 0;
+  return error_accuracy(&bench);
 }

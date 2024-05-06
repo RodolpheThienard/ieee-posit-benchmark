@@ -87,7 +87,7 @@ main (int argc, char *argv[])
   save_data (NULL, buffer);
   free (data);
   free (accuracy);
-  return 0;
+  return error_accuracy(&bench);
 }
 
 
