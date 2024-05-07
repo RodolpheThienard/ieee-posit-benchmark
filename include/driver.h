@@ -15,6 +15,10 @@ void driver_vector_sqrt (void (*function) (float *, float *, int), int size,
 
 void driver_inverse_gauss_jordan (void (*function) (float *, float *, int),
                                   int size, float *a, float *b,
+void driver_pi_approximation (void (*function) (float *, float *, int),
+                              int size, float *a, float *b,
+                              struct bench_s bench[]);
+
                                   struct bench_s bench[]);
 
 void driver_sgemm_racer (char *function, int size, float *a, float *b,
