@@ -99,6 +99,16 @@ driver_vector_sqrt (void (*function) (float *, float *, int), int size,
 }
 
 void
+driver_pi_approximation (void (*function) (float *, float *, int), int size,
+                    float *a, float *b, struct bench_s bench[])
+{
+  DRIVER_BANDWIDTH (function, a, b, size);
+  cudaMemset (b, 0, size * size * sizeof (float));
+  DRIVER_ACCURACY (function, a, b, size);
+  formatting_data (bench->data);
+}
+
+void
 driver_inverse_gauss_jordan (void (*function) (float *, float *, int),
                              int size, float *a, float *b,
                              struct bench_s bench[])
