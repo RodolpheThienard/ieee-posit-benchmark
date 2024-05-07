@@ -17,47 +17,52 @@ Implementation of a benchmark strategy to be able to measure different metrics o
 - Forward Error
 
 [comment]: # (TODO)
-## Algorithms used
-- Reduction 
-- Gemm
-- Dot product
-- Sqrt
-- Sum of sqrt
-- Inverse matrix 
+## Tests done
+- Vector operation :
+  - Add
+  - Sqrt
+  - Div
+- Matrix operation :
+  - Mul
+  - Inverse
+- Monte-Carlo
+  - Pi approximation
 
-Posit was implemented on a RacEr architecture  
-No library yet
+> [!NOTE]
+> Posit was implemented on a RacEr architecture. You can find some documentation in doc/documentation.pdf
 
 # Compilation & Run
 All `main` compilation command will create a shared object lib which will be used for each test  
 Then you can run test or use the lib in your own file.
 
+You require to add an agrument for cmake to precise which version you want.
+all version available : {racer, omp, cuda}
+
 ## Lib 
 ```bash
 mkdir build
 cd build
-cmake ..
+cmake -DENABLE_<VERSION>_COMPILE=on ..
 make <version>_bench
 ```
-all version available : {x86, omp, cuda}
 
 ## Test compilation & run command :
 ```bash
 mkdir build
 cd build
-cmake ..
+cmake -DENABLE_<VERSION>_COMPILE=on ..
 make <version>_main
 ./<version>_main <matrix-size> <meta-repetition> 
 ```
-all version available : {x86, omp, cuda}
+all version available : {racer, omp, cuda}
 
 #### Example : 
 ```bash
 mkdir build
 cd build
-cmake ..
+cmake -DENABLE_<VERSION>_COMPILE=on ..
 make cuda_main
-./cuda_main <matrix-size> <meta-repetition>
+./<version>_bin/<test> <matrix-size> <meta-repetition>
 ```
 
 ## Troubleshoot
