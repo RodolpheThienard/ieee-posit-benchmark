@@ -32,3 +32,7 @@ void real_pi (float *input, float *output, int size);
 
 // App pricing determination
 void monte_carlo_option_pricing (float *input, float *output, int size);
+
+// image correlation
+void image_correlation (const float *image1, const float *image2, int width,
+                        int height, int x_begin, int y_begin);

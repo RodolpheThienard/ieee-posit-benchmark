@@ -1,4 +1,5 @@
 #include "../include/utils.h"
+#include <stdio.h>
 
 /* Register counter */
 long
@@ -117,4 +118,20 @@ set_identity_matrix (float *identity, int n, int m)
             }
         }
     }
+}
+
+void
+open_image (char *src, float *dst, int width, int height)
+{
+  FILE *image;
+  int tmp;
+
+  image = fopen (src, "r");
+
+  for (int i = 0; i < width * height; i++)
+    {
+      fscanf (image, "%d", &tmp);
+      dst[i] = (float)tmp / 255.0;
+    }
+  fclose (image);
 }

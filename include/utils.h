@@ -86,5 +86,6 @@ extern float compute_err_accuracy_float (float *vector1, float *vector2,
                                          int size);
 extern float RMS_float (float *vector1, float *vector2, int size);
 extern float forward_error_float (float *vector1, float *vector2, int size);
-void conversion_into_double (float *src, double *dst, int n);
-int error_accuracy (struct bench_s *bench);
+extern void conversion_into_double (float *src, double *dst, int n);
+extern int error_accuracy (struct bench_s *bench);
+extern void open_image (char *src, float *dst, int width, int height);
