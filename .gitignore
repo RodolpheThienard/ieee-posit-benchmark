@@ -5,3 +5,7 @@ BUILD/
 batch/
 
 .cache
+
+# Gnuplot
+gnuplot/
+*.gp
