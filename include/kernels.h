@@ -12,8 +12,7 @@ void sgemm (float *matrix1, float *matrix2, float *matrix3, int size);
 
 // Matrix inversion
 void inve_matrix_gauss_jordan (float *matrix1, float *matrix2, int size);
-void inve_matrix_gauss_jordan_cuda (float *matrix1, float *matrix2, int size,
-                                    int i);
+void inve_matrix_gauss_jordan_cuda (float *matrix1, float *matrix2, int size);
 
 // Logaritm calculation
 void logarithm_taylor (float *input, float *output, int size);
@@ -33,3 +32,7 @@ void real_pi (float *input, float *output, int size);
 
 // App pricing determination
 void monte_carlo_option_pricing (float *input, float *output, int size);
+
+// image correlation
+void image_correlation (const float *image1, const float *image2, int width,
+                        int height, int x_begin, int y_begin);

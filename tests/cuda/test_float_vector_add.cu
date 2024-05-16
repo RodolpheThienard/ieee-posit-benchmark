@@ -51,7 +51,6 @@ main (int argc, char *argv[])
       cc = (double *)malloc (sizeof (double) * _matrix_size_2);
       c_device = (double *)malloc (sizeof (double) * _matrix_size_2);
       INIT (aa, _matrix_size_2);
-      INIT (bb, _matrix_size_2);
       for (int ll = 0; ll < _matrix_size_2; ll++)
       {
         a[ll] = aa[ll];
@@ -63,12 +62,12 @@ main (int argc, char *argv[])
       cudaMemcpy (d_b, b, _matrix_size_2 * sizeof (float),
                   cudaMemcpyHostToDevice);
 
-      driver_sgemm (sgemm, _matrix_size, d_a, d_b, d_c, &bench);
+      driver_vector_add (vector_add, _matrix_size_2, d_a, d_b, d_c, &bench);
 
       cudaMemcpy (c, d_c, _matrix_size_2 * sizeof (float),
                   cudaMemcpyDeviceToHost);
 
-      host_dgemm (aa, bb, cc, _matrix_size);
+      host_vector_add (aa, bb, cc, _matrix_size);
 
 
       conversion_into_double(c, c_device, _matrix_size_2);
@@ -90,3 +89,4 @@ main (int argc, char *argv[])
   free (accuracy);
   return error_accuracy(&bench);
 }
+

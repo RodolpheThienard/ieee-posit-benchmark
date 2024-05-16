@@ -58,7 +58,7 @@ main (int argc, char *argv[])
       for (int kk = 0; kk < i; kk++)
         {
           driver_inverse_gauss_jordan (inve_matrix_gauss_jordan_cuda, i, d_a, d_b,
-                                       kk, &bench);
+                                       &bench);
         }
 
       cudaMemcpy (b, d_b, _matrix_size_2 * sizeof (float),
@@ -68,10 +68,6 @@ main (int argc, char *argv[])
 
       host_inve_matrix_gauss_jordan (aa, bb, i);
 
-      fprintf (stdout, "b device : %20.13lf;%20.13lf;\n", (double)b[10],
-               bb[10]);
-      fprintf (stdout, "a device : %20.13lf;%20.13lf;\n", (double)a[10],
-               aa[10]);
 
       free (a);
       free (b);
@@ -79,5 +75,5 @@ main (int argc, char *argv[])
     }
 
   free (data);
-  return 0;
+  return error_accuracy(&bench);
 }

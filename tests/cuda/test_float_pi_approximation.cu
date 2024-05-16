@@ -1,3 +1,4 @@
+
 extern "C"
 {
 #include "../../include/utils.h"
@@ -36,53 +37,40 @@ main (int argc, char *argv[])
       float *a, *b, *c, *c_host, *d_a, *d_b, *d_c;
       a = (float *)malloc (sizeof (float) * _matrix_size_2);
       b = (float *)malloc (sizeof (float) * _matrix_size_2);
-      c = (float *)malloc (sizeof (float) * _matrix_size_2);
-      c_host = (float *)malloc (sizeof (float) * _matrix_size_2);
       cudaMalloc (&d_a, _matrix_size_2 * sizeof (float));
       cudaMalloc (&d_b, _matrix_size_2 * sizeof (float));
-      cudaMalloc (&d_c, _matrix_size_2 * sizeof (float));
 
-      // INIT (a, _matrix_size_2);
-      // INIT (b, _matrix_size_2);
 
-      double *aa,*bb,*cc, *c_device;
+      double *aa,*bb, *c_device;
       aa = (double *)malloc (sizeof (double) * _matrix_size_2);
       bb = (double *)malloc (sizeof (double) * _matrix_size_2);
-      cc = (double *)malloc (sizeof (double) * _matrix_size_2);
       c_device = (double *)malloc (sizeof (double) * _matrix_size_2);
       INIT (aa, _matrix_size_2);
-      INIT (bb, _matrix_size_2);
       for (int ll = 0; ll < _matrix_size_2; ll++)
       {
         a[ll] = aa[ll];
-        b[ll] = bb[ll];
       }
 
       cudaMemcpy (d_a, a, _matrix_size_2 * sizeof (float),
                   cudaMemcpyHostToDevice);
-      cudaMemcpy (d_b, b, _matrix_size_2 * sizeof (float),
-                  cudaMemcpyHostToDevice);
 
-      driver_sgemm (sgemm, _matrix_size, d_a, d_b, d_c, &bench);
+      driver_pi_approximation (pi_approximation, _matrix_size_2, d_a, d_b, &bench);
 
-      cudaMemcpy (c, d_c, _matrix_size_2 * sizeof (float),
+      cudaMemcpy (b, d_b, _matrix_size_2 * sizeof (float),
                   cudaMemcpyDeviceToHost);
 
-      host_dgemm (aa, bb, cc, _matrix_size);
+      host_pi_approximation (aa, bb, _matrix_size_2);
 
 
-      conversion_into_double(c, c_device, _matrix_size_2);
+      conversion_into_double(b, c_device, _matrix_size_2);
 
-      driver_accuracy (_matrix_size_2, cc, c_device, &bench);
+      driver_accuracy (_matrix_size_2, bb, c_device, &bench);
       print_data_accuracy (buffer, bench.accuracy);
 
       free (a);
       free (b);
-      free (c);
-      free (c_host);
       cudaFree (d_a);
       cudaFree (d_b);
-      cudaFree (d_c);
     }
 
   save_data (NULL, buffer);
@@ -90,3 +78,6 @@ main (int argc, char *argv[])
   free (accuracy);
   return error_accuracy(&bench);
 }
+
+
+

@@ -1,3 +1,4 @@
+
 #include "../../include/driver.h"
 #include "../../include/host_kernels.h"
 #include "../../include/kernels.h"
@@ -24,11 +25,10 @@ main (int argc, char *argv[])
 
   struct accuracy *accuracy;
   ALLOC (accuracy, 1);
-
-  data->type = sizeof (float);
-  struct bench_s bench = { data, accuracy, 100, 200, 100 };
   char buffer[1000];
-  memset (buffer, 0, 1000 * sizeof (char));
+  memset (buffer, 0, 1000);
+  data->type = sizeof (double);
+  struct bench_s bench = { data, accuracy, 100, 200, 100 };
 
   for (int i = bench.start_size; i < bench.end_size; i += bench.step_size)
     {
@@ -41,27 +41,25 @@ main (int argc, char *argv[])
       ALLOC (b, _matrix_size_2);
       ALLOC (c, _matrix_size_2);
       ALLOC (aa, _matrix_size_2);
-      ALLOC (bb, _matrix_size_2);
       ALLOC (c_host, _matrix_size_2);
       ALLOC (c_device, _matrix_size_2);
+      ALLOC (bb, _matrix_size_2);
+      ALLOC (c_device, _matrix_size_2);
       INIT (aa, _matrix_size_2);
-      INIT (bb, _matrix_size_2);
+      // copying init values
       for (int indice = 0; indice < _matrix_size_2; indice++)
         {
           aa[indice] = drand48 ();
-          bb[indice] = drand48 ();
         }
-      // copying init values
       for (int ll = 0; ll < _matrix_size_2; ll++)
         {
           a[ll] = aa[ll];
-          b[ll] = bb[ll];
         }
 
-      driver_sgemm (sgemm, _matrix_size, a, b, c, &bench);
-      conversion_into_double (c, c_device, _matrix_size_2);
+      driver_inverse_gauss_jordan (inve_matrix_gauss_jordan, i, a, b, &bench);
+      conversion_into_double (b, c_device, _matrix_size_2);
 
-      host_dgemm (aa, bb, c_host, _matrix_size);
+      host_inve_matrix_gauss_jordan (aa, c_host, i);
       driver_accuracy (_matrix_size_2, c_host, c_device, &bench);
       print_data_accuracy (buffer, bench.accuracy);
 

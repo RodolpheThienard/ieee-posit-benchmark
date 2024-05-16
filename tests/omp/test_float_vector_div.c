@@ -44,8 +44,6 @@ main (int argc, char *argv[])
       ALLOC (bb, _matrix_size_2);
       ALLOC (c_host, _matrix_size_2);
       ALLOC (c_device, _matrix_size_2);
-      INIT (aa, _matrix_size_2);
-      INIT (bb, _matrix_size_2);
       for (int indice = 0; indice < _matrix_size_2; indice++)
         {
           aa[indice] = drand48 ();
@@ -58,17 +56,15 @@ main (int argc, char *argv[])
           b[ll] = bb[ll];
         }
 
-      driver_sgemm (sgemm, _matrix_size, a, b, c, &bench);
+      driver_vector_div (vector_div, _matrix_size_2, a, b, c, &bench);
       conversion_into_double (c, c_device, _matrix_size_2);
 
-      host_dgemm (aa, bb, c_host, _matrix_size);
+      host_vector_div (aa, bb, c_host, _matrix_size_2);
       driver_accuracy (_matrix_size_2, c_host, c_device, &bench);
       print_data_accuracy (buffer, bench.accuracy);
 
       save_data (NULL, buffer);
     }
-
-  free (data);
 
   return error_accuracy (&bench);
 }

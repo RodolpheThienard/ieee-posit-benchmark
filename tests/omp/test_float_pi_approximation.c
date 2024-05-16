@@ -1,3 +1,4 @@
+
 #include "../../include/driver.h"
 #include "../../include/host_kernels.h"
 #include "../../include/kernels.h"
@@ -26,7 +27,7 @@ main (int argc, char *argv[])
   ALLOC (accuracy, 1);
 
   data->type = sizeof (float);
-  struct bench_s bench = { data, accuracy, 100, 200, 100 };
+  struct bench_s bench = { data, accuracy, 10, 20, 10 };
   char buffer[1000];
   memset (buffer, 0, 1000 * sizeof (char));
 
@@ -35,40 +36,23 @@ main (int argc, char *argv[])
       int _matrix_size = i;
       bench.data->matrice_size = _matrix_size;
       long _matrix_size_2 = _matrix_size * _matrix_size;
-      float *a, *b, *c;
-      double *aa, *bb, *c_host, *c_device;
+      float *a, *b;
+      double *aa, *b_host, *b_device;
       ALLOC (a, _matrix_size_2);
       ALLOC (b, _matrix_size_2);
-      ALLOC (c, _matrix_size_2);
       ALLOC (aa, _matrix_size_2);
-      ALLOC (bb, _matrix_size_2);
-      ALLOC (c_host, _matrix_size_2);
-      ALLOC (c_device, _matrix_size_2);
-      INIT (aa, _matrix_size_2);
-      INIT (bb, _matrix_size_2);
-      for (int indice = 0; indice < _matrix_size_2; indice++)
-        {
-          aa[indice] = drand48 ();
-          bb[indice] = drand48 ();
-        }
-      // copying init values
-      for (int ll = 0; ll < _matrix_size_2; ll++)
-        {
-          a[ll] = aa[ll];
-          b[ll] = bb[ll];
-        }
+      ALLOC (b_host, _matrix_size_2);
+      ALLOC (b_device, _matrix_size_2);
 
-      driver_sgemm (sgemm, _matrix_size, a, b, c, &bench);
-      conversion_into_double (c, c_device, _matrix_size_2);
+      driver_pi_approximation (pi_approximation, _matrix_size_2, a, b, &bench);
+      conversion_into_double (b, b_device, _matrix_size_2);
 
-      host_dgemm (aa, bb, c_host, _matrix_size);
-      driver_accuracy (_matrix_size_2, c_host, c_device, &bench);
+      host_pi_approximation (aa, b_host, _matrix_size_2);
+      driver_accuracy (_matrix_size_2, b_host, b_device, &bench);
       print_data_accuracy (buffer, bench.accuracy);
 
       save_data (NULL, buffer);
     }
-
-  free (data);
 
   return error_accuracy (&bench);
 }

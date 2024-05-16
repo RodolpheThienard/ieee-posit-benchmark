@@ -1,5 +1,4 @@
 #include "../../include/utils.h"
-#include <string.h>
 /* TODO Driver macro bandwidth
    macro permettant de faire la mesure du temps / débit
    paramettre variable
@@ -30,7 +29,6 @@
 #define DRIVER_ACCURACY(fn, ...)                                              \
   {                                                                           \
     _Pragma ("omp parallel") { fn (__VA_ARGS__); }                            \
-    _Pragma ("omp barrier")                                                   \
   }
 
 /* TODO driver macro accuracy
@@ -55,8 +53,60 @@ driver_sgemm (void (*function) (float *, float *, float *, int), int size,
 }
 
 void
+driver_vector_add (void (*function) (float *, float *, float *, int), int size,
+                   float *a, float *b, float *c,
+                   struct bench_s bench[static 1])
+{
+  DRIVER_BANDWIDTH (function, a, b, c, size);
+  memset (c, 0, size * sizeof (float));
+  DRIVER_ACCURACY (function, a, b, c, size);
+  formatting_data (bench->data);
+}
+
+void
+driver_vector_div (void (*function) (float *, float *, float *, int), int size,
+                   float *a, float *b, float *c,
+                   struct bench_s bench[static 1])
+{
+  DRIVER_BANDWIDTH (function, a, b, c, size);
+  memset (c, 0, size * sizeof (float));
+  DRIVER_ACCURACY (function, a, b, c, size);
+  formatting_data (bench->data);
+}
+void
+driver_vector_sqrt (void (*function) (float *, float *, int), int size,
+                    float *a, float *b, struct bench_s bench[static 1])
+{
+  DRIVER_BANDWIDTH (function, a, b, size);
+  memset (b, 0, size * sizeof (float));
+  DRIVER_ACCURACY (function, a, b, size);
+  formatting_data (bench->data);
+}
+
+void
+driver_pi_approximation (void (*function) (float *, float *, int), int size,
+                         float *a, float *b, struct bench_s bench[static 1])
+{
+  DRIVER_BANDWIDTH (function, a, b, size);
+  memset (b, 0, size * sizeof (float));
+  DRIVER_ACCURACY (function, a, b, size);
+  formatting_data (bench->data);
+}
+
+void
 driver_accuracy (int size, double *c_host, double *c_device,
                  struct bench_s bench[static 1])
 {
   DRIVER_ACCURACY_COMPARE (c_host, c_device, size);
+}
+
+void
+driver_inverse_gauss_jordan (void (*function) (float *, float *, int),
+                             int size, float *a, float *b,
+                             struct bench_s bench[])
+{
+  DRIVER_BANDWIDTH (function, a, b, size);
+  memset (b, 0, size * size * sizeof (float));
+  DRIVER_ACCURACY (function, a, b, size);
+  formatting_data (bench->data);
 }

@@ -9,6 +9,7 @@ void host_vector_mul (double *matrix1, double *matrix2, double *matrix3,
 void host_vector_div (double *matrix1, double *matrix2, double *matrix3,
                       int size);
 void host_vector_sqrt (double *matrix1, double *matrix2, int size);
+void host_pi_approximation (double *matrix1, double *matrix2, int size);
 void host_vector_reduction (double *matrix1, double *matrix2, double *matrix3,
                             int size);
 void host_inve_matrix_gauss_jordan (double *matrix1, double *matrix2,

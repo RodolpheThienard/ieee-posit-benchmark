@@ -1,5 +1,6 @@
+#include "../../include/host_kernels.h"
 #include "../../include/utils.h"
-#define TOT_DART 1e6
+#define TOT_DART 1e7
 #define PI 3.1415926535
 #define is_inside(x, y) (x * x + y * y) <= 1 ? 1 : 0
 
@@ -19,12 +20,4 @@ pi_approximation (float *input, float *output, int n)
         }
       output[k] = (4. * inside / TOT_DART);
     }
-}
-
-void
-real_pi (float *input, float *output, int n)
-{
-#pragma omp for
-  for (int k = 0; k < n; k++)
-    output[k] = (float)PI;
 }
