@@ -1,11 +1,11 @@
 
 /// Tiles
-#include "test_float_matrix_memcpy.h"
+#include "test_float_matrix_memset.h"
 
 #define ALLOC_NAME "default_allocator"
 
 int
-kernel_float_matrix_memcpy (int argc, char *argv[])
+kernel_float_matrix_memset (int argc, char *argv[])
 {
   char *bin_path, *test_name;
   struct arguments_path args = { NULL, NULL };
@@ -33,7 +33,7 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
     }
 
   // host matrix
-  float *a, *b, *b_host;
+  float *a;
 
   // size matrix
   int n = 100;
@@ -41,7 +41,6 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
 
   // host allocation
   a = malloc (size);
-  b = malloc (size);
 
   // init a & b matrix
   for (int i = 0; i < n * n; i++)
@@ -54,7 +53,6 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
 
   // device allocation
   rc = RacEr_mc_device_malloc (&device, size, &a_device);
-  rc = RacEr_mc_device_malloc (&device, size, &b_device);
 
   // memcopy host to device
   rc = RacEr_mc_device_memcpy (&device, &a_device, &a[0], size,
@@ -71,12 +69,11 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
       = { .x = n / block_size_x, .y = n / block_size_y };
 
   // init kernel args struct
-  uint32_t kernel_args[5]
-      = { a_device, b_device, n, block_size_x, block_size_y };
+  uint32_t kernel_args[4] = { a_device, n, block_size_x, block_size_y };
 
   // add kernel in queue on the device
   rc = RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim,
-                                "kernel_float_matrix_memcpy", 5, kernel_args);
+                                "kernel_float_matrix_memset", 4, kernel_args);
   if (rc != HB_MC_SUCCESS)
     {
       RacEr_pr_err ("failed to initialize grid.\n");
@@ -92,7 +89,7 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
     }
 
   // memcopy device to host
-  rc = RacEr_mc_device_memcpy (&device, &b[0], &b_device, size,
+  rc = RacEr_mc_device_memcpy (&device, &a[0], &a_device, size,
                                HB_MC_MEMCPY_TO_HOST);
 
   float max_ferror = 0;
@@ -124,8 +121,8 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
 int
 main (int argc, char *argv[])
 {
-  RacEr_pr_test_info ("Test memcpy Regression TEST(F1)\n");
-  int rc = kernel_float_matrix_memcpy (argc, argv);
+  RacEr_pr_test_info ("Test memset Regression TEST(F1)\n");
+  int rc = kernel_float_matrix_memset (argc, argv);
   RacEr_pr_test_pass_fail (rc == HB_MC_SUCCESS);
   return rc;
 }
