@@ -32,12 +32,12 @@ kernel_float_matrix_memset (int argc, char *argv[])
       return rc;
     }
 
-  // host matrix
-  float *a;
-
   // size matrix
   int n = 100;
   int size = sizeof (float) * n * n;
+
+  // host matrix
+  float *a, a_host[n * n];
 
   // host allocation
   a = malloc (size);
@@ -46,10 +46,11 @@ kernel_float_matrix_memset (int argc, char *argv[])
   for (int i = 0; i < n * n; i++)
     {
       a[i] = drand48 ();
+      a_host[i] = 1.0;
     }
 
   // device matrix
-  eva_t a_device, b_device;
+  eva_t a_device;
 
   // device allocation
   rc = RacEr_mc_device_malloc (&device, size, &a_device);
@@ -99,14 +100,15 @@ kernel_float_matrix_memset (int argc, char *argv[])
   for (int i = 0; i < n; i++)
     for (int j = 0; j < n; j++)
       {
-        ferror = RacEr_mc_calculate_float_error (a[i * n + j], b[i * n + j]);
+        ferror
+            = RacEr_mc_calculate_float_error (a[i * n + j], a_host[i * n + j]);
         max_ferror = fmax (max_ferror, ferror);
         if (ferror > MAX_FLOAT_ERROR_TOLERANCE)
           {
             RacEr_pr_err (
                 RacEr_RED ("Mismatch: ") "B[%d]: %.32f\tExpected: "
                                          "%.32f\tRelative error: %.32f\n",
-                i * n + j, a[i * n + j], b[i * n + j], ferror);
+                i * n + j, a[i * n + j], a_host[i * n + j], ferror);
             mismatch = 1;
           }
       }
