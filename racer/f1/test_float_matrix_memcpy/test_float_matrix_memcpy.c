@@ -50,7 +50,7 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
     }
 
   // device matrix
-  eva_t a_device, b_device;
+  RacEr_mc_eva_t a_device, b_device;
 
   // device allocation
   rc = RacEr_mc_device_malloc (&device, size, &a_device);
