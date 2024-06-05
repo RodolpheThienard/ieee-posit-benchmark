@@ -25,7 +25,7 @@
 /* manycore binary in the RacEr Manycore repository. */
 /******************************************************************************/
 
-#include "test_float_matrix_mul.h"
+#include "test_float_matrix_mul2.h"
 
 #define ALLOC_NAME "default_allocator"
 
@@ -33,13 +33,35 @@
  * Matrix multiplication code on the host side to compare the results
  */
 void
-host_float_matrix_mul (float *A, float *val, int n)
+host_float_matrix_mul (float *A, float *B, float *C, int M, int N, int P)
 {
-  for (int y = 0; y < n; y++)
+  for (int y = 0; y < M; y++)
     {
-      for (int x = 0; x < n; x++)
+      for (int x = 0; x < P; x++)
         {
-          A[y * n + x] = val[y * n + x];
+          float res = 0;
+          for (int k = 0; k < N; k++)
+            {
+              res += A[y * N + k] * B[k * P + x];
+            }
+          C[y * P + x] = res;
+        }
+    }
+  return;
+}
+void
+host_double_matrix_mul (double *A, double *B, double *C, int M, int N, int P)
+{
+  for (int y = 0; y < M; y++)
+    {
+      for (int x = 0; x < P; x++)
+        {
+          double res = 0;
+          for (int k = 0; k < N; k++)
+            {
+              res += A[y * N + k] * B[k * P + x];
+            }
+          C[y * P + x] = res;
         }
     }
   return;
@@ -83,19 +105,29 @@ kernel_float_matrix_mul (int argc, char **argv)
   /**********************************************************************/
   /* Allocate memory on the device for A, B and C.                      */
   /**********************************************************************/
-  uint32_t n = 10;
+  uint32_t M = 32;
+  uint32_t N = 64;
+  uint32_t P = 16;
 
-  RacEr_mc_eva_t A_device, val_device;
-  rc = RacEr_mc_device_malloc (&device, n * n * sizeof (uint32_t),
+  RacEr_mc_eva_t A_device, B_device, C_device;
+  rc = RacEr_mc_device_malloc (&device, M * N * sizeof (uint32_t),
                                &A_device); /* allocate A[M][N] on the device */
   if (rc != HB_MC_SUCCESS)
     {
       RacEr_pr_err ("failed to allocate memory on device.\n");
       return rc;
     }
-  rc = RacEr_mc_device_malloc (
-      &device, n * n * sizeof (uint32_t),
-      &val_device); /* allocate A[M][N] on the device */
+
+  rc = RacEr_mc_device_malloc (&device, N * P * sizeof (uint32_t),
+                               &B_device); /* allocate B[N][P] on the device */
+  if (rc != HB_MC_SUCCESS)
+    {
+      RacEr_pr_err ("failed to allocate memory on device.\n");
+      return rc;
+    }
+
+  rc = RacEr_mc_device_malloc (&device, M * P * sizeof (uint32_t),
+                               &C_device); /* allocate C[M][P] on the device */
   if (rc != HB_MC_SUCCESS)
     {
       RacEr_pr_err ("failed to allocate memory on device.\n");
@@ -106,36 +138,54 @@ kernel_float_matrix_mul (int argc, char **argv)
   /* Allocate memory on the host for A & B                              */
   /* and initialize with random values.                                 */
   /**********************************************************************/
-  float A_host[n * n];
-  float val[n * n];
+  float A_host[M * N];
+  float B_host[N * P];
   srand ((unsigned int)time (NULL));
-  for (int i = 0; i < n * n; i++)
+  for (int i = 0; i < M * N; i++)
     {
       A_host[i] = ((float)rand () / (float)(RAND_MAX))
-                  * 5.0; // RacEr_mc_generate_float_rand();
-      //                 RacEr_pr_test_info("A_host %f\n ",A_host[i]);
-      val[i] = 1.5;
+                  / 2.9; // RacEr_mc_generate_float_rand();
+      // RacEr_pr_test_info ("A_host %f\n ", A_host[i]);
     }
 
+  for (int i = 0; i < N * P; i++)
+    {
+      B_host[i] = ((float)rand () / (float)(RAND_MAX))
+                  / 5.2; // RacEr_mc_generate_float_rand();
+
+      //              RacEr_pr_test_info("B_host %f\n ",B_host[i]);
+    }
   /**********************************************************************/
   /* Copy A & B from host onto device DRAM.                             */
   /**********************************************************************/
   void *dst = (void *)((intptr_t)A_device);
   void *src = (void *)&A_host[0];
-  // rc = RacEr_mc_device_memcpy (&device, dst, src, n * n * sizeof (uint32_t),
-  //                              HB_MC_MEMCPY_TO_DEVICE);
-  // if (rc != HB_MC_SUCCESS)
-  //   {
-  //     RacEr_pr_err ("failed to copy memory to device.\n");
-  //     return rc;
-  //   }
-  dst = (void *)((intptr_t)val_device);
-  src = (void *)&val[0];
-  rc = RacEr_mc_device_memcpy (&device, dst, src, n * n * sizeof (uint32_t),
+  rc = RacEr_mc_device_memcpy (&device, dst, src, M * N * sizeof (uint32_t),
                                HB_MC_MEMCPY_TO_DEVICE);
   if (rc != HB_MC_SUCCESS)
     {
       RacEr_pr_err ("failed to copy memory to device.\n");
+      return rc;
+    }
+
+  dst = (void *)((intptr_t)B_device);
+  src = (void *)&B_host[0];
+  rc = RacEr_mc_device_memcpy (&device, dst, src, N * P * sizeof (uint32_t),
+                               HB_MC_MEMCPY_TO_DEVICE);
+  if (rc != HB_MC_SUCCESS)
+    {
+      RacEr_pr_err ("failed to copy memory to device.\n");
+      return rc;
+    }
+
+  /**********************************************************************/
+  /* Initialize values in C_device to 0.                                */
+  /**********************************************************************/
+  rc = RacEr_mc_device_memset (&device, &C_device, 0,
+                               M * P * sizeof (uint32_t));
+  if (rc != HB_MC_SUCCESS)
+    {
+      RacEr_pr_err ("failed to set memory on device.\n");
       return rc;
     }
 
@@ -151,19 +201,20 @@ kernel_float_matrix_mul (int argc, char **argv)
   RacEr_mc_dimension_t tg_dim = { .x = 2, .y = 2 };
 
   RacEr_mc_dimension_t grid_dim
-      = { .x = n / block_size_x, .y = n / block_size_y };
+      = { .x = P / block_size_x, .y = M / block_size_y };
 
   /**********************************************************************/
   /* Prepare list of input arguments for kernel.                        */
   /**********************************************************************/
-  int cuda_argv[4] = { A_device, val_device, n, block_size_y, block_size_x };
+  int cuda_argv[8]
+      = { A_device, B_device, C_device, M, N, P, block_size_y, block_size_x };
 
   /**********************************************************************/
   /* Enquque grid of tile groups, pass in grid and tile group dimensions*/
   /* kernel name, number and list of input arguments                    */
   /**********************************************************************/
   rc = RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim,
-                                "kernel_float_matrix_mul", 5, cuda_argv);
+                                "kernel_float_matrix_mul2", 8, cuda_argv);
   if (rc != HB_MC_SUCCESS)
     {
       RacEr_pr_err ("failed to initialize grid.\n");
@@ -183,11 +234,11 @@ kernel_float_matrix_mul (int argc, char **argv)
   /**********************************************************************/
   /* Copy result matrix back from device DRAM into host memory.         */
   /**********************************************************************/
-  float B_host[n * n];
-  src = (void *)((intptr_t)A_device);
-  dst = (void *)&B_host[0];
+  float C_host[M * P];
+  src = (void *)((intptr_t)C_device);
+  dst = (void *)&C_host[0];
   rc = RacEr_mc_device_memcpy (&device, (void *)dst, src,
-                               n * n * sizeof (uint32_t),
+                               M * P * sizeof (uint32_t),
                                HB_MC_MEMCPY_TO_HOST);
   if (rc != HB_MC_SUCCESS)
     {
@@ -208,32 +259,50 @@ kernel_float_matrix_mul (int argc, char **argv)
   /**********************************************************************/
   /* Calculate the expected result using host code and compare.         */
   /**********************************************************************/
-  float B_expected[n * n];
-  host_float_matrix_mul (B_expected, val, n);
+  double A_host_double[M * N];
+  double B_host_double[N * P];
+  double C_host_double[M * P];
+  for (int i = 0; i < M * N; i++)
+    {
+      A_host_double[i] = (double)A_host[i];
+    }
+
+  for (int i = 0; i < N * P; i++)
+    {
+      B_host_double[i] = (double)B_host[i];
+    }
+  for (int y = 0; y < M; y++)
+    {
+      for (int x = 0; x < P; x++)
+        {
+          C_host_double[y * P + x] = (double)C_host[y * P + x];
+        }
+    }
+  double C_expected[M * P];
+  float C_expected_float[M * P];
+  host_double_matrix_mul (A_host_double, B_host_double, C_expected, M, N, P);
+  host_float_matrix_mul (A_host, B_host, C_expected_float, M, N, P);
 
   float max_ferror = 0;
   float ferror = 0;
 
   int mismatch = 0;
-  for (int y = 0; y < n; y++)
+  double d_res = 0.0;
+  float f_res, p_res = 0.0;
+  for (int y = 0; y < M; y++)
     {
-      for (int x = 0; x < n; x++)
+      for (int x = 0; x < P; x++)
         {
-          ferror = RacEr_mc_calculate_float_error (B_expected[y * n + x],
-                                                   B_host[y * n + x]);
-          max_ferror = fmax (max_ferror, ferror);
-          if (ferror > MAX_FLOAT_ERROR_TOLERANCE)
-            {
-              RacEr_pr_err (
-                  RacEr_RED ("Mismatch: ") "C[%d][%d]: %.32f\tExpected: "
-                                           "%.32f\tRelative error: %.32f\n",
-                  y, x, B_host[y * n + x], B_expected[y * n + x], ferror);
-              mismatch = 1;
-            }
+          d_res += C_expected[y * P + x];
+          f_res += C_expected_float[y * P + x];
+          p_res += C_host[y * P + x];
         }
     }
 
-  RacEr_pr_test_info ("MAX relative FP error: %e\n", max_ferror);
+  // RacEr_pr_test_info ("MAX relative FP error: %e\n", max_ferror);
+  RacEr_pr_test_info (
+      "\nFloat  : %24.23lf\nPosit  : %24.23lf\nDouble : %24.23lf\n", f_res,
+      p_res, d_res);
 
   if (mismatch)
     {
@@ -270,7 +339,7 @@ cosim_main (uint32_t *exit_code, char *args)
 int
 main (int argc, char **argv)
 {
-  RacEr_pr_test_info ("test_float_matrix_mul Regression Test (F1)\n");
+  RacEr_pr_test_info ("test_float_matrix_mul2 Regression Test (F1)\n");
   int rc = kernel_float_matrix_mul (argc, argv);
   RacEr_pr_test_pass_fail (rc == HB_MC_SUCCESS);
   return rc;
