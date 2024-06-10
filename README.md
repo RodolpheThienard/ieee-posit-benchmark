@@ -6,10 +6,12 @@ Implementation of a benchmark strategy to be able to measure different metrics o
 - FPGA (RacEr with POSIT)
 
 # Benchmarks
+
 ## Performances metrics
-- Time elapsed
-- Stddev
-- Bandwidth
+No performance metrics yet. This is due to the difficulty to compare GPGPU Nvidia, CPU, and FPGA.
+<!-- - Time elapsed -->
+<!-- - Stddev -->
+<!-- - Bandwidth -->
 
 ## Accuracy
 - Error accumulation mean
@@ -22,61 +24,61 @@ Implementation of a benchmark strategy to be able to measure different metrics o
   - Add
   - Sqrt
   - Div
+  - Reduce
 - Matrix operation :
   - Mul
-  - Inverse
-- Monte-Carlo
-  - Pi approximation
+<!-- - Monte-Carlo -->
+  <!-- - Pi approximation -->
 
 > [!NOTE]
-> Posit was implemented on a RacEr architecture. You can find some documentation in doc/documentation.pdf
+> Posit was implemented on a RacEr architecture. You can find some documentation at `documentation/documentation.pdf` This documentation is not complete yet !
 
-# Compilation & Run
-All `main` compilation command will create a shared object lib which will be used for each test  
-Then you can run test or use the lib in your own file.
+<!-- # Compilation & Run -->
+<!-- All `main` compilation command will create a shared object lib which will be used for each test -->  
+<!-- Then you can run test or use the lib in your own file. -->
 
-You require to add an agrument for cmake to precise which version you want.
-all version available : {racer, omp, cuda}
+<!-- You require to add an agrument for cmake to precise which version you want. -->
+<!-- all version available : {racer, omp, cuda} -->
 
-## Lib 
-```bash
-mkdir build
-cd build
-cmake -DENABLE_<VERSION>_COMPILE=on ..
-make <version>_bench
-```
+<!-- ## Lib --> 
+<!-- ```bash -->
+<!-- mkdir build -->
+<!-- cd build -->
+<!-- cmake -DENABLE_<VERSION>_COMPILE=on .. -->
+<!-- make <version>_bench -->
+<!-- ``` -->
 
-## Test compilation & run command :
-```bash
-mkdir build
-cd build
-cmake -DENABLE_<VERSION>_COMPILE=on ..
-make <version>_main
-./<version>_main <matrix-size> <meta-repetition> 
-```
-all version available : {racer, omp, cuda}
+<!-- ## Test compilation & run command : -->
+<!-- ```bash -->
+<!-- mkdir build -->
+<!-- cd build -->
+<!-- cmake -DENABLE_<VERSION>_COMPILE=on .. -->
+<!-- make <version>_main -->
+<!-- ./<version>_main <matrix-size> <meta-repetition> --> 
+<!-- ``` -->
+<!-- all version available : {racer, omp, cuda} -->
 
-#### Example : 
-```bash
-mkdir build
-cd build
-cmake -DENABLE_<VERSION>_COMPILE=on ..
-make cuda_main
-./<version>_bin/<test> <matrix-size> <meta-repetition>
-```
+<!-- #### Example : --> 
+<!-- ```bash -->
+<!-- mkdir build -->
+<!-- cd build -->
+<!-- cmake -DENABLE_<VERSION>_COMPILE=on .. -->
+<!-- make cuda_main -->
+<!-- ./<version>_bin/<test> <matrix-size> <meta-repetition> -->
+<!-- ``` -->
 
-## Troubleshoot
+<!-- ## Troubleshoot -->
 
-> [!WARNING]
-> If error : "cannot find -lcublas" or "cannot find -lcudart"  
-> check if LD_LIBRARY_PATH AND LIBRARY_PATH have "/path/to/your/cuda/lib64"  
-> if not, 
-```sh
-export LIBRARY_PATH="/path/to/your/cuda/lib64:${LIBRARY_PATH}"
-export LD_LIBRARY_PATH="/path/to/your/cuda/lib64:${LD_LIBRARY_PATH}"
-```
+<!-- > [!WARNING] -->
+<!-- > If error : "cannot find -lcublas" or "cannot find -lcudart" -->  
+<!-- > check if LD_LIBRARY_PATH AND LIBRARY_PATH have "/path/to/your/cuda/lib64" -->  
+<!-- > if not, --> 
+<!-- ```sh -->
+<!-- export LIBRARY_PATH="/path/to/your/cuda/lib64:${LIBRARY_PATH}" -->
+<!-- export LD_LIBRARY_PATH="/path/to/your/cuda/lib64:${LD_LIBRARY_PATH}" -->
+<!-- ``` -->
 
 
-## API
-> [!WARNING]
-> Todo  
+<!-- ## API -->
+<!-- > [!WARNING] -->
+<!-- > Todo -->  
