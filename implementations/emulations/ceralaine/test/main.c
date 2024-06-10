@@ -8,7 +8,9 @@ initializevector (float *f, int n, int i)
   for (int idx = 0; idx < n; ++idx)
     {
       f[idx]
-          = (float)drand48 () * i / 100; // warning, requires posix standard.
+          // = (float)drand48 () * i / 1e1; // warning, requires posix
+          // standard.
+          = (float)drand48 () * i / 1e5; // warning, requires posix standard.
     }
 }
 
