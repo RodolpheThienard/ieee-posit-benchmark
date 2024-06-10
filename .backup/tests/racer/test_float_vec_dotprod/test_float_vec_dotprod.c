@@ -60,7 +60,7 @@ kernel_float_vec_dotprod (int argc, char *argv[])
   FILE *file;
   file = fopen ("result.dat", "w");
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
-  int n = 1000;
+  int n = 1;
   // size matrix
   int size = sizeof (float) * n;
 
@@ -68,7 +68,7 @@ kernel_float_vec_dotprod (int argc, char *argv[])
   float a[n];
   float b[n];
 
-  for (int ii = 50000; ii < 100000; ii++)
+  for (int ii = 10; ii < 13; ii++)
     {
       RacEr_mc_eva_t a_device, b_device;
       // init a & b matrix
@@ -140,9 +140,9 @@ kernel_float_vec_dotprod (int argc, char *argv[])
         a_double[ij] = (double)a[ij];
       host_double_vec_dotprod (a_double, b_double_excepted, n);
 
-      // RacEr_pr_test_info (
-      //     "\nPosit  : %24.23f\nFloat  : %24.23f\nDouble : %24.23lf", b[0],
-      //     b_excepted[0], b_double_excepted[0]);
+      RacEr_pr_test_info (
+          "\nPosit  : %24.23f\nFloat  : %24.23f\nDouble : %24.23lf", a[0],
+          b_excepted[0], b_double_excepted[0]);
       fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", ii,
                (double)b_excepted[0], (double)b[0], b_double_excepted[0],
                ((double)b[0] - b_double_excepted[0]) / b_double_excepted[0],

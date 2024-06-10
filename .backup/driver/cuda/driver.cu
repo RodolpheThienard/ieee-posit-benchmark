@@ -99,6 +99,15 @@ driver_vector_sqrt (void (*function) (float *, float *, int), int size,
 }
 
 void
+driver_vector_dotprod (void (*function) (float *, float *, int), int size,
+                    float *a, float *b, struct bench_s bench[])
+{
+  cudaMemset (b, 0, size * sizeof (float));
+  DRIVER_ACCURACY (function, a, b, size);
+  formatting_data (bench->data);
+}
+
+void
 driver_pi_approximation (void (*function) (float *, float *, int), int size,
                     float *a, float *b, struct bench_s bench[])
 {

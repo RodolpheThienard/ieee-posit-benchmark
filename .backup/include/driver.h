@@ -13,6 +13,9 @@ void driver_vector_add (void (*function) (float *, float *, float *, int),
 void driver_vector_div (void (*function) (float *, float *, float *, int),
                         int size, float *a, float *b, float *c,
                         struct bench_s bench[]);
+void driver_vector_dotprod (void (*function) (float *, float *, int),
+                        int size, float *a, float *b,
+                        struct bench_s bench[]);
 void driver_vector_sqrt (void (*function) (float *, float *, int), int size,
                          float *a, float *b, struct bench_s bench[]);
 

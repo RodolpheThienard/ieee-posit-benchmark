@@ -8,6 +8,13 @@ host_vector_add (double *a, double *b, double *c, int n)
 }
 
 void
+host_vector_dotprod (double *a, double *b, int n)
+{
+  for (int i = 0; i < n; i++)
+    b[i] += a[i];
+}
+
+void
 host_vector_mul (double *a, double *b, double *c, int n)
 {
   for (int i = 0; i < n; i++)

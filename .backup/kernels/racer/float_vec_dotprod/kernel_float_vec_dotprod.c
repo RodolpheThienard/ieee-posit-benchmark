@@ -11,6 +11,7 @@ posit posit_add (posit Aa, posit Bb);
 int __attribute__ ((noinline))
 kernel_float_vec_dotprod (posit *A, posit *B, int block_size_x)
 {
+  RacEr_print_float (A[0]);
   int start_x = block_size_x
                 * (__RacEr_tile_group_id_y * __RacEr_grid_dim_x
                    + __RacEr_tile_group_id_x);

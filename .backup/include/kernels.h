@@ -3,6 +3,7 @@
 
 /// Kernels API
 void vector_add (float *matrix1, float *matrix2, float *matrix3, int size);
+void vector_dotprod (float *matrix1, float *matrix2, int size);
 void vector_mul (float *matrix1, float *matrix2, float *matrix3, int size);
 void vector_div (float *matrix1, float *matrix2, float *matrix3, int size);
 void vector_sqrt (float *matrix1, float *matrix2, int size);

@@ -42,6 +42,7 @@ if(ENABLE_CUDA_COMPILE)
       ${test}
       ${utils} 
       ${cuda_driver} 
+      ${host_kernels}
       ${cuda_kernels} 
     )
     target_link_libraries(${test_name} ${CUDA_NVCC_FLAGS} cuda_bench -lm)
@@ -93,7 +94,7 @@ set(CMAKE_C_STANDARD 99)
     endif()
     set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/omp_bin")
     enable_testing()
-    add_test(NAME ${test_name} COMMAND ${test_name} 100 1000)
+    add_test(NAME ${test_name} COMMAND ${test_name} 100 1)
   endforeach()
 endif()
 
@@ -109,29 +110,46 @@ FILE(GLOB racer_test tests/racer/*.c)
 FILE(GLOB racer_kernels kernels/racer/*.c)
 FILE(GLOB racer_driver driver/racer/driver.c)
 
-add_definitions(-DRacEr_global_X=4)
-add_definitions(-DRacEr_global_Y=4)
-add_definitions(-DRacEr_tiles_X=4)
-add_definitions(-DRacEr_tiles_Y=3)
+add_definitions(-DRacEr_global_X=2)
+add_definitions(-DRacEr_global_Y=3)
+add_definitions(-DRacEr_tiles_X=2)
+add_definitions(-DRacEr_tiles_Y=2)
 
   # racer library compilation
-  add_library(racer_bench SHARED 
-    ${utils} 
-    ${racer_driver} 
-    ${racer_kernels}
-  )
+  # add_library(racer_bench SHARED 
+  #   ${utils} 
+  #   ${racer_driver} 
+  #   ${racer_kernels}
+  # )
+
+  # Path to environment variable
+  include(../..environment.mk)
+
+  include(${REGRESSION_PATH}/f1.mk)
+  
+  # path ti define rules for building RISC-V binaries
+  include(rules.mk)
+
+  # each test require two arguments : path to risc-v binary and test name
+  
+  
   # racer test file getter
   set(TESTS
     ${racer_test}
+    ${utils} 
+    ${racer_driver} 
+    ${rac
   )
 
+
+
   # compilation of each racer test file
-  foreach(test ${TESTS})
-    get_filename_component(test_name ${test} NAME_WE)
-    ADD_EXECUTABLE(${test_name} 
-      ${test}
-      )
-    target_link_libraries(${test_name} PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
-    set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/racer_bin")
-  endforeach()
+  # foreach(test ${TESTS})
+  #   get_filename_component(test_name ${test} NAME_WE)
+  #   ADD_EXECUTABLE(${test_name} 
+  #     ${test}
+  #     )
+  #   target_link_libraries(${test_name} PUBLIC racer_bench -lm -lRacEr_manycore_runtime )
+  #   set_target_properties(${test_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/racer_bin")
+  # endforeach()
 endif()

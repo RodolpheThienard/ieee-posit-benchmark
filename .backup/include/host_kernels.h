@@ -4,6 +4,7 @@
 void host_dgemm (double *matrix1, double *matrix2, double *matrix3, int size);
 void host_vector_add (double *matrix1, double *matrix2, double *matrix3,
                       int size);
+void host_vector_dotprod (double *matrix1, double *matrix2, int size);
 void host_vector_mul (double *matrix1, double *matrix2, double *matrix3,
                       int size);
 void host_vector_div (double *matrix1, double *matrix2, double *matrix3,
