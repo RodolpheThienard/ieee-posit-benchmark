@@ -60,7 +60,7 @@ kernel_float_vec_dotprod (int argc, char *argv[])
   FILE *file;
   file = fopen ("result.dat", "w");
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
-  int n = 1;
+  int n = 1000;
   // size matrix
   int size = sizeof (float) * n;
 
@@ -68,26 +68,27 @@ kernel_float_vec_dotprod (int argc, char *argv[])
   float a[n];
   float b[n];
 
-  for (int ii = 10; ii < 13; ii++)
+  // device allocation
+  RacEr_mc_eva_t a_device, b_device;
+  rc = RacEr_mc_device_malloc (&device, size, &a_device);
+  if (rc != HB_MC_SUCCESS)
     {
-      RacEr_mc_eva_t a_device, b_device;
+      return rc;
+    }
+
+  rc = RacEr_mc_device_malloc (&device, size, &b_device);
+  if (rc != HB_MC_SUCCESS)
+    {
+      return rc;
+    }
+
+  for (int ii = -1e5; ii < 1e5; ii++)
+    {
       // init a & b matrix
       for (int i = 0; i < n; i++)
         {
-          a[i] = drand48 () * ii / 100;
-        }
-
-      // device allocation
-      rc = RacEr_mc_device_malloc (&device, size, &a_device);
-      if (rc != HB_MC_SUCCESS)
-        {
-          return rc;
-        }
-
-      rc = RacEr_mc_device_malloc (&device, size, &b_device);
-      if (rc != HB_MC_SUCCESS)
-        {
-          return rc;
+          // a[i] = drand48 () * ii / 1e5; // around 0
+          a[i] = drand48 () * ii / 1e1; // Large
         }
 
       // memcopy host to device
@@ -140,13 +141,14 @@ kernel_float_vec_dotprod (int argc, char *argv[])
         a_double[ij] = (double)a[ij];
       host_double_vec_dotprod (a_double, b_double_excepted, n);
 
-      RacEr_pr_test_info (
-          "\nPosit  : %24.23f\nFloat  : %24.23f\nDouble : %24.23lf", a[0],
-          b_excepted[0], b_double_excepted[0]);
+      // RacEr_pr_test_info (
+      //     "\nPosit  : %24.23f\nFloat  : %24.23f\nDouble : %24.23lf", b[0],
+      //     b_excepted[0], b_double_excepted[0]);
       fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", ii,
                (double)b_excepted[0], (double)b[0], b_double_excepted[0],
                ((double)b[0] - b_double_excepted[0]) / b_double_excepted[0],
-               (b_excepted[0] - b_double_excepted[0]) / b_double_excepted[0]);
+               ((double)b_excepted[0] - b_double_excepted[0])
+                   / b_double_excepted[0]);
       // RacEr_pr_test_info ("MAX relative FP error: %e\n", max_ferror);
     }
   if (mismatch)
