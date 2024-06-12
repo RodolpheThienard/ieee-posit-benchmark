@@ -30,8 +30,15 @@ No performance metrics yet. This is due to the difficulty to compare GPGPU Nvidi
 <!-- - Monte-Carlo -->
   <!-- - Pi approximation -->
 
-> [!NOTE]
-> Posit was implemented on a RacEr architecture. You can find some documentation at `documentation/documentation.pdf` This documentation is not complete yet !
+## Documentation / User Guide
+- [\[documentation\]](documentation/documentation.pdf)
+
+> [!NOTE]  
+> - Posit was implemented on a RacEr architecture. You can find it at `documentation/documentation.pdf`   
+> - In this file, you can find API of RacEr with examples.
+
+> [!WARNING]
+> This documentation is not complete yet !
 
 <!-- # Compilation & Run -->
 <!-- All `main` compilation command will create a shared object lib which will be used for each test -->  
