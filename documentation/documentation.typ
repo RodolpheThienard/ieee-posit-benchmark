@@ -19,6 +19,7 @@ This work is an addition to the documentation based on the RacEr architecture de
 
 
 = API RacEr
+== Racer Function in kernel file
 
 #table(columns: (50%, 50%), fill : (x,y) => (if (y==0) {rgb("#DEDEDE")}), 
 [#align(center)[RacEr Kernel Function]],[#align(center)[Definition]],
@@ -71,6 +72,7 @@ This work is an addition to the documentation based on the RacEr architecture de
 )
 
 #pagebreak()
+== Racer Function in main file
 #table(columns: (50%, 50%), fill : (x,y) => (if (y==0) {rgb("#DEDEDE")}), 
 [#align(center)[RacEr main function]],[#align(center)[Definition]],
 [```c
@@ -98,11 +100,24 @@ This work is an addition to the documentation based on the RacEr architecture de
  RacEr_mc_device_free(RacEr_mc_device_t *device, void *src)```],[free allocated memory on `device`],
 )
 #pagebreak()
+== RacEr Type
 #table(columns: (50%, 50%), fill : (x,y) => (if (y==0) {rgb("#DEDEDE")}), 
 [#align(center)[RacEr Macro]],[#align(center)[Definition]],
 [```c
 RacEr_mc_dimension_t tg_dim = { .x = x, .y = y }
 RacEr_mc_dimension_t grid_dim = { .x = value / block_size_x, .y = value / block_size_y }```],[2-dimension type for `tg_dim` and `grid_dim`],
+[```c
+ enum hb_mc_memcpy_kind { HB_MC_MEMCPY_TO_DEVICE, HB_MC_MEMCPY_TO_HOST }```],[Enum to define the copy mode],
+[```c
+ RacEr_mc_device_t device```],[Device type],
+[```c
+ struct arguments_path args = {name, path}```],[Struct to store function `name` and `path`],
+)
+
+#pagebreak()
+== RacEr Macro 
+#table(columns: (50%, 50%), fill : (x,y) => (if (y==0) {rgb("#DEDEDE")}), 
+[#align(center)[RacEr Macro]],[#align(center)[Definition]],
 [```c
 #define ALLOC_NAME "default_allocator"```],[Definition of the `default_allocator`],
 [```c
@@ -118,107 +133,221 @@ RacEr_mc_dimension_t grid_dim = { .x = value / block_size_x, .y = value / block_
 #define HB_MC_BUSY          (-8)
 #define HB_MC_UNALIGNED     (-9)```],[Errno macro],
 [```c
- enum hb_mc_memcpy_kind { HB_MC_MEMCPY_TO_DEVICE, HB_MC_MEMCPY_TO_HOST }```],[],
-[```c
- RacEr_mc_device_t device```],[Device type],
-[```c
- struct arguments_path args = {name, path}```],[Struct to store function `name` and `path`],
-[```c
  #define RacEr_TILE_GROUP_X_DIM RacEr_tiles_X
 int start_x = __RacEr_tile_group_id_x * block_size_x
 int end_x = start_x + block_size_x ```],[Get a thread action field],
 )
 
+#pagebreak()
+= Compilation
+== Needed files
+- a
+- b
 
+== Commands
 
 #pagebreak()
-== Migration of Cuda code to RacEr
+= Migration of Cuda code to RacEr
 
-=== SGEMM Kernel example (Single precision matrix matrix multiply)
+== Vector reduce kernel example
 
-*RacEr*
+=== RacEr
 ```c
 #include "RacEr_manycore.h"
 #include "RacEr_set_tile_x_y.h"
 
-// define and init barrier
+#define RacEr_TILE_GROUP_X_DIM RacEr_tiles_X
+#define RacEr_TILE_GROUP_Y_DIM RacEr_tiles_Y
 #include "RacEr_tile_group_barrier.h"
 INIT_TILE_GROUP_BARRIER (r_barrier, c_barrier, 0, RacEr_tiles_X - 1, 0,
                          RacEr_tiles_Y - 1);
 
-// define tiles X & Y
-#define RacEr_TILE_GROUP_X_DIM RacEr_tiles_X
-#define RacEr_TILE_GROUP_Y_DIM RacEr_tiles_Y
-
 int __attribute__ ((noinline))
-kernel_float_matrix_mul (float *A, float *B, float *C, int N,
-                         int block_size_y, int block_size_x)
+kernel_float_vec_dotprod (posit *A, posit *B, int block_size_x)
 {
-
-
-  int start_y = __RacEr_tile_group_id_y * block_size_y;
-  int start_x = __RacEr_tile_group_id_x * block_size_x;
-  int end_y = start_y + block_size_y;
-  int end_x = start_x + block_size_x;
-
-  for (int iter_y = start_y + __RacEr_y; iter_y < end_y;
-       iter_y += RacEr_tiles_Y)
+  int start_x = block_size_x
+                * (__RacEr_tile_group_id_y * __RacEr_grid_dim_x
+                   + __RacEr_tile_group_id_x);
+  posit A_a = 0.0, B_b = 0.0;
+  for (int iter_x = __RacEr_id; iter_x < block_size_x;
+       iter_x += RacEr_tiles_X * RacEr_tiles_Y)
     {
-      for (int iter_x = start_x + __RacEr_x; iter_x < end_x;
-           iter_x += RacEr_tiles_X)
-        {
-          float sum = 0;
-          for (int k = 0; k < N; k++)
-            {
-              A_const = A[iter_y * N + k];
-              B_const = B[k * N + iter_x];
-              sum += A[iter_y * N + k] * B[k * N + iter_x];
-            }
-          C[iter_y * N + iter_x] = sum;
-        }
+      B_b = A[iter_x] + B_b;
     }
-  // Synchronize tile before end
+  B[__RacEr_id] = B_b;
+
+  // RacEr_tile_group_barrier (&r_barrier, &c_barrier);
+  // for (int i = 0; i < RacEr_tiles_X * RacEr_tiles_Y; i++)
+  //   {
+  //    A_a = A_a + B[i];
+  //   }
   RacEr_tile_group_barrier (&r_barrier, &c_barrier);
+  B[__RacEr_id] = A_a;
+
+  return 0;
+
+}
+```
+
+=== CUDA
+```c
+__global__ void reduce(float *input, float *output, int n) {
+    extern __shared__ float sharedData[];
+    unsigned int tid = threadIdx.x;
+    unsigned int i = blockIdx.x * blockDim.x * 2 + threadIdx.x;
+
+    if (i < n) {
+        sharedData[tid] = input[i] + (i + blockDim.x < n ? input[i + blockDim.x] : 0);
+    } else {
+        sharedData[tid] = 0;
+    }
+    __syncthreads();
+
+    for (unsigned int s = blockDim.x / 2; s > 0; s >>= 1) {
+        if (tid < s) {
+            sharedData[tid] += sharedData[tid + s];
+        }
+        __syncthreads();
+    }
+
+    if (tid == 0) {
+        output[blockIdx.x] = sharedData[0];
+    }
+}
+  ```
+
+== Vector reduce main example
+=== RacEr
+
+```c
+#include "cuda_tests.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+
+#define ALLOC_NAME "default_allocator"
+
+int
+kernel_float_vec_dotprod (int argc, char *argv[])
+{
+  char *bin_path, *test_name;
+  struct arguments_path args = { NULL, NULL };
+
+  argp_parse (&argp_path, argc, argv, 0, 0, &args);
+  bin_path = args.path;
+  test_name = args.name;
+
+  int rc, mismatch = 0, n = 1000, size = sizeof (float) * n;
+
+  RacEr_mc_device_t device;
+  rc = RacEr_mc_device_init (&device, test_name, 0);
+  rc = RacEr_mc_device_program_init (&device, bin_path, ALLOC_NAME, 0);
+
+  float a[n], b[n];
+
+  RacEr_mc_eva_t a_device, b_device;
+  rc = RacEr_mc_device_malloc (&device, size, &a_device);
+  rc = RacEr_mc_device_malloc (&device, size, &b_device);
+
+  for (int i = 0; i < n; i++)
+    {
+      a[i] = (float)drand48 (); // Large
+    }
+
+  void *dst = (void *)((intptr_t)a_device);
+  void *src = (void *)&a[0];
+
+  rc = RacEr_mc_device_memcpy (&device, dst, src, size,
+                               HB_MC_MEMCPY_TO_DEVICE);
+  uint32_t block_size_x = n;
+  RacEr_mc_dimension_t tg_dim = { .x = 2, .y = 2 };
+  RacEr_mc_dimension_t grid_dim = { .x = 1, .y = 1 };
+
+  int cuda_argv[3] = { a_device, b_device, block_size_x };
+  rc = RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim,
+                                "kernel_float_vec_dotprod", 3, cuda_argv);
+
+  rc = RacEr_mc_device_tile_groups_execute (&device);
+
+  src = (void *)((intptr_t)b_device);
+  dst = (void *)&b[0];
+  rc = RacEr_mc_device_memcpy (&device, dst, src, size, HB_MC_MEMCPY_TO_HOST);
+}
+
+int
+main (int argc, char *argv[])
+{
+  RacEr_pr_test_info ("Vector reduce \n");
+  kernel_float_vec_dotprod (argc, argv);
   return 0;
 }
 ```
 
-  *Cuda*
+
+=== CUDA
 ```c
-__global__ void
-sgemm (double *A, double *B, double *C, int N)
+#include <cublas_v2.h>
+#include <cuda_runtime.h>
+
+int
+main (int argc, char *argv[])
 {
-  int i = blockIdx.x * blockDim.x + threadIdx.x;
-  int j = blockIdx.y * blockDim.y + threadIdx.y;
-  double sum = 0.;
-  for (int k = 0; k < N; k++)
+  float *f1, result *d_input, d_output;
+
+  int n = 1000;
+  f1 = (float *)malloc (sizeof (float) * n);
+
+  for (int i = 0; i < n; i++)
+    f[i] = (float)drand48 ();
+
+  int numBlocks = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
+
+  cudaMalloc (&d_input, n * sizeof (float));
+  cudaMalloc (&d_output, numBlocks * sizeof (float));
+
+  cudaMemcpy (d_input, h_input, n * sizeof (int), cudaMemcpyHostToDevice);
+
+  reduce<<<numBlocks, BLOCK_SIZE, BLOCK_SIZE * sizeof (float)> > > (
+      d_input, d_output, n);
+
+  while (numBlocks > 1)
     {
-      sum += A[i * N + k] * B[k * N + j];
+      n = numBlocks;
+      numBlocks = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
+      reduce<<<numBlocks, BLOCK_SIZE, BLOCK_SIZE * sizeof (float)>>> (
+          d_output, d_output, n);
     }
-  C[i * N + j] = sum;
-}
-  ```
 
+  cudaMemcpy (&result, d_output, sizeof (float), cudaMemcpyDeviceToHost);
 
-== Measuring
-Use time.h library
-```c
+  cudaFree (d_input);
+  cudaFree (d_output);
 
-#define get_sub_seconde(t) (1e-9 * (double)t.tv_nsec)
-// clock_gettime function
-double
-get_elapsedtime (void)
-{
-  struct timespec st;
-  int err =  clock_gettime (CLOCK_MONOTONIC_RAW, &st);
-  if (err != 0)
-    return 0;
-  return (double)st.tv_sec + get_sub_seconde (st);
+  return 0;
 }
 
-double init_time, end_time;
-init_time = get_elapsedtime();
-kernel();
-end_time =  get_elapsedtime();
 ```
+// == Measuring
+// Use time.h library
+// ```c
+
+// #define get_sub_seconde(t) (1e-9 * (double)t.tv_nsec)
+// // clock_gettime function
+// double
+// get_elapsedtime (void)
+// {
+//   struct timespec st;
+//   int err =  clock_gettime (CLOCK_MONOTONIC_RAW, &st);
+//   if (err != 0)
+//     return 0;
+//   return (double)st.tv_sec + get_sub_seconde (st);
+// }
+
+// double init_time, end_time;
+// init_time = get_elapsedtime();
+// kernel();
+// end_time =  get_elapsedtime();
+// ```
 
