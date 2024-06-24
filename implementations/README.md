@@ -10,6 +10,6 @@ These implementations are :
   - Softposit
 + RacEr
 + CUDA
-
++ Flopoco (FPGA implementation of Posit)
 
 
