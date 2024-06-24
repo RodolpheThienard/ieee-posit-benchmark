@@ -5,8 +5,8 @@ Vector :
 - Dotprod
 
 Matrix :
-- memcpy (not working du to architecture)
-- memset (not working du to architecture)
+- memcpy (not working due to architecture)
+- memset (not working due to architecture)
 
 ## Todo
 Vector :
