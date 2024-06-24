@@ -13,8 +13,8 @@ INIT_TILE_GROUP_BARRIER (r_barrier, c_barrier, 0, RacEr_tiles_X - 1, 0,
                          RacEr_tiles_Y - 1);
 
 int __attribute__ ((noinline))
-kernel_float_matrix_mul (posit *A, posit *val, int n, int block_size_y,
-                         int block_size_x)
+kernel_float_matrix_memset (posit *A, posit *val, int n, int block_size_y,
+                            int block_size_x)
 {
 
   double A_const, B_const;

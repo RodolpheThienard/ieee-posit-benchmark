@@ -33,7 +33,7 @@
  * Matrix multiplication code on the host side to compare the results
  */
 void
-host_float_matrix_mul (float *A, float *val, int n)
+host_float_matrix_memset (float *A, float *val, int n)
 {
   for (int y = 0; y < n; y++)
     {
@@ -46,7 +46,7 @@ host_float_matrix_mul (float *A, float *val, int n)
 }
 
 int
-kernel_float_matrix_mul (int argc, char **argv)
+kernel_float_matrix_memset (int argc, char **argv)
 {
   int rc;
   char *bin_path, *test_name;
@@ -56,7 +56,7 @@ kernel_float_matrix_mul (int argc, char **argv)
   bin_path = args.path;
   test_name = args.name;
 
-  RacEr_pr_test_info ("Running the CUDA Floating Point Matrix Multiplication "
+  RacEr_pr_test_info ("Running the CUDA Floating Point Matrix memset "
                       "Kernel on a grid of 2x2 tile group.\n\n");
 
   srand (time (NULL));
@@ -163,7 +163,7 @@ kernel_float_matrix_mul (int argc, char **argv)
   /* kernel name, number and list of input arguments                    */
   /**********************************************************************/
   rc = RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim,
-                                "kernel_float_matrix_mul", 5, cuda_argv);
+                                "kernel_float_matrix_memset", 5, cuda_argv);
   if (rc != HB_MC_SUCCESS)
     {
       RacEr_pr_err ("failed to initialize grid.\n");
@@ -209,7 +209,7 @@ kernel_float_matrix_mul (int argc, char **argv)
   /* Calculate the expected result using host code and compare.         */
   /**********************************************************************/
   float B_expected[n * n];
-  host_float_matrix_mul (B_expected, val, n);
+  host_float_matrix_memset (B_expected, val, n);
 
   float max_ferror = 0;
   float ferror = 0;
@@ -270,8 +270,8 @@ cosim_main (uint32_t *exit_code, char *args)
 int
 main (int argc, char **argv)
 {
-  RacEr_pr_test_info ("test_float_matrix_mul Regression Test (F1)\n");
-  int rc = kernel_float_matrix_mul (argc, argv);
+  RacEr_pr_test_info ("test_float_matrix memset Regression Test (F1)\n");
+  int rc = kernel_float_matrix_memset (argc, argv);
   RacEr_pr_test_pass_fail (rc == HB_MC_SUCCESS);
   return rc;
 }
