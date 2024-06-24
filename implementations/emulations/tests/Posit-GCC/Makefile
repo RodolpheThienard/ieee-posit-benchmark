@@ -1,6 +1,6 @@
 CC=/home/rodolphe/posit-gcc/bin/gcc
 FLAGS=-lm -msoft-float 
-OBJECTS= vector_reduction example main
+OBJECTS= vector_reduction example vector_dotprod
 
 
 .phony: ieee posit
@@ -13,3 +13,4 @@ all: $(OBJECTS)
 clean:
 	$(RM) vector_reduction_*
 	$(RM) example_*
+	$(RM) vector_dotprod*
