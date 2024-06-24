@@ -8,8 +8,8 @@ INIT_TILE_GROUP_BARRIER (r_barrier, c_barrier, 0, RacEr_tiles_X - 1, 0,
                          RacEr_tiles_Y - 1);
 
 int __attribute__ ((noinline))
-kernel_float_matrix_inverse (posit *src, posit *dst, int n, int block_size_y,
-                             int block_size_x)
+kernel_float_matrix_memcpy (posit *src, posit *dst, int n, int block_size_y,
+                            int block_size_x)
 {
 
   int start_y = __RacEr_tile_group_id_y * block_size_y;

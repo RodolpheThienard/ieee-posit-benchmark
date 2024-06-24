@@ -8,8 +8,9 @@ These implementations are :
   - Fastsigmoids
   - Posit-GCC
   - Softposit
+  - Tensor Float 32
 + RacEr
 + CUDA
-+ Flopoco (FPGA implementation of Posit)
+<!-- + Flopoco (FPGA implementation of Posit) -->
 
 
