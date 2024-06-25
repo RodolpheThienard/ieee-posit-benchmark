@@ -19,9 +19,9 @@
 all: main.run
 
 
-KERNEL_NAME ?=kernel_microbench_matrix_memcpy
+KERNEL_NAME ?=kernel_float_vector_memcpy
 
-OBJECT_FILES=main.o RacEr_set_tile_x_y.o RacEr_printf.o kernel_microbench_matrix_memcpy.o
+OBJECT_FILES=main.o RacEr_set_tile_x_y.o RacEr_printf.o kernel_float_vector_memcpy.o
 
 include ../../Makefile.include
 

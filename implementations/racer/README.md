@@ -3,6 +3,8 @@
 ## Done
 Vector : 
 - Dotprod
+- memset
+- Add
 
 Matrix :
 - memcpy (not working due to architecture)
@@ -12,9 +14,7 @@ Matrix :
 Vector :
 - load
 - store
-- memset
 - memcpy
-- add
 - div
 - mul
 
