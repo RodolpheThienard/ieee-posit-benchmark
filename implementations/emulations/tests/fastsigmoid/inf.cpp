@@ -15,7 +15,7 @@ main (int argc, char *argv[])
   file = fopen ("p16_around_0.dat", "w");
 
   double f;
-  for (f = 1; f < 1e3; f *= 1.001)
+  for (f = 1; f < 1e2; f *= 1.001)
     {
 
       fprintf (file, "%f; %f; %f; %f; %lf\n", (float)f,

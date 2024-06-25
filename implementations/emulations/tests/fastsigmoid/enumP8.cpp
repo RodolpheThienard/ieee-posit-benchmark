@@ -1,4 +1,45 @@
-#include <math.h>
+#include "../../fastsigmoids/c-src/include/P16e0.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/P16e1.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/P16e2.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/P32e2.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/P8e0.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/P8e1.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/P8e2.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/posit.h"
+#include <iostream>
+#include <type_traits>
+
+int
+main (int argc, char *argv[])
+{
+  FILE *file;
+  file = fopen ("p9_around_0.dat", "w");
+
+  double f;
+  for (f = 1; f < 1e3; f *= 1.001)
+    {
+
+      fprintf (file, "%f; %f; %f; %f; %lf\n", (float)f,
+               (((double)((P8e0)f)) - f) / f, (((double)((P8e1)f)) - f) / f,
+               (((double)((P8e2)f)) - f) / f, f);
+    }
+  fclose (file);
+
+  file = fopen ("p8_range.dat", "w");
+
+  for (f = 1e-7; f < 1e4; f *= 1.1)
+    {
+
+      fprintf (file, "%20.15f;  %20.15f; %20.15f; %20.15f\n", (float)f,
+               ((double)((P8e0)f)), ((double)((P8e1)f)), ((double)((P8e2)f)));
+      // fprintf (file, "%f; %f; %f; %f; %lf\n", (float)f,
+      //          (((double)((P8e0)f)) - f) / f, (((double)((P8e1)f)) - f) / f,
+      //          (((double)((P8e2)f)) - f) / f, f);
+    }
+  fclose (file);
+  return 0;
+}
+/* #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -127,4 +168,4 @@ main ()
       printf ("%d; %g\n", i, p8e0);
     }
   return 0;
-}
+} */
