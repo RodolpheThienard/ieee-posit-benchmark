@@ -13,10 +13,10 @@ int
 main (int argc, char *argv[])
 {
   FILE *file;
-  file = fopen ("p9_around_0.dat", "w");
+  file = fopen ("p8_around_0.dat", "w");
 
   double f;
-  for (f = 1; f < 1e3; f *= 1.001)
+  for (f = 1; f < 10; f *= 1.0001)
     {
 
       fprintf (file, "%f; %f; %f; %f; %lf\n", (float)f,
@@ -37,6 +37,9 @@ main (int argc, char *argv[])
       //          (((double)((P8e2)f)) - f) / f, f);
     }
   fclose (file);
+  float n = 163.103614;
+  printf ("NUMBER : %f, Posit : %f;%f;\n", n, (float)((P16e1)n),
+          (float)((P16e2)n));
   return 0;
 }
 /* #include <math.h>

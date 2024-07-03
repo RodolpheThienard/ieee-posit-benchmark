@@ -1,5 +1,5 @@
-#include "softposit.h"
-#include "softposit_types.h"
+#include "source/include/softposit.h"
+#include "source/include/softposit_types.h"
 #include <stdlib.h>
 
 void
@@ -113,7 +113,7 @@ main (int argc, char *argv[])
   double *d1 = malloc (sizeof (double) * n);
   double *d2 = malloc (sizeof (double) * n);
 
-  file = fopen ("ceralaine_around_0.dat", "w");
+  file = fopen ("softposit_around_0.dat", "w");
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   for (int i = -100000; i < 100000; i += 1)
     {
@@ -136,7 +136,7 @@ main (int argc, char *argv[])
     }
   fclose (file);
 
-  file = fopen ("ceralaine_range.dat", "w");
+  file = fopen ("softposit_range.dat", "w");
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   for (int i = -1e6; i < 1e6; i += 1e1)
     {
@@ -160,7 +160,7 @@ main (int argc, char *argv[])
     }
   fclose (file);
 
-  file = fopen ("ceralaine_mid.dat", "w");
+  file = fopen ("softposit_mid.dat", "w");
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   for (int i = -1e6; i < 1e6; i += 1e1)
     {
