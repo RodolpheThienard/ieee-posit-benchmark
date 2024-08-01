@@ -11,3 +11,4 @@ gnuplot/
 *.gp
 
 **/*.dat
+**/*.svg
