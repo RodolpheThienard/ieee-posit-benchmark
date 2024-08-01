@@ -62,11 +62,11 @@ kernel_float_vec_dotprod (int argc, char *argv[])
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   int n = 1000;
   // size matrix
-  int size = sizeof (float) * n;
+  int size = sizeof (double) * n;
 
   // host allocation
-  float a[n];
-  float b[n];
+  double a[n];
+  double b[n];
 
   // device allocation
   RacEr_mc_eva_t a_device, b_device;
@@ -87,8 +87,8 @@ kernel_float_vec_dotprod (int argc, char *argv[])
       // init a & b matrix
       for (int i = 0; i < n; i++)
         {
-          // a[i] = drand48 () * ii / 1e5; // around 0
-          a[i] = drand48 () * ii / 1e1; // Large
+          a[i] = (double)rand () / (double)RAND_MAX * ii / 1e1; // around 0
+          // a[i] = drand48 () * ii / 1e1; // Large
         }
 
       // memcopy host to device

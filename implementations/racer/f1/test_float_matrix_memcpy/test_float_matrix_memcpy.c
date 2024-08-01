@@ -36,7 +36,7 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
   float *a, *b, *b_host;
 
   // size matrix
-  int n = 100;
+  int n = 13;
   int size = sizeof (float) * n * n;
 
   // host allocation

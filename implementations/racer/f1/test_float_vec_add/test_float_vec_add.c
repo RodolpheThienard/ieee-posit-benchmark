@@ -86,7 +86,7 @@ kernel_float_vec_add (int argc, char *argv[])
       return rc;
     }
 
-  for (int ii = -1e5; ii < 1e5; ii++)
+  for (int ii = -1e2; ii < 1e2; ii++)
     {
       // init a & b matrix
       for (int i = 0; i < n; i++)
@@ -124,10 +124,10 @@ kernel_float_vec_add (int argc, char *argv[])
 
       RacEr_mc_dimension_t grid_dim = { .x = 1, .y = 1 };
       // define bloc params
-      int cuda_argv[4] = { a_device, b_device, c_device, block_size_x };
+      int cuda_argv[5] = { a_device, b_device, c_device, n, block_size_x };
       // add kernel in queue on the device
       rc = RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim,
-                                    "kernel_float_vec_add", 4, cuda_argv);
+                                    "kernel_float_vec_add", 5, cuda_argv);
       if (rc != HB_MC_SUCCESS)
         {
           return rc;
@@ -162,7 +162,7 @@ kernel_float_vec_add (int argc, char *argv[])
           fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", ii,
                    (double)c_excepted[verif], (double)c[verif],
                    c_double_excepted[verif],
-                   ((double)b[verif] - c_double_excepted[verif])
+                   ((double)c[verif] - c_double_excepted[verif])
                        / c_double_excepted[verif],
                    ((double)c_excepted[verif] - c_double_excepted[verif])
                        / c_double_excepted[verif]);
