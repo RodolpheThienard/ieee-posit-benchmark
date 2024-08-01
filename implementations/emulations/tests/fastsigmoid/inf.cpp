@@ -1,12 +1,15 @@
 #include "../../fastsigmoids/c-src/include/P16e0.h" // <== 32 bit posit, exponent 2
 #include "../../fastsigmoids/c-src/include/P16e1.h" // <== 32 bit posit, exponent 2
 #include "../../fastsigmoids/c-src/include/P16e2.h" // <== 32 bit posit, exponent 2
+#include "../../fastsigmoids/c-src/include/P32e0.h" // <== 32 bit posit, exponent 2
 #include "../../fastsigmoids/c-src/include/P32e2.h" // <== 32 bit posit, exponent 2
 #include "../../fastsigmoids/c-src/include/P8e0.h" // <== 32 bit posit, exponent 2
 #include "../../fastsigmoids/c-src/include/P8e1.h" // <== 32 bit posit, exponent 2
 #include "../../fastsigmoids/c-src/include/posit.h"
 #include <iostream>
 #include <type_traits>
+
+#define PI 3.1415926535897
 
 int
 main (int argc, char *argv[])
@@ -15,7 +18,7 @@ main (int argc, char *argv[])
   file = fopen ("p16_around_0.dat", "w");
 
   double f;
-  for (f = 1; f < 1e3; f *= 1.001)
+  for (f = 1; f < 1e2; f *= 1.001)
     {
 
       fprintf (file, "%f; %f; %f; %f; %lf\n", (float)f,
@@ -33,6 +36,7 @@ main (int argc, char *argv[])
                (((double)((P16e0)f)) - f) / f, (((double)((P16e1)f)) - f) / f,
                (((double)((P16e2)f)) - f) / f, f);
     }
+  printf ("PI : %lf, posit : %lf\n", PI, (double)((P32e0)PI));
   fclose (file);
   return 0;
 }

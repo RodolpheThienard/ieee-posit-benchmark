@@ -36,18 +36,18 @@ int
 main (int argc, char *argv[])
 {
   FILE *file;
-  file = fopen ("tf32_range.dat", "w");
+  file = fopen ("tf32_around_0.dat", "w");
 
   double f;
-  for (f = 1; f < 1e3; f *= 1.001)
+  for (f = 1; f < 1e2; f *= 1.0001)
     {
 
-      fprintf (file, "%f, %f; %lf\n", (float)f, (((double)((tf32)f)) - f) / f,
+      fprintf (file, "%f; %f; %lf\n", (float)f, (((double)((tf32)f)) - f) / f,
                f);
     }
   fclose (file);
 
-  file = fopen ("tf32_around_0.dat", "w");
+  file = fopen ("tf32_range.dat", "w");
 
   for (f = 1; f < 1e40; f *= 2)
     {

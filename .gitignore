@@ -9,3 +9,6 @@ batch/
 # Gnuplot
 gnuplot/
 *.gp
+
+**/*.dat
+**/*.svg

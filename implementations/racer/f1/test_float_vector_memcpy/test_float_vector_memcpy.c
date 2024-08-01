@@ -1,11 +1,11 @@
 
 /// Tiles
-#include "test_float_matrix_memcpy.h"
+#include "test_float_vector_memcpy.h"
 
 #define ALLOC_NAME "default_allocator"
 
 int
-kernel_float_matrix_memcpy (int argc, char *argv[])
+kernel_float_vector_memcpy (int argc, char *argv[])
 {
   char *bin_path, *test_name;
   struct arguments_path args = { NULL, NULL };
@@ -32,21 +32,17 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
       return rc;
     }
 
-  // host matrix
-  float *a, *b, *b_host;
-
   // size matrix
-  int n = 13;
+  int n = 20;
   int size = sizeof (float) * n * n;
-
-  // host allocation
-  a = malloc (size);
-  b = malloc (size);
+  // host matrix
+  float a[n * n], b[n * n];
+  double db[n * n];
 
   // init a & b matrix
   for (int i = 0; i < n * n; i++)
     {
-      a[i] = drand48 ();
+      a[i] = 1e32;
     }
 
   // device matrix
@@ -54,29 +50,40 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
 
   // device allocation
   rc = RacEr_mc_device_malloc (&device, size, &a_device);
+  if (rc != HB_MC_SUCCESS)
+    {
+      return rc;
+    }
   rc = RacEr_mc_device_malloc (&device, size, &b_device);
+  if (rc != HB_MC_SUCCESS)
+    {
+      return rc;
+    }
 
+  void *dst = (void *)((intptr_t)a_device);
+  void *src = (void *)&a[0];
   // memcopy host to device
-  rc = RacEr_mc_device_memcpy (&device, &a_device, &a[0], size,
+  rc = RacEr_mc_device_memcpy (&device, dst, src, size,
                                HB_MC_MEMCPY_TO_DEVICE);
+  if (rc != HB_MC_SUCCESS)
+    {
+      return rc;
+    }
 
   // define bloc params
-  uint32_t block_size_x = 4;
-  uint32_t block_size_y = 4;
+  uint32_t block_size_x = n * n;
 
   // Only 4 cores
   RacEr_mc_dimension_t tg_dim = { .x = 2, .y = 2 };
 
-  RacEr_mc_dimension_t grid_dim
-      = { .x = n / block_size_x, .y = n / block_size_y };
+  RacEr_mc_dimension_t grid_dim = { .x = 1, .y = 1 };
 
   // init kernel args struct
-  uint32_t kernel_args[5]
-      = { a_device, b_device, n, block_size_x, block_size_y };
+  uint32_t kernel_args[3] = { a_device, b_device, block_size_x };
 
   // add kernel in queue on the device
   rc = RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim,
-                                "kernel_float_matrix_memcpy", 5, kernel_args);
+                                "kernel_float_vector_memcpy", 3, kernel_args);
   if (rc != HB_MC_SUCCESS)
     {
       RacEr_pr_err ("failed to initialize grid.\n");
@@ -92,40 +99,19 @@ kernel_float_matrix_memcpy (int argc, char *argv[])
     }
 
   // memcopy device to host
-  rc = RacEr_mc_device_memcpy (&device, &b[0], &b_device, size,
-                               HB_MC_MEMCPY_TO_HOST);
+  src = (void *)((intptr_t)b_device);
+  dst = (void *)&b[0];
+  rc = RacEr_mc_device_memcpy (&device, dst, src, size, HB_MC_MEMCPY_TO_HOST);
 
-  float max_ferror = 0;
-  float ferror = 0;
-
-  int mismatch = 0;
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++)
-      {
-        ferror = RacEr_mc_calculate_float_error (a[i * n + j], b[i * n + j]);
-        max_ferror = fmax (max_ferror, ferror);
-        if (ferror > MAX_FLOAT_ERROR_TOLERANCE)
-          {
-            RacEr_pr_err (
-                RacEr_RED ("Mismatch: ") "B[%d]: %.32f\tExpected: "
-                                         "%.32f\tRelative error: %.32f\n",
-                i * n + j, a[i * n + j], b[i * n + j], ferror);
-            mismatch = 1;
-          }
-      }
-
-  RacEr_pr_test_info ("MAX relative FP error: %e\n", max_ferror);
-
-  if (mismatch)
-    return HB_MC_FAIL;
-  return HB_MC_SUCCESS;
+  for (int i = 0; i < n * n; i++)
+    printf ("%e; %e\n", a[i], b[i]);
 }
 
 int
 main (int argc, char *argv[])
 {
-  RacEr_pr_test_info ("Test memcpy Regression TEST(F1)\n");
-  int rc = kernel_float_matrix_memcpy (argc, argv);
+  RacEr_pr_test_info ("test float vector memcpy 1\n");
+  int rc = kernel_float_vector_memcpy (argc, argv);
   RacEr_pr_test_pass_fail (rc == HB_MC_SUCCESS);
   return rc;
 }

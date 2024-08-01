@@ -1,5 +1,5 @@
-#include "softposit.h"
-#include "softposit_types.h"
+#include "source/include/softposit.h"
+#include "source/include/softposit_types.h"
 #include <stdlib.h>
 
 void

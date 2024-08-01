@@ -1,6 +1,6 @@
 
 /// Tiles
-#include "test_float_vec_dotprod.h"
+#include "test_float_vec_add.h"
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
@@ -8,30 +8,28 @@
 #define ALLOC_NAME "default_allocator"
 
 void
-host_float_vec_dotprod (float *A, float *B, int N)
+host_float_vec_add (float *A, float *B, float *C, int N)
 {
   float sum = 0.0;
   for (int i = 0; i < N; i++)
     {
-      sum += A[i];
+      C[i] = B[i] + A[i];
     }
-  B[0] = sum;
   return;
 }
 void
-host_double_vec_dotprod (double *A, double *B, int N)
+host_double_vec_add (double *A, double *B, double *C, int N)
 {
   double sum = 0.0;
   for (int i = 0; i < N; i++)
     {
-      sum += A[i];
+      C[i] = B[i] + A[i];
     }
-  B[0] = sum;
   return;
 }
 
 int
-kernel_float_vec_dotprod (int argc, char *argv[])
+kernel_float_vec_add (int argc, char *argv[])
 {
   char *bin_path, *test_name;
   struct arguments_path args = { NULL, NULL };
@@ -62,14 +60,15 @@ kernel_float_vec_dotprod (int argc, char *argv[])
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   int n = 1000;
   // size matrix
-  int size = sizeof (double) * n;
+  int size = sizeof (float) * n;
 
   // host allocation
-  double a[n];
-  double b[n];
+  float a[n];
+  float b[n];
+  float c[n];
 
   // device allocation
-  RacEr_mc_eva_t a_device, b_device;
+  RacEr_mc_eva_t a_device, b_device, c_device;
   rc = RacEr_mc_device_malloc (&device, size, &a_device);
   if (rc != HB_MC_SUCCESS)
     {
@@ -81,20 +80,34 @@ kernel_float_vec_dotprod (int argc, char *argv[])
     {
       return rc;
     }
+  rc = RacEr_mc_device_malloc (&device, size, &c_device);
+  if (rc != HB_MC_SUCCESS)
+    {
+      return rc;
+    }
 
-  for (int ii = -1e5; ii < 1e5; ii++)
+  for (int ii = -1e2; ii < 1e2; ii++)
     {
       // init a & b matrix
       for (int i = 0; i < n; i++)
         {
-          a[i] = (double)rand () / (double)RAND_MAX * ii / 1e1; // around 0
-          // a[i] = drand48 () * ii / 1e1; // Large
+          a[i] = drand48 () * ii / 1e1; // Large
+          b[i] = drand48 () * ii / 1e5; // around 0
         }
 
       // memcopy host to device
       void *dst = (void *)((intptr_t)a_device);
       void *src = (void *)&a[0];
 
+      rc = RacEr_mc_device_memcpy (&device, dst, src, size,
+                                   HB_MC_MEMCPY_TO_DEVICE);
+      if (rc != HB_MC_SUCCESS)
+        {
+          return rc;
+        }
+
+      dst = (void *)((intptr_t)b_device);
+      src = (void *)&b[0];
       rc = RacEr_mc_device_memcpy (&device, dst, src, size,
                                    HB_MC_MEMCPY_TO_DEVICE);
       if (rc != HB_MC_SUCCESS)
@@ -111,10 +124,10 @@ kernel_float_vec_dotprod (int argc, char *argv[])
 
       RacEr_mc_dimension_t grid_dim = { .x = 1, .y = 1 };
       // define bloc params
-      int cuda_argv[3] = { a_device, b_device, block_size_x };
+      int cuda_argv[5] = { a_device, b_device, c_device, n, block_size_x };
       // add kernel in queue on the device
       rc = RacEr_mc_kernel_enqueue (&device, grid_dim, tg_dim,
-                                    "kernel_float_vec_dotprod", 3, cuda_argv);
+                                    "kernel_float_vec_add", 5, cuda_argv);
       if (rc != HB_MC_SUCCESS)
         {
           return rc;
@@ -128,28 +141,32 @@ kernel_float_vec_dotprod (int argc, char *argv[])
         }
 
       // memcopy device to host
-      src = (void *)((intptr_t)b_device);
-      dst = (void *)&b[0];
+      src = (void *)((intptr_t)c_device);
+      dst = (void *)&c[0];
       rc = RacEr_mc_device_memcpy (&device, dst, src, size,
                                    HB_MC_MEMCPY_TO_HOST);
 
-      float b_excepted[1] = { 0.0 };
-      host_float_vec_dotprod (a, b_excepted, n);
+      float c_excepted[n];
+      host_float_vec_add (a, b, c_excepted, n);
 
-      double a_double[n], b_double_excepted[1] = { 0.0 };
+      double a_double[n], b_double[n], c_double_excepted[n];
       for (int ij = 0; ij < n; ij++)
-        a_double[ij] = (double)a[ij];
-      host_double_vec_dotprod (a_double, b_double_excepted, n);
+        {
+          a_double[ij] = (double)a[ij];
+          b_double[ij] = (double)b[ij];
+        }
+      host_double_vec_add (a_double, b_double, c_double_excepted, n);
 
-      // RacEr_pr_test_info (
-      //     "\nPosit  : %24.23f\nFloat  : %24.23f\nDouble : %24.23lf", b[0],
-      //     b_excepted[0], b_double_excepted[0]);
-      fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", ii,
-               (double)b_excepted[0], (double)b[0], b_double_excepted[0],
-               ((double)b[0] - b_double_excepted[0]) / b_double_excepted[0],
-               ((double)b_excepted[0] - b_double_excepted[0])
-                   / b_double_excepted[0]);
-      // RacEr_pr_test_info ("MAX relative FP error: %e\n", max_ferror);
+      for (int verif = 0; verif < n; verif++)
+        {
+          fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", ii,
+                   (double)c_excepted[verif], (double)c[verif],
+                   c_double_excepted[verif],
+                   ((double)c[verif] - c_double_excepted[verif])
+                       / c_double_excepted[verif],
+                   ((double)c_excepted[verif] - c_double_excepted[verif])
+                       / c_double_excepted[verif]);
+        }
     }
   if (mismatch)
     return HB_MC_FAIL;
@@ -159,8 +176,8 @@ kernel_float_vec_dotprod (int argc, char *argv[])
 int
 main (int argc, char *argv[])
 {
-  RacEr_pr_test_info ("Test DOTPROD (F1)\n");
-  int rc = kernel_float_vec_dotprod (argc, argv);
+  RacEr_pr_test_info ("Test add (F1)\n");
+  int rc = kernel_float_vec_add (argc, argv);
   RacEr_pr_test_pass_fail (rc == HB_MC_SUCCESS);
   return rc;
 }

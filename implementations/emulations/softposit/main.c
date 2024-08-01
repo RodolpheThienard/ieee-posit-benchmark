@@ -1,5 +1,5 @@
-#include "softposit.h"
-#include "softposit_types.h"
+#include "source/include/softposit.h"
+#include "source/include/softposit_types.h"
 #include <stdlib.h>
 
 void
@@ -81,23 +81,6 @@ positdotproduct (posit32_t *pv1, posit32_t *pv2, int n)
 
   return res;
 }
-posit32_t
-positdotproduct_naive (posit32_t *pv1, posit32_t *pv2, int n)
-{
-  posit32_t res = convertFloatToP32 (0.0);
-  for (int i = 0; i < n; i++)
-    pv1[0] = p32_add (pv1[i], pv1[0]);
-  res = pv1[0];
-  return res;
-}
-float
-floatdotproduct_naive (float *f1, float *f2, int n)
-{
-  float res = 0.0;
-  for (int i = 0; i < n; i++)
-    res += f1[i];
-  return res;
-}
 void
 transfertoposit32 (posit32_t *pv, float *fv, int n)
 {
@@ -130,9 +113,8 @@ main (int argc, char *argv[])
   double *d1 = malloc (sizeof (double) * n);
   double *d2 = malloc (sizeof (double) * n);
 
-  file = fopen ("ceralaine_around_0.dat", "w");
-  fprintf (file, "n;float; posit32; double; posit_naive; P32-Double; "
-                 "double-float; double-Pnaive; double-float_naive\n");
+  file = fopen ("softposit_around_0.dat", "w");
+  fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   for (int i = -100000; i < 100000; i += 1)
     {
       initializevector (f1, n, i / 1e5);
@@ -142,58 +124,44 @@ main (int argc, char *argv[])
       transfertodouble (d2, f2, n);
 
       transfertoposit32 (p1, f1, n);
-      transfertoposit32 (p2, f1, n);
+      transfertoposit32 (p2, f2, n);
 
-      float f_res_naive = floatdotproduct_naive (f1, f2, n);
       float f_res = floatdotproduct (f1, f2, n);
       double p32e2_res = convertP32ToDouble (positdotproduct (p1, p2, n));
-      double p32e2_res_naive
-          = convertP32ToDouble (positdotproduct (p2, p2, n));
       double d_res = doubledotproduct (d1, d2, n);
 
-      fprintf (file,
-               "%d; %24.23lf; %24.23lf; %24.23lf; %24.23lf; %e; %e; %e; %e \n",
-               i, (double)f_res, (double)p32e2_res, d_res, p32e2_res_naive,
-               ((double)p32e2_res - d_res) / d_res, (f_res - d_res) / d_res,
-               ((double)p32e2_res_naive - d_res) / d_res,
-               (f_res_naive - d_res) / d_res);
+      fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", i,
+               (double)f_res, (double)p32e2_res, d_res,
+               ((double)p32e2_res - d_res) / d_res, (f_res - d_res) / d_res);
     }
   fclose (file);
 
-  file = fopen ("ceralaine_range_racer.dat", "w");
-  fprintf (file, "n;float; posit32; double; posit_naive; P32-Double; "
-                 "double-float; double-Pnaive; double-float_naive\n");
-  for (int i = -1e5; i < 1e5; i += 1e1)
+  file = fopen ("softposit_range.dat", "w");
+  fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
+  for (int i = -1e6; i < 1e6; i += 1e1)
     {
       int n = 1000;
-      initializevector (f1, n, i / 1e1);
-      initializevector (f2, n, i / 1e1);
+      initializevector (f1, n, i * 1e1);
+      initializevector (f2, n, i * 1e1);
 
       transfertodouble (d1, f1, n);
       transfertodouble (d2, f2, n);
 
       transfertoposit32 (p1, f1, n);
-      transfertoposit32 (p2, f1, n);
+      transfertoposit32 (p2, f2, n);
 
-      float f_res_naive = floatdotproduct_naive (f1, f2, n);
       float f_res = floatdotproduct (f1, f2, n);
       double p32e2_res = convertP32ToDouble (positdotproduct (p1, p2, n));
-      double p32e2_res_naive
-          = convertP32ToDouble (positdotproduct (p2, p2, n));
       double d_res = doubledotproduct (d1, d2, n);
 
-      fprintf (file,
-               "%d; %24.23lf; %24.23lf; %24.23lf; %24.23lf; %e; %e; %e; %e \n",
-               i, (double)f_res, (double)p32e2_res, d_res, p32e2_res_naive,
-               ((double)p32e2_res - d_res) / d_res, (f_res - d_res) / d_res,
-               ((double)p32e2_res_naive - d_res) / d_res,
-               (f_res_naive - d_res) / d_res);
+      fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", i,
+               (double)f_res, (double)p32e2_res, d_res,
+               ((double)p32e2_res - d_res) / d_res, (f_res - d_res) / d_res);
     }
   fclose (file);
 
-  file = fopen ("ceralaine_mid.dat", "w");
-  fprintf (file, "n;float; posit32; double; posit_naive; P32-Double; "
-                 "double-float; double-Pnaive; double-float_naive\n");
+  file = fopen ("softposit_mid.dat", "w");
+  fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   for (int i = -1e6; i < 1e6; i += 1e1)
     {
       int n = 1000;
@@ -204,21 +172,15 @@ main (int argc, char *argv[])
       transfertodouble (d2, f2, n);
 
       transfertoposit32 (p1, f1, n);
-      transfertoposit32 (p2, f1, n);
+      transfertoposit32 (p2, f2, n);
 
-      float f_res_naive = floatdotproduct_naive (f1, f2, n);
       float f_res = floatdotproduct (f1, f2, n);
       double p32e2_res = convertP32ToDouble (positdotproduct (p1, p2, n));
-      double p32e2_res_naive
-          = convertP32ToDouble (positdotproduct (p2, p2, n));
       double d_res = doubledotproduct (d1, d2, n);
 
-      fprintf (file,
-               "%d; %24.23lf; %24.23lf; %24.23lf; %24.23lf; %e; %e; %e; %e \n",
-               i, (double)f_res, (double)p32e2_res, d_res, p32e2_res_naive,
-               ((double)p32e2_res - d_res) / d_res, (f_res - d_res) / d_res,
-               ((double)p32e2_res_naive - d_res) / d_res,
-               (f_res_naive - d_res) / d_res);
+      fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", i,
+               (double)f_res, (double)p32e2_res, d_res,
+               ((double)p32e2_res - d_res) / d_res, (f_res - d_res) / d_res);
     }
   fclose (file);
   return 0;
