@@ -138,13 +138,6 @@ int start_x = __RacEr_tile_group_id_x * block_size_x
 int end_x = start_x + block_size_x ```],[Get a thread action field],
 )
 
-#pagebreak()
-= Compilation
-== Needed files
-- a
-- b
-
-== Commands
 
 #pagebreak()
 = Migration of Cuda code to RacEr
