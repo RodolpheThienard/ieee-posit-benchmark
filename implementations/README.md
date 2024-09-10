@@ -9,6 +9,7 @@ These implementations are :
   - Posit-GCC
   - Softposit
   - Tensor Float 32
+  - Bfloat 16
 + RacEr
 + CUDA
 <!-- + Flopoco (FPGA implementation of Posit) -->
