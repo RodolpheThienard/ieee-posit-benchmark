@@ -5,23 +5,11 @@ Vector :
 - Dotprod
 - memset
 - Add
-
-Matrix :
-- memcpy (not working due to architecture)
-- memset (not working due to architecture)
-
-## Todo
-Vector :
-- load
-- store
+- kmeans
 - memcpy
-- div
-- mul
+- inverse
 
-Matrix :
-- load
-- store
-- add
-- div
-- mul
-- gemm
+Matrix :(not working due to architecture)
+- memcpy 
+- memset 
+
