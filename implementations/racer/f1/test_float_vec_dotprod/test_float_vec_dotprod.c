@@ -62,11 +62,11 @@ kernel_float_vec_dotprod (int argc, char *argv[])
   fprintf (file, "n;float; posit32; double; P32-Double; double-float\n");
   int n = 1000;
   // size matrix
-  int size = sizeof (double) * n;
+  int size = sizeof (float) * n;
 
   // host allocation
-  double a[n];
-  double b[n];
+  float a[n], b[n];
+  double d_a[n], d_b[n];
 
   // device allocation
   RacEr_mc_eva_t a_device, b_device;
@@ -82,13 +82,15 @@ kernel_float_vec_dotprod (int argc, char *argv[])
       return rc;
     }
 
-  for (int ii = -1e5; ii < 1e5; ii++)
+  for (int ii = -1e5; ii < 1e5; ii += 1e1)
     {
       // init a & b matrix
       for (int i = 0; i < n; i++)
         {
-          a[i] = (double)rand () / (double)RAND_MAX * ii / 1e1; // around 0
-          // a[i] = drand48 () * ii / 1e1; // Large
+          a[i] = (float)rand () / (float)RAND_MAX * ii * 1e2; // Range
+          // a[i] = (float)rand () / (float)RAND_MAX * ii / 1e5; // arround 0
+          // a[i] = (float)rand () / (float)RAND_MAX * ii / 5e2; // mid
+          d_a[i] = a[i];
         }
 
       // memcopy host to device
@@ -136,10 +138,8 @@ kernel_float_vec_dotprod (int argc, char *argv[])
       float b_excepted[1] = { 0.0 };
       host_float_vec_dotprod (a, b_excepted, n);
 
-      double a_double[n], b_double_excepted[1] = { 0.0 };
-      for (int ij = 0; ij < n; ij++)
-        a_double[ij] = (double)a[ij];
-      host_double_vec_dotprod (a_double, b_double_excepted, n);
+      double b_double_excepted[1] = { 0.0 };
+      host_double_vec_dotprod (d_a, b_double_excepted, n);
 
       // RacEr_pr_test_info (
       //     "\nPosit  : %24.23f\nFloat  : %24.23f\nDouble : %24.23lf", b[0],

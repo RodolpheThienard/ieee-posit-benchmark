@@ -7,6 +7,7 @@
 int
 kernel_float_vector_memcpy (int argc, char *argv[])
 {
+  FILE *file = fopen ("resultat.dat", "w");
   char *bin_path, *test_name;
   struct arguments_path args = { NULL, NULL };
 
@@ -33,16 +34,17 @@ kernel_float_vector_memcpy (int argc, char *argv[])
     }
 
   // size matrix
-  int n = 20;
+  int n = 25;
   int size = sizeof (float) * n * n;
   // host matrix
-  float a[n * n], b[n * n];
+  float a[n * n], b[n * n], c[n * n];
   double db[n * n];
 
   // init a & b matrix
   for (int i = 0; i < n * n; i++)
     {
-      a[i] = 1e32;
+      a[i] = 1;
+      c[i] = 1;
     }
 
   // device matrix
@@ -103,8 +105,11 @@ kernel_float_vector_memcpy (int argc, char *argv[])
   dst = (void *)&b[0];
   rc = RacEr_mc_device_memcpy (&device, dst, src, size, HB_MC_MEMCPY_TO_HOST);
 
+  for (int ll = 1; ll < n * n; ll++)
+    c[ll] = c[ll - 1] * 2;
+
   for (int i = 0; i < n * n; i++)
-    printf ("%e; %e\n", a[i], b[i]);
+    fprintf (file, "%e; %e\n", c[i], b[i]);
 }
 
 int

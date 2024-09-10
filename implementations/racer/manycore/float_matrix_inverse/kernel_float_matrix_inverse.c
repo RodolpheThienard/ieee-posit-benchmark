@@ -5,9 +5,10 @@
 #define RacEr_TILE_GROUP_Y_DIM RacEr_tiles_Y
 
 int __attribute__ ((noinline))
-kernel_float_matrix_inverse (posit *mat, posit *inv, int n, int block_size_x)
+kernel_float_matrix_inverse (double *mat, double *inv, int n, int block_size_x)
 {
-  posit temp[n * n];
+  RacEr_print_float (mat[0]);
+  double temp[n * n];
   for (int i = 0; i < n * n; i++)
     {
       temp[i] = mat[i];
@@ -17,7 +18,7 @@ kernel_float_matrix_inverse (posit *mat, posit *inv, int n, int block_size_x)
   for (int i = 0; i < n; i++)
     {
       // get pivot
-      posit pivot = temp[i * n + i];
+      double pivot = temp[i * n + i];
 
       // Dividing by pivot
       for (int j = 0; j < n; j++)
@@ -31,7 +32,7 @@ kernel_float_matrix_inverse (posit *mat, posit *inv, int n, int block_size_x)
         {
           if (k != i)
             {
-              posit coeff = temp[k * n + i];
+              double coeff = temp[k * n + i];
               for (int j = 0; j < n; j++)
                 {
                   temp[k * n + j] -= coeff * temp[i * n + j];

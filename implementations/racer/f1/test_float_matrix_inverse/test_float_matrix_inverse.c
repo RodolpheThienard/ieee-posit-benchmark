@@ -72,7 +72,7 @@ host_inve_matrix_gauss_jordan (float *mat, float *inv, int n)
 }
 
 void
-set_identity (float *inv, int n)
+set_identity (double *inv, int n)
 {
   for (int i = 0; i < n; i++)
     {
@@ -110,20 +110,22 @@ kernel_float_matrix_inverse (int argc, char *argv[])
   rc = RacEr_mc_device_program_init (&device, bin_path, ALLOC_NAME, 0);
 
   // size matrix
-  int n = 30;
-  int size = sizeof (float) * n * n;
+  int n = 15;
+  int size = sizeof (double) * n * n;
 
   // host matrix
   float a[n * n], b[n * n], b_host[n * n], id[n * n];
+  double d_a[n * n], d_b[n * n], d_id[n * n];
 
   // host allocation
 
   // init a & b matrix
+  set_identity (d_id, n);
   for (int i = 0; i < n * n; i++)
     {
       a[i] = (float)rand () / (float)RAND_MAX * 10;
+      d_a[i] = a[i];
     }
-  set_identity (id, n);
 
   // device matrix
   RacEr_mc_eva_t a_device, b_device, c_device;
@@ -149,16 +151,16 @@ kernel_float_matrix_inverse (int argc, char *argv[])
     }
   printf ("avant envois mem\n");
   void *dst = (void *)((intptr_t)a_device);
-  void *src = (void *)&a[0];
+  void *src = (void *)&d_a[0];
   // memcopy host to device
   rc = RacEr_mc_device_memcpy (&device, dst, src, size,
                                HB_MC_MEMCPY_TO_DEVICE);
   dst = (void *)((intptr_t)b_device);
-  src = (void *)&id[0];
+  src = (void *)&d_id[0];
   rc = RacEr_mc_device_memcpy (&device, dst, src, size,
                                HB_MC_MEMCPY_TO_DEVICE);
   dst = (void *)((intptr_t)c_device);
-  src = (void *)&id[0];
+  src = (void *)&d_id[0];
   rc = RacEr_mc_device_memcpy (&device, dst, src, size,
                                HB_MC_MEMCPY_TO_DEVICE);
 
@@ -198,12 +200,16 @@ kernel_float_matrix_inverse (int argc, char *argv[])
   rc = RacEr_mc_device_tile_groups_execute (&device);
   // memcopy device to host
   src = (void *)((intptr_t)c_device);
-  dst = (void *)&b[0];
+  dst = (void *)&d_b[0];
   rc = RacEr_mc_device_memcpy (&device, dst, src, size, HB_MC_MEMCPY_TO_HOST);
   if (rc != HB_MC_SUCCESS)
     {
       printf ("ERROR mem transfer 2\n");
       return rc;
+    }
+  for (int i = 0; i < n * n; i++)
+    {
+      b[i] = (float)d_b[i];
     }
 
   host_inve_matrix_gauss_jordan (a, b_host, n);
