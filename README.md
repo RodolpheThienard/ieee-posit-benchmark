@@ -31,7 +31,7 @@ No performance metrics yet. This is due to the difficulty to compare GPGPU Nvidi
   <!-- - Pi approximation -->
 
 ## Documentation / User Guide
-- [\[documentation\]](documentation/documentation.pdf)
+- [\[documentation\]](documentation/racer/documentation.pdf)
 
 > [!NOTE]  
 > - Posit was implemented on a RacEr architecture. You can find it at `documentation/documentation.pdf`   
