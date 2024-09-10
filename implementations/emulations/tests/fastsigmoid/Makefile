@@ -12,3 +12,6 @@ inverse: inverse.cpp
 conversion: conversion.cpp
 	gcc -Wall -o conversion conversion.cpp -lstdc++ -lfastposit  -lm
 
+posit16: posit16.cpp
+	gcc -Wall -o posit16 posit16.cpp -lstdc++ -lfastposit  -lm
+

@@ -7,8 +7,8 @@ initializevector_0 (float *f, int n, int i)
 {
   for (int idx = 0; idx < n; ++idx)
     {
-      f[idx] = ((float)rand () / (float)RAND_MAX) * i
-               / 1e5; // warning, requires posix standard.
+      f[idx] = ((float)rand () / (float)RAND_MAX)
+               * i; // warning, requires posix standard.
     }
 }
 void
@@ -17,7 +17,7 @@ initializevector (float *f, int n, int i)
   for (int idx = 0; idx < n; ++idx)
     {
       f[idx] = ((float)rand () / (float)RAND_MAX) * i
-               / 1e2; // warning, requires posix standard.
+               / 1e11; // warning, requires posix standard.
     }
 }
 
@@ -174,6 +174,31 @@ main (int argc, char *argv[])
                ((double)f_res - d_res) / d_res);
     }
   fclose (file);
+
+  file = fopen ("ceralaine_0-1.dat", "w");
+  fprintf (file, "n;float; P32; double; P32-Double; double-float\n");
+  for (int i = 1; i < 100000; i += 1)
+    {
+      initializevector (f1, n, i);
+      initializevector (f2, n, i);
+
+      transfertodouble (d1, f1, n);
+      transfertodouble (d2, f2, n);
+
+      transfertoposit32 (p1, f1, n);
+      transfertoposit32 (p2, f2, n);
+
+      float f_res = floatdotproduct (f1, f2, n);
+      double P32e2_res = convertP32ToDouble (positdotproduct (p1, p2, n));
+      double d_res = doubledotproduct (d1, d2, n);
+      printf ("%lf\n", d1[0]);
+
+      fprintf (file, "%d; %24.23lf; %24.23lf; %24.23lf; %e; %e \n", i,
+               (double)f_res, (double)P32e2_res, d_res,
+               (P32e2_res - d_res) / d_res, (f_res - d_res) / d_res);
+    }
+  fclose (file);
+
   file = fopen ("ceralaine_nan.dat", "w");
   for (double f = 1; f < 1e50; f *= 2)
     {

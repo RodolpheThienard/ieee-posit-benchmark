@@ -175,7 +175,7 @@ main (int argc, char *argv[])
   // copying init values
   for (int ll = 0; ll < _matrix_size_2; ll++)
     {
-      a[ll] = (data_t)((double)rand () / (double)RAND_MAX * 10);
+      a[ll] = (data_t)((double)rand () / (double)RAND_MAX * 10.0);
     }
 
   host_inve_matrix_gauss_jordan (a, c, _matrix_size);

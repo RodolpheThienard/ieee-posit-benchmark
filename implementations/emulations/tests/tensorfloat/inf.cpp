@@ -38,6 +38,8 @@ main (int argc, char *argv[])
   FILE *file;
   file = fopen ("tf32_around_0.dat", "w");
 
+  printf ("%lf\n", (double)(tf32)1.24680);
+
   double f;
   for (f = 1; f < 1e2; f *= 1.0001)
     {
