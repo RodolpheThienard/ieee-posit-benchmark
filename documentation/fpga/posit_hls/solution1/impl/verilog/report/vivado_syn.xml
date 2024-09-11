@@ -1,0 +1,95 @@
+<profile>
+<RunData>
+  <RUN_TYPE>synth</RUN_TYPE>
+  <VIVADO_VERSION>v.2023.2</VIVADO_VERSION>
+  <ROOT_MODULE_CELL>bd_0_i/hls_inst</ROOT_MODULE_CELL>
+</RunData>
+<TimingReport>
+  <TargetClockPeriod>5</TargetClockPeriod>
+  <AchievedClockPeriod>NA</AchievedClockPeriod>
+  <CLOCK_NAME>ap_clk</CLOCK_NAME>
+  <CP_FINAL>NA</CP_FINAL>
+  <CP_ROUTE>NA</CP_ROUTE>
+  <CP_SYNTH>NA</CP_SYNTH>
+  <CP_TARGET>5</CP_TARGET>
+  <SLACK_FINAL>NA</SLACK_FINAL>
+  <SLACK_ROUTE></SLACK_ROUTE>
+  <SLACK_SYNTH>NA</SLACK_SYNTH>
+  <TIMING_MET>NA</TIMING_MET>
+  <TNS_FINAL>NA</TNS_FINAL>
+  <TNS_ROUTE>NA</TNS_ROUTE>
+  <TNS_SYNTH>NA</TNS_SYNTH>
+  <WNS_FINAL>NA</WNS_FINAL>
+  <WNS_ROUTE>NA</WNS_ROUTE>
+  <WNS_SYNTH>NA</WNS_SYNTH>
+</TimingReport>
+<AreaReport>
+  <Resources>
+    <BRAM>0</BRAM>
+    <CLB>0</CLB>
+    <DSP>0</DSP>
+    <FF>139</FF>
+    <LATCH>0</LATCH>
+    <LUT>94</LUT>
+    <SRL>0</SRL>
+    <URAM>0</URAM>
+  </Resources>
+  <AvailableResources>
+    <BRAM>288</BRAM>
+    <CLB>0</CLB>
+    <DSP>1248</DSP>
+    <FF>234240</FF>
+    <LUT>117120</LUT>
+    <URAM>64</URAM>
+  </AvailableResources>
+</AreaReport>
+<RtlModules>
+  <RtlModule CELL="inst" DEPTH="0" FILE_NAME="bd_0_hls_inst_0.v" ORIG_REF_NAME="add" TOP_CELL="bd_0_i/hls_inst/inst">
+    <SubModules count="1">control_s_axi_U</SubModules>
+    <Resources FF="139" LUT="94" LogicLUT="94"/>
+  </RtlModule>
+  <RtlModule CELL="inst/control_s_axi_U" BINDMODULE="add_control_s_axi" DEPTH="1" FILE_NAME="add.v" ORIG_REF_NAME="add_control_s_axi">
+    <Resources FF="139" LUT="94" LogicLUT="94"/>
+  </RtlModule>
+</RtlModules>
+<TimingPaths>
+  <TPATH DATAPATH_DELAY="0.914" DATAPATH_LOGIC_DELAY="0.360" DATAPATH_NET_DELAY="0.554" ENDPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[0]/CE" LOGIC_LEVELS="3" MAX_FANOUT="32" SLACK="" STARTPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="137"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[0]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="197"/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="0.914" DATAPATH_LOGIC_DELAY="0.360" DATAPATH_NET_DELAY="0.554" ENDPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[10]/CE" LOGIC_LEVELS="3" MAX_FANOUT="32" SLACK="" STARTPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="137"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[10]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="197"/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="0.914" DATAPATH_LOGIC_DELAY="0.360" DATAPATH_NET_DELAY="0.554" ENDPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[11]/CE" LOGIC_LEVELS="3" MAX_FANOUT="32" SLACK="" STARTPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="137"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[11]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="197"/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="0.914" DATAPATH_LOGIC_DELAY="0.360" DATAPATH_NET_DELAY="0.554" ENDPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[12]/CE" LOGIC_LEVELS="3" MAX_FANOUT="32" SLACK="" STARTPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="137"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[12]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="197"/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="0.914" DATAPATH_LOGIC_DELAY="0.360" DATAPATH_NET_DELAY="0.554" ENDPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[13]/CE" LOGIC_LEVELS="3" MAX_FANOUT="32" SLACK="" STARTPOINT_PIN="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/waddr_reg[4]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="137"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="99"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/control_s_axi_U/int_in_a_reg[13]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="197"/>
+  </TPATH>
+</TimingPaths>
+<VivadoReportFiles>
+  <ReportFile TYPE="design_analysis" PATH="verilog/report/add_design_analysis_synth.rpt"/>
+  <ReportFile TYPE="failfast" PATH="verilog/report/add_failfast_synth.rpt"/>
+  <ReportFile TYPE="timing" PATH="verilog/report/add_timing_synth.rpt"/>
+  <ReportFile TYPE="timing_paths" PATH="verilog/report/add_timing_paths_synth.rpt"/>
+  <ReportFile TYPE="utilization" PATH="verilog/report/add_utilization_synth.rpt"/>
+  <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/add_utilization_hierarchical_synth.rpt"/>
+</VivadoReportFiles>
+</profile>

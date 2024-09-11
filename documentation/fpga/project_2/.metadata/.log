@@ -1,0 +1,2451 @@
+!SESSION 2024-08-21 03:09:51.699 -----------------------------------------------
+eclipse.buildId=2023.2
+java.version=11.0.16.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+This is a continuation of log file /home/emg2-abtics/project_2/.metadata/.bak_1.log
+Created Time: 2024-08-29 15:28:40.529
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:40.530
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:42.359
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Result: [null, ]. Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:42.362
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:42.372
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:42.523
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:42.589
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:42.593
+!MESSAGE XSCT Command: [con], Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:28:42.701
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-97: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 15:28:42.704
+!MESSAGE Tool usage for 'TCF_APP_DEBUG' updated to '14'
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 15:28:42.705
+!MESSAGE Tool usage for 'TCF_SYSTEM_DEBUG' updated to '14'
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:29:13.402
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-94: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:29:13.422
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-94: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:29:13.423
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-94: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:29:13.432
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-94: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 15:29:13.433
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:29:13.436
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-94: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:29:13.441
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-94: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.506
+!MESSAGE XSCT Command: [disconnect tcfchan#15], Thread: Thread-1343
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.529
+!MESSAGE XSCT command with result: [disconnect tcfchan#15], Result: [null, ]. Thread: Thread-1343
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.687
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.703
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#16]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.705
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.795
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.797
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.827
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.828
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.882
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.920
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.947
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:10.948
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.007
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.010
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.032
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.033
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.093
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.094
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.112
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.113
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.168
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.170
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.198
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.200
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.252
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.253
+!MESSAGE XSCT Command: [version -server], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.267
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.268
+!MESSAGE XSCT Command: [version], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.273
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.275
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.296
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.297
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.336
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.337
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.395
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.396
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.405
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.407
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.414
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.416
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.561
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.562
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.908
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:11.909
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:14.976
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:15.081
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:15.132
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:15.133
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:15.177
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:15.180
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:15.281
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:15.283
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.484
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.582
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.635
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.639
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.976
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.978
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.990
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:20.991
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:21.025
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:21.026
+!MESSAGE XSCT Command: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:21.056
+!MESSAGE XSCT command with result: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:21.057
+!MESSAGE XSCT Command: [psu_init], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:30.562
+!MESSAGE XSCT command with result: [psu_init], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:30.564
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:31.572
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:31.574
+!MESSAGE XSCT Command: [psu_ps_pl_isolation_removal], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:31.698
+!MESSAGE XSCT command with result: [psu_ps_pl_isolation_removal], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:31.699
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:32.707
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:32.709
+!MESSAGE XSCT Command: [psu_ps_pl_reset_config], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:32.863
+!MESSAGE XSCT command with result: [psu_ps_pl_reset_config], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:32.864
+!MESSAGE XSCT Command: [catch {psu_protection}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:33.093
+!MESSAGE XSCT command with result: [catch {psu_protection}], Result: [null, 0]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:33.094
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:33.131
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:33.132
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:33.424
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:33.426
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:35.089
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:35.091
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:35.115
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:35.287
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:35.354
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:35.356
+!MESSAGE XSCT Command: [con], Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:30:35.465
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-78: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 15:30:35.469
+!MESSAGE Tool usage for 'TCF_APP_DEBUG' updated to '15'
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 15:30:35.470
+!MESSAGE Tool usage for 'TCF_SYSTEM_DEBUG' updated to '15'
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:33:19.888
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-80: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:33:19.902
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-80: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:33:19.904
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-80: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:33:19.925
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-80: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 15:33:19.926
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:33:19.929
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-80: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:33:19.936
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-80: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:35:06.050
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-100: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:35:06.063
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-100: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:35:06.064
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-100: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:35:06.074
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-100: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 15:35:06.076
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:35:06.083
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-100: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:35:06.091
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-100: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:04.685
+!MESSAGE XSCT Command: [disconnect tcfchan#16], Thread: Thread-1415
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:04.720
+!MESSAGE XSCT command with result: [disconnect tcfchan#16], Result: [null, ]. Thread: Thread-1415
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:04.760
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa psu_pmu_0 C_DEBUG_PROFILE_SIZE], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:04.771
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa psu_pmu_0 C_DEBUG_PROFILE_SIZE], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY org.eclipse.tcf 4 0 2024-08-29 15:36:06.322
+!MESSAGE Invalid peerAdded event
+!STACK 0
+java.lang.Error
+	at org.eclipse.tcf.internal.services.remote.LocatorProxy$1.event(LocatorProxy.java:64)
+	at org.eclipse.tcf.core.AbstractChannel.handleInput(AbstractChannel.java:1191)
+	at org.eclipse.tcf.core.AbstractChannel$1$1.run(AbstractChannel.java:371)
+	at org.eclipse.tcf.EventQueue.run(EventQueue.java:98)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+!ENTRY org.eclipse.tcf 4 0 2024-08-29 15:36:06.332
+!MESSAGE Invalid peerAdded event
+!STACK 0
+java.lang.Error
+	at org.eclipse.tcf.internal.services.remote.LocatorProxy$1.event(LocatorProxy.java:64)
+	at org.eclipse.tcf.core.AbstractChannel.handleInput(AbstractChannel.java:1191)
+	at org.eclipse.tcf.core.AbstractChannel$1$1.run(AbstractChannel.java:371)
+	at org.eclipse.tcf.EventQueue.run(EventQueue.java:98)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:07.665
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:07.688
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#17]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:07.692
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:07.998
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.000
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.088
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.089
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.141
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.164
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.186
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.188
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.234
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.436
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.456
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.457
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.503
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.507
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.527
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.528
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.578
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.580
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.602
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.604
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.661
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.663
+!MESSAGE XSCT Command: [version -server], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.679
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.680
+!MESSAGE XSCT Command: [version], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.688
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.689
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.714
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.715
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.765
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.767
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.820
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.821
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.831
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.833
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.839
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.840
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.915
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:08.917
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:09.258
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:09.260
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.484
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.594
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.618
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.619
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.672
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.675
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.781
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:12.786
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:17.926
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:17.984
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.057
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.058
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.436
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.438
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.449
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.462
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.486
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.487
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.535
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.536
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.572
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.573
+!MESSAGE XSCT Command: [set mode [expr [mrd -value 0xFF5E0200] & 0xf]], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:18.651
+!MESSAGE XSCT command with result: [set mode [expr [mrd -value 0xFF5E0200] & 0xf]], Result: [null, 2]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:26.057
+!MESSAGE XSCT Command: [mask_write 0xFF5E0200 0xf000 0], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:26.121
+!MESSAGE XSCT command with result: [mask_write 0xFF5E0200 0xf000 0], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:26.122
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:26.164
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:26.165
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:26.425
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:26.427
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/boot/fsbl.elf], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:28.608
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/boot/fsbl.elf], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:28.610
+!MESSAGE XSCT Command: [set bp_36_28_fsbl_bp [bpadd -addr &XFsbl_Exit]], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:28.678
+!MESSAGE XSCT command with result: [set bp_36_28_fsbl_bp [bpadd -addr &XFsbl_Exit]], Result: [null, 2]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:28.681
+!MESSAGE XSCT Command: [con -block -timeout 60], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:29.509
+!MESSAGE XSCT command with result: [con -block -timeout 60], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:29.510
+!MESSAGE XSCT Command: [bpremove $bp_36_28_fsbl_bp], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:29.800
+!MESSAGE XSCT command with result: [bpremove $bp_36_28_fsbl_bp], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:29.803
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:29.840
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:29.842
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:30.078
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:30.080
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Debug/axis_IO.elf], Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:30.617
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Debug/axis_IO.elf], Result: [{Format=Memory write error at 0x0. Cortex-A53 #0: EDITR not ready, Time=1724938590615, Code=1}, ]. Thread: Worker-99: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.634
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.645
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#17]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.647
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.666
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.667
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.688
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.689
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.736
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.754
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.773
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.774
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.823
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.961
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.979
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:40.980
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.025
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.026
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.054
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.056
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.101
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.102
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.124
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.126
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.175
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.177
+!MESSAGE XSCT Command: [version -server], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.189
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.190
+!MESSAGE XSCT Command: [version], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.196
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.197
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.216
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.218
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.270
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.286
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.343
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.345
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.353
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.355
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.373
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.375
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.413
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:41.414
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:42.290
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:42.292
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.558
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.641
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.667
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.669
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.697
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.700
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.807
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:45.809
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:50.962
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.084
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.127
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.129
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.428
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.430
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.447
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.449
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.470
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.471
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.520
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.522
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.570
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.572
+!MESSAGE XSCT Command: [set mode [expr [mrd -value 0xFF5E0200] & 0xf]], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:51.614
+!MESSAGE XSCT command with result: [set mode [expr [mrd -value 0xFF5E0200] & 0xf]], Result: [null, 2]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:54.282
+!MESSAGE XSCT Command: [mask_write 0xFF5E0200 0xf000 0], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:54.349
+!MESSAGE XSCT command with result: [mask_write 0xFF5E0200 0xf000 0], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:54.350
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:54.388
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:54.390
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:54.698
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:54.701
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/boot/fsbl.elf], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:56.719
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/boot/fsbl.elf], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:56.720
+!MESSAGE XSCT Command: [set bp_36_56_fsbl_bp [bpadd -addr &XFsbl_Exit]], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:56.774
+!MESSAGE XSCT command with result: [set bp_36_56_fsbl_bp [bpadd -addr &XFsbl_Exit]], Result: [null, 3]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:56.777
+!MESSAGE XSCT Command: [con -block -timeout 60], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:57.572
+!MESSAGE XSCT command with result: [con -block -timeout 60], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:57.574
+!MESSAGE XSCT Command: [bpremove $bp_36_56_fsbl_bp], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:57.853
+!MESSAGE XSCT command with result: [bpremove $bp_36_56_fsbl_bp], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:57.855
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:57.889
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:57.891
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:58.105
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:58.107
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Debug/axis_IO.elf], Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:36:58.585
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Debug/axis_IO.elf], Result: [{Format=Memory write error at 0x0. Cortex-A53 #0: EDITR not ready, Time=1724938618583, Code=1}, ]. Thread: Worker-79: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.569
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.578
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#17]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.580
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.599
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.600
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.619
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.620
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.670
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.693
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.715
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.716
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.768
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.914
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.935
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.936
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.981
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:12.983
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.006
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.008
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.061
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.062
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.084
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.085
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.137
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.138
+!MESSAGE XSCT Command: [version -server], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.180
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.181
+!MESSAGE XSCT Command: [version], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.186
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.189
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.210
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.212
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.261
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.263
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.316
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.318
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.330
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.333
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.351
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.353
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.451
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.453
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.974
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:13.975
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.218
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.298
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.324
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.324
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.373
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.375
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.520
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:17.521
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:22.646
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:22.740
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:22.778
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:22.779
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.141
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.143
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.154
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.156
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.178
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.179
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.234
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.235
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.268
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.269
+!MESSAGE XSCT Command: [set mode [expr [mrd -value 0xFF5E0200] & 0xf]], Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 15:37:23.392
+!MESSAGE XSCT command with result: [set mode [expr [mrd -value 0xFF5E0200] & 0xf]], Result: [null, 2]. Thread: Worker-93: Launching SystemDebugger_axis_IO_system
+
+!ENTRY org.eclipse.tcf 4 0 2024-08-29 16:01:55.872
+!MESSAGE Invalid peerAdded event
+!STACK 0
+java.lang.Error
+	at org.eclipse.tcf.internal.services.remote.LocatorProxy$1.event(LocatorProxy.java:64)
+	at org.eclipse.tcf.core.AbstractChannel.handleInput(AbstractChannel.java:1191)
+	at org.eclipse.tcf.core.AbstractChannel$1$1.run(AbstractChannel.java:371)
+	at org.eclipse.tcf.EventQueue.run(EventQueue.java:98)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:10:54.746
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-111: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:10:54.833
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-111: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:10:54.834
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-111: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:10:54.870
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-111: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:10:54.872
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:10:54.881
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-111: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:10:54.892
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-111: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:15:54.803
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-121: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:15:54.842
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-121: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:15:54.844
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-121: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:15:54.855
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-121: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:15:54.856
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:15:54.860
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-121: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:15:54.868
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-121: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2024-08-29 16:16:16.657
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:17:51.775
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-123: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:17:51.817
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-123: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:17:51.818
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-123: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:17:51.854
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-123: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:17:51.855
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:17:51.858
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-123: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:17:51.865
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-123: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.279
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.286
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#17]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.288
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.308
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.312
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.327
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.328
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.378
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.398
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.420
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.421
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.473
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.475
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.494
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.496
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.559
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.561
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.578
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.579
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.634
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.636
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.653
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.654
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.705
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.706
+!MESSAGE XSCT Command: [version -server], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.716
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.717
+!MESSAGE XSCT Command: [version], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.722
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.723
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.743
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.745
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.794
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.796
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.851
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.852
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.889
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.891
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.897
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.899
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.934
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:03.936
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:04.555
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:04.556
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.626
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.710
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.733
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.733
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.771
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.774
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.943
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:07.945
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:12.909
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.018
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.055
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.057
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.396
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.397
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.417
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.418
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.451
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.453
+!MESSAGE XSCT Command: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.499
+!MESSAGE XSCT command with result: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:13.501
+!MESSAGE XSCT Command: [psu_init], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:20.834
+!MESSAGE XSCT command with result: [psu_init], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:20.835
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:21.843
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:21.845
+!MESSAGE XSCT Command: [psu_ps_pl_isolation_removal], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:21.899
+!MESSAGE XSCT command with result: [psu_ps_pl_isolation_removal], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:21.901
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:22.908
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:22.909
+!MESSAGE XSCT Command: [psu_ps_pl_reset_config], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.024
+!MESSAGE XSCT command with result: [psu_ps_pl_reset_config], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.026
+!MESSAGE XSCT Command: [catch {psu_protection}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.225
+!MESSAGE XSCT command with result: [catch {psu_protection}], Result: [null, 0]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.226
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.263
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.264
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.643
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:23.644
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:24.889
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:24.890
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:24.901
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:25.075
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:25.130
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:25.133
+!MESSAGE XSCT Command: [con], Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:19:25.236
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-124: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:19:25.242
+!MESSAGE Tool usage for 'TCF_APP_DEBUG' updated to '16'
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:19:25.242
+!MESSAGE Tool usage for 'TCF_SYSTEM_DEBUG' updated to '16'
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:20:29.101
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-127: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:20:29.122
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-127: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:20:29.124
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-127: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:20:29.140
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-127: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:20:29.140
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:20:29.145
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-127: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:20:29.153
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-127: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.003
+!MESSAGE XSCT Command: [disconnect tcfchan#17], Thread: Thread-1658
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.031
+!MESSAGE XSCT command with result: [disconnect tcfchan#17], Result: [null, ]. Thread: Thread-1658
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.174
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.207
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#18]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.209
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.279
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.280
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.304
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.305
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.401
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.422
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.446
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.447
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.517
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.522
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.544
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.545
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.623
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.624
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.649
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.650
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.727
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.729
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.751
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.752
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.838
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.840
+!MESSAGE XSCT Command: [version -server], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.851
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.852
+!MESSAGE XSCT Command: [version], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.858
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.860
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.879
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.880
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.946
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:34.948
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.021
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.022
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.031
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.032
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.037
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.039
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.135
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.137
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.439
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:35.441
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.527
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.608
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.630
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.632
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.689
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.691
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.833
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:38.834
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:43.797
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:43.877
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:43.912
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:43.913
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.228
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.229
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.246
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.248
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.281
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.284
+!MESSAGE XSCT Command: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.298
+!MESSAGE XSCT command with result: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:44.300
+!MESSAGE XSCT Command: [psu_init], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:51.922
+!MESSAGE XSCT command with result: [psu_init], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:51.923
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:52.931
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:52.933
+!MESSAGE XSCT Command: [psu_ps_pl_isolation_removal], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:52.993
+!MESSAGE XSCT command with result: [psu_ps_pl_isolation_removal], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:52.995
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.002
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.004
+!MESSAGE XSCT Command: [psu_ps_pl_reset_config], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.138
+!MESSAGE XSCT command with result: [psu_ps_pl_reset_config], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.140
+!MESSAGE XSCT Command: [catch {psu_protection}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.364
+!MESSAGE XSCT command with result: [catch {psu_protection}], Result: [null, 0]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.365
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.400
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.401
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.726
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:54.728
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:56.093
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:56.095
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:56.105
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:56.260
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:56.320
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:56.321
+!MESSAGE XSCT Command: [con], Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:21:56.425
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-129: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:21:56.429
+!MESSAGE Tool usage for 'TCF_APP_DEBUG' updated to '17'
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:21:56.429
+!MESSAGE Tool usage for 'TCF_SYSTEM_DEBUG' updated to '17'
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:22:14.343
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-114: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:22:14.373
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-114: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:22:14.374
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-114: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:22:14.386
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-114: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:22:14.386
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:22:14.390
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-114: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:22:14.397
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-114: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.564
+!MESSAGE XSCT Command: [disconnect tcfchan#18], Thread: Thread-1729
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.585
+!MESSAGE XSCT command with result: [disconnect tcfchan#18], Result: [null, ]. Thread: Thread-1729
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.699
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.740
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#19]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.742
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.819
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.852
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.876
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.877
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.962
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:06.982
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.003
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.004
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.099
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.103
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.126
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.127
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.185
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.188
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.210
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.211
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.272
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.274
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.292
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.294
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.333
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.336
+!MESSAGE XSCT Command: [version -server], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.361
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.362
+!MESSAGE XSCT Command: [version], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.368
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.369
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.390
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.392
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.441
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.442
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.479
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.481
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.490
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.492
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.498
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.499
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.635
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:07.637
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:08.164
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:08.166
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.230
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.312
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.329
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.330
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.378
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.380
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.471
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:11.473
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.385
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.476
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.512
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.514
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.890
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.892
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.901
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.902
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.933
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.934
+!MESSAGE XSCT Command: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.969
+!MESSAGE XSCT command with result: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:16.971
+!MESSAGE XSCT Command: [psu_init], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:24.621
+!MESSAGE XSCT command with result: [psu_init], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:24.623
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:25.630
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:25.631
+!MESSAGE XSCT Command: [psu_ps_pl_isolation_removal], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:25.716
+!MESSAGE XSCT command with result: [psu_ps_pl_isolation_removal], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:25.718
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:26.724
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:26.726
+!MESSAGE XSCT Command: [psu_ps_pl_reset_config], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:26.879
+!MESSAGE XSCT command with result: [psu_ps_pl_reset_config], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:26.880
+!MESSAGE XSCT Command: [catch {psu_protection}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:27.112
+!MESSAGE XSCT command with result: [catch {psu_protection}], Result: [null, 0]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:27.114
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:27.148
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:27.149
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:27.509
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:27.511
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:28.918
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:28.921
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:28.931
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:29.107
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:29.166
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:29.168
+!MESSAGE XSCT Command: [con], Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:29.270
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-123: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:23:29.274
+!MESSAGE Tool usage for 'TCF_APP_DEBUG' updated to '18'
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:23:29.275
+!MESSAGE Tool usage for 'TCF_SYSTEM_DEBUG' updated to '18'
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:38.102
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Thread: Worker-129: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:38.119
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ], Result: [null, ]. Thread: Worker-129: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:38.121
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-129: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:38.133
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, {"procname": "psu_cortexa53_0",
+"osname": "standalone",
+"osver": "9.0",
+}]. Thread: Worker-129: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-29 16:23:38.135
+!MESSAGE Generating MD5 hash for file: /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:38.138
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Thread: Worker-129: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-29 16:23:38.146
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/system.mss], Result: [null, ]. Thread: Worker-129: Build Project
+
+!ENTRY org.eclipse.tcf 4 0 2024-08-30 08:44:26.591
+!MESSAGE Invalid peerAdded event
+!STACK 0
+java.lang.Error
+	at org.eclipse.tcf.internal.services.remote.LocatorProxy$1.event(LocatorProxy.java:64)
+	at org.eclipse.tcf.core.AbstractChannel.handleInput(AbstractChannel.java:1191)
+	at org.eclipse.tcf.core.AbstractChannel$1$1.run(AbstractChannel.java:371)
+	at org.eclipse.tcf.EventQueue.run(EventQueue.java:98)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.279
+!MESSAGE XSCT Command: [disconnect tcfchan#19], Thread: Thread-1796
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.317
+!MESSAGE XSCT command with result: [disconnect tcfchan#19], Result: [null, ]. Thread: Thread-1796
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.476
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.511
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#20]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.513
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.571
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.572
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.597
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.601
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.668
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.705
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.729
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.730
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.777
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.778
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.807
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.809
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.868
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.869
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.890
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.891
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.941
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.942
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.960
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:02.961
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.011
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.013
+!MESSAGE XSCT Command: [version -server], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.030
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2023.2]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.031
+!MESSAGE XSCT Command: [version], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.037
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2023.2.0
+SW Build 0 on 2023-10-09-15:37:40
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.038
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.055
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.057
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.102
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.104
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.151
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level == 0}], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.153
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.162
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.164
+!MESSAGE XSCT Command: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.170
+!MESSAGE XSCT command with result: [source /tools/Xilinx/Vitis/2023.2/scripts/vitis/util/zynqmp_utils.tcl], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.171
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.289
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.290
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.590
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:03.592
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.632
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.734
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.760
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Xilinx X-MLCC-01 XFL1TQBDF1BXA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.761
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.810
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==1}], Result: [null,      2  xck26 (idcode 04724093 irlen 12 fpga)
+     3  arm_dap (idcode 5ba00477 irlen 4)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.813
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.961
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Xilinx X-MLCC-01 XFL1TQBDF1BXA" && level==0 && jtag_device_ctx=="jsn-X-MLCC-01-XFL1TQBDF1BXA-04724093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:06.964
+!MESSAGE XSCT Command: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:11.978
+!MESSAGE XSCT command with result: [fpga -file /home/emg2-abtics/project_2/axis_IO/_ide/bitstream/design_2_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.038
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.092
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.093
+!MESSAGE XSCT Command: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.433
+!MESSAGE XSCT command with result: [loadhw -hw /home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/hw/design_2_wrapper.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs], Result: [null, design_2_wrapper_14]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.435
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.479
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.480
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.520
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.521
+!MESSAGE XSCT Command: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.540
+!MESSAGE XSCT command with result: [source /home/emg2-abtics/project_2/axis_IO/_ide/psinit/psu_init.tcl], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:12.541
+!MESSAGE XSCT Command: [psu_init], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:20.072
+!MESSAGE XSCT command with result: [psu_init], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:20.074
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:21.080
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:21.083
+!MESSAGE XSCT Command: [psu_ps_pl_isolation_removal], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:21.147
+!MESSAGE XSCT command with result: [psu_ps_pl_isolation_removal], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:21.149
+!MESSAGE XSCT Command: [after 1000], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.157
+!MESSAGE XSCT command with result: [after 1000], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.159
+!MESSAGE XSCT Command: [psu_ps_pl_reset_config], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.265
+!MESSAGE XSCT command with result: [psu_ps_pl_reset_config], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.267
+!MESSAGE XSCT Command: [catch {psu_protection}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.490
+!MESSAGE XSCT command with result: [catch {psu_protection}], Result: [null, 0]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.492
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.529
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.531
+!MESSAGE XSCT Command: [rst -processor], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.910
+!MESSAGE XSCT command with result: [rst -processor], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:22.912
+!MESSAGE XSCT Command: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:24.388
+!MESSAGE XSCT command with result: [dow /home/emg2-abtics/project_2/axis_IO/Release/axis_IO.elf], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:24.390
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:24.399
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:24.586
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A53*#0"}], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:24.649
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A53*#0"}], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:24.650
+!MESSAGE XSCT Command: [con], Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2024-08-30 08:45:24.793
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-114: Launching SystemDebugger_axis_IO_system
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-30 08:45:24.797
+!MESSAGE Tool usage for 'TCF_APP_DEBUG' updated to '19'
+
+!ENTRY com.xilinx.sdk.utils 1 0 2024-08-30 08:45:24.797
+!MESSAGE Tool usage for 'TCF_SYSTEM_DEBUG' updated to '19'

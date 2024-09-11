@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:systemproject="http://www.xilinx.com/systemproject" name="axis_entree_sortie_system" platform="/tools/Xilinx/Vitis/2023.2/base_platforms/xilinx_zcu102_base_202320_1/xilinx_zcu102_base_202320_1.xpfm" platformUID="xilinx.com:xd:xilinx_zcu102_base_202320_1:202320.1(custom)" sysConfig="xilinx_zcu102_base_202320_1" rootFSLocation="" linuxImage="" sysroot="">
+  <configuration name="Emulation-SW" id="com.xilinx.sdx.system.managedbuilder.swemu.configuration.2035068672">
+    <configBuildOptions xsi:type="systemproject:SystemOptions"/>
+  </configuration>
+  <configuration name="Emulation-HW" id="com.xilinx.sdx.system.managedbuilder.hwemu.configuration.1385851123">
+    <configBuildOptions xsi:type="systemproject:SystemOptions" target="hw_emu"/>
+  </configuration>
+  <configuration name="Hardware" id="com.xilinx.sdx.system.managedbuilder.hw.configuration.2135554710">
+    <configBuildOptions xsi:type="systemproject:SystemOptions" target="hw"/>
+  </configuration>
+</systemproject:SystemProject>

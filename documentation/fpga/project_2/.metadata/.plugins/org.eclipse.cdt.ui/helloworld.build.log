@@ -1,0 +1,21 @@
+15:31:47 **** Incremental Build of configuration Debug for project helloworld ****
+make all 
+Building file: ../src/helloworld.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -I/home/emg2-abtics/project_2/design_2_wrapper_1/export/design_2_wrapper_1/sw/design_2_wrapper_1/standalone_psu_cortexa53_0/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+Finished building: ../src/helloworld.c
+ 
+Building target: helloworld.elf
+Invoking: ARM v8 gcc linker
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L/home/emg2-abtics/project_2/design_2_wrapper_1/export/design_2_wrapper_1/sw/design_2_wrapper_1/standalone_psu_cortexa53_0/bsplib/lib -o "helloworld.elf" ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: helloworld.elf
+ 
+Invoking: ARM v8 Print Size
+aarch64-none-elf-size helloworld.elf  |tee "helloworld.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30212	   2176	  20692	  53080	   cf58	helloworld.elf
+Finished building: helloworld.elf.size
+ 
+
+15:32:00 Build Finished (took 12s.685ms)
+

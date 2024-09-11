@@ -1,0 +1,6 @@
+<pragmas>
+<pragma file="posit_hls/add.c" line="7" pragmaType="interface" parentfunction="add" mode="ap_ctrl_none" port="return" name=""/>
+<pragma file="posit_hls/add.c" line="8" pragmaType="interface" parentfunction="add" mode="s_axilite" port="in_a" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="posit_hls/add.c" line="9" pragmaType="interface" parentfunction="add" mode="s_axilite" port="in_b" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="posit_hls/add.c" line="10" pragmaType="interface" parentfunction="add" mode="s_axilite" port="out_c" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+</pragmas>

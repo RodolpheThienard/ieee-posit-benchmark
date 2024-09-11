@@ -1,0 +1,20 @@
+Nothing to build in platform 'design_2_wrapper'
+
+16:23:38 **** Incremental Build of configuration Release for project axis_IO ****
+make all 
+Building file: ../src/test.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O2 -c -fmessage-length=0 -MT"src/test.o" -I/home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/bspinclude/include -MMD -MP -MF"src/test.d" -MT"src/test.o" -o "src/test.o" "../src/test.c"
+Finished building: ../src/test.c
+ 
+Building target: axis_IO.elf
+Invoking: ARM v8 gcc linker
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L/home/emg2-abtics/project_2/design_2_wrapper/export/design_2_wrapper/sw/design_2_wrapper/standalone_psu_cortexa53_0/bsplib/lib -o "axis_IO.elf" ./src/helloworld.o ./src/platform.o ./src/test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: axis_IO.elf
+ 
+Invoking: ARM v8 Print Size
+aarch64-none-elf-size axis_IO.elf  |tee "axis_IO.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  44517	   4344	  23707	  72568	  11b78	axis_IO.elf
+Finished building: axis_IO.elf.size
+ 

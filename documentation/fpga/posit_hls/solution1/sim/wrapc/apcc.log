@@ -1,0 +1,9 @@
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2023.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'emg2-abtics' on host 'emg2abtics-virtual-machine' (Linux_x86_64 version 6.5.0-44-generic) on Tue Aug 20 18:10:32 CEST 2024
+INFO: [HLS 200-10] On os Ubuntu 22.04.4 LTS
+INFO: [HLS 200-10] In directory '/home/emg2-abtics/posit_hls/solution1/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /home/emg2-abtics/posit_hls/solution1/sim/wrapc/apcc_db_emg2-abtics/313311724170232662945
+INFO: [APCC 202-1] APCC is done.
+INFO: [HLS 200-112] Total CPU user time: 2.68 seconds. Total CPU system time: 0.41 seconds. Total elapsed time: 2.76 seconds; peak allocated memory: 99.598 MB.

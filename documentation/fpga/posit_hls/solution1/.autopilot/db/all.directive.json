@@ -1,0 +1,44 @@
+[
+  {
+    "functionLabel": "",
+    "functionName": "add",
+    "id": 0,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "add"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "/home/emg2-abtics/posit_hls/solution1/directives.tcl",
+    "sourceLine": 7,
+    "success": true
+  },
+  {
+    "functionLabel": "",
+    "functionName": "add",
+    "id": 1,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "add"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "/home/emg2-abtics/posit_hls/solution1/csynth.tcl",
+    "sourceLine": 18,
+    "success": true
+  }
+]

@@ -1,0 +1,66 @@
+
+*** Running vivado
+    with args -log design_2_auto_us_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_2_auto_us_0.tcl
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source design_2_auto_us_0.tcl -notrace
+CRITICAL WARNING: [Common 17-1355] You are suppressing all messages of type 'WARNING'. You may potentially disregard important DRC, CDC, and implementation messages that can negatively impact your design.  If this is not desired, please run 'reset_msg_config -suppress -severity {WARNING}' to undo this change.
+CRITICAL WARNING: [Common 17-1355] You are suppressing all messages of type 'CRITICAL WARNING'. You may potentially disregard important DRC, CDC, and implementation messages that can negatively impact your design.  If this is not desired, please run 'reset_msg_config -suppress -severity {CRITICAL WARNING}' to undo this change.
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1308.992 ; gain = 52.836 ; free physical = 200 ; free virtual = 7792
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:28 ; elapsed = 00:00:44 . Memory (MB): peak = 2572.246 ; gain = 292.863 ; free physical = 264 ; free virtual = 2975
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:50 ; elapsed = 00:01:13 . Memory (MB): peak = 2767.184 ; gain = 487.801 ; free physical = 227 ; free virtual = 2587
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:50 ; elapsed = 00:01:13 . Memory (MB): peak = 2767.184 ; gain = 487.801 ; free physical = 228 ; free virtual = 2588
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:50 ; elapsed = 00:01:13 . Memory (MB): peak = 2767.184 ; gain = 487.801 ; free physical = 228 ; free virtual = 2588
+Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2767.184 ; gain = 0.000 ; free physical = 229 ; free virtual = 2590
+create_clock: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2845.090 ; gain = 2.969 ; free physical = 161 ; free virtual = 2364
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2845.090 ; gain = 0.000 ; free physical = 161 ; free virtual = 2363
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.19 . Memory (MB): peak = 2845.125 ; gain = 0.000 ; free physical = 157 ; free virtual = 2359
+Finished Constraint Validation : Time (s): cpu = 00:01:14 ; elapsed = 00:01:38 . Memory (MB): peak = 2845.125 ; gain = 565.742 ; free physical = 168 ; free virtual = 2152
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:14 ; elapsed = 00:01:38 . Memory (MB): peak = 2845.125 ; gain = 565.742 ; free physical = 161 ; free virtual = 2145
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/emg2-abtics/project_2/project_2.runs/design_2_auto_us_0_synth_1/dont_touch.xdc, line 9).
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:14 ; elapsed = 00:01:38 . Memory (MB): peak = 2845.125 ; gain = 565.742 ; free physical = 157 ; free virtual = 2141
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:16 ; elapsed = 00:01:40 . Memory (MB): peak = 2845.125 ; gain = 565.742 ; free physical = 170 ; free virtual = 1933
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:29 ; elapsed = 00:01:55 . Memory (MB): peak = 2845.125 ; gain = 565.742 ; free physical = 258 ; free virtual = 1201
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:52 ; elapsed = 00:02:21 . Memory (MB): peak = 3232.027 ; gain = 952.645 ; free physical = 411 ; free virtual = 887
+Finished Timing Optimization : Time (s): cpu = 00:01:59 ; elapsed = 00:02:29 . Memory (MB): peak = 3281.637 ; gain = 1002.254 ; free physical = 250 ; free virtual = 800
+Finished Technology Mapping : Time (s): cpu = 00:02:00 ; elapsed = 00:02:30 . Memory (MB): peak = 3281.637 ; gain = 1002.254 ; free physical = 206 ; free virtual = 792
+Finished IO Insertion : Time (s): cpu = 00:02:08 ; elapsed = 00:02:39 . Memory (MB): peak = 3287.574 ; gain = 1008.191 ; free physical = 344 ; free virtual = 942
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:08 ; elapsed = 00:02:39 . Memory (MB): peak = 3287.574 ; gain = 1008.191 ; free physical = 344 ; free virtual = 942
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:08 ; elapsed = 00:02:39 . Memory (MB): peak = 3287.574 ; gain = 1008.191 ; free physical = 347 ; free virtual = 944
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:08 ; elapsed = 00:02:39 . Memory (MB): peak = 3287.574 ; gain = 1008.191 ; free physical = 347 ; free virtual = 944
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:09 ; elapsed = 00:02:39 . Memory (MB): peak = 3287.574 ; gain = 1008.191 ; free physical = 346 ; free virtual = 944
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:09 ; elapsed = 00:02:39 . Memory (MB): peak = 3287.574 ; gain = 1008.191 ; free physical = 346 ; free virtual = 943
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |CARRY8  |     1|
+|2     |LUT1    |     4|
+|3     |LUT2    |    20|
+|4     |LUT3    |   156|
+|5     |LUT4    |    30|
+|6     |LUT5    |    42|
+|7     |LUT6    |   155|
+|8     |MUXF7   |    32|
+|9     |SRLC32E |    33|
+|10    |FDRE    |   518|
+|11    |FDSE    |     3|
++------+--------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:09 ; elapsed = 00:02:39 . Memory (MB): peak = 3287.574 ; gain = 1008.191 ; free physical = 346 ; free virtual = 943
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3299.543 ; gain = 0.000 ; free physical = 1596 ; free virtual = 2237
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3340.465 ; gain = 0.000 ; free physical = 3668 ; free virtual = 4492
+synth_design: Time (s): cpu = 00:02:39 ; elapsed = 00:03:21 . Memory (MB): peak = 3340.500 ; gain = 1980.211 ; free physical = 3652 ; free virtual = 4566
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3364.477 ; gain = 0.000 ; free physical = 3583 ; free virtual = 4499
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3364.477 ; gain = 0.000 ; free physical = 3298 ; free virtual = 4432

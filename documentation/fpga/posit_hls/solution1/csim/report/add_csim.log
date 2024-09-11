@@ -1,0 +1,22 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling(apcc) ../../../test.c in debug mode
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2023.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'emg2-abtics' on host 'emg2abtics-virtual-machine' (Linux_x86_64 version 6.5.0-44-generic) on Tue Aug 20 18:09:16 CEST 2024
+INFO: [HLS 200-10] On os Ubuntu 22.04.4 LTS
+INFO: [HLS 200-10] In directory '/home/emg2-abtics/posit_hls/solution1/csim/build'
+INFO: [APCC 202-3] Tmp directory is /home/emg2-abtics/posit_hls/solution1/csim/build/apcc_db_emg2-abtics/308401724170156812534
+INFO: [APCC 202-1] APCC is done.
+INFO: [HLS 200-112] Total CPU user time: 3.31 seconds. Total CPU system time: 0.62 seconds. Total elapsed time: 3.85 seconds; peak allocated memory: 99.598 MB.
+   Compiling(apcc) ../../../add.c in debug mode
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2023.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'emg2-abtics' on host 'emg2abtics-virtual-machine' (Linux_x86_64 version 6.5.0-44-generic) on Tue Aug 20 18:09:22 CEST 2024
+INFO: [HLS 200-10] On os Ubuntu 22.04.4 LTS
+INFO: [HLS 200-10] In directory '/home/emg2-abtics/posit_hls/solution1/csim/build'
+INFO: [APCC 202-3] Tmp directory is /home/emg2-abtics/posit_hls/solution1/csim/build/apcc_db_emg2-abtics/309101724170162354003
+INFO: [APCC 202-1] APCC is done.
+INFO: [HLS 200-112] Total CPU user time: 2.77 seconds. Total CPU system time: 0.41 seconds. Total elapsed time: 2.87 seconds; peak allocated memory: 99.598 MB.
+   Generating csim.exe
+test passed !
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

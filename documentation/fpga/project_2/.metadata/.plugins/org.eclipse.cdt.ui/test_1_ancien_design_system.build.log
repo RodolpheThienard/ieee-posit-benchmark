@@ -1,0 +1,10 @@
+16:31:15 **** Incremental Build of configuration Release for project test_1_ancien_design_system ****
+make all 
+Generating bif file for the system project
+Executing command '::scw::generate_bif -xpfm /home/emg2-abtics/project_2/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm -domains standalone_psu_cortexa53_0 -bifpath /home/emg2-abtics/project_2/test_1_ancien_design_system/Release/system.bif' on XSCT
+sdcard_gen --xpfm /home/emg2-abtics/project_2/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm --sys_config design_1_wrapper --bif /home/emg2-abtics/project_2/test_1_ancien_design_system/Release/system.bif --bitstream /home/emg2-abtics/project_2/test_1_ancien_design/_ide/bitstream/design_1_wrapper.bit --elf /home/emg2-abtics/project_2/test_1_ancien_design/Release/test_1_ancien_design.elf,psu_cortexa53_0
+creating BOOT.BIN using /home/emg2-abtics/project_2/test_1_ancien_design/_ide/bitstream/design_1_wrapper.bit
+Running /tools/Xilinx/Vitis/2023.2/bin/bootgen -arch zynqmp -image /home/emg2-abtics/project_2/test_1_ancien_design_system/Release/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+16:31:41 Build Finished (took 25s.592ms)
+

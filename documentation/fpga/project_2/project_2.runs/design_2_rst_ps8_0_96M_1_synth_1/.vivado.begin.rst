@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="emg2-abtics" Host="emg2abtics-virtual-machine" Pid="307690" HostCore="16" HostMemory="15225532">
+    </Process>
+</ProcessHandle>

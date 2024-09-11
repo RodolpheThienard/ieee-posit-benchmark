@@ -1,0 +1,121 @@
+#include "xparameters.h"
+#include "xil_io.h"
+#include "xaxidma.h"
+#include "xil_printf.h"
+#include "xstatus.h"
+#include "xil_cache.h"
+
+#define DMA_DEV_ID               XPAR_AXIDMA_0_DEVICE_ID
+#define MEM_BASE_ADDR            0xA0000000  // Base address for PS memory
+#define DMA_BUFFER_BASE          (MEM_BASE_ADDR + 0x00010000)
+#define MAX_PKT_LEN              1024  // Maximum packet length
+
+int init_dma(XAxiDma *AxiDma) {
+    XAxiDma_Config *CfgPtr;
+    int Status;
+
+    // Initialize the XAxiDma device
+    CfgPtr = XAxiDma_LookupConfig(DMA_DEV_ID);
+    if (!CfgPtr) {
+        xil_printf("No configuration found for %d\r\n", DMA_DEV_ID);
+        return XST_FAILURE;
+    }
+
+    Status = XAxiDma_CfgInitialize(AxiDma, CfgPtr);
+    if (Status != XST_SUCCESS) {
+        xil_printf("Initialization failed %d\r\n", Status);
+        return XST_FAILURE;
+    }
+
+    // Check if the DMA engine is configured for Scatter Gather mode
+    if (XAxiDma_HasSg(AxiDma)) {
+        xil_printf("Device configured as SG mode\r\n");
+        return XST_FAILURE;
+    }
+
+    // Disable interrupts
+    XAxiDma_IntrDisable(AxiDma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
+    XAxiDma_IntrDisable(AxiDma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+
+    return XST_SUCCESS;
+}
+
+void print_dma_status(XAxiDma *AxiDma) {
+    u32 mm2s_status = XAxiDma_ReadReg(AxiDma->RegBase + XAXIDMA_TX_OFFSET, XAXIDMA_SR_OFFSET);
+    u32 s2mm_status = XAxiDma_ReadReg(AxiDma->RegBase + XAXIDMA_RX_OFFSET, XAXIDMA_SR_OFFSET);
+
+    xil_printf("DMA MM2S_DMASR: 0x%08x\r\n", mm2s_status);
+    xil_printf("DMA S2MM_DMASR: 0x%08x\r\n", s2mm_status);
+
+    if (mm2s_status & XAXIDMA_HALTED_MASK) {
+        xil_printf("MM2S channel is halted\r\n");
+    }
+    if (s2mm_status & XAXIDMA_HALTED_MASK) {
+        xil_printf("S2MM channel is halted\r\n");
+    }
+    if (mm2s_status & XAXIDMA_ERR_ALL_MASK) {
+        xil_printf("MM2S channel has errors: 0x%08x\r\n", mm2s_status & XAXIDMA_ERR_ALL_MASK);
+    }
+    if (s2mm_status & XAXIDMA_ERR_ALL_MASK) {
+        xil_printf("S2MM channel has errors: 0x%08x\r\n", s2mm_status & XAXIDMA_ERR_ALL_MASK);
+    }
+}
+
+
+int main() {
+    int Status;
+    XAxiDma AxiDma;
+    u32 *RxBufferPtr;
+    u32 Index;
+    xil_printf("beginning !\n");
+    // Allocate memory for the receive buffer
+    RxBufferPtr = (u32 *)DMA_BUFFER_BASE;
+
+    xil_printf("before init dma !\n");
+    // Initialize the DMA
+    Status = init_dma(&AxiDma);
+    if (Status != XST_SUCCESS) {
+        xil_printf("Failed to initialize DMA\r\n");
+        return XST_FAILURE;
+    }
+
+    // Initialize the Rx buffer
+    for (Index = 0; Index < MAX_PKT_LEN / sizeof(u32); Index++) {
+        RxBufferPtr[Index] = 0; // Clear buffer
+    }
+
+    xil_printf("before flush !\n");
+    // Flush the cache to ensure data coherence
+    Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, MAX_PKT_LEN);
+
+
+    xil_printf("before transfer !\n");
+    // 2. Start the DMA transfer from FIFO to PS memory
+    Status = XAxiDma_SimpleTransfer(&AxiDma, (UINTPTR)RxBufferPtr, MAX_PKT_LEN, XAXIDMA_DEVICE_TO_DMA);
+    if (Status != XST_SUCCESS) {
+        xil_printf("DMA transfer from FIFO to PS memory failed\r\n");
+        print_dma_status(&AxiDma);
+        return XST_FAILURE;
+    }
+
+    xil_printf("before transfer complete !\n");
+
+    // Wait for the DMA transfer to complete
+    while (XAxiDma_Busy(&AxiDma, XAXIDMA_DEVICE_TO_DMA)) {
+        // Wait
+    }
+    xil_printf("after transfer complete !\n");
+
+    // Invalidate the cache to read the data from the buffer
+    Xil_DCacheInvalidateRange((UINTPTR)RxBufferPtr, MAX_PKT_LEN);
+
+    // Print the data
+    xil_printf("Data received from FIFO:\r\n");
+    for (Index = 0; Index < MAX_PKT_LEN / sizeof(u32); Index++) {
+        xil_printf("0x%08x\r\n", RxBufferPtr[Index]);
+    }
+
+    xil_printf("Data transfer complete\r\n");
+
+    return XST_SUCCESS;
+}

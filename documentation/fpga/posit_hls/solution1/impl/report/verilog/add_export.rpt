@@ -1,0 +1,23 @@
+
+
+Implementation tool: Xilinx Vivado v.2023.2
+Project:             posit_hls
+Solution:            solution1
+Device target:       xck26-sfvc784-2LV-c
+Report date:         Wed Aug 21 03:08:48 CEST 2024
+
+#=== Post-Synthesis Resource usage ===
+SLICE:            0
+LUT:             94
+FF:             139
+DSP:              0
+BRAM:             0
+URAM:             0
+LATCH:            0
+SRL:              0
+CLB:              0
+
+#=== Final timing ===
+CP required:                     5
+CP achieved post-synthesis:      NA
+No Sequential Path

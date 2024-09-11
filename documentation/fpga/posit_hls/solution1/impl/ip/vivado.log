@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Aug 21 03:04:54 2024
+# Process ID: 81766
+# Current directory: /home/emg2-abtics/posit_hls/solution1/impl/ip
+# Command line: vivado -notrace -mode batch -source run_ippack.tcl
+# Log file: /home/emg2-abtics/posit_hls/solution1/impl/ip/vivado.log
+# Journal file: /home/emg2-abtics/posit_hls/solution1/impl/ip/vivado.jou
+# Running On: emg2abtics-virtual-machine, OS: Linux, CPU Frequency: 1796.571 MHz, CPU Physical cores: 16, Host memory: 15590 MB
+#-----------------------------------------------------------
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1346.730 ; gain = 0.023 ; free physical = 3205 ; free virtual = 10732
+INFO: [Common 17-206] Exiting Vivado at Wed Aug 21 03:05:08 2024...

@@ -1,0 +1,67 @@
+
+*** Running vivado
+    with args -log design_2_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_2_wrapper.tcl
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source design_2_wrapper.tcl -notrace
+CRITICAL WARNING: [Common 17-1355] You are suppressing all messages of type 'WARNING'. You may potentially disregard important DRC, CDC, and implementation messages that can negatively impact your design.  If this is not desired, please run 'reset_msg_config -suppress -severity {WARNING}' to undo this change.
+CRITICAL WARNING: [Common 17-1355] You are suppressing all messages of type 'CRITICAL WARNING'. You may potentially disregard important DRC, CDC, and implementation messages that can negatively impact your design.  If this is not desired, please run 'reset_msg_config -suppress -severity {CRITICAL WARNING}' to undo this change.
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1308.934 ; gain = 73.836 ; free physical = 4248 ; free virtual = 8446
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2597.633 ; gain = 286.777 ; free physical = 2493 ; free virtual = 6882
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2679.602 ; gain = 368.746 ; free physical = 2484 ; free virtual = 6878
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 2685.539 ; gain = 374.684 ; free physical = 2488 ; free virtual = 6881
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 2685.539 ; gain = 374.684 ; free physical = 2488 ; free virtual = 6881
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2685.539 ; gain = 0.000 ; free physical = 2485 ; free virtual = 6879
+create_clock: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2761.445 ; gain = 0.000 ; free physical = 2446 ; free virtual = 6853
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2761.445 ; gain = 0.000 ; free physical = 2447 ; free virtual = 6854
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2761.480 ; gain = 0.000 ; free physical = 2445 ; free virtual = 6853
+Finished Constraint Validation : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2761.480 ; gain = 450.625 ; free physical = 2439 ; free virtual = 6854
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2761.480 ; gain = 450.625 ; free physical = 2439 ; free virtual = 6854
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/zynq_ultra_ps_e_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/ps8_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/ps8_0_axi_periph. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/rst_ps8_0_96M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/axi_dma. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/axi_smc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/ps8_0_axi_periph1/s00_couplers/auto_us. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_2_i/ps8_0_axi_periph1. (constraint file  auto generated constraint).
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2761.480 ; gain = 450.625 ; free physical = 2439 ; free virtual = 6853
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 2761.480 ; gain = 450.625 ; free physical = 2438 ; free virtual = 6853
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:42 . Memory (MB): peak = 2761.480 ; gain = 450.625 ; free physical = 2435 ; free virtual = 6856
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:58 ; elapsed = 00:01:03 . Memory (MB): peak = 3240.875 ; gain = 930.020 ; free physical = 1876 ; free virtual = 6410
+Finished Timing Optimization : Time (s): cpu = 00:00:58 ; elapsed = 00:01:03 . Memory (MB): peak = 3240.875 ; gain = 930.020 ; free physical = 1878 ; free virtual = 6411
+Finished Technology Mapping : Time (s): cpu = 00:00:58 ; elapsed = 00:01:04 . Memory (MB): peak = 3250.891 ; gain = 940.035 ; free physical = 1861 ; free virtual = 6400
+Finished IO Insertion : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 3265.766 ; gain = 954.910 ; free physical = 1823 ; free virtual = 6395
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 3265.766 ; gain = 954.910 ; free physical = 1823 ; free virtual = 6395
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 3265.766 ; gain = 954.910 ; free physical = 1823 ; free virtual = 6395
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 3265.766 ; gain = 954.910 ; free physical = 1822 ; free virtual = 6395
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 3265.766 ; gain = 954.910 ; free physical = 1823 ; free virtual = 6396
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 3265.766 ; gain = 954.910 ; free physical = 1824 ; free virtual = 6396
+
+Report Cell Usage: 
++------+---------------------------+------+
+|      |Cell                       |Count |
++------+---------------------------+------+
+|1     |design_2_auto_pc           |     1|
+|2     |design_2_auto_us           |     1|
+|3     |design_2_axi_dma           |     1|
+|4     |design_2_axi_smc           |     1|
+|5     |design_2_rst_ps8_0_96M     |     1|
+|6     |design_2_zynq_ultra_ps_e_0 |     1|
++------+---------------------------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 3265.766 ; gain = 954.910 ; free physical = 1824 ; free virtual = 6396
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3265.773 ; gain = 0.000 ; free physical = 1896 ; free virtual = 6470
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3301.422 ; gain = 0.000 ; free physical = 2054 ; free virtual = 6640
+synth_design: Time (s): cpu = 00:01:28 ; elapsed = 00:01:33 . Memory (MB): peak = 3307.395 ; gain = 1939.742 ; free physical = 2034 ; free virtual = 6627

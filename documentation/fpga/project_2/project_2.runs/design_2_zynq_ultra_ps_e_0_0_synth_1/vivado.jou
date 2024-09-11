@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Aug 29 14:13:41 2024
+# Process ID: 96666
+# Current directory: /home/emg2-abtics/project_2/project_2.runs/design_2_zynq_ultra_ps_e_0_0_synth_1
+# Command line: vivado -log design_2_zynq_ultra_ps_e_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_2_zynq_ultra_ps_e_0_0.tcl
+# Log file: /home/emg2-abtics/project_2/project_2.runs/design_2_zynq_ultra_ps_e_0_0_synth_1/design_2_zynq_ultra_ps_e_0_0.vds
+# Journal file: /home/emg2-abtics/project_2/project_2.runs/design_2_zynq_ultra_ps_e_0_0_synth_1/vivado.jou
+# Running On: emg2abtics-virtual-machine, OS: Linux, CPU Frequency: 1796.571 MHz, CPU Physical cores: 16, Host memory: 15590 MB
+#-----------------------------------------------------------
+source design_2_zynq_ultra_ps_e_0_0.tcl -notrace
