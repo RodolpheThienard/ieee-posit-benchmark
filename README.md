@@ -15,7 +15,7 @@ Implementation of a benchmark strategy to be able to measure different metrics o
 
 # Documentation / User Guide
 - [documentation RacEr](documentation/racer/documentation.pdf)
-- [documentation FPGA](documentation/FPGA/guide.pdf)
+- [documentation FPGA](documentation/fpga/guide.pdf)
 - [documentation AWS](documentation/aws/guide.pdf)
 - [Papers](documentation/papers)
 - [Internship report](documentation/rapport/Rapport_Rodolphe_THIENARD.pdf)
